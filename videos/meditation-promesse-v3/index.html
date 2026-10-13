@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Ne doute pas de la promesse — Méditation MIDIGRAD (v3)</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/v3.css" />
+    <style>
+      @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 700; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 400; src: url("assets/fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 400; font-style: italic; src: url("assets/fonts/poppins-latin-400-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 500; src: url("assets/fonts/poppins-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 500; font-style: italic; src: url("assets/fonts/poppins-latin-400-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 600; src: url("assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 700; src: url("assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="299" data-width="1080" data-height="1920">
+      <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+      <div class="cam">
+        <div id="rig" data-layout-allow-overflow>
+          <div class="tv"></div>
+          <div class="led l1"></div><div class="led l2"></div>
+          <div class="bokeh" style="left:150px;top:260px;width:40px;height:40px;background:rgba(170,140,255,.35)"></div>
+          <div class="bokeh" style="left:880px;top:220px;width:56px;height:56px;background:rgba(35,189,237,.3)"></div>
+          <div class="bokeh" style="left:960px;top:1100px;width:34px;height:34px;background:rgba(247,148,29,.3)"></div>
+          <div class="bokeh" style="left:60px;top:1180px;width:48px;height:48px;background:rgba(122,77,255,.3)"></div>
+          <div class="desk"></div>
+          <div class="laptop">
+            <div class="lid"><span class="notch"></span>
+              <div id="screen">
+                <div class="app-top"><span class="dot"></span>MIDIGRAD<span class="sep">/</span>Méditation<span class="sep">/</span><span id="chapname">Ne doute pas de la promesse</span><span class="live"><i id="live-dot"></i>EN DIRECT</span></div>
+                <div class="player" id="player">
+                  <video id="v1" class="clip" src="assets/clips/clip1.mp4" muted playsinline data-start="3.6" data-duration="74.08" data-track-index="0"></video>
+                  <video id="v2" class="clip" src="assets/clips/clip2.mp4" muted playsinline data-start="78.8" data-duration="87.08" data-track-index="0"></video>
+                  <video id="v3" class="clip" src="assets/clips/clip3.mp4" muted playsinline data-start="167.0" data-duration="127.29" data-track-index="0"></video>
+                  <div class="bar"><i id="bar"></i></div>
+                  <div class="pill" id="namepill" style="left:14px;bottom:28px;opacity:0"><span class="av"></span>Apôtre Paris Talla</div>
+                </div>
+                <div class="side">
+                  <div class="ui-card" style="top:0;height:170px"><div class="ui-k">MÉDITATION DU JOUR</div><div class="ui-t">Ne doute pas de la promesse</div><div class="ui-s">Romains 4 : 18-21</div></div>
+                  <div class="ui-card" style="top:186px;height:196px;padding-top:12px">
+                    <div class="chap" style="position:relative"><span id="hl-0" class="chap on" style="position:absolute;inset:0;margin:0;opacity:0"></span><b style="position:relative">1</b><span style="position:relative" id="c0">Partie 1</span></div>
+                    <div class="chap" style="position:relative"><span id="hl-1" class="chap on" style="position:absolute;inset:0;margin:0;opacity:0"></span><b style="position:relative">2</b><span style="position:relative" id="c1">Partie 2</span></div>
+                    <div class="chap" style="position:relative"><span id="hl-2" class="chap on" style="position:absolute;inset:0;margin:0;opacity:0"></span><b style="position:relative">3</b><span style="position:relative" id="c2">Partie 3</span></div>
+                  </div>
+                  <div id="kwbox" style="position:absolute;left:0;right:0;top:400px;height:130px"></div>
+                  <div class="ui-card" id="bible" style="top:0;height:528px;background:#f6f7fb;color:#14162b;opacity:0">
+                    <div class="ui-k" style="color:#1688c4">LA BIBLE · LOUIS SEGOND</div>
+                    <div class="ui-t" style="color:#14162b;font-size:34px">Romains 4 : 20-21</div>
+                    <div class="ui-s" id="bible-txt" style="color:#3c4160;font-size:21px;line-height:1.5;margin-top:14px"></div>
+                  </div>
+                </div>
+                <div class="full white" id="intro"><span class="lg"></span><div class="nm">MIDIGRAD</div><div class="sb">Méditation · Apôtre Paris Talla</div><div class="spin"><i></i><i></i><i></i></div></div>
+                <div class="full dark" id="ch1"><div class="ck">PARTIE 2</div><div class="ct" id="ch1t">—</div></div>
+                <div class="full dark" id="ch2"><div class="ck">PARTIE 3</div><div class="ct" id="ch2t">—</div></div>
+                <div class="full white" id="outro"><span class="lg"></span><div class="nm">MIDIGRAD</div><div class="sb">Mission de la Dispensation de la Grâce de Dieu</div><div class="cs" style="margin-top:22px">WhatsApp · +237 676 547 719</div></div>
+                <div class="screen-glare"></div>
+              </div>
+            </div>
+            <div class="base"><div class="keys"></div><div class="pad"></div></div>
+          </div>
+        </div>
+      </div>
+      <div id="heads"></div>
+      <div id="caps"></div>
+      <div id="brand"><div class="bp"><span class="dot"></span><span class="k">MÉDITATION</span><span>par l'Apôtre <strong>PARIS TALLA</strong></span></div></div>
+      <!-- AUDIO -->
+    </div>
+    <script src="assets/data.js"></script>
+    <script src="assets/v3.js"></script>
+    <script>
+      window.__timelines["main"] = window.__v3tl;
+    </script>
+  </body>
+</html>
