@@ -1,0 +1,99 @@
+:root { --ink: #14162b; --ink2: #5a6078; --royal: #2e3192; --sky: #23bded; --skyd: #1688c4; --red: #e1251b; --gold: #f7941d; --bg: #eceef3; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Poppins", sans-serif; color: var(--ink); background: #0b0c18; }
+
+/* Plan « orateur » */
+.bgv { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#bgshade { position: absolute; inset: 0; background: radial-gradient(60% 80% at 50% 50%, rgba(10,12,30,0) 0%, rgba(10,12,30,.45) 100%); }
+#spk { position: absolute; left: 547px; top: 0; width: 826px; height: 1080px; overflow: hidden; box-shadow: 0 0 80px rgba(0,0,0,.55); }
+#frame { position: absolute; inset: 0; transform-origin: 50% 8%; }
+#frame video { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+.kin { position: absolute; left: 70px; top: 300px; width: 460px; font: 800 86px/0.98 "Montserrat"; color: #fff; text-transform: uppercase; letter-spacing: -.01em; text-shadow: 0 8px 40px rgba(0,0,0,.5); opacity: 0; }
+.kin .k { color: var(--sky); }
+.kin.r { left: auto; right: 70px; text-align: right; }
+.kin .w { display: block; }
+.pill { position: absolute; display: inline-flex; align-items: center; gap: 16px; padding: 18px 30px 18px 18px; border-radius: 60px; background: #fff; color: var(--ink);
+  font: 600 34px "Poppins"; white-space: nowrap; box-shadow: 0 16px 40px rgba(0,0,0,.35); opacity: 0; }
+.pill .ic { width: 52px; height: 52px; border-radius: 50%; background: #e7f6fd; display: grid; place-items: center; flex: none; }
+.pill .ic.logo { background: url("logo-badge.png") center/cover; }
+.pill .ic svg { width: 32px; height: 32px; }
+
+/* Écran d'animation (fond gris clair façon référence) */
+#stage { position: absolute; inset: 0; background: radial-gradient(70% 90% at 50% 45%, #fbfcfe 0%, #eceef3 60%, #e1e5ed 100%); opacity: 0; }
+.scn { position: absolute; inset: 0; opacity: 0; }
+.kick { font: 700 24px "Montserrat"; letter-spacing: .28em; color: var(--skyd); }
+.ttl { margin-top: 16px; font: 800 84px/1.04 "Montserrat"; letter-spacing: -.02em; color: var(--ink); }
+.sub { margin-top: 18px; font: 400 32px/1.4 "Poppins"; color: var(--ink2); }
+.lhead { position: absolute; left: 150px; top: 250px; width: 760px; }
+.items { position: absolute; left: 980px; top: 230px; width: 820px; }
+.it { display: flex; align-items: center; gap: 30px; height: 132px; }
+.it .ic { width: 96px; height: 96px; border-radius: 50%; background: #e3f4fc; display: grid; place-items: center; flex: none; box-shadow: inset 0 0 0 2px rgba(35,189,237,.25); }
+.it .ic svg { width: 50px; height: 50px; }
+.it .t1 { font: 700 46px "Montserrat"; color: var(--ink); letter-spacing: -.01em; }
+.it .t2 { margin-top: 2px; font: 400 26px "Poppins"; color: var(--ink2); }
+.it.done .ic { background: var(--sky); box-shadow: none; }
+.tilt { position: absolute; display: inline-flex; align-items: center; gap: 18px; padding: 22px 38px 22px 24px; border-radius: 60px; background: #fff;
+  font: 700 46px "Montserrat"; color: var(--ink); box-shadow: 0 24px 60px rgba(20,22,60,.18); white-space: nowrap; opacity: 0; }
+.tilt .ic { width: 60px; height: 60px; border-radius: 50%; background: #e3f4fc; display: grid; place-items: center; }
+.tilt .ic svg { width: 36px; height: 36px; }
+.card { position: absolute; border-radius: 40px; background: #fff; box-shadow: 0 30px 80px rgba(20,22,60,.14); }
+.bible { left: 360px; top: 170px; width: 1200px; padding: 60px 70px; }
+.bible .ref { margin-top: 14px; font: 800 64px "Montserrat"; color: var(--ink); }
+.bible .vs { margin-top: 26px; font: 400 42px/1.5 "Poppins"; color: var(--ink2); }
+.bible .vs b { font-weight: 600; color: var(--ink); background-image: linear-gradient(transparent 60%, rgba(35,189,237,.38) 60%); background-repeat: no-repeat; background-size: var(--hl, 0%) 100%; }
+.bible .ver { margin-top: 26px; font: 500 22px "Poppins"; color: #9aa0b4; }
+.night { left: 210px; top: 110px; width: 1500px; height: 760px; background: radial-gradient(90% 90% at 50% 100%, #2b2f7a 0%, #141640 45%, #070820 100%); overflow: hidden; }
+.star { position: absolute; border-radius: 50%; background: #fff; box-shadow: 0 0 10px rgba(255,255,255,.9); }
+.night .nt { position: absolute; left: 0; right: 0; bottom: 120px; text-align: center; font: 800 78px "Montserrat"; color: #fff; text-shadow: 0 0 40px rgba(127,220,255,.6); }
+.night .ns { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; font: 400 30px "Poppins"; color: rgba(255,255,255,.75); }
+.big { position: absolute; left: 150px; top: 200px; font: 800 340px/1 "Montserrat"; letter-spacing: -.05em; color: var(--ink); }
+.big small { font-size: 90px; letter-spacing: 0; color: var(--skyd); margin-left: 20px; }
+.chips { position: absolute; display: flex; flex-wrap: wrap; gap: 22px; }
+.chip { padding: 20px 34px; border-radius: 50px; font: 700 40px "Montserrat"; background: #fff; color: var(--ink); box-shadow: 0 14px 34px rgba(20,22,60,.12); opacity: 0; white-space: nowrap; }
+.chip.a { background: var(--sky); color: #04253d; }
+.chip.d { background: var(--ink); color: #fff; }
+.chip.r { background: var(--royal); color: #fff; }
+.vs-c { position: absolute; top: 260px; width: 620px; height: 470px; padding: 50px; border-radius: 44px; box-shadow: 0 30px 80px rgba(20,22,60,.18); opacity: 0; }
+.vs-c .k { font: 700 24px "Montserrat"; letter-spacing: .2em; opacity: .7; }
+.vs-c .b { margin-top: 24px; font: 800 76px/1.04 "Montserrat"; }
+.vs-c .m { position: absolute; right: 44px; bottom: 44px; width: 100px; height: 100px; border-radius: 50%; display: grid; place-items: center; }
+.vs-c .m svg { width: 56px; height: 56px; }
+.bub { position: absolute; padding: 26px 40px; border-radius: 40px; font: 500 42px "Poppins"; background: #fff; color: var(--ink); box-shadow: 0 16px 40px rgba(20,22,60,.12); opacity: 0; white-space: nowrap; }
+.bub.me { background: var(--skyd); color: #fff; }
+.rays { position: absolute; left: 50%; top: 45%; width: 2600px; height: 2600px; margin: -1300px 0 0 -1300px;
+  background: repeating-conic-gradient(from 0deg, rgba(255,214,140,.32) 0deg 5deg, rgba(255,214,140,0) 5deg 15deg);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,0) 55%); mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,0) 55%); }
+.glow { position: absolute; left: 50%; top: 45%; width: 900px; height: 900px; margin: -450px 0 0 -450px; border-radius: 50%; background: radial-gradient(circle, rgba(255,240,205,1) 0%, rgba(255,214,140,.55) 28%, rgba(255,214,140,0) 65%); }
+.ctr { position: absolute; left: 0; right: 0; text-align: center; }
+.clock { position: absolute; left: 260px; top: 230px; width: 560px; height: 560px; border-radius: 120px; background: #fff; box-shadow: 0 30px 80px rgba(20,22,60,.16); }
+.clock .tk { position: absolute; left: 50%; top: 50%; width: 6px; height: 26px; margin-left: -3px; background: #c4c8d6; transform-origin: 50% 0; }
+.clock .hd { position: absolute; left: 50%; bottom: 50%; border-radius: 8px; transform-origin: 50% 100%; }
+.clock .hh { width: 18px; height: 140px; margin-left: -9px; background: var(--ink); }
+.clock .mh { width: 12px; height: 200px; margin-left: -6px; background: var(--ink); }
+.clock .sh { width: 5px; height: 215px; margin-left: -2.5px; background: var(--red); }
+.clock .pin { position: absolute; left: 50%; top: 50%; width: 30px; height: 30px; margin: -15px; border-radius: 50%; background: var(--red); border: 6px solid #fff; }
+.chain { position: absolute; top: 330px; width: 300px; height: 150px; border: 34px solid #3a3f5c; border-radius: 80px; }
+.bigicon { position: absolute; display: grid; place-items: center; border-radius: 70px; }
+.bigicon svg { width: 60%; height: 60%; }
+
+/* Cartes plein écran (intro, chapitres, fin) */
+.full { position: absolute; inset: 0; background: radial-gradient(70% 90% at 40% 45%, #ffffff 0%, #eceef3 65%, #e1e5ed 100%); opacity: 0; }
+.full .lhead { top: 330px; }
+.full .lg { position: absolute; right: 230px; top: 300px; width: 420px; height: 420px; border-radius: 50%; background: url("logo-badge.png") center/cover; box-shadow: 0 30px 80px rgba(20,22,60,.2), 0 0 0 10px #fff; }
+.wa { display: inline-flex; align-items: center; gap: 18px; margin-top: 40px; padding: 22px 40px; border-radius: 60px; background: #25d366; color: #fff; font: 600 34px "Poppins"; box-shadow: 0 18px 40px rgba(37,211,102,.35); }
+.wa strong { font: 800 44px "Montserrat"; letter-spacing: .02em; }
+
+/* PiP + habillage */
+#pip { position: absolute; right: 60px; top: 50px; width: 250px; height: 250px; border-radius: 50%; overflow: hidden; border: 6px solid #fff; box-shadow: 0 18px 50px rgba(20,22,60,.3); opacity: 0; background: #222; }
+#pip video { position: absolute; left: -158px; top: 4px; width: 571px; height: 746px; object-fit: cover; }
+#brand { position: absolute; left: 50px; top: 46px; display: flex; align-items: center; gap: 14px; padding: 10px 24px 10px 10px; border-radius: 40px; background: rgba(255,255,255,.92);
+  font: 500 24px "Poppins"; color: var(--ink2); box-shadow: 0 10px 30px rgba(0,0,0,.18); opacity: 0; }
+#brand .dot { width: 44px; height: 44px; border-radius: 50%; background: url("logo-badge.png") center/cover; }
+#brand strong { font: 800 24px "Montserrat"; color: var(--royal); letter-spacing: .04em; }
+#caps { position: absolute; left: 260px; right: 260px; top: 900px; height: 150px; }
+.cap { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; opacity: 0; }
+.cap span { display: inline-block; max-width: 1400px; padding: 14px 34px 16px; border-radius: 26px; text-align: center; background: rgba(16,18,40,.86); color: #fff; font: 500 42px/1.3 "Poppins"; box-shadow: 0 14px 34px rgba(0,0,0,.3); }
+.cap em { font-style: normal; color: #7fdcff; }
+.cap.verse span { background: rgba(46,49,146,.92); font-style: italic; }
+.cap.verse em { color: #ffd08a; }

@@ -1,0 +1,6 @@
+node_modules/
+.hyperframes/
+renders/
+# Médias lourds régénérables (voir NOTES dans videos/notes-montage)
+assets/clips/
+assets/voix-apotre.wav

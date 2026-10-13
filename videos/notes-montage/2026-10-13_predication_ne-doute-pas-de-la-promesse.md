@@ -42,3 +42,17 @@ donnant gloire à Dieu, et ayant la pleine conviction que ce qu'il promet il peu
 9. 3:31 : une phrase inaudible a été retirée (« on va dire que tu es entré quelque part »).
 10. 4:42 : « Jésus-Christ les a pardonnés » (entendu « ne les a pas donné ») et « Tu es saint » (entendu « sain »).
 11. 4:50 : la dernière phrase (« … le meilleur matin du monde ») est incertaine.
+
+---
+## v4 : version YouTube 16:9 plein écran (version retenue)
+Retour de Giresse : il ne fallait pas montrer l'ordinateur, seulement reprendre **la vidéo qui joue dans l'écran** de la référence.
+- **Projet :** `videos/meditation-promesse-v4/` (1920×1080, 30 i/s, 4 min 59)
+- **Plans orateur :** l'Apôtre au centre sur fond flouté de sa propre image. Le cadrage change toutes les 4 à 7 s
+  (large, gros plan, plan moyen décalé) avec un petit zoom à chaque coupe. Des bulles blanches portent les mots-clés et un grand texte animé apparaît à gauche.
+- **Écrans d'animation contextuels** (fond gris clair façon référence, médaillon rond de l'Apôtre en haut à droite), calés sur la parole :
+  oreille (2 Tm 4:3), carte Romains 4:18, ciel étoilé (« Telle sera ta postérité »), compteur « 100 ans », santé / foyer /
+  affaires / enfants / projets, « Ce que Dieu t'a dit » contre « Ce que tu vis », 2 Co 5:7 et les cinq sens, avancer / reculer,
+  liste « Ne faiblis pas » cochée, Zacharie et Élisabeth, lumière de l'ange, paroles des gens en bulles, mariage / enfants,
+  horloge « moment opportun », chaînes qui se brisent (« aucune malédiction »), Romains 4:20-21, croix + passé / présent / futur → pardonnés,
+  saint / juste / parfait.
+- Mêmes clips nettoyés, même voix et mêmes sous-titres que la v3 (rien n'a été retraité). 111 effets sonores.
