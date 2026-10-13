@@ -1,0 +1,5 @@
+node_modules/
+.hyperframes/
+renders/
+# Fond vidéo pré-calculé (195 Mo) : se régénère depuis assets/sky.js
+assets/ciel-pardon.mp4

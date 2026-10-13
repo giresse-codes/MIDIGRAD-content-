@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>La puissance du pardon — Méditation MIDIGRAD</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 400; src: url("assets/fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 400; font-style: italic; src: url("assets/fonts/poppins-latin-400-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 500; src: url("assets/fonts/poppins-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 600; src: url("assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+
+      :root {
+        --or: #f7941d;
+        --or-clair: #ffc879;
+        --bleu-royal: #2e3192;
+        --bleu-ciel: #23bded;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #05070b; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Poppins", sans-serif; color: #fff; }
+
+      #sky-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+      .scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%;
+        background: linear-gradient(to bottom, rgba(4,6,12,0) 0%, rgba(4,6,12,.30) 22%, rgba(4,6,12,.55) 45%, rgba(4,6,12,.66) 100%); }
+      .letterbox { position: absolute; left: 0; right: 0; height: 0; background: #000; }
+
+      /* Titre du thème */
+      #title-card, #end-card { position: absolute; inset: 0; }
+      #title-card { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 610px; }
+      .t-kicker { font-family: "Montserrat"; font-weight: 600; font-size: 34px; letter-spacing: .5em; color: var(--or-clair);
+        text-shadow: 0 0 24px rgba(247,148,29,.55); padding-left: .5em; }
+      .t-rule { width: 420px; height: 2px; margin: 26px 0 18px; background: linear-gradient(90deg, transparent, var(--or-clair), transparent); }
+      .t-main { font-family: "Montserrat"; font-weight: 800; font-size: 104px; letter-spacing: .04em; line-height: 1;
+        text-shadow: 0 6px 40px rgba(0,0,0,.55), 0 0 60px rgba(255,214,150,.35); }
+
+      /* Sous-titres */
+      #caps { position: absolute; left: 90px; right: 120px; top: 1110px; height: 260px; }
+      .cap { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; opacity: 0;
+        font-weight: 500; font-size: 50px; line-height: 1.32; letter-spacing: .005em;
+        text-shadow: 0 2px 4px rgba(0,0,0,.55), 0 0 26px rgba(0,0,0,.45); }
+      .cap em { font-style: normal; color: var(--or-clair); text-shadow: 0 2px 4px rgba(0,0,0,.7), 0 0 18px rgba(0,0,0,.5), 0 0 26px rgba(247,148,29,.35); }
+      .cap.verse { font-style: italic; font-weight: 400; font-size: 52px; }
+      .cap.verse em { font-style: italic; }
+
+      #verse-ref { position: absolute; left: 0; right: 0; top: 890px; display: flex; justify-content: center; opacity: 0; }
+      .chip { display: block; font-family: "Montserrat"; font-weight: 600; font-size: 26px; letter-spacing: .32em; padding: 12px 22px 12px 30px;
+        color: var(--or-clair); border-top: 1.5px solid rgba(255,200,121,.7); border-bottom: 1.5px solid rgba(255,200,121,.7);
+        background: rgba(10,12,24,.55); text-shadow: 0 0 18px rgba(247,148,29,.5); }
+
+      /* Signature */
+      #brand { position: absolute; left: 0; right: 0; top: 1452px; display: flex; flex-direction: column; align-items: center; opacity: 0; }
+      .b-top { display: flex; align-items: center; gap: 18px; }
+      .b-line { width: 70px; height: 1.5px; background: var(--or-clair); opacity: .85; }
+      .b-kicker { font-family: "Montserrat"; font-weight: 600; font-size: 22px; letter-spacing: .42em; padding-left: .42em; color: var(--or-clair); }
+      .b-name { margin-top: 10px; font-size: 31px; font-weight: 400; color: rgba(255,255,255,.94); text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+      .b-name strong { font-family: "Montserrat"; font-weight: 800; letter-spacing: .06em; }
+
+      /* Carte de fin */
+      #end-card { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 470px; }
+      .e-scrim { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 38%, rgba(6,8,16,.0) 0%, rgba(6,8,16,.35) 70%); }
+      .e-halo { position: absolute; left: 50%; top: 640px; width: 900px; height: 900px; margin: -450px 0 0 -450px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,236,200,.55) 0%, rgba(255,214,150,.18) 38%, rgba(255,214,150,0) 68%); }
+      .e-logo { position: relative; display: block; width: 340px; height: 340px; border-radius: 50%;
+        box-shadow: 0 0 0 6px rgba(255,255,255,.85), 0 20px 70px rgba(0,0,0,.35), 0 0 120px rgba(255,220,160,.6); }
+      .e-name { position: relative; margin-top: 64px; font-family: "Montserrat"; font-weight: 800; font-size: 76px; letter-spacing: .12em; padding-left: .12em;
+        text-shadow: 0 4px 30px rgba(0,0,0,.5); }
+      .e-sub { position: relative; margin-top: 14px; font-size: 28px; letter-spacing: .02em; color: rgba(255,255,255,.92); text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="70" data-width="1080" data-height="1920">
+      <video id="sky-bg" class="clip" src="assets/ciel-pardon.mp4" muted playsinline data-start="0" data-duration="70" data-track-index="0"></video>
+      <div class="scrim"></div>
+
+      <section id="title-card" class="clip" data-start="8.3" data-duration="3.0" data-track-index="1">
+        <div class="t-kicker" id="t-kicker">LA PUISSANCE</div>
+        <div class="t-rule" id="t-rule"></div>
+        <div class="t-main" id="t-main">DU PARDON</div>
+      </section>
+
+      <div id="verse-ref"><span class="chip">COLOSSIENS 3 : 13</span></div>
+      <div id="caps"></div>
+
+      <div id="brand">
+        <div class="b-top"><span class="b-line"></span><span class="b-kicker">MÉDITATION</span><span class="b-line"></span></div>
+        <div class="b-name">par l'Apôtre <strong>PARIS TALLA</strong></div>
+      </div>
+
+      <section id="end-card" class="clip" data-start="66.2" data-duration="3.8" data-track-index="1">
+        <div class="e-scrim" id="e-scrim"></div>
+        <div class="e-halo" id="e-halo"></div>
+        <img class="e-logo" id="e-logo" src="assets/logo-badge.png" alt="Logo MIDIGRAD" />
+        <div class="e-name" id="e-name">MIDIGRAD</div>
+        <div class="e-sub" id="e-sub">Mission de la Dispensation de la Grâce de Dieu</div>
+      </section>
+
+      <audio id="voice" src="assets/voix-apotre-nettoyee.wav" data-start="0" data-duration="66.39" data-track-index="2" data-volume="1"></audio>
+    </div>
+
+    <script>
+      // Sous-titres : paroles de l'Apôtre, transcription à faire valider (voir NOTES.md).
+      // [début, fin, texte, citation biblique ?] en secondes vidéo.
+      const CAPS = [
+        [0.40, 4.10, "Bienvenue à ce moment de méditation…"],
+        [4.26, 5.93, "Je suis encore honoré de partager"],
+        [6.01, 7.95, "ce précieux thème avec toi :"],
+        [10.68, 11.75, "Imaginez l'instant."],
+        [11.93, 13.70, "On t'a offensé."],
+        [14.27, 15.50, "On t'a blessé."],
+        [16.06, 17.30, "Et vous le savez,"],
+        [17.40, 19.12, "chacun vit dans ce monde"],
+        [19.17, 21.38, "en croyant que c'est lui qui a raison"],
+        [21.45, 22.95, "et que c'est les autres qui ont tort."],
+        [23.27, 26.10, "Nous croyons toujours que nous avons raison."],
+        [26.38, 27.60, "Nous sommes simples,"],
+        [27.87, 29.10, "nous sommes humbles"],
+        [29.16, 30.85, "et que c'est les autres qui sont compliqués,"],
+        [30.95, 32.90, "que c'est les autres qui sont orgueilleux."],
+        [33.12, 34.60, "Mais souviens-toi,"],
+        [35.11, 36.35, "bien-aimé,"],
+        [36.44, 37.70, "la puissance du pardon :"],
+        [37.79, 39.40, "tu ne pourras jamais empêcher"],
+        [39.52, 41.10, "les gens de t'offenser."],
+        [41.40, 44.55, "Tu ne pourras jamais empêcher les malentendus,"],
+        [44.83, 47.35, "les mauvaises compréhensions"],
+        [47.43, 49.50, "ou les mauvaises interprétations"],
+        [49.63, 51.40, "des actes, des paroles de ton prochain."],
+        [51.71, 53.40, "Oui, il y aura toujours les offenses."],
+        [53.46, 54.65, "C'est ce que la Bible nous dit."],
+        [54.77, 55.80, "La Bible nous dit"],
+        [55.89, 58.25, "dans Colossiens chapitre 3, le verset 13 :"],
+        [58.47, 60.58, "« Pardonnez-vous réciproquement,", true],
+        [60.76, 62.50, "supportez-vous les uns les autres", true],
+        [62.65, 64.05, "et pardonnez-vous", true],
+        [64.31, 66.35, "comme Christ vous a pardonné.\u00a0»", true],
+      ];
+      const KEY = /(pardon\w*|Christ|Bible|bien-aimé|Colossiens)/gi;
+      const capsEl = document.getElementById("caps");
+      CAPS.forEach(([, , txt, verse], i) => {
+        const p = document.createElement("p");
+        p.className = "cap" + (verse ? " verse" : "");
+        p.id = "cap-" + i;
+        p.innerHTML = txt.replace(KEY, "<em>$1</em>");
+        capsEl.appendChild(p);
+      });
+
+      const tl = gsap.timeline({ paused: true });
+
+      // Le ciel (assets/ciel-pardon.mp4) est pré-calculé depuis assets/sky.js (shader WebGL déterministe).
+
+      // Sous-titres : apparition douce (flou → net), disparition rapide.
+      CAPS.forEach(([a, b], i) => {
+        const el = "#cap-" + i;
+        tl.fromTo(el, { opacity: 0, y: 16, filter: "blur(8px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.38, ease: "power2.out" }, a);
+        tl.to(el, { opacity: 0, y: -6, filter: "blur(4px)", duration: 0.22, ease: "power1.in" }, Math.max(a + 0.4, b - 0.12));
+      });
+
+      // Titre du thème « La puissance du pardon »
+      tl.fromTo("#t-kicker", { opacity: 0, scale: 1.12, filter: "blur(10px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.0, ease: "power3.out" }, 8.4);
+      tl.fromTo("#t-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 8.6);
+      tl.fromTo("#t-main", { opacity: 0, scale: 1.08, filter: "blur(14px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.1, ease: "power3.out" }, 8.75);
+      tl.to(["#t-kicker", "#t-rule", "#t-main"], { opacity: 0, y: -18, filter: "blur(10px)", duration: 0.55, ease: "power2.in", stagger: 0.05 }, 10.6);
+
+      // Référence biblique
+      tl.fromTo("#verse-ref", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 55.9);
+      tl.to("#verse-ref", { opacity: 0, duration: 0.5 }, 66.0);
+
+      // Signature en bas
+      tl.fromTo("#brand", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 0.6);
+      tl.to("#brand", { opacity: 0, duration: 0.5 }, 66.0);
+
+      // Carte de fin
+      tl.fromTo("#e-scrim", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "power1.out" }, 66.2);
+      tl.fromTo("#e-halo", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 1.6, ease: "power2.out" }, 66.3);
+      tl.fromTo("#e-logo", { opacity: 0, scale: 0.86, filter: "blur(12px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.1, ease: "power3.out" }, 66.4);
+      tl.fromTo("#e-name", { opacity: 0, y: 24, scale: 1.06 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power3.out" }, 66.9);
+      tl.fromTo("#e-sub", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 67.3);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
