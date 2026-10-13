@@ -101,3 +101,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #06070
 #brand .dot { width: 28px; height: 28px; border-radius: 50%; background: url("logo-badge.png") center/cover; }
 #brand .k { font: 700 18px "Montserrat"; letter-spacing: .25em; color: var(--sky); }
 #brand strong { font: 800 24px "Montserrat"; letter-spacing: .05em; color: #fff; }
+.wa { margin-top: 30px; display: flex; align-items: center; gap: 14px; padding: 14px 28px; border-radius: 40px; background: #25d366; color: #fff; font: 600 24px "Poppins"; box-shadow: 0 12px 30px rgba(37,211,102,.35); }
+.wa strong { font: 800 30px "Montserrat"; letter-spacing: .03em; }
+.wa-ic { width: 30px; height: 30px; border-radius: 50%; border: 3px solid #fff; position: relative; }
+.wa-ic::after { content: ""; position: absolute; left: -4px; bottom: -5px; width: 10px; height: 10px; background: #25d366; border-left: 3px solid #fff; border-bottom: 3px solid #fff; transform: skewX(-20deg); }
