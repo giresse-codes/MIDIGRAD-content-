@@ -39,6 +39,17 @@ sans vérification.** Les versets sont recopiés à l'identique depuis la versio
 (LSG par défaut) ; les paroles de l'Apôtre sont transcrites mot pour mot depuis l'enregistrement.
 En cas de doute, signaler et demander plutôt que reformuler.
 
+## Leçons de production (vidéo / HyperFrames, session cloud)
+- **Style validé par la direction :** motion design façon « widgets iOS en 3D » (référence troiscoups.fr).
+  Il faut une caméra toujours en mouvement et un titre animé mot par mot. Un montage trop simple (fond seul + sous-titres) a été refusé.
+- **Livrables :** fichiers **< 30 Mo** directement téléchargeables. N'envoyer ni test audio ni test image : seulement la version finale.
+- **Réseau :** Hugging Face, jsdelivr, les banques d'images et les CDN de modèles sont **bloqués**. Ne pas réessayer.
+  Ce qui passe : `github.com/.../releases/download/...` (modèles sherpa-onnx : Whisper, VAD Silero, séparation UVR), npm et PyPI.
+- **Transcription :** sherpa-onnx + Whisper medium int8, fenêtres de moins de 30 s coupées sur les pauses.
+- **Retirer la musique de fond :** sherpa-onnx `OfflineSourceSeparation` + `UVR-MDX-NET-Voc_FT.onnx` (stem 0 = voix).
+- **Rendu :** le Chrome de HyperFrames n'a pas de WebGL. Faire du CSS 3D + GSAP, ou pré-calculer en vidéo avec Playwright (`/opt/pw-browsers`).
+- **SFX :** à synthétiser localement (numpy). Chaque `<audio>` a son propre `id` et sa piste (`data-track-index`).
+
 ## Organisation
 `brand/` identité · `templates/` gabarits · `motion/` animations · `videos/` scripts, sous-titres, montage ·
 `contenus/` de la prédication aux publications · `planning/` calendrier éditorial.

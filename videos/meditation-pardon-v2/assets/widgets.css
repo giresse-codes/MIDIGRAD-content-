@@ -1,0 +1,129 @@
+/* Widgets façon iOS — palette MIDIGRAD */
+:root {
+  --ink: #14162b;
+  --ink-2: #4a4f68;
+  --royal: #2e3192;
+  --royal-deep: #1d1f66;
+  --sky: #23bded;
+  --sky-deep: #1688c4;
+  --red: #e1251b;
+  --gold: #f7941d;
+  --card-w: #ffffff;
+  --card-shadow: 0 30px 60px rgba(20, 22, 60, .18), 0 8px 18px rgba(20, 22, 60, .10);
+}
+.w { position: absolute; border-radius: 44px; box-shadow: var(--card-shadow); overflow: hidden; backface-visibility: hidden; }
+.w.light { background: linear-gradient(160deg, #ffffff 0%, #f1f3f8 100%); color: var(--ink); }
+.w.dark { background: linear-gradient(160deg, #23264f 0%, #121430 100%); color: #fff; }
+.w.blue { background: linear-gradient(165deg, #2a7fd6 0%, #2e3192 100%); color: #fff; }
+.w.sky { background: linear-gradient(165deg, #3fc9f2 0%, #1688c4 100%); color: #fff; }
+.w.storm { background: linear-gradient(165deg, #59607a 0%, #23273b 100%); color: #fff; }
+.w.blank-l { background: linear-gradient(160deg, #ffffff, #eceff6); }
+.w.blank-d { background: linear-gradient(160deg, #262a52, #101228); }
+.w.blank-b { background: linear-gradient(160deg, #2c86da, #2e3192); }
+
+/* Horloge */
+.clock { width: 380px; height: 380px; }
+.clock .face { position: absolute; inset: 26px; border-radius: 50%; }
+.clock .n { position: absolute; width: 60px; height: 60px; margin: -30px 0 0 -30px; text-align: center; line-height: 60px;
+  font: 600 38px "Poppins"; color: var(--ink); }
+.clock .tick { position: absolute; left: 50%; top: 50%; width: 3px; height: 14px; margin-left: -1.5px; background: #b9bdcc; transform-origin: 50% 0; }
+.clock .hand { position: absolute; left: 50%; bottom: 50%; border-radius: 6px; transform-origin: 50% 100%; }
+.clock .hh { width: 12px; height: 92px; margin-left: -6px; background: var(--ink); }
+.clock .mh { width: 8px; height: 128px; margin-left: -4px; background: var(--ink); }
+.clock .sh { width: 3px; height: 140px; margin-left: -1.5px; background: var(--red); }
+.clock .pin { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px; border-radius: 50%; background: var(--red); border: 4px solid #fff; }
+
+/* Petite carte « date / thème » */
+.tag { width: 300px; height: 300px; padding: 34px; }
+.tag .k { font: 700 24px "Montserrat"; letter-spacing: .12em; color: #ff5a4f; }
+.tag .big { margin-top: 10px; font: 800 100px/1 "Montserrat"; letter-spacing: -.04em; }
+.tag .s { margin-top: 10px; font: 500 28px "Poppins"; opacity: .7; }
+
+/* Météo */
+.weather { width: 300px; height: 300px; padding: 30px 32px; }
+.weather .loc { font: 600 28px "Poppins"; }
+.weather .deg { font: 400 104px/1.05 "Poppins"; letter-spacing: -.04em; }
+.weather .ic { position: absolute; left: 30px; bottom: 76px; width: 64px; height: 50px; }
+.weather .cond { position: absolute; left: 32px; bottom: 30px; font: 600 26px "Poppins"; }
+
+/* Messages */
+.msg { width: 640px; height: 330px; padding: 30px 34px; }
+.msg .hd { display: flex; align-items: center; gap: 14px; font: 600 28px "Poppins"; }
+.msg .av { display: flex; }
+.msg .av span { width: 44px; height: 44px; border-radius: 50%; margin-right: -12px; border: 3px solid #1b1d40; font: 700 20px/38px "Poppins"; text-align: center; }
+.msg .hd .t { margin-left: auto; font: 400 22px "Poppins"; opacity: .55; }
+.msg .b { display: block; width: fit-content; margin-top: 18px; padding: 16px 26px; border-radius: 30px; background: rgba(255,255,255,.14); font: 500 30px "Poppins"; }
+.msg .b.r { margin-left: auto; background: var(--sky-deep); }
+.msg .typing { display: flex; gap: 8px; width: fit-content; margin-top: 18px; padding: 20px 24px; border-radius: 30px; background: rgba(255,255,255,.14); }
+.msg .typing i { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,.7); }
+
+/* Recherche */
+.search { width: 680px; height: 120px; padding: 0 36px; display: flex; align-items: center; gap: 22px; border-radius: 60px; }
+.search .mag { width: 34px; height: 34px; border: 5px solid var(--ink-2); border-radius: 50%; position: relative; flex: none; }
+.search .mag::after { content: ""; position: absolute; width: 5px; height: 16px; background: var(--ink-2); right: -9px; bottom: -13px; transform: rotate(-45deg); border-radius: 3px; }
+.search .q { font: 500 38px "Poppins"; color: var(--ink); white-space: nowrap; overflow: hidden; }
+.search .caret { width: 3px; height: 44px; background: var(--sky-deep); flex: none; margin-left: -18px; }
+
+/* Bible */
+.bible { width: 700px; height: 560px; padding: 40px 44px; }
+.bible .hd { display: flex; align-items: center; gap: 16px; font: 700 24px "Montserrat"; letter-spacing: .14em; color: var(--sky-deep); }
+.bible .book { width: 40px; height: 32px; border-radius: 6px; background: var(--royal); position: relative; }
+.bible .book::after { content: ""; position: absolute; left: 50%; top: 6px; bottom: 6px; width: 3px; margin-left: -1.5px; background: #fff; }
+.bible .ref { margin-top: 18px; font: 800 52px/1.1 "Montserrat"; color: var(--ink); }
+.bible .vs { margin-top: 22px; font: 400 33px/1.45 "Poppins"; color: var(--ink-2); }
+.bible .vs b { font-weight: 600; color: var(--ink); background-image: linear-gradient(transparent 62%, rgba(35,189,237,.35) 62%); background-repeat: no-repeat; background-size: var(--hl, 0%) 100%; }
+.bible .ver { position: absolute; left: 44px; bottom: 30px; font: 500 22px "Poppins"; color: #9aa0b4; }
+
+/* Comparatif moi / les autres */
+.vs-card { width: 420px; height: 400px; padding: 40px; }
+.vs-card .k { font: 700 24px "Montserrat"; letter-spacing: .16em; opacity: .7; }
+.vs-card .big { margin-top: 18px; font: 800 74px/1.02 "Montserrat"; letter-spacing: -.02em; }
+.vs-card .mark { position: absolute; right: 36px; bottom: 36px; width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; font: 800 54px/1 "Montserrat"; }
+
+/* Icônes */
+.icon { width: 230px; height: 230px; display: grid; place-items: center; }
+.cross-ic { position: relative; width: 70px; height: 110px; }
+.cross-ic::before, .cross-ic::after { content: ""; position: absolute; background: #fff; border-radius: 6px; }
+.cross-ic::before { left: 28px; top: 0; width: 15px; height: 110px; }
+.cross-ic::after { left: 0; top: 28px; width: 70px; height: 15px; }
+.heart-ic { position: relative; width: 96px; height: 88px; }
+.heart-ic::before, .heart-ic::after { content: ""; position: absolute; top: 0; width: 52px; height: 80px; border-radius: 52px 52px 0 0; background: #fff; }
+.heart-ic::before { left: 48px; transform: rotate(-45deg); transform-origin: 0 100%; }
+.heart-ic::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+
+/* Grande statistique */
+.stat { width: 420px; height: 420px; padding: 38px; }
+.stat .k { font: 600 26px "Poppins"; opacity: .75; }
+.stat .big { margin-top: 6px; font: 800 150px/1 "Montserrat"; letter-spacing: -.05em; }
+.stat .s { font: 500 28px "Poppins"; opacity: .75; }
+.stat .bars { position: absolute; left: 38px; right: 38px; bottom: 38px; height: 110px; display: flex; align-items: flex-end; gap: 12px; }
+.stat .bars i { flex: 1; border-radius: 8px; background: rgba(255,255,255,.35); transform-origin: 50% 100%; }
+.stat .bars i.on { background: #fff; }
+
+/* Téléphone */
+.phone { width: 620px; height: 1240px; border-radius: 92px; padding: 18px; background: #0d0e18; box-shadow: 0 50px 90px rgba(20,22,60,.28), inset 0 0 0 3px #3a3d55; }
+.phone .scr { position: absolute; inset: 18px; border-radius: 76px; overflow: hidden; background: #f4f5f9; }
+.phone .isl { position: absolute; left: 50%; top: 26px; width: 190px; height: 54px; margin-left: -95px; border-radius: 30px; background: #000; z-index: 3; }
+.phone .sb { position: absolute; left: 56px; right: 56px; top: 34px; display: flex; justify-content: space-between; font: 600 26px "Poppins"; color: var(--ink); }
+.app { position: absolute; inset: 0; padding: 120px 44px 0; }
+.app .ttl { font: 800 70px/1.05 "Montserrat"; color: var(--ink); letter-spacing: -.02em; }
+.app .sub { margin-top: 10px; font: 400 32px "Poppins"; color: var(--ink-2); }
+.app .row { display: flex; align-items: center; gap: 22px; margin-top: 26px; padding: 30px 26px; border-radius: 30px; background: #fff; box-shadow: 0 6px 16px rgba(20,22,60,.06); }
+.app .row .av { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; font: 700 30px "Poppins"; color: #fff; flex: none; }
+.app .row .nm { font: 600 38px "Poppins"; color: var(--ink); }
+.app .row .ds { font: 400 28px "Poppins"; color: #8a8fa6; }
+.app .btn { position: absolute; left: 44px; right: 44px; bottom: 70px; height: 116px; border-radius: 58px; background: var(--royal); color: #fff; display: grid; place-items: center; font: 700 36px "Poppins"; }
+.app .sheet { position: absolute; left: 14px; right: 14px; bottom: 14px; height: 560px; border-radius: 64px; background: #fff; box-shadow: 0 -10px 40px rgba(20,22,60,.15); display: flex; flex-direction: column; align-items: center; padding-top: 70px; }
+.app .ok { width: 170px; height: 170px; border-radius: 50%; border: 8px solid var(--sky); position: relative; }
+.app .ok::after { content: ""; position: absolute; left: 48px; top: 30px; width: 46px; height: 84px; border-right: 10px solid var(--sky); border-bottom: 10px solid var(--sky); transform: rotate(45deg); }
+.app .sheet .t1 { margin-top: 40px; font: 800 48px "Montserrat"; color: var(--ink); }
+.app .sheet .t2 { margin-top: 12px; font: 400 28px "Poppins"; color: var(--ink-2); text-align: center; padding: 0 40px; }
+
+/* Miroir / reflet dans l'eau */
+.mirror { position: relative; width: 560px; height: 700px; }
+.mface { position: absolute; left: 0; top: 0; width: 560px; height: 320px; padding: 40px 44px; }
+.mface .mk { font: 700 24px "Montserrat"; letter-spacing: .16em; color: var(--sky-deep); }
+.mface .mbig { margin-top: 18px; font: 800 80px/1 "Montserrat"; letter-spacing: -.02em; color: var(--ink); }
+.mface .eye { position: absolute; right: 44px; bottom: 40px; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #14162b 0 22%, #23bded 23% 48%, #e7f6fd 49%); }
+.mface.refl { top: 360px; transform: scaleY(-1); -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0) 80%); mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0) 80%); }
+.mirror .water { position: absolute; left: -30px; right: -30px; top: 340px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, rgba(35,189,237,0), rgba(35,189,237,.9), rgba(35,189,237,0)); }
