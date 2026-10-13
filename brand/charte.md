@@ -7,7 +7,7 @@
 
 | Rôle | Nom | HEX | RGB | Usage |
 |---|---|---|---|---|
-| Dominante | Bleu ciel | `#29ABE2` | 41, 171, 226 | Fonds, globe, grands aplats |
+| Dominante | Bleu ciel | `#23BDED` | 35, 189, 237 | Fonds, globe, grands aplats |
 | Titres | Bleu royal | `#2E3192` | 46, 49, 146 | Titres, texte fort, « MIDIGRAD » |
 | Accent | Rouge | `#E1251B` | 225, 37, 27 | Croix, appels à l'action, mots clés |
 | Lumière | Or | `#F7941D` | 247, 148, 29 | Rayons, filets, effets lumineux en motion |
@@ -17,17 +17,15 @@
 
 Moyennes mesurées sur l'image (fichier compressé, donc indicatives) :
 
-| Couleur | Proposée | Mesurée dans le logo | Verdict |
+| Couleur | Proposée au départ | Mesurée dans le logo | Verdict |
 |---|---|---|---|
-| Bleu ciel | `#29ABE2` | `#23BDED` | Le logo est **plus clair et plus cyan**. À trancher (voir ci-dessous). |
+| Bleu ciel | `#29ABE2` | `#23BDED` | **`#23BDED` retenu**, fidèle au logo. |
 | Bleu royal | `#2E3192` | `#2B3392` | Conforme. |
 | Rouge | `#E1251B` | `#CA362E` | Écart dû à l'anti-crénelage des fins traits de la croix ; `#E1251B` retenu. |
 | Or | `#F7941D` | `#F1A42C` | Proche ; `#F7941D` retenu. |
 
-**Décision à prendre :** garder `#29ABE2` (bleu standard, plus lisible avec du texte blanc)
-ou adopter `#23BDED` (fidèle au logo actuel). Tant que ce n'est pas tranché, utiliser
-`#29ABE2` et vérifier la cohérence à l'œil à côté du logo. Le fichier vectoriel d'origine
-(si le graphiste l'a encore) fera foi.
+**Décision (2026-10-13) :** le bleu ciel officiel est **`#23BDED`**, fidèle au logo.
+`#29ABE2` n'est plus utilisé. Si le fichier vectoriel d'origine du logo est retrouvé, revérifier la valeur dessus.
 
 ### Règle 60-30-10
 
@@ -40,7 +38,8 @@ Jamais de rouge ou d'or en grand aplat. Jamais plus de 2 couleurs d'accent par v
 ### Contrastes à respecter
 - Texte blanc sur bleu royal : ✅ excellent.
 - Texte bleu royal sur blanc / bleu ciel très clair : ✅.
-- Texte blanc sur bleu ciel : ⚠️ seulement pour les gros titres (≥ 40 px), avec ombre légère.
+- Texte blanc sur bleu ciel : ⚠️ contraste faible (ce bleu est clair) : seulement pour les gros titres (≥ 40 px),
+  avec ombre légère ou bandeau bleu royal derrière. Pour le texte courant sur bleu ciel, utiliser le bleu royal.
 - Texte rouge ou or sur bleu ciel : ❌ à éviter.
 
 ## 2. Typographie

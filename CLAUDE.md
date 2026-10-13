@@ -10,7 +10,7 @@ géré par Giresse, responsable publicité et création de contenu.
 **Langues :** français en priorité, anglais en second.
 
 ## Charte (résumé — détail dans `brand/charte.md`)
-- Bleu ciel `#29ABE2` (dominante) · Bleu royal `#2E3192` (titres) · Rouge `#E1251B` (accent) · Or `#F7941D` (lumière, motion).
+- Bleu ciel `#23BDED` (dominante) · Bleu royal `#2E3192` (titres) · Rouge `#E1251B` (accent) · Or `#F7941D` (lumière, motion).
 - Règle 60-30-10 : 60 % bleu ciel/blanc, 30 % bleu royal, 10 % rouge et or.
 - Titres : Montserrat ExtraBold ou Anton. Texte : Poppins ou Open Sans.
 - Logo : complète / horizontale / icône (globe + croix).
