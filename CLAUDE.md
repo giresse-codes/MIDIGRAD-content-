@@ -50,6 +50,11 @@ En cas de doute, signaler et demander plutôt que reformuler.
 - **Rendu :** le Chrome de HyperFrames n'a pas de WebGL. Faire du CSS 3D + GSAP, ou pré-calculer en vidéo avec Playwright (`/opt/pw-browsers`).
 - **SFX :** à synthétiser localement (numpy). Chaque `<audio>` a son propre `id` et sa piste (`data-track-index`).
 
+## Formats adoptés
+- **Prédication YouTube (16:9)** : `videos/meditation-promesse-v4/`. Plans orateur aux cadrages changeants, écrans d'animation contextuels avec médaillon, sous-titres.
+- **MIDIGRAD Podcast (4:3)** : `videos/podcast-midigrad-croquis/` (croquis adopté le 18/10/2026, à améliorer plus tard).
+  Intro avec le logo, « MIDIGRAD » ondulant en haut à droite, platine qui tourne à droite, illustration qui change toutes les 15 s à gauche, paroles mot à mot en bas.
+
 ## Organisation
 `brand/` identité · `templates/` gabarits · `motion/` animations · `videos/` scripts, sous-titres, montage ·
 `contenus/` de la prédication aux publications · `planning/` calendrier éditorial.
