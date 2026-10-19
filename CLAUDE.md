@@ -48,6 +48,9 @@ En cas de doute, signaler et demander plutôt que reformuler.
 - **Transcription :** sherpa-onnx + Whisper medium int8, fenêtres de moins de 30 s coupées sur les pauses.
 - **Retirer la musique de fond :** sherpa-onnx `OfflineSourceSeparation` + `UVR-MDX-NET-Voc_FT.onnx` (stem 0 = voix).
 - **Rendu :** le Chrome de HyperFrames n'a pas de WebGL. Faire du CSS 3D + GSAP, ou pré-calculer en vidéo avec Playwright (`/opt/pw-browsers`).
+- **Audio source (messages WhatsApp) :** vérifier la **saturation** avant tout (échantillons à 1.0). Chaîne qui marche :
+  `volume=-8dB, adeclip, adeclick, highpass 90 Hz, arnndn (rnnoise, mix 0.75), EQ, deesser, adeclick, compresseur doux 3:1`, puis loudnorm −16 LUFS en deux passes.
+  **Pas de craquement de vinyle** : il a été perçu comme du bruit.
 - **SFX :** à synthétiser localement (numpy). Chaque `<audio>` a son propre `id` et sa piste (`data-track-index`).
 
 ## Formats adoptés
