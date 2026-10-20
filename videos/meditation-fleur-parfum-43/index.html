@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1440, height=1080" />
+    <title>Une fleur pour se venger — Méditation MIDIGRAD (4:3)</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/m43.css" />
+    <style>
+      @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 700; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 400; src: url("assets/fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 400; font-style: italic; src: url("assets/fonts/poppins-latin-400-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 500; src: url("assets/fonts/poppins-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 500; font-style: italic; src: url("assets/fonts/poppins-latin-400-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 600; src: url("assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 700; src: url("assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+    </style>
+
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="420" data-width="1440" data-height="1080">
+      <video id="bg1" class="clip bgv" src="assets/clips/bg1.mp4" muted playsinline data-start="3.6" data-duration="121.4" data-track-index="0"></video>
+      <video id="bg2" class="clip bgv" src="assets/clips/bg2.mp4" muted playsinline data-start="126.59" data-duration="66.41" data-track-index="0"></video>
+      <video id="bg3" class="clip bgv" src="assets/clips/bg3.mp4" muted playsinline data-start="194.6" data-duration="82.23" data-track-index="0"></video>
+      <video id="bg4" class="clip bgv" src="assets/clips/bg4.mp4" muted playsinline data-start="278.42" data-duration="66.62" data-track-index="0"></video>
+      <video id="bg5" class="clip bgv" src="assets/clips/bg5.mp4" muted playsinline data-start="346.64" data-duration="66.92" data-track-index="0"></video>
+      <div id="bgshade"></div>
+      <div id="spk"><div id="frame">
+      <video id="v1" class="clip" src="assets/clips/clip1.mp4" muted playsinline data-start="3.6" data-duration="121.4" data-track-index="1"></video>
+      <video id="v2" class="clip" src="assets/clips/clip2.mp4" muted playsinline data-start="126.59" data-duration="66.41" data-track-index="1"></video>
+      <video id="v3" class="clip" src="assets/clips/clip3.mp4" muted playsinline data-start="194.6" data-duration="82.23" data-track-index="1"></video>
+      <video id="v4" class="clip" src="assets/clips/clip4.mp4" muted playsinline data-start="278.42" data-duration="66.62" data-track-index="1"></video>
+      <video id="v5" class="clip" src="assets/clips/clip5.mp4" muted playsinline data-start="346.64" data-duration="66.92" data-track-index="1"></video>
+      </div></div>
+      <div id="kins"></div>
+      <div id="pills"></div>
+      <div id="stage"></div>
+      <div id="pip">
+      <video id="p1" class="clip" src="assets/clips/clip1.mp4" muted playsinline data-start="3.6" data-duration="121.4" data-track-index="2"></video>
+      <video id="p2" class="clip" src="assets/clips/clip2.mp4" muted playsinline data-start="126.59" data-duration="66.41" data-track-index="2"></video>
+      <video id="p3" class="clip" src="assets/clips/clip3.mp4" muted playsinline data-start="194.6" data-duration="82.23" data-track-index="2"></video>
+      <video id="p4" class="clip" src="assets/clips/clip4.mp4" muted playsinline data-start="278.42" data-duration="66.62" data-track-index="2"></video>
+      <video id="p5" class="clip" src="assets/clips/clip5.mp4" muted playsinline data-start="346.64" data-duration="66.92" data-track-index="2"></video>
+      </div>
+      <div id="fulls"></div>
+      <div id="brand"><span class="dot"></span><strong>MIDIGRAD</strong><span>Méditation · Apôtre Paris Talla</span></div>
+      <div id="caps"></div>
+      <audio id="voix" src="assets/voix-apotre.wav" data-start="0" data-duration="420" data-track-index="3" data-volume="1"></audio>
+      <audio id="sfx-000-whoosh" src="assets/sfx/whoosh.wav" data-start="0" data-duration="0.90" data-track-index="4" data-volume="0.3"></audio>
+      <audio id="sfx-001-impact" src="assets/sfx/impact.wav" data-start="0.2" data-duration="1.80" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-002-whoosh" src="assets/sfx/whoosh.wav" data-start="3.75" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-003-scintillement" src="assets/sfx/scintillement.wav" data-start="3.95" data-duration="3.20" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-004-whoosh" src="assets/sfx/whoosh.wav" data-start="10.6" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-005-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="12.9" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-006-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="16.5" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-007-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="22" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-008-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="28" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-009-whoosh" src="assets/sfx/whoosh.wav" data-start="32.6" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-010-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="37.6" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-011-clic" src="assets/sfx/clic.wav" data-start="38.6" data-duration="0.12" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-012-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="39.6" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-013-clic" src="assets/sfx/clic.wav" data-start="40.8" data-duration="0.12" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-014-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="46" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-015-impact" src="assets/sfx/impact.wav" data-start="53" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-016-whoosh" src="assets/sfx/whoosh.wav" data-start="59.2" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-017-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="63.6" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-018-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="64.4" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-019-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="65.2" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-020-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="69" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-021-clic" src="assets/sfx/clic.wav" data-start="70.4" data-duration="0.12" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-022-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="75.1" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-023-impact" src="assets/sfx/impact.wav" data-start="81.2" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-024-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="86" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-025-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="92.8" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-026-whoosh" src="assets/sfx/whoosh.wav" data-start="98.9" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-027-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="99.2" data-duration="0.50" data-track-index="5" data-volume="0.22"></audio>
+      <audio id="sfx-028-impact" src="assets/sfx/impact.wav" data-start="100.6" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-029-impact" src="assets/sfx/impact.wav" data-start="110.6" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-030-whoosh" src="assets/sfx/whoosh.wav" data-start="118.2" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-031-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="119.6" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-032-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="121.4" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-033-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="122.4" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-034-whoosh" src="assets/sfx/whoosh.wav" data-start="124.95" data-duration="0.90" data-track-index="4" data-volume="0.3"></audio>
+      <audio id="sfx-035-impact" src="assets/sfx/impact.wav" data-start="125.15" data-duration="1.80" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-036-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="128" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-037-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="135.8" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-038-impact" src="assets/sfx/impact.wav" data-start="140.8" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-039-whoosh" src="assets/sfx/whoosh.wav" data-start="142.9" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-040-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="143.4" data-duration="0.50" data-track-index="5" data-volume="0.2"></audio>
+      <audio id="sfx-041-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="146.4" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-042-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="151.6" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-043-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="155.4" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-044-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="157.9" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-045-whoosh" src="assets/sfx/whoosh.wav" data-start="159.9" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-046-scintillement" src="assets/sfx/scintillement.wav" data-start="160.1" data-duration="3.20" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-047-whoosh" src="assets/sfx/whoosh.wav" data-start="166.4" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-048-page" src="assets/sfx/page.wav" data-start="166.5" data-duration="0.35" data-track-index="5" data-volume="0.35"></audio>
+      <audio id="sfx-049-impact" src="assets/sfx/impact.wav" data-start="188.8" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-050-whoosh" src="assets/sfx/whoosh.wav" data-start="192.95" data-duration="0.90" data-track-index="4" data-volume="0.3"></audio>
+      <audio id="sfx-051-impact" src="assets/sfx/impact.wav" data-start="193.15" data-duration="1.80" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-052-impact" src="assets/sfx/impact.wav" data-start="194.8" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-053-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="198.6" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-054-whoosh" src="assets/sfx/whoosh.wav" data-start="207.1" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-055-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="210.6" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-056-impact" src="assets/sfx/impact.wav" data-start="219" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-057-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="223.2" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-058-impact" src="assets/sfx/impact.wav" data-start="231" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-059-whoosh" src="assets/sfx/whoosh.wav" data-start="239.6" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-060-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="240.2" data-duration="0.50" data-track-index="5" data-volume="0.2"></audio>
+      <audio id="sfx-061-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="248.2" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-062-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="253" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-063-clic" src="assets/sfx/clic.wav" data-start="257.4" data-duration="0.12" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-064-impact" src="assets/sfx/impact.wav" data-start="265" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-065-whoosh" src="assets/sfx/whoosh.wav" data-start="269.6" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-066-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="271.6" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-067-whoosh" src="assets/sfx/whoosh.wav" data-start="276.78" data-duration="0.90" data-track-index="4" data-volume="0.3"></audio>
+      <audio id="sfx-068-impact" src="assets/sfx/impact.wav" data-start="276.98" data-duration="1.80" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-069-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="279.6" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-070-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="283.6" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-071-whoosh" src="assets/sfx/whoosh.wav" data-start="291.2" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-072-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="292" data-duration="0.50" data-track-index="5" data-volume="0.2"></audio>
+      <audio id="sfx-073-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="296" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-074-impact" src="assets/sfx/impact.wav" data-start="301.2" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-075-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="308.6" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-076-whoosh" src="assets/sfx/whoosh.wav" data-start="315.3" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-077-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="321.6" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-078-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="324" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-079-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="326" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-080-impact" src="assets/sfx/impact.wav" data-start="337.4" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-081-whoosh" src="assets/sfx/whoosh.wav" data-start="338.7" data-duration="0.90" data-track-index="5" data-volume="0.28"></audio>
+      <audio id="sfx-082-scintillement" src="assets/sfx/scintillement.wav" data-start="338.9" data-duration="3.20" data-track-index="6" data-volume="0.32"></audio>
+      <audio id="sfx-083-whoosh" src="assets/sfx/whoosh.wav" data-start="345" data-duration="0.90" data-track-index="4" data-volume="0.3"></audio>
+      <audio id="sfx-084-impact" src="assets/sfx/impact.wav" data-start="345.2" data-duration="1.80" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-085-whoosh" src="assets/sfx/whoosh.wav" data-start="346.8" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-086-page" src="assets/sfx/page.wav" data-start="346.9" data-duration="0.35" data-track-index="6" data-volume="0.35"></audio>
+      <audio id="sfx-087-impact" src="assets/sfx/impact.wav" data-start="357" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-088-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="363" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-089-whoosh" src="assets/sfx/whoosh.wav" data-start="368.4" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-090-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="369.2" data-duration="0.50" data-track-index="5" data-volume="0.2"></audio>
+      <audio id="sfx-091-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="371.8" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-092-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="374.4" data-duration="0.50" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-093-clic" src="assets/sfx/clic.wav" data-start="376" data-duration="0.12" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-094-whoosh" src="assets/sfx/whoosh.wav" data-start="378.2" data-duration="0.90" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-095-page" src="assets/sfx/page.wav" data-start="378.3" data-duration="0.35" data-track-index="5" data-volume="0.35"></audio>
+      <audio id="sfx-096-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="391" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-097-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="397.6" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-098-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="402" data-duration="0.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-099-impact" src="assets/sfx/impact.wav" data-start="409.2" data-duration="1.80" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-100-montee" src="assets/sfx/montee.wav" data-start="411.6" data-duration="2.50" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-101-whoosh" src="assets/sfx/whoosh.wav" data-start="413.56" data-duration="0.90" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-102-impact" src="assets/sfx/impact.wav" data-start="413.76" data-duration="1.80" data-track-index="6" data-volume="0.3"></audio>
+      <audio id="sfx-103-scintillement" src="assets/sfx/scintillement.wav" data-start="414.4" data-duration="3.20" data-track-index="4" data-volume="0.3"></audio>
+    </div>
+    <script src="assets/caps.js"></script>
+    <script src="assets/m43.js"></script>
+    <script>
+      window.__timelines["main"] = window.__m43.tl;
+    </script>
+  </body>
+</html>
