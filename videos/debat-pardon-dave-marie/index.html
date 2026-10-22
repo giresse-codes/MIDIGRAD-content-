@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Le Débat — Pardonner à Jorvis (MIDIGRAD, 9:16)</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/debat.css" />
+    <style>
+      @font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-ext-800-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-ext-900-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="173" data-width="1080" data-height="1920">
+      <div id="glow"></div><div id="rays"></div>
+      <div id="logo">M<i></i></div>
+      <div id="tag">• LE DÉBAT</div>
+      <div id="top"></div>
+      <div id="end"><div class="lg">M<i></i></div><div class="sl"><span>Pardonne.</span> <span>Libère-toi.</span> <span class="o">Avance.</span></div>
+        <div class="btn"><span class="ic"><svg viewBox="0 0 48 48" width="34" height="34" fill="#1fa855"><path d="M16 10l24 14-24 14z"/></svg></span><span><div class="k">Abonne-toi</div><div class="t">Suis MIDIGRAD</div></span></div></div>
+      <div id="dave" class="chr"></div>
+      <div id="marie" class="chr"></div>
+      <div id="bubbles"></div>
+      <div id="brand"><i>M</i>MIDIGRAD</div>
+      <div id="confetti"></div>
+      <audio id="voix" src="assets/dialogue.wav" data-start="0" data-duration="166.2" data-track-index="3" data-volume="1"></audio>
+      <audio id="sfx-000-whoosh" src="assets/sfx/whoosh.wav" data-start="0.6" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-001-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="1.36" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-002-clic" src="assets/sfx/clic.wav" data-start="1.4" data-duration="0.12" data-track-index="6" data-volume="0.3"></audio>
+      <audio id="sfx-003-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="6.28" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-004-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="9.65" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-005-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="11.5" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-006-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="14.5" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-007-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="18.5" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-008-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="22.26" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-009-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="23.68" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-010-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="27.52" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-011-whoosh" src="assets/sfx/whoosh.wav" data-start="28.73" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-012-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="29.1" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-013-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="34" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-014-whoosh" src="assets/sfx/whoosh.wav" data-start="38.12" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-015-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="38.14" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-016-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="41.38" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-017-clic" src="assets/sfx/clic.wav" data-start="41.56" data-duration="0.12" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-018-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="44.93" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-019-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="47.03" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-020-whoosh" src="assets/sfx/whoosh.wav" data-start="48.89" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-021-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="50.91" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-022-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="56.32" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-023-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="60.36" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-024-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="66.02" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-025-whoosh" src="assets/sfx/whoosh.wav" data-start="68.83" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-026-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="68.85" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-027-clic" src="assets/sfx/clic.wav" data-start="69.33" data-duration="0.12" data-track-index="6" data-volume="0.3"></audio>
+      <audio id="sfx-028-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="72.76" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-029-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="76.38" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-030-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="80" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-031-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="85.19" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-032-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="89.95" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-033-whoosh" src="assets/sfx/whoosh.wav" data-start="92.92" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-034-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="94.25" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-035-whoosh" src="assets/sfx/whoosh.wav" data-start="94.95" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-036-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="101.11" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-037-scintillement" src="assets/sfx/scintillement.wav" data-start="102.87" data-duration="3.20" data-track-index="4" data-volume="0.28"></audio>
+      <audio id="sfx-038-whoosh" src="assets/sfx/whoosh.wav" data-start="105.13" data-duration="0.90" data-track-index="5" data-volume="0.18"></audio>
+      <audio id="sfx-039-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="105.15" data-duration="0.50" data-track-index="6" data-volume="0.12"></audio>
+      <audio id="sfx-040-clic" src="assets/sfx/clic.wav" data-start="105.53" data-duration="0.12" data-track-index="7" data-volume="0.3"></audio>
+      <audio id="sfx-041-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="106.44" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-042-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="110.33" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-043-whoosh" src="assets/sfx/whoosh.wav" data-start="114.88" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-044-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="114.9" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-045-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="117.82" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-046-whoosh" src="assets/sfx/whoosh.wav" data-start="118.02" data-duration="0.90" data-track-index="5" data-volume="0.18"></audio>
+      <audio id="sfx-047-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="123.73" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-048-whoosh" src="assets/sfx/whoosh.wav" data-start="126.41" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-049-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="126.43" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-050-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="130.83" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-051-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="133.69" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-052-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="135.73" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-053-whoosh" src="assets/sfx/whoosh.wav" data-start="140.88" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-054-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="140.9" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-055-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="145.7" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-056-whoosh" src="assets/sfx/whoosh.wav" data-start="150.43" data-duration="0.90" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-057-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="150.45" data-duration="0.50" data-track-index="5" data-volume="0.12"></audio>
+      <audio id="sfx-058-clic" src="assets/sfx/clic.wav" data-start="150.83" data-duration="0.12" data-track-index="6" data-volume="0.3"></audio>
+      <audio id="sfx-059-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="151.86" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-060-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="157.12" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-061-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="160.06" data-duration="0.50" data-track-index="4" data-volume="0.12"></audio>
+      <audio id="sfx-062-scintillement" src="assets/sfx/scintillement.wav" data-start="162.48" data-duration="3.20" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-063-whoosh" src="assets/sfx/whoosh.wav" data-start="163.56" data-duration="0.90" data-track-index="5" data-volume="0.18"></audio>
+      <audio id="sfx-064-whoosh_court" src="assets/sfx/whoosh_court.wav" data-start="163.58" data-duration="0.50" data-track-index="6" data-volume="0.12"></audio>
+      <audio id="sfx-065-impact" src="assets/sfx/impact.wav" data-start="163.66" data-duration="1.80" data-track-index="7" data-volume="0.25"></audio>
+      <audio id="sfx-066-whoosh" src="assets/sfx/whoosh.wav" data-start="166.65" data-duration="0.90" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-067-notification" src="assets/sfx/notification.wav" data-start="168.4" data-duration="0.70" data-track-index="4" data-volume="0.25"></audio>
+    </div>
+    <script src="assets/data.js"></script>
+    <script src="assets/persos.js"></script>
+    <script src="assets/debat.js"></script>
+    <script>
+      window.__timelines["main"] = window.__deb.tl;
+    </script>
+  </body>
+</html>
