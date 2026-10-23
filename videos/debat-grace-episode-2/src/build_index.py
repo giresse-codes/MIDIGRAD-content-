@@ -38,7 +38,7 @@ html = f'''<!doctype html>
       <div id="marie" class="chr"></div>
       <div id="bubbles"></div>
       <div id="brand"><img src="assets/logo.png" alt="" />MIDIGRAD</div>
-      <audio id="voix" src="assets/dialogue.wav" data-start="0" data-duration="244" data-track-index="3" data-volume="1"></audio>
+      <audio id="voix" src="assets/dialogue.wav" data-start="0" data-duration="{round(D['endAt'] + 0.5, 2)}" data-track-index="3" data-volume="1"></audio>
 {chr(10).join(au)}
     </div>
     <script src="assets/data.js"></script>

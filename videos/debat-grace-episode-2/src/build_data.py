@@ -1,9 +1,14 @@
 # Épisode 2 — calage mot à mot : chaque réplique est répartie sur les zones de parole détectées dans sa fenêtre audio.
 # Les temps des répliques sont relevés sur voixoff-episode2.wav (timings-episode2.json non fourni) ; la piste est décalée de OFF s (intro).
+# Les pauses longues sont raccourcies (src/tighten.py → src/cuts.json).
 # Usage : python3 build_data.py regions.json ../assets/data.js
 import json, re, sys
 OFF = 10.0
-REG = [[a + OFF, b + OFF] for a, b in json.load(open(sys.argv[1]))]
+import os
+CUTS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "cuts.json")))  # pauses retirées (tighten.py)
+def M(t):  # temps de la voix d'origine -> temps de la voix resserrée
+    return t - sum(min(b, max(t, a)) - a for a, b in CUTS)
+REG = [[M(a) + OFF, M(b) + OFF] for a, b in json.load(open(sys.argv[1]))]
 # (qui, début, fin, texte ; *mot* = surligné, | = changement de bulle, expressions [(fraction, clé, bras, anim, durée)])
 L = [
  ("M", 0.26, 7.06, "Wow Dave ! Pourquoi tu *souris* comme ça aujourd'hui ?", [(0, "amusee", None, "penche", 2)]),
@@ -49,7 +54,7 @@ def place(words, a, b):
 
 lines = []
 for who, a, b, txt, ex in L:
-    a, b = a + OFF, b + OFF
+    a, b = M(a) + OFF, M(b) + OFF
     pages, words = [], []
     for part in txt.split("|"):
         ws = part.split(); i0 = len(words)
