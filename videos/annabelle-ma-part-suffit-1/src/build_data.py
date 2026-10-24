@@ -13,11 +13,10 @@ T = {1: (0.17, 2.94), 2: (3.27, 7.74), 3: (8.81, 17.77), 4: (18.15, 25.56), 5: (
      8: (54.49, 63.96), 9: (64.45, 69.38), 10: (69.70, 77.03), 11: (77.32, 83.59), 12: (83.96, 92.61), 13: (93.32, 117.14),
      14: (117.80, 123.94), 15: (124.37, 127.63), 16: (128.12, 149.19), 17: (149.67, 156.07), 18: (156.55, 163.83),
      19: (164.56, 176.44), 20: (176.85, 183.78), 21: (184.27, 197.16), 22: (197.57, 207.78), 23: (208.23, 218.41),
-     24: (218.74, 222.75), 25: (223.05, 224.11),
+     24: (218.74, 222.75), 25: (223.05, 224.11), 26: (224.28, 228.36),
      27: (228.81, 229.70), 28: (230.60, 237.68), 29: (238.33, 240.59), 30: (241.22, 248.71), 31: (249.38, 250.02)}
-CUT_DIAL = 224.2   # fin du dialogue gardé ; la répétition de la réplique 24 (224,28–228,36) est retirée
+CUT_DIAL = 228.45  # fin du dialogue (Annabelle répète la réplique 24 en guise de réplique 26, gardé tel quel)
 NARR_IN = 228.55   # début de la narration dans la voix d'origine
-SIL26 = 2.0        # réplique 26 absente de l'audio : bulle muette provisoire
 TEXT = {
  1: ("A", "Bonjour, pasteur… J'espère que vous allez bien."),
  2: ("P", "Bonjour, ma précieuse sœur ! | Je vais très bien, gloire à Dieu. Et toi ?"),
@@ -44,7 +43,7 @@ TEXT = {
  23: ("P", "La Bible nous demande d'être de bons *imitateurs* *de* *Christ.* | De rendre grâce à Dieu en toute occasion, favorable ou non. | De chercher Dieu… et non de rejeter la faute sur les autres."),
  24: ("A", "C'est bon. Je m'en vais. | Et je ne remettrai plus jamais les pieds dans cette église."),
  25: ("P", "Ma sœur, attends…"),
- 26: ("A", "Non. Ma part suffit."),
+ 26: ("A", "C'est bon. Je m'en vais. | Et je ne remettrai plus jamais les pieds dans cette église."),  # audio : répétition de la 24
  27: ("N", "*Deux* *mois* *plus* *tard…*"),
  28: ("N", "Annabelle n'est jamais revenue à l'église. | Les insultes ont continué. Le stress aussi. | Et *son* *cœur…* a fini par céder."),
  29: ("N", "Diagnostic : *insuffisance* *cardiaque.*"),
@@ -53,8 +52,7 @@ TEXT = {
 }
 
 # ── Temps final ────────────────────────────────────────────────────────
-L26a = OFF + CUT_DIAL + 0.5; L26b = L26a + SIL26
-EMPTY = L26b + 2.6           # Annabelle est sortie : église vide (2 s)
+EMPTY = OFF + T[26][1] + 2.8           # Annabelle est sortie : église vide (2 s)
 BLACK = EMPTY + 2.0          # fondu au noir (1 s)
 NARR0 = BLACK + 1.0 + 0.4    # la narration démarre après le noir
 def M(t):  # voix d'origine -> temps de la vidéo
@@ -81,12 +79,9 @@ for n, (who, txt) in TEXT.items():
         ws = part.split(); i0 = len(words)
         for w in ws: words.append([w.replace("*", ""), 0, 1 if "*" in w else 0])
         pages.append([i0, len(words)])
-    if n == 26:
-        a, b = L26a, L26b; ts = place([w[0] for w in words], a, b, even=True)
-    else:
-        a0, b0 = T[n]; ts = [M(t) for t in place([w[0] for w in words], a0, b0)]; a, b = M(a0), M(b0)
+    a0, b0 = T[n]; ts = [M(t) for t in place([w[0] for w in words], a0, b0)]; a, b = M(a0), M(b0)
     for w, t in zip(words, ts): w[1] = round(t, 3)
-    lines.append({"n": n, "who": who, "a": round(a, 3), "b": round(b, 3), "words": words, "pages": pages, "muet": n == 26})
+    lines.append({"n": n, "who": who, "a": round(a, 3), "b": round(b, 3), "words": words, "pages": pages, "muet": False})
 FIN = round(M(T[31][1]) + 1.6, 2); DUR = round(FIN + 3.2, 2)
 
 # ── Audio : dialogue, pause, narration ; ambiance très discrète ─────────
@@ -142,7 +137,7 @@ for i in range(nf):
 data = {"fps": FPS, "dur": DUR, "off": OFF, "empty": round(EMPTY, 2), "black": round(BLACK, 2), "fin": FIN, "lines": lines, "lev": "".join(lev), "voc": "".join(voc)}
 open(os.path.join(ROOT, "assets", "data.js"), "w").write("window.FILM = " + json.dumps(data, ensure_ascii=False) + ";\n")
 tj = {"source": os.path.basename(SRC), "montage": {"debut_voix": OFF, "fin_dialogue_voix_origine": CUT_DIAL, "debut_narration_voix_origine": NARR_IN, "debut_narration_video": round(NARR0, 2), "duree_video": DUR},
-      "anomalies": {"26": "absente de l'audio : Annabelle répète la réplique 24 (224,28–228,36 s), passage retiré ; « Non. Ma part suffit. » affiché en bulle muette provisoire"},
+      "remarque": {"26": "« Non. Ma part suffit. » n'est pas dans l'audio : Annabelle répète la réplique 24 (gardé tel quel, à la demande)"},
       "repliques": [{"n": l["n"], "qui": {"A": "ANNABELLE", "P": "PASTEUR YANNICK", "N": "NARRATEUR"}[l["who"]],
                      "voix_debut": T.get(l["n"], (None,))[0], "voix_fin": T.get(l["n"], (None, None))[1], "video_debut": l["a"], "video_fin": l["b"]} for l in lines]}
 json.dump(tj, open(os.path.join(ROOT, "timings.json"), "w"), ensure_ascii=False, indent=1)

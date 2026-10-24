@@ -2,13 +2,13 @@
  "source": "40645cf5-AUD-20261024-WA0001.mp3",
  "montage": {
   "debut_voix": 1.6,
-  "fin_dialogue_voix_origine": 224.2,
+  "fin_dialogue_voix_origine": 228.45,
   "debut_narration_voix_origine": 228.55,
-  "debut_narration_video": 234.3,
-  "duree_video": 260.57
+  "debut_narration_video": 236.16,
+  "duree_video": 262.43
  },
- "anomalies": {
-  "26": "absente de l'audio : Annabelle répète la réplique 24 (224,28–228,36 s), passage retiré ; « Non. Ma part suffit. » affiché en bulle muette provisoire"
+ "remarque": {
+  "26": "« Non. Ma part suffit. » n'est pas dans l'audio : Annabelle répète la réplique 24 (gardé tel quel, à la demande)"
  },
  "repliques": [
   {
@@ -214,50 +214,50 @@
   {
    "n": 26,
    "qui": "ANNABELLE",
-   "voix_debut": null,
-   "voix_fin": null,
-   "video_debut": 226.3,
-   "video_fin": 228.3
+   "voix_debut": 224.28,
+   "voix_fin": 228.36,
+   "video_debut": 225.88,
+   "video_fin": 229.96
   },
   {
    "n": 27,
    "qui": "NARRATEUR",
    "voix_debut": 228.81,
    "voix_fin": 229.7,
-   "video_debut": 234.56,
-   "video_fin": 235.45
+   "video_debut": 236.42,
+   "video_fin": 237.31
   },
   {
    "n": 28,
    "qui": "NARRATEUR",
    "voix_debut": 230.6,
    "voix_fin": 237.68,
-   "video_debut": 236.35,
-   "video_fin": 243.43
+   "video_debut": 238.21,
+   "video_fin": 245.29
   },
   {
    "n": 29,
    "qui": "NARRATEUR",
    "voix_debut": 238.33,
    "voix_fin": 240.59,
-   "video_debut": 244.08,
-   "video_fin": 246.34
+   "video_debut": 245.94,
+   "video_fin": 248.2
   },
   {
    "n": 30,
    "qui": "NARRATEUR",
    "voix_debut": 241.22,
    "voix_fin": 248.71,
-   "video_debut": 246.97,
-   "video_fin": 254.46
+   "video_debut": 248.83,
+   "video_fin": 256.32
   },
   {
    "n": 31,
    "qui": "NARRATEUR",
    "voix_debut": 249.38,
    "voix_fin": 250.02,
-   "video_debut": 255.13,
-   "video_fin": 255.77
+   "video_debut": 256.99,
+   "video_fin": 257.63
   }
  ]
 }

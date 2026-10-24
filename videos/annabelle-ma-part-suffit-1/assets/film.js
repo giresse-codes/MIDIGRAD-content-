@@ -290,6 +290,7 @@
   tl.fromTo("#ecgline", { strokeDashoffset: 2200 }, { strokeDashoffset: 0, duration: L(30).a - L(29).a + 0.4, ease: "none" }, L(29).a - 0.5);
   tl.fromTo("#diag", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, W(29, "insuffisance") - 0.3);
   const cut30 = W(30, "aller") - 0.4;
+  tl.to("#diag", { opacity: 0, duration: 0.5 }, L(30).a - 0.5);
   scn("#s-street", L(30).a - 0.5, cut30, 1, 1.05);
   scn("#s-corr", cut30, L(31).a - 0.5, 1, 1.12);
   tl.fromTo("#suite", { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 1.4, ease: "sine.inOut" }, L(31).a - 0.4);
