@@ -1,0 +1,65 @@
+:root { --navy: #0b1b5c; --orange: #f5a623; --red: #d93025; --green: #1fa855; --ink: #1a1a1a; --grey: #b9b4aa; --cream: #f3f1ec; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Inter", sans-serif; color: var(--ink); background: #e9dcc4; }
+
+/* Monde (3 calques avec parallaxe) */
+#world { position: absolute; inset: 0; transform-origin: 0 0; }
+.layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; will-change: transform; }
+#front svg.rig { position: absolute; width: 480px; height: 720px; overflow: visible; }
+#grade { position: absolute; inset: 0; pointer-events: none; }
+#warm { position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 35%, rgba(255,196,110,.55), rgba(255,170,80,.18) 60%, rgba(255,150,60,.08)); mix-blend-mode: soft-light; }
+#cool { position: absolute; inset: 0; background: rgba(90,104,130,1); mix-blend-mode: multiply; opacity: 0; }
+#dust { position: absolute; inset: 0; pointer-events: none; }
+#dust i { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #fff6d8; box-shadow: 0 0 6px #fff1c0; }
+
+/* En-tête / pied */
+#hud { position: absolute; inset: 0; pointer-events: none; }
+#logo { position: absolute; left: 488px; top: 46px; width: 104px; height: 104px; border-radius: 50%; background: #fff; overflow: hidden; box-shadow: 0 8px 22px rgba(0,0,0,.18); }
+#logo img { width: 100%; height: 100%; object-fit: cover; }
+#tag { position: absolute; left: 50%; top: 172px; transform: translateX(-50%); padding: 12px 30px; border-radius: 40px; background: #fff; font: 700 24px "JetBrains Mono"; letter-spacing: .2em; box-shadow: 0 6px 20px rgba(0,0,0,.08); white-space: nowrap; }
+#brand { position: absolute; left: 50%; top: 1820px; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; padding: 14px 32px; border-radius: 40px;
+  background: var(--navy); color: #fff; font: 700 25px "JetBrains Mono"; letter-spacing: .14em; white-space: nowrap; }
+#brand img { width: 30px; height: 30px; border-radius: 50%; background: #fff; }
+
+/* Bulles */
+#bubbles { position: absolute; inset: 0; }
+.bub { position: absolute; bottom: 920px; max-width: 790px; padding: 26px 36px 30px; border-radius: 38px; background: #fff; box-shadow: 0 16px 40px rgba(0,0,0,.12); opacity: 0; }
+.bub.L { left: 36px; } .bub.R { right: 36px; }
+.bub::after { content: ""; position: absolute; bottom: -20px; width: 42px; height: 42px; background: inherit; transform: rotate(45deg); border-radius: 6px; }
+.bub.L::after { left: 140px; } .bub.R::after { right: 140px; }
+.bub.hot { background: #fdeceb; }
+.bub .who { font: 500 21px "JetBrains Mono"; letter-spacing: .14em; color: #8b877f; text-transform: uppercase; margin-bottom: 8px; position: relative; z-index: 1; }
+.bub .tx { font: 800 46px/1.24 "Inter"; color: var(--grey); letter-spacing: -.01em; position: relative; z-index: 1; }
+.bub .hl, .sub .hl { border-radius: 12px; padding: 0 8px; margin: 0 -3px; background: rgba(245,166,35,var(--a,0)); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+/* Cartes versets */
+#cards { position: absolute; inset: 0; }
+.vcard { position: absolute; left: 90px; top: 262px; width: 900px; border-radius: 34px; background: #fffaf0; border: 4px solid var(--orange); padding: 26px 34px 30px; box-shadow: 0 18px 44px rgba(0,0,0,.14); opacity: 0; }
+.vcard .ref { display: flex; justify-content: space-between; font: 700 28px "JetBrains Mono"; letter-spacing: .1em; color: var(--orange); text-transform: uppercase; }
+.vcard .ref span:last-child { color: #c9a46a; font-weight: 500; }
+.vcard .tx { margin-top: 14px; font: 700 33px/1.36 "Inter"; color: #1d1d1d; }
+.vcard .tx b { font-weight: 800; border-radius: 10px; padding: 0 6px; margin: 0 -2px; background: rgba(245,166,35,var(--a,0)); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.vcard .ill { margin-top: 14px; height: 200px; border-radius: 22px; background: #f3e6cc; overflow: hidden; position: relative; }
+.vcard .ill svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Narration */
+#narr { position: absolute; inset: 0; opacity: 0; background: #000; overflow: hidden; }
+.scene { position: absolute; inset: 0; opacity: 0; transform-origin: 50% 50%; }
+#narr .rigbox { position: absolute; width: 520px; height: 780px; }
+#narr .rigbox svg { width: 100%; height: 100%; overflow: visible; }
+#cold { position: absolute; inset: 0; background: rgba(40,60,110,.35); mix-blend-mode: multiply; pointer-events: none; }
+#grain { position: absolute; left: -64px; top: -64px; width: 1208px; height: 2048px; opacity: .1; pointer-events: none; background-size: 256px 256px; }
+.bar { position: absolute; left: 0; width: 1080px; height: 230px; background: #000; }
+.bar.t { top: 0; } .bar.b { bottom: 0; }
+#subs { position: absolute; left: 60px; right: 60px; top: 1500px; text-align: center; }
+.sub { position: absolute; left: 0; right: 0; font: 800 50px/1.3 "Inter"; color: rgba(255,255,255,.38); opacity: 0; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+#typed { position: absolute; left: 0; right: 0; top: 880px; text-align: center; font: 700 64px "JetBrains Mono"; letter-spacing: .14em; color: #fff; }
+#diag { position: absolute; left: 140px; top: 1180px; width: 800px; padding: 26px 30px; border-radius: 22px; background: rgba(255,255,255,.06); border: 2px solid rgba(255,255,255,.25); text-align: center; opacity: 0; }
+#diag .k { font: 500 26px "JetBrains Mono"; letter-spacing: .2em; color: #9fb0c8; }
+#diag .v { margin-top: 10px; font: 900 50px "Inter"; color: #fff; letter-spacing: .02em; }
+#suite { position: absolute; left: 0; right: 0; top: 860px; text-align: center; font: 900 96px "Inter"; color: #fff; letter-spacing: .06em; opacity: 0; }
+#fin { position: absolute; inset: 0; background: var(--cream); opacity: 0; }
+#fin img { position: absolute; left: 290px; top: 710px; width: 500px; height: 500px; border-radius: 50%; }
+#black { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; }
+#hud::before { content: ""; position: absolute; left: 0; top: 0; width: 1080px; height: 290px; background: linear-gradient(rgba(240,230,210,.92) 0%, rgba(240,230,210,.75) 55%, rgba(240,230,210,0) 100%); }
