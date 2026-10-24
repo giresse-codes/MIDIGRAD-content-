@@ -1,197 +1,263 @@
 {
- "source": "AUD-20261024-WA0000.mp3 (237,48 s)",
- "methode": "Whisper medium (sherpa-onnx) phrase par phrase + zones de parole ; temps dans l'audio d'origine, en secondes",
+ "source": "40645cf5-AUD-20261024-WA0001.mp3",
+ "montage": {
+  "debut_voix": 1.6,
+  "fin_dialogue_voix_origine": 224.2,
+  "debut_narration_voix_origine": 228.55,
+  "debut_narration_video": 234.3,
+  "duree_video": 260.57
+ },
  "anomalies": {
-  "08": "absente de l'audio",
-  "09": "absente de l'audio",
-  "26": "absente : à la place, Annabelle répète la réplique 24 (« C'est bon, je m'en vais ! Et je ne remettrai plus jamais les pieds dans cette église ! ») de 211.32 à 215.40"
+  "26": "absente de l'audio : Annabelle répète la réplique 24 (224,28–228,36 s), passage retiré ; « Non. Ma part suffit. » affiché en bulle muette provisoire"
  },
  "repliques": [
   {
-   "n": "01",
+   "n": 1,
    "qui": "ANNABELLE",
-   "debut": 0.03,
-   "fin": 3.04
+   "voix_debut": 0.17,
+   "voix_fin": 2.94,
+   "video_debut": 1.77,
+   "video_fin": 4.54
   },
   {
-   "n": "02",
+   "n": 2,
    "qui": "PASTEUR YANNICK",
-   "debut": 3.19,
-   "fin": 8.07
+   "voix_debut": 3.27,
+   "voix_fin": 7.74,
+   "video_debut": 4.87,
+   "video_fin": 9.34
   },
   {
-   "n": "03",
+   "n": 3,
    "qui": "ANNABELLE",
-   "debut": 8.24,
-   "fin": 18.51
+   "voix_debut": 8.81,
+   "voix_fin": 17.77,
+   "video_debut": 10.41,
+   "video_fin": 19.37
   },
   {
-   "n": "04",
+   "n": 4,
    "qui": "PASTEUR YANNICK",
-   "debut": 18.67,
-   "fin": 26.11
+   "voix_debut": 18.15,
+   "voix_fin": 25.56,
+   "video_debut": 19.75,
+   "video_fin": 27.16
   },
   {
-   "n": "05",
+   "n": 5,
    "qui": "ANNABELLE",
-   "debut": 26.46,
-   "fin": 32.7
+   "voix_debut": 26.09,
+   "voix_fin": 31.78,
+   "video_debut": 27.69,
+   "video_fin": 33.38
   },
   {
-   "n": "06",
+   "n": 6,
    "qui": "ANNABELLE",
-   "debut": 33.07,
-   "fin": 44.18
+   "voix_debut": 32.31,
+   "voix_fin": 42.94,
+   "video_debut": 33.91,
+   "video_fin": 44.54
   },
   {
-   "n": "07",
+   "n": 7,
    "qui": "ANNABELLE",
-   "debut": 44.58,
-   "fin": 55.47
+   "voix_debut": 43.45,
+   "voix_fin": 54.04,
+   "video_debut": 45.05,
+   "video_fin": 55.64
   },
   {
-   "n": "08",
+   "n": 8,
    "qui": "PASTEUR YANNICK",
-   "debut": null,
-   "fin": null
+   "voix_debut": 54.49,
+   "voix_fin": 63.96,
+   "video_debut": 56.09,
+   "video_fin": 65.56
   },
   {
-   "n": "09",
+   "n": 9,
    "qui": "ANNABELLE",
-   "debut": null,
-   "fin": null
+   "voix_debut": 64.45,
+   "voix_fin": 69.38,
+   "video_debut": 66.05,
+   "video_fin": 70.98
   },
   {
-   "n": "10",
+   "n": 10,
    "qui": "PASTEUR YANNICK",
-   "debut": 55.65,
-   "fin": 63.18
+   "voix_debut": 69.7,
+   "voix_fin": 77.03,
+   "video_debut": 71.3,
+   "video_fin": 78.63
   },
   {
-   "n": "11",
+   "n": 11,
    "qui": "ANNABELLE",
-   "debut": 63.39,
-   "fin": 69.83
+   "voix_debut": 77.32,
+   "voix_fin": 83.59,
+   "video_debut": 78.92,
+   "video_fin": 85.19
   },
   {
-   "n": "12",
+   "n": 12,
    "qui": "PASTEUR YANNICK",
-   "debut": 69.96,
-   "fin": 78.92
+   "voix_debut": 83.96,
+   "voix_fin": 92.61,
+   "video_debut": 85.56,
+   "video_fin": 94.21
   },
   {
-   "n": "13",
+   "n": 13,
    "qui": "PASTEUR YANNICK",
-   "debut": 79.48,
-   "fin": 103.49
+   "voix_debut": 93.32,
+   "voix_fin": 117.14,
+   "video_debut": 94.92,
+   "video_fin": 118.74
   },
   {
-   "n": "14",
+   "n": 14,
    "qui": "PASTEUR YANNICK",
-   "debut": 104.02,
-   "fin": 110.33
+   "voix_debut": 117.8,
+   "voix_fin": 123.94,
+   "video_debut": 119.4,
+   "video_fin": 125.54
   },
   {
-   "n": "15",
+   "n": 15,
    "qui": "ANNABELLE",
-   "debut": 110.54,
-   "fin": 114.29
+   "voix_debut": 124.37,
+   "voix_fin": 127.63,
+   "video_debut": 125.97,
+   "video_fin": 129.23
   },
   {
-   "n": "16",
+   "n": 16,
    "qui": "PASTEUR YANNICK",
-   "debut": 114.44,
-   "fin": 135.31
+   "voix_debut": 128.12,
+   "voix_fin": 149.19,
+   "video_debut": 129.72,
+   "video_fin": 150.79
   },
   {
-   "n": "17",
+   "n": 17,
    "qui": "ANNABELLE",
-   "debut": 135.46,
-   "fin": 142.05
+   "voix_debut": 149.67,
+   "voix_fin": 156.07,
+   "video_debut": 151.27,
+   "video_fin": 157.67
   },
   {
-   "n": "18",
+   "n": 18,
    "qui": "PASTEUR YANNICK",
-   "debut": 142.37,
-   "fin": 150.24
+   "voix_debut": 156.55,
+   "voix_fin": 163.83,
+   "video_debut": 158.15,
+   "video_fin": 165.43
   },
   {
-   "n": "19",
+   "n": 19,
    "qui": "PASTEUR YANNICK",
-   "debut": 150.76,
-   "fin": 162.62
+   "voix_debut": 164.56,
+   "voix_fin": 176.44,
+   "video_debut": 166.16,
+   "video_fin": 178.04
   },
   {
-   "n": "20",
+   "n": 20,
    "qui": "ANNABELLE",
-   "debut": 163.02,
-   "fin": 170.42
+   "voix_debut": 176.85,
+   "voix_fin": 183.78,
+   "video_debut": 178.45,
+   "video_fin": 185.38
   },
   {
-   "n": "21",
+   "n": 21,
    "qui": "PASTEUR YANNICK",
-   "debut": 170.71,
-   "fin": 183.84
+   "voix_debut": 184.27,
+   "voix_fin": 197.16,
+   "video_debut": 185.87,
+   "video_fin": 198.76
   },
   {
-   "n": "22",
+   "n": 22,
    "qui": "ANNABELLE",
-   "debut": 184.24,
-   "fin": 194.58
+   "voix_debut": 197.57,
+   "voix_fin": 207.78,
+   "video_debut": 199.17,
+   "video_fin": 209.38
   },
   {
-   "n": "23",
+   "n": 23,
    "qui": "PASTEUR YANNICK",
-   "debut": 194.89,
-   "fin": 205.45
+   "voix_debut": 208.23,
+   "voix_fin": 218.41,
+   "video_debut": 209.83,
+   "video_fin": 220.01
   },
   {
-   "n": "24",
+   "n": 24,
    "qui": "ANNABELLE",
-   "debut": 205.68,
-   "fin": 209.87
+   "voix_debut": 218.74,
+   "voix_fin": 222.75,
+   "video_debut": 220.34,
+   "video_fin": 224.35
   },
   {
-   "n": "25",
+   "n": 25,
    "qui": "PASTEUR YANNICK",
-   "debut": 210.16,
-   "fin": 211.2
+   "voix_debut": 223.05,
+   "voix_fin": 224.11,
+   "video_debut": 224.65,
+   "video_fin": 225.71
   },
   {
-   "n": "26",
+   "n": 26,
    "qui": "ANNABELLE",
-   "debut": null,
-   "fin": null
+   "voix_debut": null,
+   "voix_fin": null,
+   "video_debut": 226.3,
+   "video_fin": 228.3
   },
   {
-   "n": "27",
+   "n": 27,
    "qui": "NARRATEUR",
-   "debut": 215.54,
-   "fin": 216.6
+   "voix_debut": 228.81,
+   "voix_fin": 229.7,
+   "video_debut": 234.56,
+   "video_fin": 235.45
   },
   {
-   "n": "28",
+   "n": 28,
    "qui": "NARRATEUR",
-   "debut": 217.06,
-   "fin": 224.66
+   "voix_debut": 230.6,
+   "voix_fin": 237.68,
+   "video_debut": 236.35,
+   "video_fin": 243.43
   },
   {
-   "n": "29",
+   "n": 29,
    "qui": "NARRATEUR",
-   "debut": 225.11,
-   "fin": 227.63
+   "voix_debut": 238.33,
+   "voix_fin": 240.59,
+   "video_debut": 244.08,
+   "video_fin": 246.34
   },
   {
-   "n": "30",
+   "n": 30,
    "qui": "NARRATEUR",
-   "debut": 227.94,
-   "fin": 235.88
+   "voix_debut": 241.22,
+   "voix_fin": 248.71,
+   "video_debut": 246.97,
+   "video_fin": 254.46
   },
   {
-   "n": "31",
+   "n": 31,
    "qui": "NARRATEUR",
-   "debut": 236.35,
-   "fin": 236.9
+   "voix_debut": 249.38,
+   "voix_fin": 250.02,
+   "video_debut": 255.13,
+   "video_fin": 255.77
   }
  ]
 }

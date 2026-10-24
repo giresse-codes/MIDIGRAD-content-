@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Ma part suffit — Annabelle, partie 1 (MIDIGRAD, 9:16)</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/film.css" />
+    <style>
+      @font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-ext-800-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-ext-900-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url("assets/fonts/jetbrains-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+      #grain { background-image: url("assets/grain.png"); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="260.57" data-width="1080" data-height="1920">
+      <div id="world"><div id="bg" class="layer"><div id="dust"></div></div><div id="mid" class="layer"></div><div id="front" class="layer"></div></div>
+      <div id="grade"><div id="warm"></div><div id="cool"></div></div>
+      <div id="cards"></div>
+      <div id="bubbles"></div>
+      <div id="hud"><div id="logo"><img src="assets/logo-midigrad.png" alt="" /></div><div id="tag">• LE DÉBAT</div><div id="brand"><img src="assets/logo-midigrad.png" alt="" />MIDIGRAD</div></div>
+      <div id="narr">
+        <div id="s-home" class="scene"></div><div id="s-ecg" class="scene"></div><div id="s-street" class="scene"></div><div id="s-corr" class="scene"></div>
+        <div id="cold"></div>
+        <div id="typed"></div>
+        <div id="diag"><div class="k">DIAGNOSTIC</div><div class="v">INSUFFISANCE CARDIAQUE</div></div>
+        <div id="suite">À SUIVRE…</div>
+        <div id="subs"></div>
+        <div id="grain"></div>
+        <div class="bar t"></div><div class="bar b"></div>
+      </div>
+      <div id="fin"><img src="assets/logo-midigrad.png" alt="" /></div>
+      <div id="black"></div>
+      <audio id="voix" src="assets/audio.wav" data-start="0" data-duration="260.57" data-track-index="1" data-volume="1"></audio>
+    </div>
+    <script src="assets/data.js"></script>
+    <script src="assets/rig.js"></script>
+    <script src="assets/decor.js"></script>
+    <script src="assets/film.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = window.__film.tl;
+    </script>
+  </body>
+</html>
