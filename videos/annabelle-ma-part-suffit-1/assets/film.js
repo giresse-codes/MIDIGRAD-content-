@@ -89,7 +89,7 @@
   ex(A, g(5), "triste", 0.5, { gx: 0.4 }); po(A, g(5), "chest", 0.6); po(A, W(5, "belle-famille") , "lap", 0.7);
   A.key(W(6, "lapider") - 0.4, 3.2, { tear: 1 }, true);
   ex(A, W(6, "Et", 0) , "triste", 0.4, { gx: 0.3, gy: 1 });
-  ex(A, g(7), "souci", 0.4, { gx: 0.6, gy: 0 }); po(A, W(7, "toujours") - 0.3, "open", 0.6); po(A, W(7, "Je", 0) - 0.1, "lap", 0.6);
+  ex(A, g(7), "souci", 0.4, { gx: 0.6, gy: 0 }); po(A, W(7, "stérile") - 0.3, "open", 0.6); po(A, W(7, "Je", 0) - 0.1, "lap", 0.6);
   ex(A, W(7, "lui…") - 0.3, "amere", 0.5);
   ex(P, g(5), "compatissant", 0.5, { gx: 0.6 });
   // 08

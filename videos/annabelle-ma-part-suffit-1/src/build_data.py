@@ -24,7 +24,7 @@ TEXT = {
  4: ("P", "Wooh… C'est fort, ça. | D'abord, calme-toi. Assieds-toi… et raconte-moi ce qui s'est passé."),
  5: ("A", "Pasteur, je n'en peux plus. | Ma belle-famille… ma *belle-mère…* et même mon mari."),
  6: ("A", "Cette femme passe son temps à m'insulter. Tout ce qui ne va pas, c'est ma faute. | À la moindre occasion, elle est prête à me *lapider.* | Et toute la famille la suit… parce que je ne leur ai pas encore donné d'enfant."),
- 7: ("A", "Mais comment je vais faire un enfant toute seule ? | Mon mari n'est jamais à la maison, *toujours* *en* *voyage* ! | Je vis dans le stress, tous les jours. Et lui… il préfère défendre sa mère."),
+ 7: ("A", "M'accusant d'être *stérile* parce que j'ai tellement avorté dans ma jeunesse, pendant mon célibat… | raison pour laquelle je ne peux pas avoir d'enfant. | Je vis dans le stress, tous les jours. Et lui… il préfère défendre sa mère."),
  8: ("P", "Hmmm… Je vois. Que Dieu te fortifie, ma sœur. | Mais il y a une chose que j'essaie de comprendre… Tu es venue pour qu'on prie contre eux ?"),
  9: ("A", "C'est bizarre de le dire comme ça… mais oui, pasteur. | Je veux juste retrouver *la* *paix.*"),
  10: ("P", "Souhaiter du mal à ceux qui t'offensent ne te rendra jamais la paix. | Je ne peux te demander qu'une seule chose : *pardonne-leur.*"),
@@ -43,7 +43,7 @@ TEXT = {
  23: ("P", "La Bible nous demande d'être de bons *imitateurs* *de* *Christ.* | De rendre grâce à Dieu en toute occasion, favorable ou non. | De chercher Dieu… et non de rejeter la faute sur les autres."),
  24: ("A", "C'est bon. Je m'en vais. | Et je ne remettrai plus jamais les pieds dans cette église."),
  25: ("P", "Ma sœur, attends…"),
- 26: ("A", "C'est bon. Je m'en vais. | Et je ne remettrai plus jamais les pieds dans cette église."),  # audio : répétition de la 24
+ 26: ("A", "Non. Ma part suffit."),
  27: ("N", "*Deux* *mois* *plus* *tard…*"),
  28: ("N", "Annabelle n'est jamais revenue à l'église. | Les insultes ont continué. Le stress aussi. | Et *son* *cœur…* a fini par céder."),
  29: ("N", "Diagnostic : *insuffisance* *cardiaque.*"),

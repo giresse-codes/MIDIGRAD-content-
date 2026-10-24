@@ -22,7 +22,7 @@
     <rect x="-260" y="30" width="1600" height="22" fill="#b89567"/>
     <g transform="translate(0 70)">${win(-150)}${win(1070)}${win(40)}${win(880)}</g>
     <g transform="translate(540 452)"><rect x="-370" y="-62" width="740" height="124" rx="16" fill="#2e3192"/><rect x="-360" y="-52" width="720" height="104" rx="12" fill="none" stroke="#f7941d" stroke-width="5"/>
-      <text x="0" y="22" text-anchor="middle" font-family="Inter" font-weight="900" font-size="66" letter-spacing="10" fill="#fff">MIDIGRAD</text>
+      <text x="0" y="22" text-anchor="middle" font-family="Inter" font-weight="900" font-size="40" letter-spacing="5" fill="#fff">EUD CONSISTOIRE MIDIGRAD</text>
       <path d="M-370 -62 L-400 -90 M370 -62 L400 -90" stroke="#6d665c" stroke-width="4"/></g>
     <g transform="translate(540 560)"><rect x="-22" y="0" width="44" height="250" rx="6" fill="#a8743f"/><rect x="-100" y="70" width="200" height="40" rx="6" fill="#a8743f"/>
       <rect x="-22" y="0" width="12" height="300" fill="#c8915a"/><rect x="-100" y="70" width="200" height="10" fill="#c8915a"/></g>
@@ -75,7 +75,7 @@
   const STREET = `<svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
     <rect width="1080" height="1920" fill="#3c4a63"/><rect y="0" width="1080" height="900" fill="#55698a"/>
     <g transform="translate(460 520)"><rect width="560" height="900" fill="#d9cdb6"/><rect x="0" y="0" width="560" height="40" fill="#b9a988"/>
-      <rect x="70" y="110" width="420" height="96" rx="10" fill="#2e3192"/><text x="280" y="178" text-anchor="middle" font-family="Inter" font-weight="900" font-size="58" letter-spacing="8" fill="#fff">MIDIGRAD</text>
+      <rect x="70" y="110" width="420" height="96" rx="10" fill="#2e3192"/><text x="280" y="178" text-anchor="middle" font-family="Inter" font-weight="900" font-size="28" letter-spacing="3" fill="#fff">EUD CONSISTOIRE MIDIGRAD</text>
       <rect x="190" y="560" width="180" height="340" rx="8" fill="#f2c14e" opacity=".9"/><rect x="190" y="560" width="180" height="340" rx="8" fill="none" stroke="#7d5a2b" stroke-width="10"/>
       <rect x="40" y="300" width="110" height="150" fill="#f2c98a" opacity=".7"/><rect x="410" y="300" width="110" height="150" fill="#f2c98a" opacity=".7"/></g>
     <rect y="1420" width="1080" height="500" fill="#2f394d"/><path d="M0 1500 H1080" stroke="#4a566e" stroke-width="6"/>

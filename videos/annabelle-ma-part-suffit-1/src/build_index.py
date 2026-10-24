@@ -27,7 +27,7 @@ html = f'''<!doctype html>
       <div id="grade"><div id="warm"></div><div id="cool"></div></div>
       <div id="cards"></div>
       <div id="bubbles"></div>
-      <div id="hud"><div id="logo"><img src="assets/logo-midigrad.png" alt="" /></div><div id="tag">• LE DÉBAT</div><div id="brand"><img src="assets/logo-midigrad.png" alt="" />MIDIGRAD</div></div>
+      <div id="hud"><div id="logo"><img src="assets/logo-midigrad.png" alt="" /></div><div id="tag">• LE DÉBAT</div><div id="brand"><img src="assets/logo-midigrad.png" alt="" />EUD CONSISTOIRE MIDIGRAD</div></div>
       <div id="narr">
         <div id="s-home" class="scene"></div><div id="s-ecg" class="scene"></div><div id="s-street" class="scene"></div><div id="s-corr" class="scene"></div>
         <div id="cold"></div>
