@@ -9,14 +9,14 @@ SRC, REGP = sys.argv[1], sys.argv[2]
 FPS, SR = 30, 48000
 OFF = 1.6          # plan d'arrivée avant la première réplique
 # Fenêtres des répliques dans la voix d'origine (s) : relevées par Whisper phrase par phrase + zones de parole.
-T = {1: (0.17, 2.94), 2: (3.27, 7.74), 3: (8.81, 17.77), 4: (18.15, 25.56), 5: (26.09, 31.78), 6: (32.31, 42.94), 7: (43.45, 54.04),
-     8: (54.49, 63.96), 9: (64.45, 69.38), 10: (69.70, 77.03), 11: (77.32, 83.59), 12: (83.96, 92.61), 13: (93.32, 117.14),
-     14: (117.80, 123.94), 15: (124.37, 127.63), 16: (128.12, 149.19), 17: (149.67, 156.07), 18: (156.55, 163.83),
-     19: (164.56, 176.44), 20: (176.85, 183.78), 21: (184.27, 197.16), 22: (197.57, 207.78), 23: (208.23, 218.41),
-     24: (218.74, 222.75), 25: (223.05, 224.11), 26: (224.28, 228.36),
-     27: (228.81, 229.70), 28: (230.60, 237.68), 29: (238.33, 240.59), 30: (241.22, 248.71), 31: (249.38, 250.02)}
-CUT_DIAL = 228.45  # fin du dialogue (Annabelle répète la réplique 24 en guise de réplique 26, gardé tel quel)
-NARR_IN = 228.55   # début de la narration dans la voix d'origine
+T = {1: (0.19, 2.90), 2: (3.18, 7.72), 3: (8.92, 18.21), 4: (18.52, 25.97), 5: (26.43, 32.48), 6: (32.95, 43.80), 7: (44.33, 56.73),
+     8: (57.11, 66.12), 9: (66.52, 71.62), 10: (71.98, 79.05), 11: (79.40, 85.69), 12: (86.05, 94.97), 13: (95.74, 119.86),
+     14: (120.59, 126.80), 15: (127.23, 130.63), 16: (130.99, 152.66), 17: (153.18, 159.49), 18: (160.00, 167.35),
+     19: (168.09, 180.07), 20: (180.54, 187.62), 21: (188.08, 201.04), 22: (201.48, 212.04), 23: (212.51, 222.68),
+     24: (223.05, 227.08), 25: (227.49, 228.64), 26: (228.87, 230.28),
+     27: (230.76, 231.63), 28: (232.29, 239.34), 29: (239.94, 242.19), 30: (242.76, 250.07), 31: (250.75, 251.35)}
+CUT_DIAL = 230.45  # fin du dialogue
+NARR_IN = 230.60   # début de la narration dans la voix d'origine
 TEXT = {
  1: ("A", "Bonjour, pasteur… J'espère que vous allez bien."),
  2: ("P", "Bonjour, ma précieuse sœur ! | Je vais très bien, gloire à Dieu. Et toi ?"),
@@ -47,7 +47,7 @@ TEXT = {
  27: ("N", "*Deux* *mois* *plus* *tard…*"),
  28: ("N", "Annabelle n'est jamais revenue à l'église. | Les insultes ont continué. Le stress aussi. | Et *son* *cœur…* a fini par céder."),
  29: ("N", "Diagnostic : *insuffisance* *cardiaque.*"),
- 30: ("N", "Persuadée que ses jours sont comptés, | elle prend une décision : | aller voir l'apôtre *Paris* *Talla.* | Pour se confesser… et mourir en paix."),
+ 30: ("N", "Persuadée que ses jours sont comptés, | elle prend une décision : | aller voir le pasteur *Yannick.* | Pour se confesser… et mourir en paix."),
  31: ("N", "À suivre…"),
 }
 
@@ -142,7 +142,7 @@ for i in range(nf):
 data = {"fps": FPS, "dur": DUR, "off": OFF, "empty": round(EMPTY, 2), "black": round(BLACK, 2), "fin": FIN, "lines": lines, "lev": "".join(lev), "voc": "".join(voc)}
 open(os.path.join(ROOT, "assets", "data.js"), "w").write("window.FILM = " + json.dumps(data, ensure_ascii=False) + ";\n")
 tj = {"source": os.path.basename(SRC), "montage": {"debut_voix": OFF, "fin_dialogue_voix_origine": CUT_DIAL, "debut_narration_voix_origine": NARR_IN, "debut_narration_video": round(NARR0, 2), "duree_video": DUR},
-      "remarque": {"26": "« Non. Ma part suffit. » n'est pas dans l'audio : Annabelle répète la réplique 24 (gardé tel quel, à la demande)"},
+      "remarque": {"30": "la voix dit « aller voir le pasteur Yannick » (le script indiquait « l'apôtre Paris Talla ») : sous-titre aligné sur la voix"},
       "repliques": [{"n": l["n"], "qui": {"A": "ANNABELLE", "P": "PASTEUR YANNICK", "N": "NARRATEUR"}[l["who"]],
                      "voix_debut": T.get(l["n"], (None,))[0], "voix_fin": T.get(l["n"], (None, None))[1], "video_debut": l["a"], "video_fin": l["b"]} for l in lines]}
 json.dump(tj, open(os.path.join(ROOT, "timings.json"), "w"), ensure_ascii=False, indent=1)
