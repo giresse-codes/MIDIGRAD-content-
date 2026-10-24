@@ -120,7 +120,12 @@ room *= vr * 10 ** (-30 / 20) / dbv(room); pad *= vr * 10 ** (-28 / 20) / dbv(pa
 mix = voice + room + pad
 peak = np.max(np.abs(mix)); lim = 10 ** (-1.5 / 20)
 if peak > lim: mix *= lim / peak
-wav_write(os.path.join(ROOT, "assets", "audio.wav"), mix)
+raw = os.path.join(ROOT, "assets", "_mix.wav"); wav_write(raw, mix)
+# normalisation finale en deux passes (≈ −14 LUFS, crête −1,5 dBTP)
+r = subprocess.run(["ffmpeg", "-hide_banner", "-i", raw, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"], capture_output=True, text=True).stderr
+m = json.loads(r[r.rindex("{"):r.rindex("}") + 1])
+ln = f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,aresample={SR}"
+subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-af", ln, "-c:a", "pcm_s16le", os.path.join(ROOT, "assets", "audio.wav")], check=True); os.remove(raw)
 
 # ── Lip-sync : niveau (0-9) et timbre (o / a / i) par image, sur la voix seule ──
 hop = SR // FPS; nf = N // hop; lev, voc = [], []
