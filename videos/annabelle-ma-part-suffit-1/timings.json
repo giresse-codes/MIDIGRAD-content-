@@ -1,0 +1,197 @@
+{
+ "source": "AUD-20261024-WA0000.mp3 (237,48 s)",
+ "methode": "Whisper medium (sherpa-onnx) phrase par phrase + zones de parole ; temps dans l'audio d'origine, en secondes",
+ "anomalies": {
+  "08": "absente de l'audio",
+  "09": "absente de l'audio",
+  "26": "absente : à la place, Annabelle répète la réplique 24 (« C'est bon, je m'en vais ! Et je ne remettrai plus jamais les pieds dans cette église ! ») de 211.32 à 215.40"
+ },
+ "repliques": [
+  {
+   "n": "01",
+   "qui": "ANNABELLE",
+   "debut": 0.03,
+   "fin": 3.04
+  },
+  {
+   "n": "02",
+   "qui": "PASTEUR YANNICK",
+   "debut": 3.19,
+   "fin": 8.07
+  },
+  {
+   "n": "03",
+   "qui": "ANNABELLE",
+   "debut": 8.24,
+   "fin": 18.51
+  },
+  {
+   "n": "04",
+   "qui": "PASTEUR YANNICK",
+   "debut": 18.67,
+   "fin": 26.11
+  },
+  {
+   "n": "05",
+   "qui": "ANNABELLE",
+   "debut": 26.46,
+   "fin": 32.7
+  },
+  {
+   "n": "06",
+   "qui": "ANNABELLE",
+   "debut": 33.07,
+   "fin": 44.18
+  },
+  {
+   "n": "07",
+   "qui": "ANNABELLE",
+   "debut": 44.58,
+   "fin": 55.47
+  },
+  {
+   "n": "08",
+   "qui": "PASTEUR YANNICK",
+   "debut": null,
+   "fin": null
+  },
+  {
+   "n": "09",
+   "qui": "ANNABELLE",
+   "debut": null,
+   "fin": null
+  },
+  {
+   "n": "10",
+   "qui": "PASTEUR YANNICK",
+   "debut": 55.65,
+   "fin": 63.18
+  },
+  {
+   "n": "11",
+   "qui": "ANNABELLE",
+   "debut": 63.39,
+   "fin": 69.83
+  },
+  {
+   "n": "12",
+   "qui": "PASTEUR YANNICK",
+   "debut": 69.96,
+   "fin": 78.92
+  },
+  {
+   "n": "13",
+   "qui": "PASTEUR YANNICK",
+   "debut": 79.48,
+   "fin": 103.49
+  },
+  {
+   "n": "14",
+   "qui": "PASTEUR YANNICK",
+   "debut": 104.02,
+   "fin": 110.33
+  },
+  {
+   "n": "15",
+   "qui": "ANNABELLE",
+   "debut": 110.54,
+   "fin": 114.29
+  },
+  {
+   "n": "16",
+   "qui": "PASTEUR YANNICK",
+   "debut": 114.44,
+   "fin": 135.31
+  },
+  {
+   "n": "17",
+   "qui": "ANNABELLE",
+   "debut": 135.46,
+   "fin": 142.05
+  },
+  {
+   "n": "18",
+   "qui": "PASTEUR YANNICK",
+   "debut": 142.37,
+   "fin": 150.24
+  },
+  {
+   "n": "19",
+   "qui": "PASTEUR YANNICK",
+   "debut": 150.76,
+   "fin": 162.62
+  },
+  {
+   "n": "20",
+   "qui": "ANNABELLE",
+   "debut": 163.02,
+   "fin": 170.42
+  },
+  {
+   "n": "21",
+   "qui": "PASTEUR YANNICK",
+   "debut": 170.71,
+   "fin": 183.84
+  },
+  {
+   "n": "22",
+   "qui": "ANNABELLE",
+   "debut": 184.24,
+   "fin": 194.58
+  },
+  {
+   "n": "23",
+   "qui": "PASTEUR YANNICK",
+   "debut": 194.89,
+   "fin": 205.45
+  },
+  {
+   "n": "24",
+   "qui": "ANNABELLE",
+   "debut": 205.68,
+   "fin": 209.87
+  },
+  {
+   "n": "25",
+   "qui": "PASTEUR YANNICK",
+   "debut": 210.16,
+   "fin": 211.2
+  },
+  {
+   "n": "26",
+   "qui": "ANNABELLE",
+   "debut": null,
+   "fin": null
+  },
+  {
+   "n": "27",
+   "qui": "NARRATEUR",
+   "debut": 215.54,
+   "fin": 216.6
+  },
+  {
+   "n": "28",
+   "qui": "NARRATEUR",
+   "debut": 217.06,
+   "fin": 224.66
+  },
+  {
+   "n": "29",
+   "qui": "NARRATEUR",
+   "debut": 225.11,
+   "fin": 227.63
+  },
+  {
+   "n": "30",
+   "qui": "NARRATEUR",
+   "debut": 227.94,
+   "fin": 235.88
+  },
+  {
+   "n": "31",
+   "qui": "NARRATEUR",
+   "debut": 236.35,
+   "fin": 236.9
+  }
+ ]
+}
