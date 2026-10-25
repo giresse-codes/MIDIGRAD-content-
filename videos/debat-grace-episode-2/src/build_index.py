@@ -33,11 +33,11 @@ html = f'''<!doctype html>
       <div id="phone"><div class="scr"><video id="apotre" class="clip" src="assets/clips/apotre.mp4" muted playsinline data-start="0" data-duration="{round(D['top'][2]['t'] + 0.5, 2)}" data-track-index="0"></video><i class="cam"></i></div><div class="lbl">Apôtre Paris Talla</div></div>
       <div id="top"></div>
       <div id="end"><div class="lg"><img src="assets/logo.png" alt="" /></div><div class="sl"><span>Pas par tes œuvres.</span> <span>Par Sa</span> <span class="o">grâce.</span></div>
-        <div class="btn"><span class="ic"><svg viewBox="0 0 48 48" width="34" height="34" fill="#1fa855"><path d="M16 10l24 14-24 14z"/></svg></span><span class="t">Abonne-toi à MIDIGRAD</span></div></div>
+        <div class="btn"><span class="ic"><svg viewBox="0 0 48 48" width="34" height="34" fill="#1fa855"><path d="M16 10l24 14-24 14z"/></svg></span><span><div class="k">Abonne-toi à</div><div class="t">EUD CONSISTOIRE MIDIGRAD</div></span></div></div>
       <div id="dave" class="chr"></div>
       <div id="marie" class="chr"></div>
       <div id="bubbles"></div>
-      <div id="brand"><img src="assets/logo.png" alt="" />MIDIGRAD</div>
+      <div id="brand"><img src="assets/logo.png" alt="" /><span class="bt"><span class="b1">EUD CONSISTOIRE</span><span class="b2">MIDIGRAD</span></span></div>
       <audio id="voix" src="assets/dialogue.wav" data-start="0" data-duration="{round(D['endAt'] + 0.5, 2)}" data-track-index="3" data-volume="1"></audio>
 {chr(10).join(au)}
     </div>

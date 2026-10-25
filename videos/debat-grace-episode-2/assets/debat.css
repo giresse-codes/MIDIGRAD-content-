@@ -120,3 +120,11 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .card.suite .v { left: 0; right: 0; top: 96px; font-size: 96px; color: var(--navy); }
 .card.suite .ep { position: absolute; left: 0; right: 0; top: 214px; font: 800 40px "Inter"; color: var(--orange); }
 #end .sl { font-size: 60px; }
+/* Pastille « EUD CONSISTOIRE MIDIGRAD » */
+#brand { top: 1650px; gap: 16px; padding: 12px 34px 12px 14px; border-radius: 50px; background: linear-gradient(135deg, #0b1b5c 0%, #1a2f86 100%);
+  border: 2px solid rgba(245,166,35,.85); box-shadow: 0 10px 28px rgba(11,27,92,.35), inset 0 1px 0 rgba(255,255,255,.18); }
+#brand img { width: 58px; height: 58px; box-shadow: 0 0 0 3px rgba(245,166,35,.6); }
+#brand .bt { display: flex; flex-direction: column; line-height: 1; }
+#brand .b1 { font: 700 17px "JetBrains Mono"; letter-spacing: .32em; color: var(--orange); }
+#brand .b2 { margin-top: 6px; font: 900 34px "Inter"; letter-spacing: .16em; color: #fff; }
+#end .btn .t { font-size: 40px; }
