@@ -1,0 +1,90 @@
+[
+ {
+  "fichier": "pleur-01.wav",
+  "replique": "03",
+  "entre": [
+   "confuse.",
+   "Je"
+  ],
+  "debut": 18.0,
+  "fin": 18.43,
+  "niveau_max_db": -57.8
+ },
+ {
+  "fichier": "pleur-02.wav",
+  "replique": "03",
+  "entre": [
+   "et",
+   "tous"
+  ],
+  "debut": 21.02,
+  "fin": 21.41,
+  "niveau_max_db": -51.1
+ },
+ {
+  "fichier": "pleur-03.wav",
+  "replique": "03",
+  "entre": [
+   "qu'empirer.",
+   "Ma"
+  ],
+  "debut": 23.58,
+  "fin": 24.12,
+  "niveau_max_db": -58.2
+ },
+ {
+  "fichier": "pleur-04.wav",
+  "replique": "03",
+  "entre": [
+   "aujourd'hui…",
+   "elle"
+  ],
+  "debut": 26.0,
+  "fin": 26.53,
+  "niveau_max_db": -50.6
+ },
+ {
+  "fichier": "pleur-05.wav",
+  "replique": "03",
+  "entre": [
+   "m'insulter.",
+   "Au"
+  ],
+  "debut": 30.45,
+  "fin": 30.96,
+  "niveau_max_db": -55.0
+ },
+ {
+  "fichier": "pleur-06.wav",
+  "replique": "05",
+  "entre": [
+   "fait",
+   "souffrir"
+  ],
+  "debut": 111.13,
+  "fin": 111.52,
+  "niveau_max_db": -53.1
+ },
+ {
+  "fichier": "pleur-07.wav",
+  "replique": "07",
+  "entre": [
+   "réellement",
+   "merci,"
+  ],
+  "debut": 265.55,
+  "fin": 265.65,
+  "niveau_max_db": -60.8
+ },
+ {
+  "fichier": "pleur-08.wav",
+  "replique": "07",
+  "entre": [
+   "réalité,",
+   "je"
+  ],
+  "debut": 267.68,
+  "fin": 268.11,
+  "niveau_max_db": -52.6
+ }
+]
