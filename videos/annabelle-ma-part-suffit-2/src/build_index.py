@@ -44,7 +44,7 @@ html = f'''<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{D['dur']}" data-width="1080" data-height="1920">
-      <canvas id="gl" width="1080" height="1920"></canvas>
+      <canvas id="gl" width="540" height="960"></canvas>
       <div id="plates"></div>
       <div id="cards"></div>
       <div id="bubbles"></div>

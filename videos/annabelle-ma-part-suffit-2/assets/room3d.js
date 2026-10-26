@@ -5,7 +5,7 @@ import { RoundedBoxGeometry } from "./lib/RoundedBoxGeometry.js";
 
 export async function createRoom(canvas, logoUrl) {
   const R = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
-  R.setPixelRatio(1); R.setSize(1080, 1920, false);
+  R.setPixelRatio(1); R.setSize(540, 960, false); // 3D à mi-résolution (arrière-plan flouté) ; textes et personnages en pleine résolution
   R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
   R.outputColorSpace = THREE.SRGBColorSpace; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.0;
   const S = new THREE.Scene();
@@ -99,7 +99,7 @@ export async function createRoom(canvas, logoUrl) {
   // ── Lumières ────────────────────────────────────────────────────────
   const hemi = new THREE.HemisphereLight("#dfe8f0", "#8a8174", 1.0); S.add(hemi);
   const sun = new THREE.DirectionalLight("#ffe2b0", 1.4); sun.position.set(1.6, 3.2, -3.4); sun.target.position.set(-0.4, 0.6, -0.6);
-  sun.castShadow = true; sun.shadow.mapSize.set(1536, 1536); sun.shadow.radius = 6; sun.shadow.bias = -0.0008;
+  sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.radius = 6; sun.shadow.bias = -0.0008;
   Object.assign(sun.shadow.camera, { left: -2.6, right: 2.6, top: 2.6, bottom: -2.6, near: 0.5, far: 9 }); S.add(sun); S.add(sun.target);
   const fill = new THREE.PointLight("#fff3e0", 0.0, 4, 1.6); fill.position.set(0.9, 1.9, 0.8); S.add(fill);
   const key = new THREE.DirectionalLight("#ffffff", 0.6); key.position.set(-1, 2.5, 3); S.add(key);
