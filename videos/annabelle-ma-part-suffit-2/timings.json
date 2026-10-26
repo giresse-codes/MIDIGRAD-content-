@@ -1,0 +1,143 @@
+{
+ "fichier": "audio/voixoff-corrigee.wav",
+ "duree": 355.05,
+ "coupure": {
+  "retire_dans_l_original": [
+   93.73,
+   101.65
+  ],
+  "contenu_retire": "« Annabelle » (étiquette lue) + réplique 08 « Mais bien sûr ! … et j'y crois. »",
+  "position_dans_le_fichier_corrige": 93.7,
+  "fondu_ms": 30,
+  "silence_entre_07_et_09_s": 0.47
+ },
+ "methode": "Whisper medium (sherpa-onnx) phrase par phrase + détection des pauses ; temps en secondes dans le fichier corrigé",
+ "repliques": [
+  {
+   "n": "01",
+   "qui": "ANNABELLE",
+   "debut": 0.13,
+   "fin": 3.43
+  },
+  {
+   "n": "02",
+   "qui": "PASTEUR YANNICK",
+   "debut": 3.84,
+   "fin": 7.03
+  },
+  {
+   "n": "03",
+   "qui": "ANNABELLE",
+   "debut": 7.47,
+   "fin": 27.84
+  },
+  {
+   "n": "04",
+   "qui": "PASTEUR YANNICK",
+   "debut": 28.28,
+   "fin": 51.68
+  },
+  {
+   "n": "05",
+   "qui": "PASTEUR YANNICK",
+   "debut": 52.34,
+   "fin": 79.47
+  },
+  {
+   "n": "06",
+   "qui": "ANNABELLE",
+   "debut": 80.02,
+   "fin": 89.45
+  },
+  {
+   "n": "07",
+   "qui": "PASTEUR YANNICK",
+   "debut": 89.74,
+   "fin": 93.48
+  },
+  {
+   "n": "09",
+   "qui": "PASTEUR YANNICK",
+   "debut": 93.95,
+   "fin": 117.51
+  },
+  {
+   "n": "10",
+   "qui": "PASTEUR YANNICK",
+   "debut": 118.06,
+   "fin": 151.3
+  },
+  {
+   "n": "11",
+   "qui": "PASTEUR YANNICK",
+   "debut": 151.81,
+   "fin": 177.5
+  },
+  {
+   "n": "12",
+   "qui": "PASTEUR YANNICK",
+   "debut": 177.93,
+   "fin": 207.12
+  },
+  {
+   "n": "13",
+   "qui": "PASTEUR YANNICK",
+   "debut": 207.69,
+   "fin": 236.18
+  },
+  {
+   "n": "14",
+   "qui": "ANNABELLE",
+   "debut": 236.57,
+   "fin": 246.58
+  },
+  {
+   "n": "15",
+   "qui": "PASTEUR YANNICK",
+   "debut": 246.89,
+   "fin": 270.01
+  },
+  {
+   "n": "16",
+   "qui": "PASTEUR YANNICK",
+   "debut": 270.55,
+   "fin": 293.53
+  },
+  {
+   "n": "17",
+   "qui": "ANNABELLE",
+   "debut": 293.9,
+   "fin": 295.9
+  },
+  {
+   "n": "18",
+   "qui": "NARRATEUR",
+   "debut": 296.14,
+   "fin": 306.37
+  },
+  {
+   "n": "19",
+   "qui": "NARRATEUR",
+   "debut": 306.76,
+   "fin": 311.78
+  },
+  {
+   "n": "20",
+   "qui": "NARRATEUR",
+   "debut": 312.1,
+   "fin": 324.78
+  },
+  {
+   "n": "21",
+   "qui": "NARRATEUR",
+   "debut": 325.08,
+   "fin": 337.38
+  },
+  {
+   "n": "22",
+   "qui": "NARRATEUR",
+   "debut": 337.79,
+   "fin": 354.83
+  }
+ ]
+}
