@@ -24,25 +24,31 @@
     pinch: `<path d="M-11 1 Q0 -2 11 1" stroke="#3a1610" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M-14 -1 l3 2" stroke="#3a1610" stroke-width="3"/>`,
     frown: `<path d="M-17 5 Q0 -5 17 5" stroke="#3a1610" stroke-width="5" fill="none" stroke-linecap="round"/>`,
     tight: `<path d="M-15 1 L15 1" stroke="#3a1610" stroke-width="5" fill="none" stroke-linecap="round"/>`,
+    // pleurs : lèvres qui frémissent, sanglot retenu, sourire à travers les larmes
+    quiver: `<path d="M-17 5 Q-9 -2 -3 1 Q2 -3 6 1 Q11 -2 17 5" stroke="#3a1610" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 8 Q0 11 9 8" stroke="#5a2a20" stroke-width="2.5" fill="none" opacity=".6"/>`,
+    sob: `<path d="M-17 4 Q0 -6 17 4 Q10 13 0 13 Q-10 13 -17 4 Z" fill="#4a1a14"/><path d="M-17 4 Q0 -6 17 4" stroke="#3a1610" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+    smileT: `<path d="M-18 -1 Q0 10 18 -1" stroke="#3a1610" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M-8 7 Q0 9 8 7" stroke="#5a2a20" stroke-width="2.5" fill="none" opacity=".5"/>`,
   };
 
   function make(kind, uid, opt = {}) {
     const A = kind === "annabelle";
     const skin = A ? "#7a4a2c" : "#6a3f25", skinD = A ? "#633a21" : "#56321c";
     const PAL = opt.pal || ["#7b1f2b", "#e7b64a", "#b8862f"], GOWN = "#b9d7e6";
-    const sleeveU = A ? (opt.gown ? GOWN : `url(#wx${uid})`) : "#1b2647", sleeveF = A ? skin : "#1b2647";
+    const H = !A && opt.husband;
+    const sleeveU = A ? (opt.gown ? GOWN : `url(#wx${uid})`) : H ? `url(#wx${uid})` : "#1b2647", sleeveF = A ? skin : H ? skin : "#1b2647";
     const svg = document.createElementNS(NS, "svg");
     svg.setAttribute("viewBox", "0 0 600 900"); svg.setAttribute("class", "rig " + kind);
     const hand = (cls, extra = "") => `<g class="${cls}"><circle r="23" fill="${skin}"/><ellipse cx="-14" cy="-8" rx="9" ry="13" fill="${skin}" transform="rotate(-30 -14 -8)"/>${extra}</g>`;
-    const cuff = A ? "" : `<rect x="-22" y="-34" width="44" height="12" rx="5" fill="#e9eef5"/>`;
+    const cuff = A || H ? "" : `<rect x="-22" y="-34" width="44" height="12" rx="5" fill="#e9eef5"/>`;
     const arm = (s, cls, ring) => `<g class="${cls}" data-sx="${s[0]}" data-sy="${s[1]}">
         <path d="M${s[0]} ${s[1]} L${s[0]} ${s[1] + UA}" stroke="${sleeveU}" stroke-width="48" stroke-linecap="round"/>
         ${A ? `<path d="M${s[0] - 24} ${s[1] + 70} L${s[0] + 24} ${s[1] + 70}" stroke="#e7b64a" stroke-width="6"/>` : ""}
         <g class="fa" data-sx="${s[0]}" data-sy="${s[1] + UA}">
-          <path d="M${s[0]} ${s[1] + UA} L${s[0]} ${s[1] + UA + FA}" stroke="${sleeveF}" stroke-width="${A ? 36 : 42}" stroke-linecap="round"/>
+          <path d="M${s[0]} ${s[1] + UA} L${s[0]} ${s[1] + UA + FA}" stroke="${sleeveF}" stroke-width="${A ? 36 : H ? 38 : 42}" stroke-linecap="round"/>
           <g transform="translate(${s[0]} ${s[1] + UA + FA + 12})">${cuff}${hand("hand", ring ? `<circle cx="10" cy="-12" r="5" fill="none" stroke="#f2c14e" stroke-width="3.5"/>` : "")}
-            ${!A && cls === "armB" ? `<g class="bibHand"><rect x="-30" y="-20" width="60" height="82" rx="6" fill="#141414"/><rect x="-26" y="-16" width="4" height="74" fill="#2a2a2a"/><path d="M4 0 v26 M-6 9 h20" stroke="#c9a14a" stroke-width="4"/></g>` : ""}
-            ${A && cls === "armB" ? `<g class="bagHand"><path d="M-28 10 Q0 -40 28 10" stroke="#3a1a12" stroke-width="7" fill="none"/><rect x="-46" y="8" width="92" height="66" rx="14" fill="#5a1f24"/><rect x="-46" y="30" width="92" height="8" fill="#e7b64a"/></g>` : ""}
+            ${cls === "armA" && opt.propA ? `<g class="propA">${opt.propA}</g>` : ""}${cls === "armB" && opt.propB ? `<g class="propB">${opt.propB}</g>` : ""}
+            ${!A && !H && cls === "armB" ? `<g class="bibHand"><rect x="-30" y="-20" width="60" height="82" rx="6" fill="#141414"/><rect x="-26" y="-16" width="4" height="74" fill="#2a2a2a"/><path d="M4 0 v26 M-6 9 h20" stroke="#c9a14a" stroke-width="4"/></g>` : ""}
+            ${A && cls === "armB" && !opt.propB ? `<g class="bagHand"><path d="M-28 10 Q0 -40 28 10" stroke="#3a1a12" stroke-width="7" fill="none"/><rect x="-46" y="8" width="92" height="66" rx="14" fill="#5a1f24"/><rect x="-46" y="30" width="92" height="8" fill="#e7b64a"/></g>` : ""}
           </g>
         </g></g>`;
 
@@ -52,9 +58,14 @@
         <clipPath id="ec${side}${uid}"><ellipse cx="${cx + fx}" cy="232" rx="18" ry="14"/></clipPath>
         <ellipse cx="${cx + fx}" cy="232" rx="18" ry="14" fill="#fff"/>
         <g clip-path="url(#ec${side}${uid})"><g class="pupil"><circle cx="${cx + fx}" cy="232" r="9" fill="#24130c"/><circle class="shine" cx="${cx + fx + 3}" cy="228" r="3" fill="#fff"/></g>
-          <rect class="lid" x="${cx + fx - 20}" y="216" width="40" height="34" fill="${skinD}"/></g>
+          <rect class="lid" x="${cx + fx - 20}" y="216" width="40" height="34" fill="${skinD}"/><rect class="lidlo" x="${cx + fx - 20}" y="246" width="40" height="0" fill="${skinD}"/></g>
+        <path class="wetline" d="M${cx + fx - 15} 241 Q${cx + fx} 249 ${cx + fx + 15} 241" stroke="#eaf8ff" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0"/>
         <path d="M${cx + fx - 18} 232 Q${cx + fx} 214 ${cx + fx + 18} 232" stroke="#24130c" stroke-width="3" fill="none" class="lash"/>
       </g>`;
+    const redEye = (cx) => `<ellipse class="red" cx="${cx + fx}" cy="238" rx="30" ry="22" fill="url(#rd${uid})" opacity="0"/>`;
+    const drop = (cx, k) => `<g class="drop d${k}" opacity="0"><path class="trail" d="M${cx + fx - 6} 247 Q${cx + fx - 12} 285 ${cx + fx - 4} 330" stroke="#dff3ff" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="90" stroke-dashoffset="90" opacity=".55"/>
+        <path class="trail2" d="M${cx + fx - 5} 247 Q${cx + fx - 11} 285 ${cx + fx - 3} 330" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-dasharray="90" stroke-dashoffset="90" opacity=".8"/>
+        <g class="bead"><path d="M0 -8 Q6 2 4 6 Q0 10 -4 6 Q-6 2 0 -8Z" fill="url(#dr${uid})"/><circle cx="-1.5" cy="2" r="1.6" fill="#fff"/></g></g>`;
     const brow = (cx, side) => `<g class="brow ${side}" data-cx="${cx + fx}" data-cy="203"><path d="M${cx + fx - 17} 205 Q${cx + fx} 196 ${cx + fx + 17} 203" stroke="#1d110b" stroke-width="${A ? 6 : 8}" fill="none" stroke-linecap="round"/></g>`;
     const mouths = Object.entries(MOUTHS).map(([k, v]) => `<g class="m m-${k}" style="display:none">${v}</g>`).join("");
     const hair = A
@@ -63,11 +74,12 @@
          <path d="M300 60 Q252 18 236 54 Q262 76 300 70 Q338 76 364 54 Q348 18 300 60Z" fill="${PAL[0]}"/><circle cx="300" cy="62" r="13" fill="${PAL[1]}"/>
          <path d="M206 176 Q300 150 394 176" stroke="${PAL[1]}" stroke-width="7" fill="none"/></g>`}
          ${opt.elder ? `<path d="M212 206 Q214 186 222 176 M388 206 Q386 186 378 176" stroke="#cfcac4" stroke-width="7" fill="none"/>` : ""}`
+      : H ? `<path d="M216 206 Q210 122 300 116 Q392 122 386 206 Q378 160 300 152 Q222 160 216 206Z" fill="#151010"/>`
       : `<path d="M216 210 Q210 126 300 120 Q392 126 386 210 Q378 168 300 160 Q222 168 216 210Z" fill="#221814"/>
          <path d="M216 210 Q214 178 226 160" stroke="#8d8a86" stroke-width="7" fill="none"/><path d="M386 210 Q388 178 376 160" stroke="#8d8a86" stroke-width="7" fill="none"/>`;
-    const beard = A ? "" : `<path d="M222 252 Q226 330 306 336 Q378 330 384 252 Q372 300 306 304 Q236 300 222 252Z" fill="#3b3430"/>
+    const beard = A ? "" : H ? `<path d="M226 262 Q232 326 306 330 Q372 326 380 262 Q368 300 306 302 Q240 300 226 262Z" fill="#1d1612" opacity=".85"/>` : `<path d="M222 252 Q226 330 306 336 Q378 330 384 252 Q372 300 306 304 Q236 300 222 252Z" fill="#3b3430"/>
       <path d="M240 280 Q300 320 368 280" stroke="#9b9690" stroke-width="3" fill="none" opacity=".7"/><path d="M262 300 Q306 316 350 300" stroke="#a7a29c" stroke-width="3" fill="none" opacity=".6"/>`;
-    const glasses = A ? "" : `<g fill="none" stroke="#2a2a2a" stroke-width="4"><rect x="${255 + fx - 24}" y="216" width="48" height="34" rx="12"/><rect x="${345 + fx - 24}" y="216" width="48" height="34" rx="12"/><path d="M${255 + fx + 24} 228 Q${300 + fx} 220 ${345 + fx - 24} 228"/></g>`;
+    const glasses = A || H ? "" : `<g fill="none" stroke="#2a2a2a" stroke-width="4"><rect x="${255 + fx - 24}" y="216" width="48" height="34" rx="12"/><rect x="${345 + fx - 24}" y="216" width="48" height="34" rx="12"/><path d="M${255 + fx + 24} 228 Q${300 + fx} 220 ${345 + fx - 24} 228"/></g>`;
     const earrings = A ? `<circle cx="220" cy="270" r="8" fill="#f2c14e"/><circle cx="220" cy="286" r="5" fill="#f2c14e"/>` : "";
 
     // torse
@@ -79,6 +91,8 @@
       ? `<path d="M206 360 Q300 330 394 360 L414 600 Q300 636 186 600 Z" fill="url(#wx${uid})"/>
          <path d="M262 342 Q300 380 338 342" stroke="${PAL[1]}" stroke-width="7" fill="none"/>
          <path d="M196 520 Q300 548 404 520" stroke="${PAL[0]}" stroke-width="16" fill="none"/>`
+      : H ? `<path d="M200 362 Q300 330 400 362 L416 600 Q300 630 184 600 Z" fill="url(#wx${uid})"/><path d="M262 342 L300 392 L338 342" stroke="${PAL[1]}" stroke-width="7" fill="none"/>
+         <path d="M300 392 L300 600" stroke="${PAL[1]}" stroke-width="4"/><circle cx="300" cy="440" r="4" fill="${PAL[1]}"/><circle cx="300" cy="500" r="4" fill="${PAL[1]}"/>`
       : `<path d="M200 362 Q300 330 400 362 L416 600 Q300 630 184 600 Z" fill="#1b2647"/>
          <path d="M268 340 L300 470 L332 340 Z" fill="#e9eef5"/><path d="M300 470 L300 600" stroke="#141c36" stroke-width="3"/>
          <path d="M268 340 L300 470 L250 400 Z" fill="#26335c"/><path d="M332 340 L300 470 L350 400 Z" fill="#26335c"/>
@@ -95,13 +109,15 @@
     const chair = `<g class="chair"><path d="M180 380 Q300 360 420 380 L430 590 L170 590 Z" fill="${opt.chair || "#f4f1ea"}" stroke="#d9d3c6" stroke-width="4"/>
       <path d="M150 586 L470 586 L480 616 L140 616 Z" fill="${opt.chair || "#f4f1ea"}" stroke="#d9d3c6" stroke-width="4"/>
       <path d="M160 616 L140 870 M450 616 L470 870 M200 616 L214 860 M410 616 L396 860" stroke="#cfc8ba" stroke-width="12" stroke-linecap="round"/></g>`;
-    const bibOpen = A ? "" : `<g class="bibOpen"><path d="M300 470 L392 452 L392 520 L300 540 L208 520 L208 452 Z" fill="#141414"/>
+    const bibOpen = A || H ? "" : `<g class="bibOpen"><path d="M300 470 L392 452 L392 520 L300 540 L208 520 L208 452 Z" fill="#141414"/>
       <path d="M300 466 L386 450 L386 512 L300 530 Z" fill="#fbf7ee"/><path d="M300 466 L214 450 L214 512 L300 530 Z" fill="#f2ecdf"/>
       <path d="M232 470 L286 478 M232 482 L286 490 M232 494 L280 501 M314 478 L370 470 M314 490 L370 482 M314 501 L362 494" stroke="#b7ad9b" stroke-width="3"/></g>`;
-    const bibLap = A ? "" : `<g class="bibLap"><rect x="322" y="520" width="96" height="66" rx="6" fill="#141414" transform="rotate(-6 370 553)"/><path d="M372 532 v34 M360 544 h24" stroke="#c9a14a" stroke-width="4"/></g>`;
+    const bibLap = A || H ? "" : `<g class="bibLap"><rect x="322" y="520" width="96" height="66" rx="6" fill="#141414" transform="rotate(-6 370 553)"/><path d="M372 532 v34 M360 544 h24" stroke="#c9a14a" stroke-width="4"/></g>`;
     const bagLap = A ? `<g class="bagLap"><path d="M370 540 Q410 490 450 540" stroke="#3a1a12" stroke-width="7" fill="none"/><rect x="346" y="536" width="128" height="80" rx="16" fill="#5a1f24"/><rect x="346" y="562" width="128" height="9" fill="#e7b64a"/></g>` : "";
 
-    svg.innerHTML = `<defs>${wax("wx" + uid, PAL[0], PAL[1], PAL[2])}</defs>
+    svg.innerHTML = `<defs>${wax("wx" + uid, PAL[0], PAL[1], PAL[2])}
+        <radialGradient id="rd${uid}"><stop offset="0" stop-color="#c8484a" stop-opacity=".9"/><stop offset="1" stop-color="#c8484a" stop-opacity="0"/></radialGradient>
+        <linearGradient id="dr${uid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#bfe6fb"/><stop offset="1" stop-color="#7cc3ea"/></linearGradient></defs>
       ${opt.noChair ? "" : chair}
       <g class="root">
         ${opt.noLegs ? "" : `<g class="legsSeat">${legsSeat}</g>`}
@@ -110,17 +126,20 @@
           <g class="torso">
             <g class="breath">${torso}</g>
             ${bagLap}${bibLap}
-            <rect x="276" y="296" width="50" height="62" rx="18" fill="${skin}"/>
+            <rect x="276" y="296" width="50" height="62" rx="18" fill="${skin}"/><ellipse class="swallow" cx="302" cy="338" rx="9" ry="6" fill="${skinD}" opacity="0"/>
             <g class="head">
               <ellipse cx="216" cy="240" rx="16" ry="24" fill="${skin}"/>
               <ellipse cx="300" cy="236" rx="${A ? 84 : 88}" ry="${A ? 98 : 100}" fill="${skin}"/>
               ${hair}
               <g class="feat">
+                ${redEye(255)}${redEye(345)}<circle class="rednose" cx="${300 + fx + 9}" cy="266" r="15" fill="url(#rd${uid})" opacity="0"/>
                 ${eye(255, "l")}${eye(345, "r")}${brow(255, "l")}${brow(345, "r")}
                 <path d="M${300 + fx + 6} 248 Q${300 + fx + 16} 270 ${300 + fx} 274" stroke="${skinD}" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <g class="chin" opacity="0" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"><path d="M${300 + fx - 12} 322 Q${300 + fx - 6} 326 ${300 + fx - 2} 321"/><path d="M${300 + fx + 3} 321 Q${300 + fx + 8} 326 ${300 + fx + 13} 322"/><path d="M${300 + fx - 7} 329 Q${300 + fx} 333 ${300 + fx + 8} 329"/></g>
                 ${beard}
                 <g class="mouth" transform="translate(${300 + fx} 298)">${mouths}</g>
                 <path class="tear" d="M${255 + fx + 4} 250 q-7 12 0 16 q7 -4 0 -16Z" fill="#9fd8f5" opacity="0"/>
+                ${A ? drop(255, 0) + drop(345, 1) + drop(262, 2) : ""}
                 ${glasses}
               </g>
               ${earrings}
@@ -139,6 +158,9 @@
       head: q(".head"), feat: q(".feat"), armA: q(".armA"), armB: q(".armB"), faA: q(".armA .fa"), faB: q(".armB .fa"),
       pupils: qa(".pupil"), lids: qa(".lid"), lashes: qa(".lash"), browL: q(".brow.l"), browR: q(".brow.r"), tear: q(".tear"), chair: q(".chair"),
       m: Object.fromEntries(Object.keys(MOUTHS).map((k) => [k, q(".m-" + k)])),
+      lidlo: qa(".lidlo"), wet: qa(".wetline"), shines: qa(".shine"), red: qa(".red"), rednose: q(".rednose"), chin: q(".chin"), swallow: q(".swallow"),
+      drops: qa(".drop").map((d) => ({ g: d, t: d.querySelector(".trail"), t2: d.querySelector(".trail2"), b: d.querySelector(".bead") })),
+      propA: q(".propA"), propB: q(".propB"), mouthG: q(".mouth"),
       bibHand: q(".bibHand"), bibOpen: q(".bibOpen"), bibLap: q(".bibLap"), bagLap: q(".bagLap"), bagHand: q(".bagHand"),
     };
     let lastMouth = null;
@@ -176,11 +198,30 @@
       P.browR.setAttribute("transform", `translate(0 ${r(-bup * 9 - bin * 3 + bfr * 4)}) rotate(${r(bin * 13 - bfr * 12)} ${P.browR.dataset.cx} ${P.browR.dataset.cy})`);
       const m = s.mouth || "closed";
       if (m !== lastMouth) { if (lastMouth) vis(P.m[lastMouth], false); vis(P.m[m], true); lastMouth = m; }
+      // réalisme : yeux humides, rougeur, paupière inférieure, menton, déglutition, lèvres qui frémissent, larmes 3 canaux
+      const wet = s.wet || 0, red = s.red || 0;
+      P.wet.forEach((e) => e.setAttribute("opacity", r(wet * 0.9))); P.shines.forEach((e) => e.setAttribute("r", r(3 + wet * 1.8)));
+      P.red.forEach((e) => e.setAttribute("opacity", r(red * 0.55))); if (P.rednose) P.rednose.setAttribute("opacity", r(red * 0.6));
+      P.lidlo.forEach((e) => { const h = (s.lidlo || 0) * 10; e.setAttribute("height", r(h)); e.setAttribute("y", r(246 - h)); });
+      if (P.chin) P.chin.setAttribute("opacity", r((s.chin || 0) * 0.85));
+      if (P.swallow) { const sw = s.swallow || 0; P.swallow.setAttribute("opacity", r(Math.sin(sw * Math.PI) * 0.7)); P.swallow.setAttribute("cy", r(334 + sw * 20)); }
+      const mj = s.mj || [0, 0, 1, 1]; P.mouthG.setAttribute("transform", `translate(${r(300 + fx + mj[0])} ${r(298 + mj[1])}) scale(${r(mj[2])} ${r(mj[3])})`);
+      (s.drops || []).forEach((d, k) => {
+        const D = P.drops[k]; if (!D) return; const [p, tr0] = d;
+        D.g.setAttribute("opacity", r(Math.max(p > 0 && p < 1 ? 1 : 0, tr0))); const off = 90 * (1 - Math.min(1, p));
+        D.t.setAttribute("stroke-dashoffset", r(off)); D.t2.setAttribute("stroke-dashoffset", r(off));
+        D.t.setAttribute("opacity", r(0.55 * Math.max(tr0, p > 0 ? 1 : 0))); D.t2.setAttribute("opacity", r(0.8 * Math.max(tr0, p > 0 ? 1 : 0)));
+        const pe = Math.min(1, p), bx = (D.g.dataset.x ||= D.t.getAttribute("d").match(/M([\d.]+)/)[1]);
+        const y = 249 + pe * 80, x = +bx - 6 * Math.sin(pe * Math.PI) + 2 * pe;
+        D.b.setAttribute("transform", `translate(${r(x)} ${r(y)}) scale(${r(1 + 0.25 * pe)})`); D.b.style.opacity = p > 0 && p < 1 ? 1 : 0;
+      });
+      for (let k = (s.drops || []).length; k < P.drops.length; k++) P.drops[k].g.setAttribute("opacity", 0);
+      if (P.propA) vis(P.propA, s.propA !== false); if (P.propB) vis(P.propB, s.propB !== false);
       const tr = s.tear || 0;
       P.tear.setAttribute("opacity", r(Math.min(1, tr * 1.5) * (tr < 0.9 ? 1 : (1 - tr) * 10)));
       P.tear.setAttribute("transform", `translate(0 ${r(tr * 34)})`);
-      if (!A) { vis(P.bibHand, s.bib === "hand"); vis(P.bibOpen, s.bib === "open"); vis(P.bibLap, s.bib === "lap"); }
-      else { vis(P.bagLap, s.bag === "lap"); vis(P.bagHand, s.bag === "hand"); }
+      if (!A && !H) { vis(P.bibHand, s.bib === "hand"); vis(P.bibOpen, s.bib === "open"); vis(P.bibLap, s.bib === "lap"); }
+      else if (A) { vis(P.bagLap, s.bag === "lap"); vis(P.bagHand, s.bag === "hand"); }
       if (P.chair) vis(P.chair, s.chair !== false);
     }
     return { svg, set };
