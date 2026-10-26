@@ -86,3 +86,11 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
 .pcard b { color: var(--orange); }
 #motfin { position: absolute; left: 0; right: 0; top: 1240px; text-align: center; font: 800 54px/1.25 "Inter"; color: #1d1d1d; opacity: 0; }
 #motfin b { background: var(--orange); border-radius: 14px; padding: 0 12px; }
+/* ── Mise à jour : ouverture (rue, couloir, porte), scène de l'enfant ── */
+#open { position: absolute; inset: 0; overflow: hidden; }
+.oscene { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+.ol { position: absolute; inset: 0; will-change: transform; }
+.obox { position: absolute; }
+.obox svg, .rigbox svg { width: 100%; height: 100%; overflow: visible; }
+.vign { position: absolute; inset: 0; background: radial-gradient(70% 60% at 50% 55%, rgba(0,0,0,0) 45%, rgba(20,10,5,.75) 100%); opacity: .15; pointer-events: none; }
+#s-baby .rigbox { position: absolute; }

@@ -3,3 +3,4 @@ renders/
 node_modules/
 .hyperframes/
 audio/voixoff.wav
+src/__pycache__/

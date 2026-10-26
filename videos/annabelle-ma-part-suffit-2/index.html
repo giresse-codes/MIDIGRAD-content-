@@ -23,7 +23,7 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="364.23" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="410.7" data-width="1080" data-height="1920">
       <canvas id="gl" width="540" height="960"></canvas>
       <div id="plates"></div>
       <div id="cards"></div>
@@ -45,6 +45,7 @@
   <rect y="1560" width="1080" height="360" fill="#e8c48d"/></svg>
   <svg id="ecg2" viewBox="0 0 1080 300" width="1080" height="300" style="position:absolute;left:0;top:330px">
   <path d="M0 150 H180 l20 -10 l20 10 H260 l14 30 l22 -150 l22 200 l18 -70 H440 l24 -18 l24 18 H560 l14 30 l22 -150 l22 200 l18 -70 H740 l24 -18 l24 18 H860 l14 30 l22 -150 l22 200 l18 -70 H1080" fill="none" stroke="#3fbf6f" stroke-width="7" stroke-linejoin="round" stroke-dasharray="1600" stroke-dashoffset="1600"/></svg></div>
+        <div id="s-baby" class="scene"></div>
         <div id="s-sky" class="scene"><svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
   <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc3ea"/><stop offset=".55" stop-color="#ffd99a"/><stop offset="1" stop-color="#ffb870"/></linearGradient>
   <radialGradient id="su" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fffbe8"/><stop offset=".4" stop-color="#ffe9a8" stop-opacity=".9"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient></defs>
@@ -54,18 +55,20 @@
   <path d="M0 1560 Q300 1480 540 1540 T1080 1520 V1920 H0Z" fill="#c98f52" opacity=".9"/></svg></div>
         <div id="s-church" class="scene"></div>
         <div id="warmgrade"></div>
-        <div id="subs"></div>
         <div id="grain"></div>
       </div>
+      <div id="open"></div>
+      <div id="subs"></div>
       <div id="motfin">Pardonne comme Christ<br /><b>t'a pardonné.</b></div>
       <div id="hud"><div id="logo"><img src="assets/logo-midigrad.png" alt="" /></div><div id="tag">• MA PART SUFFIT · PARTIE 2</div>
         <div id="brand"><img src="assets/logo-midigrad.png" alt="" /><span class="bt"><span class="b1">EUD CONSISTOIRE</span><span class="b2">MIDIGRAD</span></span></div></div>
       <div id="white"></div>
-      <audio id="voix" src="assets/audio.wav" data-start="0" data-duration="364.23" data-track-index="1" data-volume="1"></audio>
+      <audio id="voix" src="assets/audio.wav" data-start="0" data-duration="410.7" data-track-index="1" data-volume="1"></audio>
     </div>
     <script src="assets/data.js"></script>
     <script src="assets/rig.js"></script>
     <script src="assets/decor.js"></script>
+    <script src="assets/scenes.js"></script>
     <script src="assets/film2.js"></script>
     <script type="module">
       import { createRoom } from "./assets/room3d.js";

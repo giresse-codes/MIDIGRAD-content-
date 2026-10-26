@@ -51,12 +51,14 @@ html = f'''<!doctype html>
       <div id="narr">
         <div id="s-house" class="scene">{HOUSE}</div>
         <div id="s-morning" class="scene">{MORNING}</div>
+        <div id="s-baby" class="scene"></div>
         <div id="s-sky" class="scene">{SKY}</div>
         <div id="s-church" class="scene"></div>
         <div id="warmgrade"></div>
-        <div id="subs"></div>
         <div id="grain"></div>
       </div>
+      <div id="open"></div>
+      <div id="subs"></div>
       <div id="motfin">Pardonne comme Christ<br /><b>t'a pardonné.</b></div>
       <div id="hud"><div id="logo"><img src="assets/logo-midigrad.png" alt="" /></div><div id="tag">• MA PART SUFFIT · PARTIE 2</div>
         <div id="brand"><img src="assets/logo-midigrad.png" alt="" /><span class="bt"><span class="b1">EUD CONSISTOIRE</span><span class="b2">MIDIGRAD</span></span></div></div>
@@ -66,6 +68,7 @@ html = f'''<!doctype html>
     <script src="assets/data.js"></script>
     <script src="assets/rig.js"></script>
     <script src="assets/decor.js"></script>
+    <script src="assets/scenes.js"></script>
     <script src="assets/film2.js"></script>
     <script type="module">
       import {{ createRoom }} from "./assets/room3d.js";
