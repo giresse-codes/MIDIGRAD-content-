@@ -1,0 +1,36 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Montserrat", sans-serif; background: #dfe6ea; }
+#gl { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+/* cartes de versets */
+#cards { position: absolute; inset: 0; perspective: 1400px; pointer-events: none; }
+.vcard { position: absolute; left: 60px; top: 170px; width: 960px; padding: 30px 40px 36px; border-radius: 36px; background: rgba(255, 251, 240, .93);
+  border: 5px solid #5a3414; box-shadow: 0 22px 50px rgba(40, 20, 0, .28); opacity: 0; transform-origin: 50% 0; }
+.vcard .ref { font: 800 58px/1 "Montserrat"; color: #ffc72c; -webkit-text-stroke: 12px #5a3414; paint-order: stroke fill; letter-spacing: .02em; margin-bottom: 18px;
+  text-shadow: 0 5px 0 rgba(90, 52, 20, .35); }
+.vcard .tx { font: 600 37px/1.32 "Montserrat"; color: rgba(40, 30, 20, .38); }
+.vcard .tx span { transition: none; }
+.vcard .tx span.r { color: #2a1d12; }
+.vcard .tx span.k { color: rgba(240, 120, 20, .5); }
+.vcard .tx span.k.r { color: #f07814; font-weight: 800; }
+/* titres de la narration */
+#titles { position: absolute; inset: 0; pointer-events: none; }
+.ttl { position: absolute; left: 50%; top: 250px; width: 1000px; text-align: center; font: 800 84px/1.12 "Montserrat"; color: #ffc72c;
+  -webkit-text-stroke: 16px #4a2a10; paint-order: stroke fill; text-shadow: 0 8px 0 rgba(74, 42, 16, .45), 0 18px 30px rgba(0, 0, 0, .25); opacity: 0; transform: translateX(-50%); }
+/* sous-titres : un mot à la fois, centré à 78 % */
+#subs { position: absolute; left: 0; right: 0; top: 1497px; height: 0; text-align: center; pointer-events: none; opacity: 0; }
+#subwho { position: absolute; left: 0; right: 0; top: -132px; font: 800 30px "Montserrat"; letter-spacing: .14em; -webkit-text-stroke: 7px #fff; paint-order: stroke fill; }
+#subwho.a { color: #7a1430; } #subwho.n { color: #1b2a4a; }
+#subw { position: absolute; left: 0; right: 0; top: -70px; font: 800 112px/140px "Montserrat"; color: #fff; -webkit-text-stroke: 20px #000; paint-order: stroke fill;
+  text-shadow: 0 7px 0 #000, 0 12px 18px rgba(0, 0, 0, .35); white-space: nowrap; transform-origin: 50% 60%; }
+/* flash-back hôpital */
+#flash { position: absolute; inset: 0; overflow: hidden; opacity: 0; background: #1d2630; }
+#flash img { position: absolute; left: 0; top: 220px; width: 1080px; filter: saturate(.45) brightness(.92) contrast(1.05) sepia(.1) hue-rotate(170deg); }
+#flash::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(10,20,35,.75) 100%); }
+#flash .fl { position: absolute; left: 50%; top: 120px; transform: translateX(-50%); font: 800 30px "Montserrat"; letter-spacing: .3em; color: rgba(220, 235, 255, .8); }
+/* fin */
+#white { position: absolute; inset: 0; background: #f6f1e6; opacity: 0; }
+#motfin { position: absolute; left: 50%; top: 1290px; width: 960px; text-align: center; font: 800 66px/1.2 "Montserrat"; color: #1b2a4a; opacity: 0; transform: translateX(-50%); }
+#motfin b { color: #c8901f; font-weight: 800; }
+#tag { position: absolute; left: 50%; top: 120px; transform: translateX(-50%); padding: 14px 32px; border-radius: 40px; background: rgba(255,255,255,.92); font: 800 26px "Montserrat";
+  letter-spacing: .2em; color: #1b2a4a; white-space: nowrap; opacity: 0; box-shadow: 0 8px 22px rgba(0,0,0,.15); }
