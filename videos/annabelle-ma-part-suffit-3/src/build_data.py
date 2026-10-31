@@ -73,6 +73,14 @@ hop = SR // FPS; nf = N // hop
 lv = np.array([np.sqrt(np.mean(voice[i * hop:(i + 1) * hop] ** 2)) for i in range(nf)])
 lv = np.clip(lv / np.percentile(lv[lv > 1e-4], 90), 0, 1); lv = np.convolve(lv, [0.25, 0.5, 0.25], "same")
 lev = "".join(str(int(min(9, x * 10))) for x in lv)
-data = {"fps": FPS, "dur": DUR, "off": OFF, "cut": M(CUT), "gap": GAP, "logo": LOGO, "warm": WARM, "words": words, "lev": lev}
+voc = []
+for i in range(nf):
+    fr = voice[i * hop:(i + 1) * hop]
+    if lv[i] > 0.2 and len(fr) == hop:
+        spc = np.abs(np.fft.rfft(fr * np.hanning(len(fr)))); fq = np.fft.rfftfreq(len(fr), 1 / SR); c = np.sum(spc * fq) / (np.sum(spc) + 1e-9)
+        voc.append("i" if c > 2300 else "o" if c < 1150 else "a")
+    else: voc.append("a")
+voc = "".join(voc)
+data = {"fps": FPS, "dur": DUR, "off": OFF, "cut": M(CUT), "gap": GAP, "logo": LOGO, "warm": WARM, "words": words, "lev": lev, "voc": voc}
 open(os.path.join(ROOT, "assets", "data.js"), "w").write("window.FILM = " + json.dumps(data, ensure_ascii=False) + ";\n")
 print("durée", DUR, "| reprise narration", M(CUT), "| chaleur", WARM, "| logo", LOGO, "| mots", len(words))

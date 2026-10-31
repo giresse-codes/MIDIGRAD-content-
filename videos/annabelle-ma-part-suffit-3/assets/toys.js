@@ -40,15 +40,21 @@ export function drawFace(g, o, p) {
     g.strokeStyle = o.brow || "#1d120b"; g.lineWidth = 13; g.beginPath(); g.moveTo(cx + s * 34, yin); g.quadraticCurveTo(cx + s * 72, Math.min(yin, yout) - 12, cx + s * 108, yout); g.stroke();
   }
   // bouche
-  const my = 352, sm = p.smile || 0, op = Math.max(0, p.open || 0), wd = 44 * (1 + 0.28 * (p.wide || 0) - 0.25 * (p.pinch || 0));
+  const my = 352, sm = p.smile || 0, op = Math.max(0, p.open || 0), vw = p.vw || 0, wd = 56 * (1 + 0.28 * (p.wide || 0) - 0.25 * (p.pinch || 0) - 0.22 * op * (1 - vw) + 0.12 * vw);
   const tr = (p.trem || 0) * Math.sin((p.t || 0) * 38) * 3;
   const cy = my - sm * 15 + tr, lipC = o.lip || "#5b2a22";
-  if (op > 0.04) {
-    const h = op * 34;
-    g.fillStyle = "#3a0f10"; g.beginPath(); g.moveTo(cx - wd, cy); g.quadraticCurveTo(cx, my - 6 + sm * 6 - h * 0.25, cx + wd, cy); g.quadraticCurveTo(cx, my + h + sm * 12, cx - wd, cy); g.fill();
-    if (sm > 0.2) { g.save(); g.clip(); g.fillStyle = "#f5f1ea"; g.fillRect(cx - wd, my - 20, wd * 2, 14 + h * 0.2); g.restore(); }
-    else { g.fillStyle = "#c2565a"; g.beginPath(); g.ellipse(cx, my + h * 0.7, wd * 0.45, h * 0.22, 0, 0, 7); g.fill(); }
-    g.strokeStyle = lipC; g.lineWidth = 5; g.beginPath(); g.moveTo(cx - wd, cy); g.quadraticCurveTo(cx, my + h + sm * 12, cx + wd, cy); g.stroke();
+  if (op > 0.05) {
+    const h = 10 + op * 62, top = cy - 3 - h * 0.12, bot = my + h + sm * 10;
+    const shape = () => { g.beginPath(); g.moveTo(cx - wd, cy); g.quadraticCurveTo(cx, top - h * 0.1, cx + wd, cy); g.quadraticCurveTo(cx, bot + h * 0.2, cx - wd, cy); };
+    g.fillStyle = "#2a0709"; shape(); g.fill();
+    g.save(); shape(); g.clip();
+    g.fillStyle = "#f6f2ea"; g.beginPath(); g.ellipse(cx, top - 2, wd * 0.72, 10 + h * 0.1, 0, 0, Math.PI); g.fill();
+    if (op > 0.35) { g.fillStyle = "#efe9de"; g.beginPath(); g.ellipse(cx, bot + h * 0.18, wd * 0.55, 7, 0, Math.PI, 0); g.fill(); }
+    g.fillStyle = "#b8474d"; g.beginPath(); g.ellipse(cx, bot - 2, wd * 0.5, Math.max(4, h * 0.22), 0, 0, 7); g.fill();
+    g.restore();
+    g.strokeStyle = lipC; g.lineWidth = 9; g.lineCap = "round"; g.beginPath(); g.moveTo(cx - wd, cy); g.quadraticCurveTo(cx, top - h * 0.1, cx + wd, cy); g.stroke();
+    g.strokeStyle = o.lipLo || "#8a3f38"; g.lineWidth = 12; g.beginPath(); g.moveTo(cx - wd, cy); g.quadraticCurveTo(cx, bot + h * 0.2, cx + wd, cy); g.stroke();
+    g.fillStyle = "rgba(255,235,225,.3)"; g.beginPath(); g.ellipse(cx + 6, (cy + bot + h * 0.2) / 2 + h * 0.35 + 4, wd * 0.28, 3, 0, 0, 7); g.fill();
   } else {
     const lh = 12 * (1 - 0.7 * (p.pinch || 0));
     g.fillStyle = o.lipLo || "#8a3f38"; g.beginPath(); g.moveTo(cx - wd, cy); g.quadraticCurveTo(cx, my + sm * 16 + tr * 0.5 + lh * 1.6, cx + wd, cy - tr * 0.6); g.quadraticCurveTo(cx, my + sm * 16 + tr * 0.5 - 2, cx - wd, cy); g.fill();

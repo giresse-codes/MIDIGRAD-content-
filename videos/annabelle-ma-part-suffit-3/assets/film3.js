@@ -114,6 +114,7 @@ window.startFilm = function (W) {
   const blink = (t, ofs = 0) => { let v = 0; for (const b of blinkT) { const d = Math.abs(t + ofs - b); if (d < 0.1) v = Math.max(v, 1 - d / 0.1); if (b > t + ofs + 1) break; } return v; };
   const nz = (t, f, s) => Math.sin(t * f + s) * 0.6 + Math.sin(t * f * 2.31 + s * 1.7) * 0.4;
   const lev = (t) => { const i = Math.floor(t * FPS); return i >= 0 && i < F.lev.length ? +F.lev[i] / 9 : 0; };
+  const lvw = (t) => { const i = Math.floor(t * FPS); return F.voc && i >= 0 && i < F.voc.length ? (F.voc[i] === "i" ? 1 : F.voc[i] === "o" ? -0.6 : 0) : 0; };
   const speaking = (t) => t >= A0 - 0.1 && t <= A1 + 0.1;
   const step = (t, s) => { const q = Math.floor(t / 1.3); return Math.sin(q * 12.9898 + s) * 0.5; };
 
@@ -148,6 +149,10 @@ window.startFilm = function (W) {
     pCU(u, o) { const T = W[o.who || "Y"], h = H(T), f = fwd(T), s = side(T); const pos = add(h, mul(f, 2.8 - 0.35 * u), mul(s, (o.sx ?? 0.5)), [0, -0.05, 0]); return { pos, tgt: add(h, [0, -0.08, 0]), fov: 24, focus: dist(pos, h), ap: 0.009, maxblur: 0.012 }; },
     crowd(u, o) { const x0 = o.x ?? -2.2; const pos = [x0 + (o.dx ?? 1.6) * u, 1.85, 0.4]; return { pos, tgt: [x0 + (o.dx ?? 1.6) * u + 0.6, 0.95, 6.5], fov: 40, focus: 4.2, ap: 0.006 }; },
     hero(u, o) { const T = W.heroes[o.k ?? 0].T, h = H(T), f = fwd(T), s = side(T); const pos = add(h, mul(f, 2.6 - 0.4 * u), mul(s, o.sx ?? 0.55), [0, 0.04 + (o.dy ?? 0), 0]); return { pos, tgt: add(h, [0, o.ty ?? -0.08, 0]), fov: 26, focus: dist(pos, h), ap: 0.009, maxblur: 0.012 }; },
+    interp(u, o) { const T = W.I, h = H(T), f = fwd(T), s = side(T); const pos = add(h, mul(f, 3.6 - 0.4 * u), mul(s, (o.sx ?? -0.8) + 0.5 * u), [0, -0.15, 0]); return { pos, tgt: add(h, [0, -0.3, 0]), fov: 32, focus: dist(pos, h), ap: 0.004 }; },
+    two(u, o) { const pos = [-0.4 + 0.8 * u, 2.1, 8.3 - 0.6 * u]; return { pos, tgt: [0, 1.65, -1.9], fov: 52, focus: 9, ap: 0.002 }; },
+    overI(u, o) { const hi = H(W.I), ha = H(W.A); const pos = add(hi, [0.75 - 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(hi, ha, 0.8), fov: 30, focus: dist(pos, ha), ap: 0.006, maxblur: 0.01 }; },
+    overA(u, o) { const hi = H(W.I), ha = H(W.A); const pos = add(ha, [-0.75 + 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(ha, hi, 0.8), fov: 30, focus: dist(pos, hi), ap: 0.006, maxblur: 0.01 }; },
     stageBack(u, o) { const pos = [-3.6 + 1.2 * u, 2.2, -4.4]; const h = H(W.A); return { pos, tgt: [0.5 + 0.8 * u, 0.9, 6], fov: 46, focus: dist(pos, h) + 4, ap: 0.003 }; },
   };
   // planning : plans imposés aux moments clés + remplissage par cycles (changement toutes les 3 à 5 s)
@@ -168,14 +173,15 @@ window.startFilm = function (W) {
     [C.honore - 0.2, "pCU", { who: "Y", sx: -0.25 }], [C.onPardonne - 0.3, "aCU", { d: 2.32, push: 0.25, fov: 22 }], [C.eau + 0.3, "crowd", { x: 0.2, dx: -1.2 }],
     [C.offense, "aCU", { sx: 0.3, d: 2.88 }], [C.compris, "aOTS", {}], [C.reconnaissante, "aCU", { d: 2.88 }], [C.facile - 0.3, "aCU", { sx: -0.2, d: 2.72 }],
     [C.amen - 0.5, "aCU", { d: 2.56, push: 0.2 }], [A1 + 0.2, "stageBack", {}], [A1 + 2.2, "wide", { x: 0, dx: 0.6 }],
-  ].sort((a, b) => a[0] - b[0]);
+  ];
+  forced.sort((a, b) => a[0] - b[0]);
   const MODE = (t) => (t < C.jeunesse ? "joie" : t < C.psRef ? "conf" : VERSE(t) > 0.5 ? "vers" : t < C.onPardonne ? "mid" : "fin");
   const CYC = {
-    joie: [["aCU", { sx: -0.3 }], ["wide", {}], ["aMS", { sx: 0.5 }], ["crowd", {}], ["pastors", {}], ["aOTS", {}], ["aCU", { sx: 0.3 }], ["hero", { k: 1 }], ["wideLow", {}]],
-    conf: [["aCU", { sx: 0.25 }], ["aOTS", {}], ["pCU", { who: "Ma" }], ["aMS", { sx: -0.5 }], ["crowd", { x: 0.2, dx: -1 }], ["aCU", { sx: -0.3, d: 2.72 }], ["side", { sg: 1 }], ["pastors", {}]],
-    vers: [["aCU", { d: 3.52 }], ["wideLow", {}], ["crowd", { x: -2, dx: 1.4 }], ["aMS", { sx: 0.4 }], ["aOTS", {}], ["hero", { k: 2 }]],
-    mid: [["aCU", { sx: -0.25 }], ["wide", {}], ["pCU", { who: "Y" }], ["aOTS", { x: 0.3 }], ["crowd", {}], ["aMS", { sx: 0.5 }], ["hero", { k: 1 }], ["aCU", { sx: 0.3 }], ["pastors", {}]],
-    fin: [["aCU", { sx: 0.25 }], ["crowd", { x: -1.8, dx: 1.4 }], ["aMS", { sx: -0.45 }], ["pCU", { who: "Y" }], ["aOTS", {}], ["hero", { k: 0 }]],
+    joie: [["two", {}], ["aCU", { sx: -0.3 }], ["wide", {}], ["aMS", { sx: 0.5 }], ["interp", {}], ["crowd", {}], ["pastors", {}], ["overI", {}], ["aOTS", {}], ["aCU", { sx: 0.3 }], ["hero", { k: 1 }], ["wideLow", {}]],
+    conf: [["overI", {}], ["aCU", { sx: 0.25 }], ["aOTS", {}], ["pCU", { who: "Ma" }], ["aMS", { sx: -0.5 }], ["interp", { sx: 0.5 }], ["crowd", { x: 0.2, dx: -1 }], ["aCU", { sx: -0.3, d: 2.72 }], ["side", { sg: 1 }], ["pastors", {}]],
+    vers: [["interp", {}], ["aCU", { d: 3.52 }], ["wideLow", {}], ["crowd", { x: -2, dx: 1.4 }], ["aMS", { sx: 0.4 }], ["aOTS", {}], ["hero", { k: 2 }]],
+    mid: [["two", {}], ["interp", { sx: 0.6 }], ["aCU", { sx: -0.25 }], ["wide", {}], ["pCU", { who: "Y" }], ["aOTS", { x: 0.3 }], ["crowd", {}], ["aMS", { sx: 0.5 }], ["hero", { k: 1 }], ["aCU", { sx: 0.3 }], ["pastors", {}]],
+    fin: [["overA", {}], ["aCU", { sx: 0.25 }], ["crowd", { x: -1.8, dx: 1.4 }], ["aMS", { sx: -0.45 }], ["pCU", { who: "Y" }], ["aOTS", {}], ["hero", { k: 0 }]],
   };
   const shots = [{ t0: 0, type: "aerial", o: { a: 0.9, da: -0.55, r: 13, h: 12.5 } }, { t0: WK0 + 0.9, type: "follow", o: {} }];
   { let cur = A0 - 0.35, fi = 0, cyc = 0, sd = 3; shots.push({ t0: cur, type: "aCU", o: { push: 0.4, d: 3.52 } }); cur += 3.6;
@@ -184,18 +190,23 @@ window.startFilm = function (W) {
     while (cur < N2 - 0.4) {
       const nf = fi < forced.length ? forced[fi][0] : 1e9;
       if (nf - cur < 6.2) {
-        if (nf - cur >= 2.6) { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1] }); }
+        if (nf - cur >= 2.6) { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1], cyc: 1 }); }
         shots.push({ t0: nf, type: forced[fi][1], o: forced[fi][2] }); cur = nf + (forced[fi][1] === "aerial" ? 9 : forced[fi][2].d && forced[fi][2].d < 1.2 ? 4.8 : 3.6); fi++;
         while (fi < forced.length && forced[fi][0] < cur - 1.0) fi++;
         if (fi < forced.length && forced[fi][0] < cur) cur = forced[fi][0];
-      } else { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1] }); cur += 3.3 + rnd() * 1.4; }
+      } else { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1], cyc: 1 }); cur += 3.3 + rnd() * 1.4; }
     }
   }
   // narration finale : la caméra s'élève et s'éloigne au-dessus de la salle (un angle toutes les ~5,5 s)
   { const n = Math.round((F.logo - N2) / 5.6); for (let k = 0; k < n; k++) { const t0 = N2 - 0.3 + k * (F.logo - N2) / n, p = k / Math.max(1, n - 1);
       shots.push({ t0, type: "aerial", o: { a: -0.9 + (k % 4) * 0.62 + k * 0.08, da: (k % 2 ? 0.22 : -0.22), r: 6.5 + 10.5 * p, h: 4.2 + 10 * p, fov: 46 - 8 * p } }); } }
   for (let i = shots.length - 1; i >= 0; i--) if (shots[i].t0 >= N2 - 0.4 && shots[i].type !== "aerial") shots.splice(i, 1);
-  shots.sort((a, b) => a.t0 - b.t0); shots.forEach((s, i) => (s.t1 = i + 1 < shots.length ? shots[i + 1].t0 : DUR));
+  shots.sort((a, b) => a.t0 - b.t0);
+  // l'interprète revient régulièrement à l'image (au moins toutes les ~18 s), jamais en gros plan
+  { const IT = [["interp", {}], ["overI", {}], ["two", {}], ["overA", {}], ["interp", { sx: 0.6 }]], ISH = new Set(["interp", "overI", "two", "overA"]); let last = A0, k = 0;
+    for (const sh of shots) { if (sh.t0 < A0 || sh.t0 > A1) continue; if (ISH.has(sh.type)) { last = sh.t0; continue; }
+      if (sh.cyc && sh.t0 - last > 16) { const c = IT[k++ % IT.length]; sh.type = c[0]; sh.o = c[1]; last = sh.t0; } } }
+  shots.forEach((s, i) => (s.t1 = i + 1 < shots.length ? shots[i + 1].t0 : DUR));
   for (let i = shots.length - 1; i > 0; i--) if (shots[i].t1 - shots[i].t0 < 0.8) { shots[i - 1].t1 = shots[i].t1; shots.splice(i, 1); }
   window.__shots = shots;
   const WH = 0.2;
@@ -265,10 +276,10 @@ window.startFilm = function (W) {
     const fa = FA.at(t), ga = GA.at(t), spk = speaking(t), lv = spk ? lev(t) : 0;
     const look = (1 - fa.lock) * (0.32 * Math.sin(t * 0.19 + 1) + 0.1 * step(t, 1)), lookY = (1 - fa.lock) * 0.06 * step(t, 7);
     const lid = Math.max(fa.lid, fa.lid < 0.9 ? blink(t) : 0);
-    A.faceSet({ ...fa, lx: clamp(fa.lx + look, -1, 1), ly: clamp(fa.ly + lookY, -1, 1), lid, open: clamp(fa.open + lv * 0.42 * (1 - 0.6 * fa.pinch), 0, 0.6), tears: tears(t), t });
+    A.faceSet({ ...fa, lx: clamp(fa.lx + look, -1, 1), ly: clamp(fa.ly + lookY, -1, 1), lid, open: clamp(fa.open + Math.pow(lv, 0.8) * 0.95 * (1 - 0.35 * fa.pinch), 0, 1), vw: lvw(t), tears: tears(t), t });
     if (wk.walking) { const ph = t * 7.5; A.pose({ lean: 0.03, L: [0.35 * Math.sin(ph), 0.1, 0.2], R: [-0.35 * Math.sin(ph), 0.1, 0.2], headX: 0.05 });
       A.legs[0].L.rotation.x = 0.45 * Math.sin(ph); A.legs[1].L.rotation.x = -0.45 * Math.sin(ph); A.legs[0].K.rotation.x = 0.3 * Math.max(0, -Math.sin(ph)); A.legs[1].K.rotation.x = 0.3 * Math.max(0, Math.sin(ph)); A.hips.position.y = 0.74 + 0.02 * Math.abs(Math.cos(ph)); }
-    else A.pose({ lean: ga.lean, breath: 0.012 * Math.sin(t * 1.7), headX: fa.hx + lv * 0.03 * Math.sin(t * 9) + 0.02 * nz(t, 0.7, 1), headY: fa.hy + look * 0.3 + 0.03 * nz(t, 0.5, 2), headZ: fa.hz + 0.02 * nz(t, 0.4, 3),
+    else A.pose({ lean: ga.lean, breath: 0.012 * Math.sin(t * 1.7), headX: fa.hx + lv * 0.05 * Math.sin(t * 7) + 0.02 * nz(t, 0.7, 1), headY: fa.hy + look * 0.3 + 0.03 * nz(t, 0.5, 2), headZ: fa.hz + 0.02 * nz(t, 0.4, 3),
       L: ga.L, R: ga.R, twist: look * 0.08 });
     // interprète : écoute, hoche la tête, petits gestes ; bouche fermée
     const I = W.I, g1 = 0.5 + 0.5 * Math.sin(t * 0.8);
