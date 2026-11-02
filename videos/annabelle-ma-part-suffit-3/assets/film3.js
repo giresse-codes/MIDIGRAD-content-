@@ -264,7 +264,11 @@ window.startFilm = function (W) {
   });
   const TITLES = [
     { a: C.premiere, b: C.deuxieme - 0.3, html: "1. JE NE SUIS PAS<br>DIFFÉRENT D'ELLE" }, { a: C.deuxieme, b: C.repentir - 0.3, html: "2. CELUI QUI A ÉTÉ PARDONNÉ<br>PEUT PARDONNER" },
-    { a: C.repentir, b: C.outil - 0.3, html: "SE REPENTIR" }, { a: C.outil, b: END + 0.8, html: "REGARDER DIEU,<br>ET NON L'OUTIL" },
+    { a: C.repentir, b: C.outil - 0.3, html: "SE REPENTIR" }, { a: C.outil, b: WD.find((w) => w[3] === "N3")[1] - 0.4, html: "REGARDER DIEU,<br>ET NON L'OUTIL" },
+    { a: P("voir Dieu derrière son frère", WD.find((w) => w[3] === "N3")[1]), b: P("Deuxièmement", WD.find((w) => w[3] === "N3")[1]) - 0.3, html: "1. VOIR DIEU<br>DERRIÈRE SON FRÈRE" },
+    { a: P("ton fondement est faux", WD.find((w) => w[3] === "N3")[1]), b: P("Troisièmement", WD.find((w) => w[3] === "N3")[1]) - 0.3, html: "2. TON FONDEMENT<br>EST FAUX" },
+    { a: P("vivre selon le cœur de l'église", WD.find((w) => w[3] === "N3")[1]), b: P("vivre selon le cœur de l'église", WD.find((w) => w[3] === "N3")[1]) + 10, html: "3. VIVRE SELON<br>LE CŒUR DE L'ÉGLISE" },
+    { a: P("vivre selon le cœur de l'église", P("vivre selon le cœur de l'église", WD.find((w) => w[3] === "N3")[1]) + 5), b: END + 0.8, html: "3. VIVRE SELON<br>LE CŒUR DE L'ÉGLISE" },
   ];
   const titlesEl = $("#titles"); TITLES.forEach((x) => { const el = document.createElement("div"); el.className = "ttl"; el.innerHTML = x.html; titlesEl.appendChild(el); x.el = el; });
   // sous-titres : un mot à la fois (ponctuation seule rattachée au mot précédent)
