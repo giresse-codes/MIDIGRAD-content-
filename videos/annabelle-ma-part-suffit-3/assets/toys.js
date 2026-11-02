@@ -222,6 +222,8 @@ export function makeCrowd(S, seats, opts) {
           const cl = clap * (0.5 + 0.5 * Math.sin(t * 13 + p.ph)) ;
           if (clap > 0.05) { ax = 1.25 * clap + 0.35 * (1 - clap); az = (0.1 + 0.32 * (1 - cl)) * clap - 0.25 * clap + 0.1; }
           if (amen > 0.05 && (sd === 1 || k < 0.3)) { ax = ax * (1 - amen) + 2.7 * amen; az = 0.25 * amen + az * (1 - amen); }
+          const ov = st.ovation || 0;
+          if (ov > 0.05) { const oc = Math.sin(t * 12 + p.ph); ax = ax * (1 - ov) + (2.6 + 0.1 * p.k) * ov; az = az * (1 - ov) + (-0.12 + 0.14 * (0.5 + 0.5 * oc)) * ov; }
           if (wipe > 0.05 && sd === 1) { ax = 2.2 * wipe + ax * (1 - wipe); az = -0.55 * wipe; len = 1 - 0.3 * wipe; }
           const A = new THREE.Matrix4().multiplyMatrices(body, new THREE.Matrix4().compose(v.set(sgn * 0.215, 0.44, 0), q.setFromEuler(e.set(-ax, 0, sgn * az)), sc.set(1, len, 1)));
           put(M.arm, i * 2 + sd, A);

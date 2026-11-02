@@ -26,6 +26,7 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
   const stageL = new THREE.SpotLight("#ffe9c8", 30, 14, 0.55, 0.6, 1.6); stageL.position.set(0, 4.2, 2.5); stageL.target.position.set(0, 1, -1.5); S.add(stageL, stageL.target);
   const fill = new THREE.DirectionalLight("#ffeedd", 0.9); fill.position.set(1, 2.2, 8); fill.target.position.set(0, 1.5, -2); S.add(fill, fill.target);
   const C = buildChurch(S, logo);
+  TEX.banner.anisotropy = R.capabilities.getMaxAnisotropy();
   // reflets d'environnement seulement sur les matières brillantes (carrelage, métal, verre)
   const envOn = (o) => { if (o.material && (o.material.clearcoat || o.material.metalness > 0.3 || o.material.roughness < 0.3)) { o.material.envMap = ENV; o.material.envMapIntensity = 0.6; o.material.needsUpdate = true; } };
 
@@ -79,9 +80,9 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
   const bloom = new UnrealBloomPass(new THREE.Vector2(RW / 2, RH / 2), 0.24, 0.5, 0.93); comp.addPass(bloom);
   comp.addPass(new OutputPass());
   const grade = new ShaderPass({
-    uniforms: { tDiffuse: { value: null }, uWarm: { value: 0 }, uCold: { value: 0 }, uT: { value: 0 }, uBlur: { value: new THREE.Vector2() }, uVig: { value: 0.28 }, uGrain: { value: 0.035 }, uFade: { value: 0 } },
+    uniforms: { tDiffuse: { value: null }, tBan: { value: null }, uBan: { value: 0 }, uWarm: { value: 0 }, uCold: { value: 0 }, uT: { value: 0 }, uBlur: { value: new THREE.Vector2() }, uVig: { value: 0.28 }, uGrain: { value: 0.035 }, uFade: { value: 0 } },
     vertexShader: "varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }",
-    fragmentShader: `uniform sampler2D tDiffuse; uniform float uWarm, uCold, uT, uVig, uGrain, uFade; uniform vec2 uBlur; varying vec2 vUv;
+    fragmentShader: `uniform sampler2D tDiffuse, tBan; uniform float uWarm, uCold, uT, uVig, uGrain, uFade, uBan; uniform vec2 uBlur; varying vec2 vUv;
       float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))+uT*7.13)*43758.5453); }
       void main(){
         vec3 c = vec3(0.); float n = 0.;
@@ -93,10 +94,15 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
         c = (c - .5) * (1. + .06*uCold + .04*uWarm) + .5;
         vec2 d = vUv - .5; d.x *= .75; c *= 1. - uVig*smoothstep(.25, .85, length(d)*1.25);
         c += (h(vUv*vec2(720.,1280.)) - .5) * uGrain;
+        vec4 b = texture2D(tBan, vUv);
+        if (uBan > 0. && b.a > 0.) { vec3 lin = b.rgb; vec3 srgb = mix(lin * 12.92, 1.055 * pow(lin, vec3(1. / 2.4)) - .055, step(.0031308, lin)); c = mix(c, srgb, b.a * uBan); }
         c = mix(c, vec3(1.), uFade);
         gl_FragColor = vec4(c, 1.);
       }` });
   comp.addPass(grade);
+  const banRT = new THREE.WebGLRenderTarget(RW, RH, { type: THREE.HalfFloatType }); grade.uniforms.tBan.value = banRT.texture;
+  const MS = new THREE.Scene(), banM = new THREE.Mesh(C.banner.geometry, new THREE.MeshBasicMaterial({ map: TEX.banner, color: "#ececec", toneMapped: false })); MS.add(banM);
+  const black = new THREE.MeshBasicMaterial({ color: 0x000000, colorWrite: false }); const frus = new THREE.Frustum(), pm4 = new THREE.Matrix4(), banBox = new THREE.Box3();
 
   const V3 = (a) => new THREE.Vector3(...a);
   const W = { R, S, cam, C, A, I, Y, Em, Ma, heroes, crowd, skip, comp, bokeh, bloom, grade, sao, sparks, coin, lcam, LS, lsp, spSeed, spPos, V3,
@@ -120,9 +126,18 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
         const L = st.logo; coin.rotation.y = L.rot; coin.scale.setScalar(L.scale); coin.position.y = L.y;
         lsp.material.opacity = L.sparks; lsp.position.set(0, -0.6, -1);
         R.setRenderTarget(null); R.toneMapping = THREE.ACESFilmicToneMapping; rp.scene = LS; rp.camera = lcam; bokeh.enabled = false; sao.enabled = false; bloom.enabled = false;
-        grade.uniforms.uWarm.value = 0.3; grade.uniforms.uCold.value = 0; comp.render(); rp.scene = S; rp.camera = cam; sao.enabled = true; bloom.enabled = true; return;
+        grade.uniforms.uWarm.value = 0.3; grade.uniforms.uCold.value = 0; grade.uniforms.uBan.value = 0; comp.render(); rp.scene = S; rp.camera = cam; sao.enabled = true; bloom.enabled = true; return;
       }
-      
+      // calque net de la bannière : profondeur de la scène (sans couleur) puis bannière seule ; mélangé après le post-traitement
+      C.banner.updateMatrixWorld(); banBox.setFromObject(C.banner); cam.updateMatrixWorld(); pm4.multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse); frus.setFromProjectionMatrix(pm4);
+      const banVis = frus.intersectsBox(banBox) && Math.abs(st.blurX || 0) + Math.abs(st.blurY || 0) < 0.01;
+      grade.uniforms.uBan.value = banVis ? 1 : 0;
+      if (banVis) {
+        banM.matrixAutoUpdate = false; banM.matrix.copy(C.banner.matrixWorld); banM.matrixWorld.copy(C.banner.matrixWorld);
+        const au = R.shadowMap.autoUpdate; R.shadowMap.autoUpdate = false; const ac = R.autoClear; R.setRenderTarget(banRT); R.setClearColor(0x000000, 0); R.clear(true, true, true);
+        const bg = S.background; S.background = null; S.overrideMaterial = black; C.banner.visible = false; R.render(S, cam); S.overrideMaterial = null; C.banner.visible = true; S.background = bg;
+        R.autoClear = false; R.render(MS, cam); R.autoClear = ac; R.setRenderTarget(null); R.shadowMap.autoUpdate = au; R.setClearColor(0x000000, 1);
+      }
       comp.render();
     },
   };

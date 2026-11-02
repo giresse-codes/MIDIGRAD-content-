@@ -6,14 +6,25 @@ HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE);
 T = json.load(open(os.path.join(ROOT, "timings.json"), encoding="utf-8"))
 OFF = 2.6            # ouverture : vue aérienne avant la première phrase
 CUT = 320.5          # fin du témoignage d'Annabelle (dans la voix)
-GAP = 3.4            # ovation debout avant la narration finale
+GAP = 5.9            # ovation debout (applaudissements réels) avant la narration finale
 M = lambda t: round(t + OFF + (GAP if t >= CUT else 0), 3)
-w = wave.open(os.path.join(ROOT, "audio", "voixoff.wav")); v = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768; w.close()
-VL = len(v) / SR
+def load(path):
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(SR), "-f", "s16le", "-"], capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768
+def lufs(x):
+    p_ = os.path.join(ROOT, "assets", "_m.wav"); o = wave.open(p_, "wb"); o.setnchannels(1); o.setsampwidth(2); o.setframerate(SR); o.writeframes((np.clip(x, -1, 1) * 32767).astype(np.int16).tobytes()); o.close()
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", p_, "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr; os.remove(p_)
+    return float(r[r.rindex("I:"):].split()[1])
+v0 = load(os.path.join(ROOT, "audio", "voixoff-elevenlabs.mp3"))
+# suite du narrateur : même niveau que la voix d'origine, fondus de 30 ms, 0,4 s de silence entre les deux
+s2 = load(os.path.join(ROOT, "audio", "narrateur-suite.mp3")); s2 *= 10 ** ((lufs(v0) - lufs(s2)) / 20)
+f30 = int(0.03 * SR); v0[-f30:] *= np.linspace(1, 0, f30); s2[:f30] *= np.linspace(0, 1, f30)
+JOIN = round(len(v0) / SR + 0.4, 3)                     # début de la suite dans la voix
+v = np.concatenate([v0, np.zeros(int(0.4 * SR), np.float32), s2]); VL = len(v) / SR
 words = []
 for tr in T["tours"]:
     for x in tr["mots"]: words.append([x["m"], M(x["t0"]), M(x["t1"]), tr["id"]])
-LAST = words[-1][2]; LOGO = round(LAST + 1.3, 2); DUR = round(LOGO + 4.6, 2)
+LAST = max(words[-1][2], M(VL - 0.3)); LOGO = round(LAST + 1.3, 2); SIG = round(LOGO + 4.6, 2); DUR = round(SIG + 3.0, 2)
 N = int(DUR * SR); voice = np.zeros(N, np.float32)
 def put(a, b, dst):
     seg = v[int(a * SR):int(b * SR)].copy(); f = int(0.02 * SR); seg[:f] *= np.linspace(0, 1, f); seg[-f:] *= np.linspace(1, 0, f)
@@ -32,19 +43,14 @@ for t0 in np.arange(5.0, OFF + 5.6, 0.48):
     L_ = int(0.07 * SR); tt = np.arange(L_) / SR; i = int(t0 * SR)
     steps[i:i + L_] += (rnd.standard_normal(L_) * np.exp(-tt / 0.01) * (0.6 + 0.4 * rnd.random())).astype(np.float32)
 steps = onepole(steps, 2500)
-# ── applaudissements (ovation) : ~45 personnes, claps de bruit filtré à rythme individuel ──
-def applause(dur):
-    L_ = int(dur * SR); out = np.zeros(L_, np.float32)
-    for _ in range(45):
-        t, rate, g = rnd.random() * 0.4, 3.2 + 1.6 * rnd.random(), 0.5 + 0.5 * rnd.random()
-        while t < dur:
-            i = int(t * SR); n_ = int(0.03 * SR); tt = np.arange(n_) / SR
-            out[i:i + n_] += (rnd.standard_normal(n_) * np.exp(-tt / (0.006 + 0.004 * rnd.random())) * g)[:L_ - i].astype(np.float32)
-            t += 1 / rate * (0.85 + 0.3 * rnd.random())
-    return onepole(out, 5000) - onepole(out, 500) * 0.8
-OV0 = M(CUT) - GAP - 0.3; OV1 = M(CUT) + 2.2
-clap = np.zeros(N, np.float32); ap = applause(OV1 - OV0 + 0.5); i0 = int(OV0 * SR); clap[i0:i0 + len(ap)] += ap[:N - i0]
-clap *= np.clip((t_ax - OV0) / 0.5, 0, 1) * np.clip((OV1 - t_ax) / 2.0, 0, 1)
+# ── applaudissements réels (audio/applaudissements.mp3) : juste après « Amen, amen », fondu d'entrée 0,3 s, descente progressive,
+#    fin ~1,5 s avant la reprise du narrateur ; niveau ≈ -18 LUFS (4 dB sous la voix normalisée à -14)
+A_END = max(x[2] for x in words if x[3] == "A"); N_RE = min(x[1] for x in words if x[3] == "N2")
+ap = load(os.path.join(ROOT, "audio", "applaudissements.mp3")); AP0 = round(A_END + 0.15, 3); AP1 = AP0 + len(ap) / SR
+assert AP1 <= N_RE - 1.4, (AP1, N_RE)
+ap *= 10 ** ((lufs(voice) - 4 - lufs(ap)) / 20); env = np.ones(len(ap), np.float32); fi = int(0.3 * SR); env[:fi] = np.linspace(0, 1, fi)
+fo = int(2.2 * SR); env[-fo:] = np.linspace(1, 0, fo) ** 1.5; ap *= env
+clap = np.zeros(N, np.float32); i0 = int(AP0 * SR); clap[i0:i0 + len(ap)] += ap[:N - i0]
 # ── nappe de piano chaude : de « on pardonne parce qu'on a été pardonné » jusqu'à la fin ──
 WARM = next(x[1] for k, x in enumerate(words) if x[0].lower() == "on" and words[k + 1][0] == "pardonne" and x[3] == "A" and x[1] > 280)
 pad = np.zeros(N, np.float32); chords = [[261.6, 329.6, 392], [220, 261.6, 329.6], [174.6, 220, 261.6], [196, 246.9, 293.7]]; k = 0; t0 = WARM - 0.5
@@ -58,7 +64,7 @@ while t0 < DUR:
 pad *= np.clip((t_ax - WARM) / 3.0, 0, 1) * np.clip((DUR - t_ax) / 1.5, 0, 1)
 pad *= np.where(t_ax > M(CUT), 1.0, 0.7)
 vr = rms(voice)
-room *= vr * 10 ** (-40 / 20) / rms(room); steps *= vr * 10 ** (-24 / 20) / rms(steps); clap *= vr * 10 ** (-9 / 20) / rms(clap[int((OV0 + 0.6) * SR):int((OV1 - 2) * SR)])
+room *= vr * 10 ** (-40 / 20) / rms(room); steps *= vr * 10 ** (-24 / 20) / rms(steps)
 pad *= vr * 10 ** (-29 / 20) / rms(pad)
 mix = voice + room + steps + clap + pad
 def wr(p, x):
@@ -81,6 +87,6 @@ for i in range(nf):
         voc.append("i" if c > 2300 else "o" if c < 1150 else "a")
     else: voc.append("a")
 voc = "".join(voc)
-data = {"fps": FPS, "dur": DUR, "off": OFF, "cut": M(CUT), "gap": GAP, "logo": LOGO, "warm": WARM, "words": words, "lev": lev, "voc": voc}
+data = {"fps": FPS, "dur": DUR, "off": OFF, "cut": M(CUT), "gap": GAP, "logo": LOGO, "sig": SIG, "ap": [AP0, round(AP1, 3)], "join": M(JOIN), "warm": WARM, "words": words, "lev": lev, "voc": voc}
 open(os.path.join(ROOT, "assets", "data.js"), "w").write("window.FILM = " + json.dumps(data, ensure_ascii=False) + ";\n")
-print("durée", DUR, "| reprise narration", M(CUT), "| chaleur", WARM, "| logo", LOGO, "| mots", len(words))
+print("applaudissements", AP0, round(AP1, 2), "| narrateur reprend", N_RE, "| suite à", M(JOIN), "| signature", SIG); print("durée", DUR, "| reprise narration", M(CUT), "| chaleur", WARM, "| logo", LOGO, "| mots", len(words))

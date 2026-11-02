@@ -67,15 +67,35 @@ function makeTextures(logo) {
     }
   }, [2, 2]);
   TEX.wax = (a, b, c) => canvasTex(256, 256, (g, w, h) => { g.fillStyle = a; g.fillRect(0, 0, w, h); for (let i = 0; i < 26; i++) { g.fillStyle = i % 2 ? b : c; g.beginPath(); g.arc(rnd() * w, rnd() * h, 8 + rnd() * 18, 0, 7); g.fill(); } }, [2, 2]);
-  TEX.banner = canvasTex(1536, 384, (g, w, h) => {
-    const gr = g.createLinearGradient(0, 0, w, 0); gr.addColorStop(0, "#2f8f3a"); gr.addColorStop(0.5, "#f2f6ee"); gr.addColorStop(1, "#2a63b8");
-    g.fillStyle = gr; g.fillRect(0, 0, w, h); g.fillStyle = "rgba(255,255,255,.75)"; g.fillRect(150, 40, w - 420, h - 80);
-    g.fillStyle = "#c62828"; g.font = "900 64px Montserrat, sans-serif"; g.textAlign = "left"; g.fillText("2026", 30, 250);
-    g.fillStyle = "#1b3d8f"; g.font = "900 54px Montserrat, sans-serif"; g.textAlign = "center"; g.fillText("Année des Opportunités Divines", 690, 130);
-    g.fillStyle = "#d9862a"; g.font = "900 46px Montserrat, sans-serif"; g.fillText("YEAR OF DIVINE OPPORTUNITIES", 690, 200);
-    g.fillStyle = "#1b3d8f"; g.font = "800 38px Montserrat, sans-serif"; g.fillText("« Tu es saint, tu es parfait en Christ »", 690, 280);
-    if (logo) { g.fillStyle = "#fff"; g.beginPath(); g.arc(w - 150, h / 2, 128, 0, 7); g.fill(); g.drawImage(logo, w - 270, h / 2 - 120, 240, 240); }
-  });
+  // bannière du thème 2026 : recopiée de photos-eglise/banniere.jpg (texte identique), 4096 px, nette
+  TEX.banner = (() => {
+    const c = document.createElement("canvas"), w = 4096, h = 880; c.width = w; c.height = h; const g = c.getContext("2d");
+    const sky = g.createLinearGradient(0, 0, 0, h); sky.addColorStop(0, "#7fb7a8"); sky.addColorStop(0.45, "#3f8f55"); sky.addColorStop(1, "#24642f"); g.fillStyle = sky; g.fillRect(0, 0, w, h);
+    for (let i = 0; i < 260; i++) { const x = 1500 + rnd() * 1300, y0 = rnd() * 330; g.strokeStyle = `rgba(255,255,255,${0.12 + rnd() * 0.25})`; g.lineWidth = 3 + rnd() * 10; g.beginPath(); g.moveTo(x, y0); g.lineTo(x + (rnd() - 0.5) * 30, y0 + 80 + rnd() * 200); g.stroke(); }
+    for (let i = 0; i < 90; i++) { g.fillStyle = `rgba(${30 + rnd() * 40 | 0},${90 + rnd() * 60 | 0},${30 + rnd() * 30 | 0},.55)`; g.beginPath(); g.arc(rnd() * w, 120 + rnd() * 560, 40 + rnd() * 90, 0, 7); g.fill(); }
+    g.fillStyle = "rgba(255,255,255,.62)"; g.fillRect(0, 196, w, 92);                       // bande claire sous le titre
+    g.fillStyle = "rgba(255,255,255,.38)"; g.fillRect(560, 300, 2700, 395);
+    const T = (txt, x, y, size, fill, stroke, sw, align = "center", wt = 800) => { g.font = `${wt} ${size}px Montserrat, sans-serif`; g.textAlign = align; g.textBaseline = "alphabetic"; g.lineJoin = "round";
+      if (stroke) { g.strokeStyle = stroke; g.lineWidth = sw; g.strokeText(txt, x, y); } g.fillStyle = fill; g.fillText(txt, x, y); };
+    T("MISSION DE LA DISPENSATION DE LA GRACE DE DIEU", w / 2, 92, 74, "#e01b24", "#ffffff", 14);
+    T("GRACE OF GOD DISPENSATION MISSION", w / 2, 178, 70, "#e01b24", "#ffffff", 14);
+    T("VIVRE ET PRECHER LA GRACE ET L'AMOUR INCONDITIONNEL DE DIEU MANIFESTE EN JESUS-CHRIST", w / 2 + 120, 262, 60, "#14213d", null, 0);
+    T("Mon Année des Opportunités Divines", 1900, 432, 132, "#ffffff", "#1b2a1b", 22);
+    T("MY YEAR OF DIVINE OPPORTUNITIES", 1900, 600, 124, "#ffd21f", "#2a2a10", 20);
+    T("2026", 340, 540, 230, "#ff8a1c", "#b3121b", 22);
+    // petit logo rond à gauche
+    if (logo) { g.fillStyle = "#fff"; g.beginPath(); g.arc(150, 250, 108, 0, 7); g.fill(); g.drawImage(logo, 50, 150, 200, 200); }
+    // références Esther / Ruth
+    g.fillStyle = "#ffffff"; g.fillRect(3230, 330, 300, 280); g.strokeStyle = "#c51d24"; g.lineWidth = 6; g.strokeRect(3230, 330, 300, 280);
+    T("Esther", 3380, 395, 58, "#c51d24", null, 0); T("4:14-16", 3380, 455, 54, "#c51d24", null, 0); T("Ruth", 3380, 530, 58, "#c51d24", null, 0); T("1:16-17", 3380, 590, 54, "#c51d24", null, 0);
+    // grand logo MIDIGRAD à droite
+    if (logo) { g.fillStyle = "#fff"; g.beginPath(); g.arc(3800, 410, 270, 0, 7); g.fill(); g.drawImage(logo, 3545, 155, 510, 510); }
+    // bande du bas : « TU ES JUSTE, TU ES SAINT, TU ES PARFAIT EN CHRIST » + références
+    const bb = g.createLinearGradient(0, 700, 0, h); bb.addColorStop(0, "#3b2f8f"); bb.addColorStop(1, "#231b66"); g.fillStyle = bb; g.fillRect(0, 700, w, h - 700);
+    T("TU ES JUSTE,", 1180, 790, 84, "#ffffff", null, 0); T("TU ES SAINT,", 1980, 790, 84, "#ffffff", null, 0); T("TU ES PARFAIT EN CHRIST", 3000, 790, 84, "#ffffff", null, 0);
+    T("Romains 3:24", 1180, 858, 50, "#e8e6ff", null, 0, "center", 600); T("Hébreux 10 : 10", 1980, 858, 50, "#e8e6ff", null, 0, "center", 600); T("Hébreux 10 : 14", 3000, 858, 50, "#e8e6ff", null, 0, "center", 600);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter; return t;
+  })();
   TEX.logo = logo ? canvasTex(512, 512, (g, w, h) => { g.fillStyle = "#fff"; g.beginPath(); g.arc(256, 256, 256, 0, 7); g.fill(); g.drawImage(logo, 16, 16, 480, 480); }) : null;
 }
 
@@ -116,14 +136,18 @@ export function buildChurch(S, logo) {
     vg.computeVertexNormals(); const veil = new THREE.Mesh(vg, mat("#f6cf3a", { side: THREE.DoubleSide, transparent: true, opacity: 0.85, roughness: 0.6 })); veil.position.set(x0 + w * 0.22, 2.55, -5.2); S.add(veil);
   }
   // bannière 2026 + logo
-  const ban = plane(4.6, 1.15, mat("#ffffff", { map: TEX.banner, roughness: 0.7 })); ban.position.set(-1.6, 3.55, -5.36); S.add(ban);
+  // bannière du thème : grande (8,4 × 1,8 m), centrée au-dessus des deux pupitres, matériau non éclairé (aucun reflet ni ombre)
+  const ban = new THREE.Mesh(new THREE.PlaneGeometry(8.4, 1.8), new THREE.MeshBasicMaterial({ map: TEX.banner, color: "#ececec", toneMapped: false }));
+  ban.position.set(0, 2.88, -5.3); S.add(ban); C.banner = ban;
+  const banF = new THREE.Mesh(new THREE.PlaneGeometry(8.6, 2.0), mat("#2c2c2c", { roughness: 0.9 })); banF.position.set(0, 2.88, -5.32); S.add(banF);
+  const banL = new THREE.SpotLight("#fff2dc", 14, 9, 0.5, 0.8, 1.5); banL.position.set(0, 4.1, -1.5); banL.target.position.set(0, 2.9, -5.3); S.add(banL, banL.target);
 
   const TOP = new THREE.Group(); S.add(TOP); C.top = TOP; const atT = (m, x, y, z) => at(m, x, y, z, 0, TOP);
   // plafond blanc avec spots, faux plafond en caisson (bord rose, dessous bleu peint de nuages et soleils)
   const ceilM = mat("#f7f7f4", { roughness: 0.95 });
   const ce = plane(20, 8.5, ceilM); ce.rotation.x = Math.PI / 2; ce.position.set(0, 4.3, -1.25); TOP.add(ce);
   const pink = mat("#f0609a", { roughness: 0.7 });
-  const cx0 = 0.4, cz0 = 1.4, cw = 8.4, cd = 7.2;
+  const cx0 = 0.4, cz0 = 2.1, cw = 8.4, cd = 7.2;
   atT(box(cw, 0.35, 0.1, pink), cx0, 3.72, cz0 - cd / 2); atT(box(cw, 0.35, 0.1, pink), cx0, 3.72, cz0 + cd / 2);
   atT(box(0.1, 0.35, cd, pink), cx0 - cw / 2, 3.72, cz0); atT(box(0.1, 0.35, cd, pink), cx0 + cw / 2, 3.72, cz0);
   const caisson = plane(cw - 0.1, cd - 0.1, new THREE.MeshStandardMaterial({ map: TEX.ceiling, roughness: 0.9, emissive: "#ffffff", emissiveMap: TEX.ceiling, emissiveIntensity: 0.25 }));

@@ -27,6 +27,8 @@ html = f'''<!doctype html>
       <div id="subs"><div id="subwho"></div><div id="subw"></div></div>
       <div id="white"></div>
       <div id="motfin">Pardonne comme Christ<br /><b>t'a pardonné.</b></div>
+      <div id="sig">EUD — Consistoire MIDIGRAD</div>
+      <div id="black"></div>
       <div id="tag">MA PART SUFFIT · PARTIE 3</div>
       <img id="logoimg" src="assets/logo-midigrad.png" alt="" style="display:none" />
       <audio id="voix" src="assets/audio.wav" data-start="0" data-duration="{D}" data-track-index="1" data-volume="1"></audio>

@@ -92,9 +92,9 @@ window.startFilm = function (W) {
   ex(C.pardonCoeur, "apaise"); ex(C.ephRef - 0.2, "recueil", 0.5); ex(C.eph1 + 0.3, "apaise"); ex(C.amour, "chaleur"); ex(C.colRef - 0.2, "recueil", 0.5);
   ex(C.col1 + 0.3, "apaise"); ex(C.jesus, "serieux"); ex(C.pardonne2 - 0.1, "apaise", 0.5); ex(C.galRef - 0.2, "recueil", 0.5); ex(C.gal1 + 0.3, "apaise");
   ex(C.honore - 0.2, "soulage"); ex(C.onPardonne - 0.2, "soulage"); ex(C.offense, "apaise"); ex(C.compris, "soulage"); ex(C.reconnaissante, "paix"); ex(C.facile, "rire", 0.3);
-  ex(C.facile + 1.6, "paix"); ex(C.amen - 0.3, "ferme", 0.35); ex(C.amen + 1.1, "paix", 0.5); ex(A1 + 0.6, "joie", 0.6);
+  ex(C.facile + 1.6, "paix"); ex(C.amen - 0.3, "ferme", 0.35); ex(C.amen + 1.1, "paix", 0.5); ex(A1 + 0.3, "soulage", 0.5); ex(A1 + 2.9, "joie", 0.6);
   // larmes : { côté, début, durée de descente, début du séchage }
-  const TE = [{ s: 1, t0: C.avorterE - 0.2, d: 3.52, p0: 0, p1: 0.35, off: C.raison - 0.2 }, { s: 1, t0: C.raison - 0.1, d: 7.2, p0: 0.35, p1: 1, off: C.pardonCoeur }, { s: -1, t0: C.fait - 0.2, d: 6.72, p0: 0, p1: 0.95, off: C.pardonCoeur + 2 },
+  const TE = [{ s: -1, t0: A1 - 0.4, d: 1.4, p0: 0, p1: 0.45, off: A1 + 0.9 }, { s: 1, t0: C.avorterE - 0.2, d: 3.52, p0: 0, p1: 0.35, off: C.raison - 0.2 }, { s: 1, t0: C.raison - 0.1, d: 7.2, p0: 0.35, p1: 1, off: C.pardonCoeur }, { s: -1, t0: C.fait - 0.2, d: 6.72, p0: 0, p1: 0.95, off: C.pardonCoeur + 2 },
     { s: -1, t0: C.onPardonne + 0.2, d: 6.08, p0: 0, p1: 0.9, off: C.amen - 1 }, { s: 1, t0: C.compris, d: 6.72, p0: 0, p1: 0.8, off: C.amen - 0.5 }];
   const tears = (t) => TE.map((e) => ({ s: e.s, p: lerp(e.p0, e.p1, ease(clamp((t - e.t0) / e.d))), a: clamp((t - e.t0) / 0.3) * (1 - clamp((t - e.off) / 3)) * (t >= e.t0 ? 1 : 0) }));
   // gestes (bras gauche, bras droit) : [avant, écart, coude]
@@ -109,7 +109,7 @@ window.startFilm = function (W) {
   g(C.fait - 0.2, { R: [1.35, -0.45, 2.35], L: HANDS.L }, 0.5); g(C.fait + 2.6, HANDS, 0.6);
   g(C.amour, { L: [0.9, 0.5, 0.6], R: [0.9, 0.5, 0.6] }); g(C.amour + 2.5, HANDS);
   g(C.honore, { R: [0.75, -0.55, 2.1], L: HANDS.L }); g(C.honore + 3.5, HANDS);
-  g(C.amen - 0.3, { R: [2.5, 0.25, 0.35], L: [0.75, -0.55, 2.1] }, 0.5); g(A1 + 0.8, { L: [0.9, 0.55, 0.5], R: [0.9, 0.55, 0.5] }, 0.8);
+  g(C.amen - 0.3, { R: [2.5, 0.25, 0.35], L: [0.75, -0.55, 2.1] }, 0.5); g(A1 + 0.4, { R: [1.35, -0.45, 2.35], L: [0.75, -0.55, 2.1] }, 0.5); g(A1 + 2.6, { L: [0.9, 0.55, 0.5], R: [0.9, 0.55, 0.5] }, 0.8);
   const blinkT = []; { let b = 1.3, s = 9; while (b < DUR) { blinkT.push(b); s = (s * 16807) % 2147483647; b += 2.6 + (s / 2147483647) * 2.6; } }
   const blink = (t, ofs = 0) => { let v = 0; for (const b of blinkT) { const d = Math.abs(t + ofs - b); if (d < 0.1) v = Math.max(v, 1 - d / 0.1); if (b > t + ofs + 1) break; } return v; };
   const nz = (t, f, s) => Math.sin(t * f + s) * 0.6 + Math.sin(t * f * 2.31 + s * 1.7) * 0.4;
@@ -153,6 +153,9 @@ window.startFilm = function (W) {
     two(u, o) { const pos = [-0.4 + 0.8 * u, 2.1, 8.3 - 0.6 * u]; return { pos, tgt: [0, 1.65, -1.9], fov: 52, focus: 9, ap: 0.002 }; },
     overI(u, o) { const hi = H(W.I), ha = H(W.A); const pos = add(hi, [0.75 - 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(hi, ha, 0.8), fov: 30, focus: dist(pos, ha), ap: 0.006, maxblur: 0.01 }; },
     overA(u, o) { const hi = H(W.I), ha = H(W.A); const pos = add(ha, [-0.75 + 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(ha, hi, 0.8), fov: 30, focus: dist(pos, hi), ap: 0.006, maxblur: 0.01 }; },
+    pastorsZ(u, o) { const h = H(W.Y), f = fwd(W.Y); const d = lerp(5.6, 3.0, ease(u)); const pos = add(h, mul(f, d), [-0.5, 0.35, 0]); return { pos, tgt: add(h, [0, -0.3, 0]), fov: 34, focus: dist(pos, h), ap: 0.004 }; },
+    banner(u, o) { const e = ease(u); const pos = [lerp(0, -0.28, e), lerp(2.2, 2.25, e), lerp(9.0, 6.2, e)]; return { pos, tgt: [lerp(0, -0.28, e), lerp(2.2, 2.45, e), -5.3], fov: lerp(60, 47, e), focus: 12, ap: 0.002 }; },
+    bannerEnd(u, o) { const pos = [0.3 - 0.6 * u, lerp(3.4, 3.9, u), lerp(10.5, 12.5, u)]; return { pos, tgt: [0, 2.5, -5.3], fov: 58, focus: 14, ap: 0.002 }; },
     stageBack(u, o) { const pos = [-3.6 + 1.2 * u, 2.2, -4.4]; const h = H(W.A); return { pos, tgt: [0.5 + 0.8 * u, 0.9, 6], fov: 46, focus: dist(pos, h) + 4, ap: 0.003 }; },
   };
   // planning : plans imposés aux moments clés + remplissage par cycles (changement toutes les 3 à 5 s)
@@ -172,7 +175,7 @@ window.startFilm = function (W) {
     [C.col0 + 8.5, "hero", { k: 2 }], [C.jesus, "aCU", {}], [C.pardonne2 - 0.2, "pCU", { who: "Em" }], [C.galRef, "wide", { x: -0.6 }], [C.gal0, "aCU", { d: 3.04, push: 0.5 }],
     [C.honore - 0.2, "pCU", { who: "Y", sx: -0.25 }], [C.onPardonne - 0.3, "aCU", { d: 2.32, push: 0.25, fov: 22 }], [C.eau + 0.3, "crowd", { x: 0.2, dx: -1.2 }],
     [C.offense, "aCU", { sx: 0.3, d: 2.88 }], [C.compris, "aOTS", {}], [C.reconnaissante, "aCU", { d: 2.88 }], [C.facile - 0.3, "aCU", { sx: -0.2, d: 2.72 }],
-    [C.amen - 0.5, "aCU", { d: 2.56, push: 0.2 }], [A1 + 0.2, "stageBack", {}], [A1 + 2.2, "wide", { x: 0, dx: 0.6 }],
+    [C.amen - 0.5, "aCU", { d: 2.56, push: 0.2 }], [A1 + 0.15, "wide", { x: 0, dx: 0.5 }], [A1 + 2.7, "pastorsZ", {}], [A1 + 4.9, "aCU", { d: 2.9, push: 0.3 }],
   ];
   forced.sort((a, b) => a[0] - b[0]);
   const MODE = (t) => (t < C.jeunesse ? "joie" : t < C.psRef ? "conf" : VERSE(t) > 0.5 ? "vers" : t < C.onPardonne ? "mid" : "fin");
@@ -183,7 +186,7 @@ window.startFilm = function (W) {
     mid: [["two", {}], ["interp", { sx: 0.6 }], ["aCU", { sx: -0.25 }], ["wide", {}], ["pCU", { who: "Y" }], ["aOTS", { x: 0.3 }], ["crowd", {}], ["aMS", { sx: 0.5 }], ["hero", { k: 1 }], ["aCU", { sx: 0.3 }], ["pastors", {}]],
     fin: [["overA", {}], ["aCU", { sx: 0.25 }], ["crowd", { x: -1.8, dx: 1.4 }], ["aMS", { sx: -0.45 }], ["pCU", { who: "Y" }], ["aOTS", {}], ["hero", { k: 0 }]],
   };
-  const shots = [{ t0: 0, type: "aerial", o: { a: 0.9, da: -0.55, r: 13, h: 12.5 } }, { t0: WK0 + 0.9, type: "follow", o: {} }];
+  const shots = [{ t0: 0, type: "aerial", o: { a: 0.9, da: -0.4, r: 13, h: 12.5 } }, { t0: 2.4, type: "banner", o: {} }, { t0: 5.3, type: "follow", o: {} }];
   { let cur = A0 - 0.35, fi = 0, cyc = 0, sd = 3; shots.push({ t0: cur, type: "aCU", o: { push: 0.4, d: 3.52 } }); cur += 3.6;
     const rnd = () => ((sd = (sd * 16807) % 2147483647) / 2147483647);
     while (fi < forced.length && forced[fi][0] < cur) fi++;
@@ -198,9 +201,12 @@ window.startFilm = function (W) {
     }
   }
   // narration finale : la caméra s'élève et s'éloigne au-dessus de la salle (un angle toutes les ~5,5 s)
-  { const n = Math.round((F.logo - N2) / 5.6); for (let k = 0; k < n; k++) { const t0 = N2 - 0.3 + k * (F.logo - N2) / n, p = k / Math.max(1, n - 1);
+  { const E2 = F.logo - 5.5, n = Math.round((E2 - N2) / 5.6); shots.push({ t0: E2, type: "bannerEnd", o: {} }); for (let k = 0; k < n; k++) { const t0 = N2 - 0.3 + k * (E2 - N2) / n, p = k / Math.max(1, n - 1);
       shots.push({ t0, type: "aerial", o: { a: -0.9 + (k % 4) * 0.62 + k * 0.08, da: (k % 2 ? 0.22 : -0.22), r: 6.5 + 10.5 * p, h: 4.2 + 10 * p, fov: 46 - 8 * p } }); } }
-  for (let i = shots.length - 1; i >= 0; i--) if (shots[i].t0 >= N2 - 0.4 && shots[i].type !== "aerial") shots.splice(i, 1);
+  // ovation : plan large de la salle debout, zoom sur la table des pasteurs, Annabelle qui sourit
+  for (let i = shots.length - 1; i >= 0; i--) if (shots[i].t0 > A1 && shots[i].t0 < N2 - 0.4) shots.splice(i, 1);
+  shots.push({ t0: A1 + 0.15, type: "stageBack", o: {} }, { t0: A1 + 2.6, type: "pastorsZ", o: {} }, { t0: A1 + 4.7, type: "aCU", o: { d: 2.9, push: 0.3 } });
+  for (let i = shots.length - 1; i >= 0; i--) if (shots[i].t0 >= N2 - 0.4 && shots[i].type !== "aerial" && shots[i].type !== "bannerEnd") shots.splice(i, 1);
   shots.sort((a, b) => a.t0 - b.t0);
   // l'interprète revient régulièrement à l'image (au moins toutes les ~18 s), jamais en gros plan
   { const IT = [["interp", {}], ["overI", {}], ["two", {}], ["overA", {}], ["interp", { sx: 0.6 }]], ISH = new Set(["interp", "overI", "two", "overA"]); let last = A0, k = 0;
@@ -223,10 +229,10 @@ window.startFilm = function (W) {
   const laughT = (t) => Math.max(pulse(t, C.sorciere + 0.6, C.sorciereE + 1.0, 0.4, 1.2), pulse(t, C.charabia + 0.2, C.charabiaE + 0.8, 0.4, 1.0), 0.6 * pulse(t, C.facile + 0.3, C.facile + 2.2, 0.3, 0.8));
   const moved = (t) => Math.max(pulse(t, C.avorter, C.utilise + 3, 1.0, 2), pulse(t, C.honore, C.onPardonne + 6, 1, 2), pulse(t, C.amen - 1, A1 + 3, 0.6, 2) * 0.7);
   const amenT = (t) => Math.max(pulse(t, C.ps1 + 0.1, C.ps1 + 1.6, 0.3, 0.6), pulse(t, C.eph1 + 0.1, C.eph1 + 1.4, 0.3, 0.6), pulse(t, C.col1 + 0.1, C.col1 + 1.4, 0.3, 0.6), pulse(t, C.gal1 + 0.1, C.gal1 + 1.6, 0.3, 0.6), pulse(t, C.pardonne2 + 0.4, C.pardonne2 + 1.6, 0.3, 0.6), pulse(t, C.amen, A1 + 0.6, 0.3, 0.6));
-  const STAND0 = A1 + 0.3, STAND1 = N2 + 3.5;
+  const STAND0 = A1 + 0.1, STAND1 = N2 + 1.0, OVA = (t) => pulse(t, STAND0, STAND1 - 0.5, 0.5, 1.2);
   function crowdState(t) {
     return { appear: t, bow: Math.max(pulse(t, C.avorte, C.avorte + 5, 0.6, 1.5), 0.5 * pulse(t, C.hopital, C.fardeau + 1, 1, 1.5), 0.7 * pulse(t, C.avorter, C.raison + 5, 1, 2)),
-      laugh: laughT(t), amen: amenT(t), clap: pulse(t, STAND0 - 0.2, STAND1, 0.5, 1.2), stand: pulse(t, STAND0 + 0.2, STAND1, 0.9, 1.4),
+      laugh: laughT(t), amen: amenT(t), ovation: OVA(t), clap: pulse(t, STAND0 - 0.2, STAND1, 0.5, 1.2), stand: pulse(t, STAND0 + 0.2, STAND1, 0.9, 1.4),
       wipe: pulse(t, C.raison + 1, C.utilise + 3, 0.8, 1.2), nod: 0.5 + 0.5 * VERSE(t), closed: 0.7 * VERSE(t) + 0.3 * pulse(t, C.amen, A1, 0.3, 0.5) };
   }
   const seatedPose = (t, ph, o = {}) => ({ seated: 1, lean: -0.05 + (o.lean || 0), breath: 0.012 * Math.sin(t * 1.6 + ph), headX: 0.04 * Math.sin(t * 0.6 + ph) + (o.hx || 0), headY: 0.12 * Math.sin(t * 0.21 + ph) + (o.hy || 0), headZ: o.hz || 0,
@@ -266,7 +272,7 @@ window.startFilm = function (W) {
   const subW = $("#subw"), subWho = $("#subwho"), subs = $("#subs");
   let lastSub = -2;
   const flash = $("#flash"), FL0 = C.hopital + 0.35, FL1 = FL0 + 2.9;
-  const white = $("#white"), fin = $("#motfin"), LOGO0 = F.logo;
+  const white = $("#white"), fin = $("#motfin"), LOGO0 = F.logo, SIG = F.sig, sig = $("#sig"), blk = $("#black");
   const tag = $("#tag");
 
   function update(t) {
@@ -283,8 +289,10 @@ window.startFilm = function (W) {
       L: ga.L, R: ga.R, twist: look * 0.08 });
     // interprète : écoute, hoche la tête, petits gestes ; bouche fermée
     const I = W.I, g1 = 0.5 + 0.5 * Math.sin(t * 0.8);
+    const ov = OVA(t), icl = Math.sin(t * 12.5 + 1);
+    if (ov > 0.05) I.pose({ lean: 0.02, headX: -0.05, headY: -0.45, L: [lerp(0.95, 1.2, ov), -0.22 - 0.16 * icl * ov, 0.95], R: [lerp(0.95, 1.2, ov), -0.22 + 0.16 * icl * ov, 0.95], breath: 0.01 * Math.sin(t * 1.5) }); else
     I.pose({ lean: 0.05, headX: 0.05 + nodAt(t, 2), headY: -0.35 + 0.05 * Math.sin(t * 0.3), L: [0.95, 0.06, 0.9], R: [0.95 + 0.2 * g1 * (Math.sin(t * 0.23) > 0.6 ? 1 : 0), 0.15, 0.9], breath: 0.01 * Math.sin(t * 1.5) });
-    I.faceSet({ lid: Math.max(0.15, blink(t, 0.7)), smile: 0.12 + 0.35 * laughT(t), lx: -0.6, ly: 0.05, bi: 0.1 + 0.3 * moved(t), wet: 0.3 * moved(t), t });
+    I.faceSet({ lid: Math.max(0.15, blink(t, 0.7)), smile: 0.12 + 0.35 * laughT(t) + 0.5 * OVA(t), lx: -0.6, ly: 0.05, bi: 0.1 + 0.3 * moved(t), wet: 0.3 * moved(t), t });
     // pasteurs : installation (ouverture), écoute, « amen », émotion de Yannick
     const sit = smooth(1.2, 3.2, t), stand = pulse(t, STAND0 + 0.6, STAND1 - 0.4, 0.8, 1.2);
     [[W.Y, 0], [W.Em, 1], [W.Ma, 2]].forEach(([T, k]) => {
@@ -302,8 +310,8 @@ window.startFilm = function (W) {
       const wipe = k === 0 ? pulse(t, C.raison + 0.8, C.utilise + 4, 0.6, 1) : 0, amen = k === 2 ? cs.amen : k === 1 ? 0 : cs.amen * 0.5, clap = Math.max(cs.clap, k === 1 ? 0.6 * cs.laugh : 0);
       const cl = Math.sin(t * 13 + k);
       const p = seatedPose(t, ph, { hx: 0.4 * cs.bow + nodAt(t, ph) * cs.nod - 0.12 * cs.laugh * (0.5 + 0.5 * Math.sin(t * 7 + k)) + 0.1 * wipe, lean: 0.25 * cs.bow,
-        R: wipe > 0.1 ? [lerp(0.55, 1.45, wipe), -0.45 * wipe, lerp(0.9, 2.35, wipe)] : amen > 0.1 ? [lerp(0.55, 2.6, amen), 0.25, 0.2] : clap > 0.1 ? [1.1, -0.2 + 0.18 * cl, 1.0] : null,
-        L: clap > 0.1 && wipe < 0.1 ? [1.1, -0.2 - 0.18 * cl, 1.0] : null, lift: 0 });
+        R: cs.ovation > 0.1 ? [lerp(0.55, 2.6, cs.ovation), -0.1 + 0.14 * cl, 0.3] : wipe > 0.1 ? [lerp(0.55, 1.45, wipe), -0.45 * wipe, lerp(0.9, 2.35, wipe)] : amen > 0.1 ? [lerp(0.55, 2.6, amen), 0.25, 0.2] : clap > 0.1 ? [1.1, -0.2 + 0.18 * cl, 1.0] : null,
+        L: cs.ovation > 0.1 ? [lerp(0.55, 2.6, cs.ovation), -0.1 - 0.14 * cl, 0.3] : clap > 0.1 && wipe < 0.1 ? [1.1, -0.2 - 0.18 * cl, 1.0] : null, lift: 0 });
       p.seated = 1 - st; T.pose(p);
       T.faceSet({ lid: Math.max(cs.closed > 0.5 + k * 0.1 || cs.bow > 0.6 ? 0.92 : 0.1 + 0.3 * wipe, blink(t, ph)), lidLo: 0.35 * cs.laugh, bi: 0.2 + 0.7 * wipe + 0.3 * cs.bow, smile: 0.3 + 0.6 * cs.laugh - 0.4 * wipe + 0.3 * cs.clap,
         open: 0.25 * cs.laugh * (0.5 + 0.5 * Math.sin(t * 9 + k)), wet: 0.9 * wipe + 0.3 * moved(t), red: 0.6 * wipe, lx: 0.3 - 0.2 * k, ly: -0.25, blush: 0.2 + 0.4 * cs.laugh, t,
@@ -313,9 +321,9 @@ window.startFilm = function (W) {
     const c = camAt(t);
     W.C.top.visible = c.top !== false;
     const cold = COLD(t) * (1 - WARM(t)), warm = WARM(t);
-    const sp = Math.max(pulse(t, C.amen, A1 + 2.5, 0.4, 1.5), 0);
+    const sp = 0.6 * Math.max(pulse(t, C.amen, N2 - 0.8, 0.4, 1.5), 0);
     W.render(t, { cam: c, crowd: cs, cold, warm, blurX: c.blur[0], blurY: c.blur[1], sparks: sp, sparkAt: [-2.75, 2.2, -1.6],
-      logo: t >= LOGO0 ? { rot: lerp(-2.4, 0, ease(clamp((t - LOGO0) / 1.6))) + 0.15 * Math.sin((t - LOGO0) * 1.2), scale: lerp(0.4, 1, ease(clamp((t - LOGO0) / 1.2))), y: 0.55, sparks: clamp((t - LOGO0 - 0.6) / 0.6) } : null });
+      logo: t >= LOGO0 ? { rot: lerp(-2.4, 0, ease(clamp((t - LOGO0) / 1.6))) + 0.15 * Math.sin((t - LOGO0) * 1.2), scale: lerp(0.4, 1, ease(clamp((t - LOGO0) / 1.2))), y: lerp(0.55, 1.15, ease(clamp((t - SIG) / 0.9))), sparks: clamp((t - LOGO0 - 0.6) / 0.6) * (1 - 0.4 * clamp((t - SIG) / 0.6)) } : null });
     // cartes de versets : apparition flottante, mots lus en surbrillance
     VCARDS.forEach((cd) => {
       const o = pulse(t, cd.a - 0.4, cd.b + 0.9, 0.5, 0.6); cd.el.style.opacity = o.toFixed(3);
@@ -334,7 +342,9 @@ window.startFilm = function (W) {
     const fo = pulse(t, FL0, FL1, 0.25, 0.3); flash.style.opacity = fo.toFixed(3); if (fo > 0) flash.firstElementChild.style.transform = `scale(${(1.06 + 0.05 * clamp((t - FL0) / 3)).toFixed(4)})`;
     // fin : fondu blanc, logo 3D, phrase finale
     white.style.opacity = pulse(t, LOGO0 - 0.1, LOGO0 + 0.05, 0.5, 0.5).toFixed(3);
-    const fo2 = clamp((t - LOGO0 - 1.4) / 0.6); fin.style.opacity = fo2.toFixed(3); fin.style.transform = `translateX(-50%) translateY(${((1 - fo2) * 30).toFixed(1)}px)`;
+    const fo2 = clamp((t - LOGO0 - 1.4) / 0.6) * (1 - clamp((t - SIG) / 0.5)); fin.style.opacity = fo2.toFixed(3); fin.style.transform = `translateX(-50%) translateY(${((1 - fo2) * 30).toFixed(1)}px)`;
+    const so = clamp((t - SIG - 0.4) / 0.7); sig.style.opacity = so.toFixed(3); sig.style.transform = `translateX(-50%) scale(${(0.92 + 0.08 * ease(so)).toFixed(3)})`;
+    blk.style.opacity = clamp((t - (DUR - 0.5)) / 0.5).toFixed(3);
     tag.style.opacity = (pulse(t, 0.3, A0 - 1.2, 0.5, 0.6)).toFixed(3);
   }
   const proxy = { v: 0 };
