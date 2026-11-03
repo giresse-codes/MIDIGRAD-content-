@@ -9,17 +9,18 @@ window.startFilm = function (W) {
   const smooth = (a, b, x) => { const p = clamp((x - a) / (b - a)); return p * p * (3 - 2 * p); };
   const lerp = (a, b, p) => a + (b - a) * p;
   const L3 = (a, b, p) => a.map((x, i) => lerp(x, b[i], p));
-  const pulse = (t, a, b, fi = 0.6, fo = 0.9) => Math.min(smooth(a - fi, a, t), 1 - smooth(b, b + fo, t));
+  const pulse = (t, a, b, fi = 0.6, fo = 0.9) => !isFinite(a) || !isFinite(b) ? 0 : Math.min(smooth(a - fi, a, t), 1 - smooth(b, b + fo, t));
   const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/œ/g, "oe").replace(/[^a-z0-9]/g, "");
   const NW = WD.map((w) => norm(w[0]));
   // P("phrase", après) : début du premier mot de la phrase ; PE : fin du dernier mot
   function find(ph, after = 0) {
     const q = ph.split(/\s+/).map(norm).filter(Boolean);
     for (let i = 0; i < NW.length; i++) { if (WD[i][1] < after) continue; let ok = true; for (let j = 0; j < q.length; j++) if (NW[i + j] !== q[j]) { ok = false; break; } if (ok) return [i, i + q.length - 1]; }
-    throw new Error("phrase introuvable : " + ph);
+    return null;
   }
-  const P = (ph, after) => WD[find(ph, after)[0]][1], PE = (ph, after) => WD[find(ph, after)[1]][2];
-  const A0 = WD.find((w) => w[3] === "A")[1], A1 = [...WD].reverse().find((w) => w[3] === "A")[2], N2 = WD.find((w) => w[3] === "N2")[1];
+  const P = (ph, after) => { const r = find(ph, after); return r ? WD[r[0]][1] : NaN; }, PE = (ph, after) => { const r = find(ph, after); return r ? WD[r[1]][2] : NaN; };
+  const A0 = WD.find((w) => w[3] === "A")[1], A1 = [...WD].reverse().find((w) => w[3] === "A")[2], E0 = WD.find((w) => w[3] === "E")[1], E1 = [...WD].reverse().find((w) => w[3] === "E")[2], N2 = E0;
+  const WA = F.walkA, WE = F.walkE, EARR = WE[1];
   const END = WD[WD.length - 1][2];
   function track(base) {
     const keys = [];
@@ -35,25 +36,26 @@ window.startFilm = function (W) {
   }
   // ── repères du texte ──
   const C = {
-    bonjour: P("Bien-aimés, bonjour"), mere: P("Mère d'enfants"), jeunesse: P("Dans ma jeunesse"), avorte: P("plusieurs fois avorté"), avorteE: PE("plusieurs fois avorté"),
-    mariage: P("Le mariage était bien"), probleme: P("ensuite est venu le problème"), commerage: P("on a commencé le commérage"), maudire: P("toujours en train de me maudire"),
-    rancoeur: P("plutôt porté rancœur"), pasteur: P("venir voir le pasteur Yannick"), surprise: P("Mais à ma grande surprise"), pardonner1: P("il m'a demandé de pardonner"),
-    nature: P("Il m'a parlé de la nature"), psRef: P("La Bible, dans le Psaume"), ps0: P("L'insensé dit"), ps1: PE("pas même un seul."),
-    importante1: P("Là, le pasteur Yannick"), insulte: P("Je voyais cela comme une insulte"), sorciere: P("moi, pareille à cette sorcière"), sorciereE: PE("Non, pasteur !"),
-    romRef: P("Et il m'a aussi rappelé, dans Romains"), rom0: P("Ô homme, qui que tu sois"), rom1: PE("échapperas au jugement de Dieu ?"),
-    pasAvecLui: P("Quand il me parlait ainsi"), charabia: P("tout ce charabia"), charabiaE: PE("je ne l'ai pas écouté."), maladie: P("ma maladie cardiaque"),
-    hopital: P("c'est étant à l'hôpital"), fardeau: PE("comme un fardeau."), juge: P("J'ai jugé ma belle-mère"), rappele: P("Je me suis rappelé ma jeunesse"),
-    avorter: P("avorter comme moi"), avorterE: PE("avorter comme moi."), tuais: P("Quand elle me disait que je tuais"), pourtant: P("Et pourtant, bien-aimés"),
+    bonjour: P("Bien-aimés, bonjour"), mere: P("Mère d'enfant"), jeunesse: P("Dans ma jeunesse"), avorte: P("plusieurs fois avorté"), avorteE: PE("plusieurs fois avorté"),
+    probleme: P("ensuite est venu le problème"), maudire: P("toujours en train de me maudire"), rancoeur: P("j'ai porté rancœur"), pasteur: P("venir voir le pasteur Yannick"),
+    surprise: P("Mais à ma grande surprise"), pardonner1: P("il m'a demandé de pardonner"), nature: P("Il m'a parlé de la nature"), psRef: P("Psaume 14 verset 3"),
+    ps0: P("Tous sont égarés"), ps1: PE("pas même un seul."), importante1: P("Il m'a dit nous sommes"), insulte: P("Je voyais cela comme une insulte"),
+    sorciere: P("moi, pareille à cette sorcière"), sorciereE: PE("Non, pasteur"), romRef: P("il m'a aussi rappelé, Romains"), rom0: P("Oh homme, qui que tu sois"),
+    rom1: PE("tu fais les mêmes choses."), pasAvecLui: P("je n'étais même pas avec lui"), charabia: P("tout ce charabia"), charabiaE: PE("je ne l'ai pas écouté."),
+    maladie: P("ma maladie cardiaque"), hopital: P("c'est à l'hôpital"), fardeau: PE("comme un fardeau."), juge: P("J'ai jugé ma belle-mère"), rappele: P("Honnêtement"),
+    avorter: P("avorter comme moi"), avorterE: PE("avorter comme moi."), tuais: P("Quand elle me disait que je tuais"), pourtant: P("je la voyais comme une sorcière"),
     raison: P("Elle avait raison"), fait: PE("je l'ai fait."), utilise: P("Dieu a utilisé ma belle-mère"), fouet: P("les regards focalisés sur le fouet"),
-    pardonCoeur: P("si tu avais réellement reçu le pardon"), probleme2: PE("n'aurait pas été un problème."),
-    ephRef: P("Éphésiens, chapitre quatre"), eph0: P("Soyez bons les uns"), eph1: PE("pardonné en Christ."), amour: P("l'amour ne tolère pas"),
-    colRef: P("Colossiens, chapitre trois"), col0: P("Supportez-vous les uns"), col1: PE("pardonnez-vous aussi."), pourquoi: P("Pourquoi s'aimer"),
-    jesus: P("qu'est-ce que Jésus aurait fait"), pardonne2: P("Il aurait pardonné."), recuChrist: P("Et si tu as reçu Christ"),
-    galRef: P("Galates, chapitre deux"), gal0: P("J'ai été crucifié"), gal1: PE("c'est Christ qui vit en moi."), honore: P("J'honore encore Christ"),
-    onPardonne: P("on pardonne parce qu'on a été pardonné"), eau: P("dans l'eau, le visage"), offense: P("Je ne suis pas différente de celui"),
-    compris: P("Une fois que j'ai compris"), reconnaissante: P("Je suis reconnaissante"), priere: P("ma prière aujourd'hui"), facile: P("ce n'est pas facile"),
-    amen: P("Amen, amen."), amenE: A1,
-    n2: N2, premiere: P("Première chose"), deuxieme: P("Et la deuxième chose"), repentir: P("c'est se repentir", N2), outil: P("À regarder Dieu", N2), fin: END,
+    pardonCoeur: P("si tu avais réellement compris"), probleme2: PE("n'aurait pas été un problème."), ephRef: P("Éphésiens, chapitre 4"), eph0: P("Soyez bons les uns"),
+    eph1: PE("pardonné en Christ."), amour: NaN, colRef: P("Colossiens, chapitre 3"), col0: P("De même que Christ"), col1: PE("pardonnez-vous aussi."), pourquoi: NaN,
+    jesus: P("qu'est-ce que Jésus aurait fait"), pardonne2: P("Il aurait pardonné."), recuChrist: NaN, galRef: P("Galates, chapitre 2"), gal0: P("J'ai été crucifié"),
+    gal1: PE("c'est Christ qui vit en moi."), honore: P("J'honore encore Christ"), onPardonne: P("on pardonne parce qu'on a été pardonné"), eau: P("dans l'eau, le visage"),
+    offense: P("Je ne suis pas différente de celui"), compris: P("Une fois que j'ai appris"), reconnaissante: P("Je suis reconnaissante"), priere: P("ma prière aujourd'hui"),
+    facile: P("ce n'est pas facile"), amen: P("Amen, amen."), amenE: A1,
+    // pasteur Emmanuel
+    e0: E0, ePrem: P("Première chose", E0), eDiff: P("Je ne suis pas différent d'elle", E0), eDeux: P("Et la deuxième chose", E0), ePard: P("celui qui a été pardonné", E0),
+    eCrois: P("si tu crois", E0), eChrist: P("Et qu'est-ce que Christ aurait fait", E0), eApotre: P("Comme notre père", E0), eTrois: P("trois points", E0),
+    eV1: P("voir Dieu derrière son frère", E0), eV2: P("ton fondement est faux", E0), eV3: P("vivre selon le cœur de l'église", E0), ePeche: P("Car le péché après le salut", E0),
+    eOff: P("tu vas plutôt voir l'offense", E0), eTout: P("Je pense que c'est tout", E0), eAide: P("Que le Seigneur nous aide", E0), eAmen: P("Amen.", E0), fin: END,
   };
   window.__C = C;
   const COLD = (t) => Math.max(pulse(t, C.jeunesse - 0.2, C.psRef - 0.6, 1.2, 1.5) * 0.9, pulse(t, C.maladie, C.utilise + 4, 1.2, 2.0), 0.5 * pulse(t, C.insulte, C.sorciere - 0.5, 1, 1));
@@ -61,7 +63,7 @@ window.startFilm = function (W) {
   const VERSE = (t) => Math.max(pulse(t, C.ps0, C.ps1), pulse(t, C.rom0, C.rom1), pulse(t, C.eph0, C.eph1), pulse(t, C.col0, C.col1), pulse(t, C.gal0, C.gal1));
 
   // ── ANNABELLE : expressions (micro-expressions 0,3-0,5 s) ──
-  const E0 = { lid: 0.08, lidLo: 0, bi: 0, bo: 0, bd: 0, ba: 0, lx: 0, ly: 0, smile: 0.15, open: 0, wide: 0, pinch: 0, trem: 0, wet: 0, red: 0, blush: 0.1, hx: 0, hy: 0, hz: 0, lock: 0 };
+  const EB = { lid: 0.08, lidLo: 0, bi: 0, bo: 0, bd: 0, ba: 0, lx: 0, ly: 0, smile: 0.15, open: 0, wide: 0, pinch: 0, trem: 0, wet: 0, red: 0, blush: 0.1, hx: 0, hy: 0, hz: 0, lock: 0 };
   const EX = {
     neutre: {}, joie: { smile: 0.9, lidLo: 0.38, bi: 0.25, bo: 0.3, blush: 0.4, hx: -0.06 }, chaleur: { smile: 0.55, lidLo: 0.22, bi: 0.15, blush: 0.25 },
     coeur: { smile: 0.65, lidLo: 0.32, bi: 0.35, blush: 0.4, hz: 0.09, hx: -0.03 },
@@ -79,8 +81,8 @@ window.startFilm = function (W) {
     soulage: { smile: 0.75, lidLo: 0.32, wet: 0.95, red: 0.55, bi: 0.55, blush: 0.45 }, paix: { smile: 0.55, lidLo: 0.25, lid: 0.12, wet: 0.45, red: 0.25, blush: 0.3 },
     ferme: { lid: 1, smile: 0.4, wet: 0.45, red: 0.25, lock: 1 }, rire: { smile: 0.8, lidLo: 0.45, open: 0.2, blush: 0.6, hx: -0.06, hz: 0.06 },
   };
-  const FA = track(E0), ex = (t, k, d = 0.4) => FA.key(t, d, { ...E0, ...EX[k] });
-  ex(0, "chaleur"); ex(C.bonjour - 0.3, "joie"); ex(C.bonjour + 2.6, "chaleur"); ex(P("Aujourd'hui, je suis une femme") - 0.2, "joie"); ex(C.mere - 0.3, "coeur"); ex(C.mere + 2.2, "joie");
+  const FA = track(EB), ex = (t, k, d = 0.4) => { if (isFinite(t)) FA.key(t, d, { ...EB, ...EX[k] }); };
+  ex(0, "chaleur"); ex(C.bonjour - 0.3, "joie"); ex(C.bonjour + 2.6, "chaleur"); ex(P("Je suis une femme aimée") - 0.2, "joie"); ex(C.mere - 0.3, "coeur"); ex(C.mere + 2.2, "joie");
   ex(C.jeunesse - 0.4, "serieux", 0.5); ex(P("juvénile") - 0.1, "honte"); ex(P("exposée à la débauche"), "honte"); ex(C.avorte - 0.2, "honte", 0.3); ex(C.avorteE + 0.6, "serieux");
   ex(P("j'ai rencontré mon mari") - 0.2, "chaleur"); ex(C.mariage, "chaleur"); ex(C.probleme - 0.1, "triste"); ex(C.commerage - 0.2, "amer"); ex(C.maudire, "amer", 0.3);
   ex(P("et me demandait de laisser") - 0.1, "triste"); ex(C.rancoeur - 0.3, "amer"); ex(P("Je n'en pouvais plus") - 0.2, "triste"); ex(C.pasteur, "serieux");
@@ -96,10 +98,11 @@ window.startFilm = function (W) {
   // larmes : { côté, début, durée de descente, début du séchage }
   const TE = [{ s: -1, t0: A1 - 0.4, d: 1.4, p0: 0, p1: 0.45, off: A1 + 0.9 }, { s: 1, t0: C.avorterE - 0.2, d: 3.52, p0: 0, p1: 0.35, off: C.raison - 0.2 }, { s: 1, t0: C.raison - 0.1, d: 7.2, p0: 0.35, p1: 1, off: C.pardonCoeur }, { s: -1, t0: C.fait - 0.2, d: 6.72, p0: 0, p1: 0.95, off: C.pardonCoeur + 2 },
     { s: -1, t0: C.onPardonne + 0.2, d: 6.08, p0: 0, p1: 0.9, off: C.amen - 1 }, { s: 1, t0: C.compris, d: 6.72, p0: 0, p1: 0.8, off: C.amen - 0.5 }];
+  for (let i = TE.length - 1; i >= 0; i--) if (!isFinite(TE[i].t0) || !isFinite(TE[i].off)) TE.splice(i, 1);
   const tears = (t) => TE.map((e) => ({ s: e.s, p: lerp(e.p0, e.p1, ease(clamp((t - e.t0) / e.d))), a: clamp((t - e.t0) / 0.3) * (1 - clamp((t - e.off) / 3)) * (t >= e.t0 ? 1 : 0) }));
   // gestes (bras gauche, bras droit) : [avant, écart, coude]
   const HANDS = { L: [0.95, 0.06, 0.9], R: [0.95, 0.06, 0.9] };
-  const GA = track({ L: HANDS.L, R: HANDS.R, lean: 0.04, tw: 0 }), g = (t, v, d = 0.5) => GA.key(t, d, v);
+  const GA = track({ L: HANDS.L, R: HANDS.R, lean: 0.04, tw: 0 }), g = (t, v, d = 0.5) => { if (isFinite(t)) GA.key(t, d, v); };
   g(C.bonjour - 0.3, { L: [0.9, 0.55, 0.5], R: [0.9, 0.55, 0.5] }); g(C.bonjour + 1.4, HANDS);
   g(C.mere - 0.3, { R: [0.75, -0.55, 2.1], L: HANDS.L }); g(C.mere + 2.3, HANDS);
   g(C.avorte - 0.2, { L: HANDS.L, R: HANDS.R, lean: 0.1 }); g(C.mariage, { lean: 0.04 });
@@ -110,12 +113,35 @@ window.startFilm = function (W) {
   g(C.amour, { L: [0.9, 0.5, 0.6], R: [0.9, 0.5, 0.6] }); g(C.amour + 2.5, HANDS);
   g(C.honore, { R: [0.75, -0.55, 2.1], L: HANDS.L }); g(C.honore + 3.5, HANDS);
   g(C.amen - 0.3, { R: [2.5, 0.25, 0.35], L: [0.75, -0.55, 2.1] }, 0.5); g(A1 + 0.4, { R: [1.35, -0.45, 2.35], L: [0.75, -0.55, 2.1] }, 0.5); g(A1 + 2.6, { L: [0.9, 0.55, 0.5], R: [0.9, 0.55, 0.5] }, 0.8);
+  // ── PASTEUR EMMANUEL : posé ; grave sur « Je ne suis pas différent d'elle » ; chaleureux sur « celui qui a été pardonné » ;
+  //    sourire et petit rire sur « Que le Seigneur nous aide » ; paisible sur « Amen »
+  const EXE = { pose: { smile: 0.18, bi: 0.1, lid: 0.12 }, grave: { smile: -0.15, bd: 0.45, pinch: 0.3, bi: 0.2, lid: 0.22, hx: 0.06 }, chaud: { smile: 0.6, lidLo: 0.25, bi: 0.25, blush: 0.2 },
+    rire: { smile: 0.85, lidLo: 0.4, open: 0.22, blush: 0.35, hx: -0.06, hz: 0.05 }, paix: { smile: 0.45, lid: 0.55, lidLo: 0.2, hx: 0.08 }, appuie: { bd: 0.25, bi: 0.15, smile: 0.05, hx: -0.03 } };
+  const FE = track({ ...EB, ...EXE.pose }), exE = (t, k, d = 0.45) => { if (isFinite(t)) FE.key(t, d, { ...EB, ...EXE[k] }); };
+  exE(C.ePrem, "appuie"); exE(C.eDiff - 0.2, "grave"); exE(C.eDeux - 0.2, "pose"); exE(C.ePard - 0.2, "chaud"); exE(C.eChrist, "chaud"); exE(C.eApotre, "pose");
+  exE(C.eTrois, "appuie"); exE(C.eV1, "chaud"); exE(C.eV2, "grave"); exE(C.eV3, "chaud"); exE(C.ePeche, "appuie"); exE(C.eOff, "grave"); exE(C.eTout, "chaud");
+  exE(C.eAide - 0.2, "rire", 0.35); exE(C.eAide + 2.4, "chaud"); exE(C.eAmen - 0.3, "paix", 0.5);
+  const GEm = track({ L: HANDS.L, R: HANDS.R }), gE = (t, v, d = 0.5) => { if (isFinite(t)) GEm.key(t, d, v); };
+  const OPEN = { L: [0.95, 0.55, 0.55], R: [0.95, 0.55, 0.55] }, CHEST = { R: [0.75, -0.55, 2.1], L: HANDS.L }, ONE = { R: [1.6, 0.15, 0.6], L: HANDS.L };
+  gE(C.ePrem, ONE); gE(C.ePrem + 2.2, HANDS); gE(C.eDiff, CHEST); gE(C.eDiff + 3.5, HANDS); gE(C.ePard, OPEN); gE(C.ePard + 3, HANDS); gE(C.eTrois, ONE); gE(C.eTrois + 2.5, HANDS);
+  gE(C.eV1, OPEN); gE(C.eV1 + 2.5, HANDS); gE(C.eV3, CHEST); gE(C.eV3 + 3, HANDS); gE(C.eAide, OPEN); gE(C.eAide + 2.5, HANDS); gE(C.eAmen - 0.3, { R: [2.3, 0.25, 0.4], L: HANDS.L }); gE(C.eAmen + 1.2, HANDS);
+  // déplacements : Annabelle regagne sa place (siège 3, 1er rang), Emmanuel monte au pupitre
+  const SEAT_A = 3; W.skip.add(SEAT_A); const sA = W.C.seatsList[SEAT_A];
+  const PATH_A = [[-2.75, 0.45, -1.95], [-3.3, 0.45, -0.25], [-3.3, 0, 0.5], [sA[0], 0, 1.9], [sA[0], 0, sA[1] - 0.05]];
+  const emSeat = W.Em.root.position.toArray(), emRy = W.Em.root.rotation.y;
+  const PATH_E = [emSeat, [5.2, 0, 0.9], [3.5, 0, 0.5], [3.5, 0.45, -0.25], [0.6, 0.45, -1.1], [-2.75, 0.45, -1.95]];
+  function along(path, p) { const seg = path.length - 1; const L = []; let tot = 0; for (let k = 0; k < seg; k++) { const l = dist0(path[k], path[k + 1]); L.push(l); tot += l; }
+    let d = clamp(p) * tot, k = 0; while (k < seg - 1 && d > L[k]) { d -= L[k]; k++; } const u = clamp(d / L[k]), a = path[k], b = path[k + 1], pos = L3(a, b, u);
+    if (Math.abs(b[1] - a[1]) > 0.1) pos[1] = lerp(a[1], b[1], smooth(0.25, 0.75, u)); return { pos, ry: Math.atan2(b[0] - a[0], b[2] - a[2]) }; }
+  function dist0(a, b) { return Math.hypot(a[0] - b[0], a[2] - b[2]) + Math.abs(a[1] - b[1]); }
+  function walkPose(T, t, ph0 = 0) { const ph = t * 7.5 + ph0; T.pose({ lean: 0.03, L: [0.35 * Math.sin(ph), 0.1, 0.2], R: [-0.35 * Math.sin(ph), 0.1, 0.2], headX: 0.05 });
+    T.legs[0].L.rotation.x = 0.45 * Math.sin(ph); T.legs[1].L.rotation.x = -0.45 * Math.sin(ph); T.legs[0].K.rotation.x = 0.3 * Math.max(0, -Math.sin(ph)); T.legs[1].K.rotation.x = 0.3 * Math.max(0, Math.sin(ph)); T.hips.position.y = 0.74 + 0.02 * Math.abs(Math.cos(ph)); }
   const blinkT = []; { let b = 1.3, s = 9; while (b < DUR) { blinkT.push(b); s = (s * 16807) % 2147483647; b += 2.6 + (s / 2147483647) * 2.6; } }
   const blink = (t, ofs = 0) => { let v = 0; for (const b of blinkT) { const d = Math.abs(t + ofs - b); if (d < 0.1) v = Math.max(v, 1 - d / 0.1); if (b > t + ofs + 1) break; } return v; };
   const nz = (t, f, s) => Math.sin(t * f + s) * 0.6 + Math.sin(t * f * 2.31 + s * 1.7) * 0.4;
   const lev = (t) => { const i = Math.floor(t * FPS); return i >= 0 && i < F.lev.length ? +F.lev[i] / 9 : 0; };
   const lvw = (t) => { const i = Math.floor(t * FPS); return F.voc && i >= 0 && i < F.voc.length ? (F.voc[i] === "i" ? 1 : F.voc[i] === "o" ? -0.6 : 0) : 0; };
-  const speaking = (t) => t >= A0 - 0.1 && t <= A1 + 0.1;
+  const speaking = (t) => t >= A0 - 0.1 && t <= A1 + 0.1, speakingE = (t) => t >= E0 - 0.1 && t <= E1 + 0.1;
   const step = (t, s) => { const q = Math.floor(t / 1.3); return Math.sin(q * 12.9898 + s) * 0.5; };
 
   // ── OUVERTURE : arrivée d'Annabelle, pasteurs qui s'installent, fidèles qui entrent ──
@@ -133,16 +159,17 @@ window.startFilm = function (W) {
   const add = (...v) => v.reduce((a, b) => a.map((x, i) => x + b[i])), mul = (v, k) => v.map((x) => x * k);
   const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
   const side = (T) => { const f = fwd(T); return [f[2], 0, -f[0]]; };
+  let curT = 0; const SPK = () => (curT >= EARR - 0.3 ? W.Em : W.A);
   const SH = {
     aerial(u, o) { const a = (o.a ?? 0.6) + u * (o.da ?? 0.35), r = o.r ?? 14, c = [0, 0, 3.2]; const pos = [c[0] + Math.sin(a) * r, o.h ?? 13, c[2] + Math.cos(a) * r]; return { pos, tgt: [0, 0.4, 2.6], fov: o.fov ?? 40, focus: dist(pos, c), ap: 0.0015, top: false }; },
     follow(u, o) { const h = H(W.A); const pos = add(h, [2.4 - 0.8 * u, 0.5 - 0.3 * u, 3.4 - 0.6 * u]); return { pos, tgt: add(h, [0, -0.25, 0]), fov: 38, focus: dist(pos, h) }; },
-    aCU(u, o) { const h = add(H(W.A), [0, -0.04, 0]), f = fwd(W.A), s = side(W.A), d = (o.d ?? 3.0) - (o.push ?? 0.45) * u, sx = (o.sx ?? 0) + (o.arc ?? 0.12) * (u - 0.5);
+    aCU(u, o) { const h = add(H(SPK()), [0, -0.04, 0]), f = fwd(SPK()), s = side(SPK()), d = (o.d ?? 3.0) - (o.push ?? 0.45) * u, sx = (o.sx ?? 0) + (o.arc ?? 0.12) * (u - 0.5);
       const pos = add(h, mul(f, d * Math.cos(sx)), mul(s, d * Math.sin(sx)), [0, o.dy ?? -0.06, 0]); return { pos, tgt: add(h, [0, o.ty ?? 0, 0]), fov: o.fov ?? 24, focus: dist(pos, h), ap: 0.008, maxblur: 0.012 }; },
-    aMS(u, o) { const h = H(W.A), f = fwd(W.A), s = side(W.A), d = 3.4 - 0.45 * u, sx = o.sx ?? 0.45;
+    aMS(u, o) { const h = H(SPK()), f = fwd(SPK()), s = side(SPK()), d = 3.4 - 0.45 * u, sx = o.sx ?? 0.45;
       const pos = add(h, mul(f, d * Math.cos(sx)), mul(s, d * Math.sin(sx)), [0, -0.25, 0]); return { pos, tgt: add(h, [0, -0.3, 0]), fov: 30, focus: dist(pos, h), ap: 0.005 }; },
-    aOTS(u, o) { const h = H(W.A), pos = [-0.9 + (o.x ?? 0) + 0.35 * u, 1.35, 3.6 - 0.5 * u]; const fg = 1.1;
+    aOTS(u, o) { const h = H(SPK()), pos = [-0.9 + (o.x ?? 0) + 0.35 * u, 1.35, 3.6 - 0.5 * u]; const fg = 1.1;
       return { pos, tgt: add(h, [0, -0.08, 0]), fov: 24, focus: lerp(fg, dist(pos, h), smooth(0.08, 0.38, u)), ap: 0.01, maxblur: 0.014 }; },
-    side(u, o) { const h = H(W.A), f = fwd(W.A), s = side(W.A), sg = o.sg ?? 1; const pos = add(h, mul(s, 3.1 * sg), mul(f, 1.5 + 0.4 * u), [0, -0.12, 0]); return { pos, tgt: add(h, mul(s, 0.3 * sg), [0, -0.05, 0]), fov: 26, focus: dist(pos, h), ap: 0.008 }; },
+    side(u, o) { const h = H(SPK()), f = fwd(SPK()), s = side(SPK()), sg = o.sg ?? 1; const pos = add(h, mul(s, 3.1 * sg), mul(f, 1.5 + 0.4 * u), [0, -0.12, 0]); return { pos, tgt: add(h, mul(s, 0.3 * sg), [0, -0.05, 0]), fov: 26, focus: dist(pos, h), ap: 0.008 }; },
     wide(u, o) { const x = (o.x ?? 0.3) + (o.dx ?? 0.9) * (u - 0.5); const pos = [x, 2.6 - 0.2 * u, 9.6 - 1.0 * u]; return { pos, tgt: [x * 0.3, 1.55, -2.4], fov: 44, focus: 10, ap: 0.002 }; },
     wideLow(u, o) { const pos = [1.3 + 0.8 * u, 0.85, 1.9 - 0.3 * u]; return { pos, tgt: [-0.4, 2.35, -2.7], fov: 56, focus: 4.2, ap: 0.003 }; },
     pastors(u, o) { const h = H(W.Y), f = fwd(W.Y); const pos = add(h, mul(f, 3.3 - 0.55 * u), [-0.6 + 0.4 * u, 0.15, 0]); return { pos, tgt: add(h, [0, -0.18, 0]), fov: 30, focus: dist(pos, h), ap: 0.006 }; },
@@ -151,10 +178,13 @@ window.startFilm = function (W) {
     hero(u, o) { const T = W.heroes[o.k ?? 0].T, h = H(T), f = fwd(T), s = side(T); const pos = add(h, mul(f, 2.6 - 0.4 * u), mul(s, o.sx ?? 0.55), [0, 0.04 + (o.dy ?? 0), 0]); return { pos, tgt: add(h, [0, o.ty ?? -0.08, 0]), fov: 26, focus: dist(pos, h), ap: 0.009, maxblur: 0.012 }; },
     interp(u, o) { const T = W.I, h = H(T), f = fwd(T), s = side(T); const pos = add(h, mul(f, 3.6 - 0.4 * u), mul(s, (o.sx ?? -0.8) + 0.5 * u), [0, -0.15, 0]); return { pos, tgt: add(h, [0, -0.3, 0]), fov: 32, focus: dist(pos, h), ap: 0.004 }; },
     two(u, o) { const pos = [-0.4 + 0.8 * u, 2.1, 8.3 - 0.6 * u]; return { pos, tgt: [0, 1.65, -1.9], fov: 52, focus: 9, ap: 0.002 }; },
-    overI(u, o) { const hi = H(W.I), ha = H(W.A); const pos = add(hi, [0.75 - 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(hi, ha, 0.8), fov: 30, focus: dist(pos, ha), ap: 0.006, maxblur: 0.01 }; },
-    overA(u, o) { const hi = H(W.I), ha = H(W.A); const pos = add(ha, [-0.75 + 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(ha, hi, 0.8), fov: 30, focus: dist(pos, hi), ap: 0.006, maxblur: 0.01 }; },
+    overI(u, o) { const hi = H(W.I), ha = H(SPK()); const pos = add(hi, [0.75 - 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(hi, ha, 0.8), fov: 30, focus: dist(pos, ha), ap: 0.006, maxblur: 0.01 }; },
+    overA(u, o) { const hi = H(W.I), ha = H(SPK()); const pos = add(ha, [-0.75 + 0.15 * u, 0.12, -1.1 + 0.1 * u]); return { pos, tgt: L3(ha, hi, 0.8), fov: 30, focus: dist(pos, hi), ap: 0.006, maxblur: 0.01 }; },
     pastorsZ(u, o) { const h = H(W.Y), f = fwd(W.Y); const d = lerp(5.6, 3.0, ease(u)); const pos = add(h, mul(f, d), [-0.5, 0.35, 0]); return { pos, tgt: add(h, [0, -0.3, 0]), fov: 34, focus: dist(pos, h), ap: 0.004 }; },
-    banner(u, o) { const e = ease(u); const pos = [lerp(0, -0.28, e), lerp(2.2, 2.25, e), lerp(9.0, 6.2, e)]; return { pos, tgt: [lerp(0, -0.28, e), lerp(2.2, 2.45, e), -5.3], fov: lerp(60, 47, e), focus: 12, ap: 0.002 }; },
+    banner(u, o) { const e = ease(u); const pos = [0, lerp(2.25, 2.35, e), lerp(-4.4, -2.9, e)]; return { pos, tgt: [0, lerp(2.7, 2.95, e), 12.8], fov: lerp(57, 55, e), focus: 16, ap: 0.002 }; },
+    stageView(u, o) { const h = H(SPK()); const pos = [h[0] - 0.9 + 0.5 * u, 2.35, h[2] - 1.5]; return { pos, tgt: [0.4 + 0.6 * u, 2.6, 12.8], fov: 50, focus: 15, ap: 0.002 }; },
+    walkA(u, o) { const h = H(W.A); const pos = add(h, [2.6 - 0.6 * u, 0.6, 2.4 + 0.8 * u]); return { pos, tgt: add(h, [0, -0.35, 0]), fov: 40, focus: dist(pos, h), ap: 0.004 }; },
+    walkE(u, o) { const h = H(W.Em); const pos = add(h, [-1.8 + 0.6 * u, 0.55, 3.0 - 0.4 * u]); return { pos, tgt: add(h, [0, -0.3, 0]), fov: 40, focus: dist(pos, h), ap: 0.004 }; },
     bannerEnd(u, o) { const pos = [0.3 - 0.6 * u, lerp(3.4, 3.9, u), lerp(10.5, 12.5, u)]; return { pos, tgt: [0, 2.5, -5.3], fov: 58, focus: 14, ap: 0.002 }; },
     stageBack(u, o) { const pos = [-3.6 + 1.2 * u, 2.2, -4.4]; const h = H(W.A); return { pos, tgt: [0.5 + 0.8 * u, 0.9, 6], fov: 46, focus: dist(pos, h) + 4, ap: 0.003 }; },
   };
@@ -178,46 +208,52 @@ window.startFilm = function (W) {
     [C.amen - 0.5, "aCU", { d: 2.56, push: 0.2 }], [A1 + 0.15, "wide", { x: 0, dx: 0.5 }], [A1 + 2.7, "pastorsZ", {}], [A1 + 4.9, "aCU", { d: 2.9, push: 0.3 }],
   ];
   forced.sort((a, b) => a[0] - b[0]);
-  const MODE = (t) => (t < C.jeunesse ? "joie" : t < C.psRef ? "conf" : VERSE(t) > 0.5 ? "vers" : t < C.onPardonne ? "mid" : "fin");
+  for (let i = forced.length - 1; i >= 0; i--) if (!isFinite(forced[i][0]) || forced[i][0] > A1 - 0.3) forced.splice(i, 1);
+  const MODE = (t) => (t > A1 ? "emm" : t < C.jeunesse ? "joie" : t < C.psRef ? "conf" : VERSE(t) > 0.5 ? "vers" : t < C.onPardonne ? "mid" : "fin");
   const CYC = {
     joie: [["two", {}], ["aCU", { sx: -0.3 }], ["wide", {}], ["aMS", { sx: 0.5 }], ["interp", {}], ["crowd", {}], ["pastors", {}], ["overI", {}], ["aOTS", {}], ["aCU", { sx: 0.3 }], ["hero", { k: 1 }], ["wideLow", {}]],
     conf: [["overI", {}], ["aCU", { sx: 0.25 }], ["aOTS", {}], ["pCU", { who: "Ma" }], ["aMS", { sx: -0.5 }], ["interp", { sx: 0.5 }], ["crowd", { x: 0.2, dx: -1 }], ["aCU", { sx: -0.3, d: 2.72 }], ["side", { sg: 1 }], ["pastors", {}]],
     vers: [["interp", {}], ["aCU", { d: 3.52 }], ["wideLow", {}], ["crowd", { x: -2, dx: 1.4 }], ["aMS", { sx: 0.4 }], ["aOTS", {}], ["hero", { k: 2 }]],
     mid: [["two", {}], ["interp", { sx: 0.6 }], ["aCU", { sx: -0.25 }], ["wide", {}], ["pCU", { who: "Y" }], ["aOTS", { x: 0.3 }], ["crowd", {}], ["aMS", { sx: 0.5 }], ["hero", { k: 1 }], ["aCU", { sx: 0.3 }], ["pastors", {}]],
+    emm: [["aCU", {}], ["crowd", { x: -1.6, dx: 1.2 }], ["aMS", { sx: 0.45 }], ["pastors", {}], ["interp", {}], ["aCU", { sx: -0.3 }], ["stageView", {}], ["hero", { k: 1 }], ["pCU", { who: "Y" }], ["aOTS", {}], ["two", {}], ["aCU", { sx: 0.3 }], ["hero", { k: 0 }], ["pCU", { who: "Ma" }]],
     fin: [["overA", {}], ["aCU", { sx: 0.25 }], ["crowd", { x: -1.8, dx: 1.4 }], ["aMS", { sx: -0.45 }], ["pCU", { who: "Y" }], ["aOTS", {}], ["hero", { k: 0 }]],
   };
   const shots = [{ t0: 0, type: "aerial", o: { a: 0.9, da: -0.4, r: 13, h: 12.5 } }, { t0: 2.4, type: "banner", o: {} }, { t0: 5.3, type: "follow", o: {} }];
-  { let cur = A0 - 0.35, fi = 0, cyc = 0, sd = 3; shots.push({ t0: cur, type: "aCU", o: { push: 0.4, d: 3.52 } }); cur += 3.6;
+  function plan(start, end, list, first) {
+    let cur = start, fi = 0, cyc = 0, sd = 3; shots.push({ t0: cur, type: first[0], o: first[1] }); cur += 3.6;
     const rnd = () => ((sd = (sd * 16807) % 2147483647) / 2147483647);
-    while (fi < forced.length && forced[fi][0] < cur) fi++;
-    while (cur < N2 - 0.4) {
-      const nf = fi < forced.length ? forced[fi][0] : 1e9;
+    while (fi < list.length && list[fi][0] < cur) fi++;
+    while (cur < end) {
+      const nf = fi < list.length ? list[fi][0] : 1e9;
       if (nf - cur < 6.2) {
         if (nf - cur >= 2.6) { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1], cyc: 1 }); }
-        shots.push({ t0: nf, type: forced[fi][1], o: forced[fi][2] }); cur = nf + (forced[fi][1] === "aerial" ? 9 : forced[fi][2].d && forced[fi][2].d < 1.2 ? 4.8 : 3.6); fi++;
-        while (fi < forced.length && forced[fi][0] < cur - 1.0) fi++;
-        if (fi < forced.length && forced[fi][0] < cur) cur = forced[fi][0];
+        shots.push({ t0: nf, type: list[fi][1], o: list[fi][2] }); cur = nf + (list[fi][2].d && list[fi][2].d < 1.2 ? 4.8 : 3.6); fi++;
+        while (fi < list.length && list[fi][0] < cur - 1.0) fi++;
+        if (fi < list.length && list[fi][0] < cur) cur = list[fi][0];
       } else { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1], cyc: 1 }); cur += 3.3 + rnd() * 1.4; }
     }
   }
-  // narration finale : la caméra s'élève et s'éloigne au-dessus de la salle (un angle toutes les ~5,5 s)
-  { const E2 = F.logo - 5.5, n = Math.round((E2 - N2) / 5.6); shots.push({ t0: E2, type: "bannerEnd", o: {} }); for (let k = 0; k < n; k++) { const t0 = N2 - 0.3 + k * (E2 - N2) / n, p = k / Math.max(1, n - 1);
-      shots.push({ t0, type: "aerial", o: { a: -0.9 + (k % 4) * 0.62 + k * 0.08, da: (k % 2 ? 0.22 : -0.22), r: 6.5 + 10.5 * p, h: 4.2 + 10 * p, fov: 46 - 8 * p } }); } }
-  // ovation : plan large de la salle debout, zoom sur la table des pasteurs, Annabelle qui sourit
-  for (let i = shots.length - 1; i >= 0; i--) if (shots[i].t0 > A1 && shots[i].t0 < N2 - 0.4) shots.splice(i, 1);
-  shots.push({ t0: A1 + 0.15, type: "stageBack", o: {} }, { t0: A1 + 2.6, type: "pastorsZ", o: {} }, { t0: A1 + 4.7, type: "aCU", o: { d: 2.9, push: 0.3 } });
-  for (let i = shots.length - 1; i >= 0; i--) if (shots[i].t0 >= N2 - 0.4 && shots[i].type !== "aerial" && shots[i].type !== "bannerEnd") shots.splice(i, 1);
+  plan(A0 - 0.35, A1 - 0.4, forced, ["aCU", { push: 0.4, d: 3.52 }]);
+  for (let i = shots.length - 1; i >= 0; i--) if (shots[i].t0 > A1 - 0.4) shots.splice(i, 1);
+  // ovation, puis Annabelle regagne sa place et le pasteur Emmanuel monte au pupitre
+  shots.push({ t0: A1 - 0.4, type: "aCU", o: { d: 2.6, push: 0.2 } }, { t0: A1 + 0.15, type: "stageBack", o: {} }, { t0: WA[0] + 0.3, type: "walkA", o: {} },
+    { t0: WE[0] + 0.5, type: "pastorsZ", o: {} }, { t0: WE[0] + 2.9, type: "walkE", o: {} }, { t0: EARR - 1.2, type: "aMS", o: { sx: 0.5 } });
+  const forcedE = [[C.eDiff - 0.2, "aCU", { d: 2.7, push: 0.4 }], [C.ePard - 0.2, "aCU", { sx: 0.3 }], [C.eApotre, "pastors", {}], [C.eTrois - 0.2, "stageView", {}],
+    [C.eV1 - 0.2, "aCU", { sx: -0.25 }], [C.eV2 - 0.2, "crowd", { x: -0.8, dx: 0.8 }], [C.eV3 - 0.2, "aCU", { d: 2.8 }], [C.eTout, "stageView", {}], [C.eAide - 0.3, "aCU", { d: 2.7, push: 0.3 }],
+    [C.eAide + 2.6, "pastorsZ", {}], [C.eAmen - 0.6, "aCU", { d: 2.6, push: 0.25 }]].filter((x) => isFinite(x[0])).sort((a, b) => a[0] - b[0]);
+  const nEm = shots.length; plan(E0 - 0.35, E1 - 0.3, forcedE, ["aCU", { d: 3.2, push: 0.4 }]);
+  for (let i = shots.length - 1; i >= nEm; i--) if (shots[i].t0 > E1 + 0.2) shots.splice(i, 1);
   shots.sort((a, b) => a.t0 - b.t0);
   // l'interprète revient régulièrement à l'image (au moins toutes les ~18 s), jamais en gros plan
   { const IT = [["interp", {}], ["overI", {}], ["two", {}], ["overA", {}], ["interp", { sx: 0.6 }]], ISH = new Set(["interp", "overI", "two", "overA"]); let last = A0, k = 0;
-    for (const sh of shots) { if (sh.t0 < A0 || sh.t0 > A1) continue; if (ISH.has(sh.type)) { last = sh.t0; continue; }
+    for (const sh of shots) { if (!((sh.t0 >= A0 && sh.t0 <= A1) || (sh.t0 >= E0 && sh.t0 <= E1))) continue; if (ISH.has(sh.type)) { last = sh.t0; continue; }
       if (sh.cyc && sh.t0 - last > 16) { const c = IT[k++ % IT.length]; sh.type = c[0]; sh.o = c[1]; last = sh.t0; } } }
   shots.forEach((s, i) => (s.t1 = i + 1 < shots.length ? shots[i + 1].t0 : DUR));
   for (let i = shots.length - 1; i > 0; i--) if (shots[i].t1 - shots[i].t0 < 0.8) { shots[i - 1].t1 = shots[i].t1; shots.splice(i, 1); }
   window.__shots = shots;
   const WH = 0.2;
   function camAt(t) {
-    let i = 0; while (i + 1 < shots.length && shots[i + 1].t0 <= t) i++;
+    curT = t; let i = 0; while (i + 1 < shots.length && shots[i + 1].t0 <= t) i++;
     const s = shots[i], u = clamp((t - s.t0) / (s.t1 - s.t0)), c = SH[s.type](u, s.o);
     c.yaw = 0; c.pitch = 0; let bx = 0, by = 0; const dir = i % 2 ? 1 : -1, vert = i % 5 === 3;
     if (i + 1 < shots.length && t > s.t1 - WH && t < LOGO0) { const p = Math.pow((t - (s.t1 - WH)) / WH, 2); if (vert) { c.pitch = 0.5 * p * dir; by = 0.045 * p * dir; } else { c.yaw = 0.55 * p * dir; bx = 0.05 * p * dir; } }
@@ -226,14 +262,14 @@ window.startFilm = function (W) {
   }
 
   // ── PERSONNAGES SECONDAIRES : pasteurs, interprète, fidèles ──
-  const laughT = (t) => Math.max(pulse(t, C.sorciere + 0.6, C.sorciereE + 1.0, 0.4, 1.2), pulse(t, C.charabia + 0.2, C.charabiaE + 0.8, 0.4, 1.0), 0.6 * pulse(t, C.facile + 0.3, C.facile + 2.2, 0.3, 0.8));
+  const laughT = (t) => Math.max(0.7 * pulse(t, C.eAide + 0.3, C.eAide + 2.4, 0.3, 0.8), pulse(t, C.sorciere + 0.6, C.sorciereE + 1.0, 0.4, 1.2), pulse(t, C.charabia + 0.2, C.charabiaE + 0.8, 0.4, 1.0), 0.6 * pulse(t, C.facile + 0.3, C.facile + 2.2, 0.3, 0.8));
   const moved = (t) => Math.max(pulse(t, C.avorter, C.utilise + 3, 1.0, 2), pulse(t, C.honore, C.onPardonne + 6, 1, 2), pulse(t, C.amen - 1, A1 + 3, 0.6, 2) * 0.7);
-  const amenT = (t) => Math.max(pulse(t, C.ps1 + 0.1, C.ps1 + 1.6, 0.3, 0.6), pulse(t, C.eph1 + 0.1, C.eph1 + 1.4, 0.3, 0.6), pulse(t, C.col1 + 0.1, C.col1 + 1.4, 0.3, 0.6), pulse(t, C.gal1 + 0.1, C.gal1 + 1.6, 0.3, 0.6), pulse(t, C.pardonne2 + 0.4, C.pardonne2 + 1.6, 0.3, 0.6), pulse(t, C.amen, A1 + 0.6, 0.3, 0.6));
-  const STAND0 = A1 + 0.1, STAND1 = N2 + 1.0, OVA = (t) => pulse(t, STAND0, STAND1 - 0.5, 0.5, 1.2);
+  const amenT = (t) => Math.max(pulse(t, C.eAmen, C.eAmen + 2.0, 0.3, 0.8), pulse(t, C.ps1 + 0.1, C.ps1 + 1.6, 0.3, 0.6), pulse(t, C.eph1 + 0.1, C.eph1 + 1.4, 0.3, 0.6), pulse(t, C.col1 + 0.1, C.col1 + 1.4, 0.3, 0.6), pulse(t, C.gal1 + 0.1, C.gal1 + 1.6, 0.3, 0.6), pulse(t, C.pardonne2 + 0.4, C.pardonne2 + 1.6, 0.3, 0.6), pulse(t, C.amen, A1 + 0.6, 0.3, 0.6));
+  const STAND0 = A1 + 0.1, STAND1 = A1 + 6.0, OVA = (t) => pulse(t, STAND0, STAND1 - 0.5, 0.5, 1.2);
   function crowdState(t) {
     return { appear: t, bow: Math.max(pulse(t, C.avorte, C.avorte + 5, 0.6, 1.5), 0.5 * pulse(t, C.hopital, C.fardeau + 1, 1, 1.5), 0.7 * pulse(t, C.avorter, C.raison + 5, 1, 2)),
       laugh: laughT(t), amen: amenT(t), ovation: OVA(t), clap: pulse(t, STAND0 - 0.2, STAND1, 0.5, 1.2), stand: pulse(t, STAND0 + 0.2, STAND1, 0.9, 1.4),
-      wipe: pulse(t, C.raison + 1, C.utilise + 3, 0.8, 1.2), nod: 0.5 + 0.5 * VERSE(t), closed: 0.7 * VERSE(t) + 0.3 * pulse(t, C.amen, A1, 0.3, 0.5) };
+      wipe: pulse(t, C.raison + 1, C.utilise + 3, 0.8, 1.2), nod: 0.5 + 0.5 * Math.max(VERSE(t), pulse(t, E0, E1, 1, 1) * 0.6), closed: 0.7 * VERSE(t) + 0.3 * pulse(t, C.amen, A1, 0.3, 0.5) };
   }
   const seatedPose = (t, ph, o = {}) => ({ seated: 1, lean: -0.05 + (o.lean || 0), breath: 0.012 * Math.sin(t * 1.6 + ph), headX: 0.04 * Math.sin(t * 0.6 + ph) + (o.hx || 0), headY: 0.12 * Math.sin(t * 0.21 + ph) + (o.hy || 0), headZ: o.hz || 0,
     L: o.L || [0.55, 0.05, 0.9], R: o.R || [0.55, 0.05, 0.9], lift: o.lift || 0 });
@@ -247,29 +283,26 @@ window.startFilm = function (W) {
 
   // ── DOM : cartes de versets, titres, sous-titres, flash-back ──
   const VCARDS = [
-    { ref: "PSAUME 14 : 1-3", a: C.ps0, b: C.ps1, hl: ["aucun qui fasse le bien", "Tous sont égarés", "pas même un seul"] },
-    { ref: "ROMAINS 2 : 1-3", a: C.rom0, b: C.rom1, hl: ["inexcusable", "tu te condamnes toi-même", "tu fais les mêmes choses"] },
+    { ref: "PSAUME 14 : 3", a: C.ps0, b: C.ps1, hl: ["Tous sont égarés", "aucun qui fasse le bien", "pas même un seul"] },
+    { ref: "ROMAINS 2 : 1", a: C.rom0, b: C.rom1, hl: ["inexcusable", "tu te condamnes toi-même", "tu fais les mêmes choses"] },
     { ref: "ÉPHÉSIENS 4 : 32", a: C.eph0, b: C.eph1, hl: ["Soyez bons", "vous pardonnant réciproquement", "comme Dieu vous a pardonné en Christ"] },
-    { ref: "COLOSSIENS 3 : 13", a: C.col0, b: C.col1, hl: ["Supportez-vous les uns les autres", "pardonnez-vous réciproquement", "De même que Christ vous a pardonné"] },
+    { ref: "COLOSSIENS 3 : 13", a: C.col0, b: C.col1, hl: ["De même que Christ vous a pardonné", "pardonnez-vous aussi"] },
     { ref: "GALATES 2 : 20", a: C.gal0, b: C.gal1, hl: ["crucifié avec Christ", "c'est Christ qui vit en moi"] },
   ];
   const cardsEl = $("#cards");
   VCARDS.forEach((c) => {
     const i0 = WD.findIndex((w) => w[1] >= c.a - 0.01), i1 = WD.findIndex((w) => w[2] >= c.b - 0.01);
     const ids = []; for (let i = i0; i <= i1; i++) ids.push(i);
-    const hl = new Set(); for (const h of c.hl) { const [a, b] = find(h, c.a - 0.05); for (let i = a; i <= b; i++) hl.add(i); }
+    const hl = new Set(); for (const h of c.hl) { const r = find(h, c.a - 0.05); if (r && WD[r[0]][1] <= c.b) for (let i = r[0]; i <= r[1]; i++) hl.add(i); }
     const el = document.createElement("div"); el.className = "vcard";
     el.innerHTML = `<div class="ref">${c.ref}</div><div class="tx">${ids.map((i) => `<span class="${hl.has(i) ? "k" : ""}">${WD[i][0]}</span>`).join(" ")}</div>`;
     cardsEl.appendChild(el); c.el = el; c.spans = [...el.querySelectorAll(".tx span")]; c.ids = ids;
   });
   const TITLES = [
-    { a: C.premiere, b: C.deuxieme - 0.3, html: "1. JE NE SUIS PAS<br>DIFFÉRENT D'ELLE" }, { a: C.deuxieme, b: C.repentir - 0.3, html: "2. CELUI QUI A ÉTÉ PARDONNÉ<br>PEUT PARDONNER" },
-    { a: C.repentir, b: C.outil - 0.3, html: "SE REPENTIR" }, { a: C.outil, b: WD.find((w) => w[3] === "N3")[1] - 0.4, html: "REGARDER DIEU,<br>ET NON L'OUTIL" },
-    { a: P("voir Dieu derrière son frère", WD.find((w) => w[3] === "N3")[1]), b: P("Deuxièmement", WD.find((w) => w[3] === "N3")[1]) - 0.3, html: "1. VOIR DIEU<br>DERRIÈRE SON FRÈRE" },
-    { a: P("ton fondement est faux", WD.find((w) => w[3] === "N3")[1]), b: P("Troisièmement", WD.find((w) => w[3] === "N3")[1]) - 0.3, html: "2. TON FONDEMENT<br>EST FAUX" },
-    { a: P("vivre selon le cœur de l'église", WD.find((w) => w[3] === "N3")[1]), b: P("vivre selon le cœur de l'église", WD.find((w) => w[3] === "N3")[1]) + 10, html: "3. VIVRE SELON<br>LE CŒUR DE L'ÉGLISE" },
-    { a: P("vivre selon le cœur de l'église", P("vivre selon le cœur de l'église", WD.find((w) => w[3] === "N3")[1]) + 5), b: END + 0.8, html: "3. VIVRE SELON<br>LE CŒUR DE L'ÉGLISE" },
-  ];
+    { a: C.eDiff, b: C.eDeux - 0.3, html: "1. JE NE SUIS PAS<br>DIFFÉRENT D'ELLE" }, { a: C.ePard, b: C.eChrist - 0.3, html: "2. CELUI QUI A ÉTÉ PARDONNÉ<br>PEUT PARDONNER" },
+    { a: C.eTrois, b: C.eV1 - 0.3, html: "3 POINTS POUR PRATIQUER<br>LE PARDON FRATERNEL" }, { a: C.eV1, b: C.eV2 - 0.3, html: "1. VOIR DIEU<br>DERRIÈRE SON FRÈRE" },
+    { a: C.eV2, b: C.eV3 - 0.3, html: "2. TON FONDEMENT<br>EST FAUX" }, { a: C.eV3, b: C.eV3 + 9, html: "3. VIVRE SELON<br>LE CŒUR DE L'ÉGLISE" },
+  ].filter((x) => isFinite(x.a) && isFinite(x.b));
   const titlesEl = $("#titles"); TITLES.forEach((x) => { const el = document.createElement("div"); el.className = "ttl"; el.innerHTML = x.html; titlesEl.appendChild(el); x.el = el; });
   // sous-titres : un mot à la fois (ponctuation seule rattachée au mot précédent)
   const SW = []; WD.forEach((w) => { const m = w[0].replace(/[«»"]/g, "").replace(/[,;:.…]+$/g, ""); if (!norm(m)) { if (SW.length && /[?!]/.test(w[0])) SW[SW.length - 1].m += " " + w[0].trim(); return; } SW.push({ m, a: w[1], b: w[2], who: w[3] }); });
@@ -281,13 +314,15 @@ window.startFilm = function (W) {
 
   function update(t) {
     // Annabelle
-    const wk = walkPos(t), A = W.A;
+    const A = W.A; let wk = walkPos(t), aSeat = false;
+    if (t >= WA[0]) { const p = clamp((t - WA[0]) / (WA[1] - WA[0])); if (p < 1) { const q = along(PATH_A, p); wk = { pos: q.pos, ry: q.ry, walking: true }; } else { wk = { pos: [sA[0], 0, sA[1] + 0.02], ry: Math.PI + sA[2], walking: false }; aSeat = true; } }
     A.root.position.set(...wk.pos); A.root.rotation.y = wk.ry;
     const fa = FA.at(t), ga = GA.at(t), spk = speaking(t), lv = spk ? lev(t) : 0;
     const look = (1 - fa.lock) * (0.32 * Math.sin(t * 0.19 + 1) + 0.1 * step(t, 1)), lookY = (1 - fa.lock) * 0.06 * step(t, 7);
     const lid = Math.max(fa.lid, fa.lid < 0.9 ? blink(t) : 0);
     A.faceSet({ ...fa, lx: clamp(fa.lx + look, -1, 1), ly: clamp(fa.ly + lookY, -1, 1), lid, open: clamp(fa.open + Math.pow(lv, 0.8) * 0.95 * (1 - 0.35 * fa.pinch), 0, 1), vw: lvw(t), tears: tears(t), t });
-    if (wk.walking) { const ph = t * 7.5; A.pose({ lean: 0.03, L: [0.35 * Math.sin(ph), 0.1, 0.2], R: [-0.35 * Math.sin(ph), 0.1, 0.2], headX: 0.05 });
+    if (aSeat) { A.pose(seatedPose(t, 3.1, { hx: 0.05 + nodAt(t, 3.1) * 0.8, hy: 0.15 * Math.sin(t * 0.2), L: [0.55, 0.05, 0.9], R: [0.55, 0.05, 0.9] })); }
+    else if (wk.walking) { const ph = t * 7.5; A.pose({ lean: 0.03, L: [0.35 * Math.sin(ph), 0.1, 0.2], R: [-0.35 * Math.sin(ph), 0.1, 0.2], headX: 0.05 });
       A.legs[0].L.rotation.x = 0.45 * Math.sin(ph); A.legs[1].L.rotation.x = -0.45 * Math.sin(ph); A.legs[0].K.rotation.x = 0.3 * Math.max(0, -Math.sin(ph)); A.legs[1].K.rotation.x = 0.3 * Math.max(0, Math.sin(ph)); A.hips.position.y = 0.74 + 0.02 * Math.abs(Math.cos(ph)); }
     else A.pose({ lean: ga.lean, breath: 0.012 * Math.sin(t * 1.7), headX: fa.hx + lv * 0.05 * Math.sin(t * 7) + 0.02 * nz(t, 0.7, 1), headY: fa.hy + look * 0.3 + 0.03 * nz(t, 0.5, 2), headZ: fa.hz + 0.02 * nz(t, 0.4, 3),
       L: ga.L, R: ga.R, twist: look * 0.08 });
@@ -300,12 +335,25 @@ window.startFilm = function (W) {
     // pasteurs : installation (ouverture), écoute, « amen », émotion de Yannick
     const sit = smooth(1.2, 3.2, t), stand = pulse(t, STAND0 + 0.6, STAND1 - 0.4, 0.8, 1.2);
     [[W.Y, 0], [W.Em, 1], [W.Ma, 2]].forEach(([T, k]) => {
+      if (k === 1 && t >= WE[0]) return;
       const ph = k * 1.7, am = amenT(t), seat = sit * (1 - stand);
       const p = seatedPose(t, ph, { hx: nodAt(t, ph, 1 + k * 0.2) + 0.15 * moved(t) * (k === 0 ? 1 : 0.3) - 0.08 * laughT(t), hy: -0.2 + (k === 2 ? 0.25 : 0), lean: 0.05 + 0.1 * moved(t) * (k === 0 ? 1 : 0),
         R: am > 0.2 && k !== 1 ? [lerp(0.55, 2.5, am), 0.2, 0.3] : k === 0 && moved(t) > 0.5 && t > C.honore ? [0.8, -0.5, 2.1] : stand > 0.2 ? [1.2, -0.25 + 0.2 * Math.sin(t * 13 + k), 0.9] : [0.75, 0.05, 1.0],
         L: stand > 0.2 ? [1.2, -0.25 + 0.2 * Math.sin(t * 13 + k + 0.5), 0.9] : [0.75, 0.05, 1.0] });
       p.seated = seat; T.pose(p); T.faceSet(pastorFace(t, ph, k));
     });
+    // pasteur Emmanuel : se lève, monte sur l'estrade, parle au pupitre d'Annabelle
+    if (t >= WE[0]) {
+      const E = W.Em, pw = clamp((t - WE[0] - 0.7) / (WE[1] - WE[0] - 0.7));
+      if (t < WE[0] + 0.7) { E.root.position.set(...emSeat); E.root.rotation.y = emRy; E.pose({ seated: 1 - smooth(WE[0], WE[0] + 0.7, t), lean: 0.05, L: [0.6, 0.05, 0.9], R: [0.6, 0.05, 0.9] }); E.faceSet({ lid: 0.12, smile: 0.35, bi: 0.15, lx: -0.3, t }); }
+      else if (pw < 1) { const q = along(PATH_E, pw); E.root.position.set(...q.pos); E.root.rotation.y = q.ry; walkPose(E, t, 1.3); E.faceSet({ lid: Math.max(0.12, blink(t, 1.1)), smile: 0.3, bi: 0.15, t }); }
+      else {
+        E.root.position.set(-2.75, 0.45, -1.95); E.root.rotation.y = 0.25;
+        const fe = FE.at(t), ge = GEm.at(t), lvE = speakingE(t) ? lev(t) : 0, lk = 0.3 * Math.sin(t * 0.17 + 2) + 0.1 * step(t, 4);
+        E.pose({ lean: 0.04, breath: 0.012 * Math.sin(t * 1.5), headX: fe.hx + lvE * 0.05 * Math.sin(t * 6.5) + 0.02 * nz(t, 0.6, 5), headY: fe.hy + lk * 0.3, headZ: fe.hz + 0.02 * nz(t, 0.4, 6), L: ge.L, R: ge.R, twist: lk * 0.08 });
+        E.faceSet({ ...fe, lx: clamp(fe.lx + lk, -1, 1), lid: Math.max(fe.lid, fe.lid < 0.9 ? blink(t, 0.45) : 0), open: clamp(fe.open + Math.pow(lvE, 0.8) * 0.9, 0, 1), vw: lvw(t), t });
+      }
+    }
     // fidèles détaillés (gros plans)
     const cs = crowdState(t);
     W.heroes.forEach((h, k) => {
@@ -325,8 +373,8 @@ window.startFilm = function (W) {
     const c = camAt(t);
     W.C.top.visible = c.top !== false;
     const cold = COLD(t) * (1 - WARM(t)), warm = WARM(t);
-    const sp = 0.6 * Math.max(pulse(t, C.amen, N2 - 0.8, 0.4, 1.5), 0);
-    W.render(t, { cam: c, crowd: cs, cold, warm, blurX: c.blur[0], blurY: c.blur[1], sparks: sp, sparkAt: [-2.75, 2.2, -1.6],
+    const sp = 0.6 * Math.max(pulse(t, C.amen, A1 + 5.5, 0.4, 1.5), 0.6 * pulse(t, C.eAmen, E1 + 1.2, 0.4, 0.8));
+    W.render(t, { cam: c, crowd: cs, cold, warm, blurX: c.blur[0], blurY: c.blur[1], sparks: sp, sparkAt: t > E0 ? [-2.75, 2.2, -1.2] : [-2.75, 2.2, -1.6],
       logo: t >= LOGO0 ? { rot: lerp(-2.4, 0, ease(clamp((t - LOGO0) / 1.6))) + 0.15 * Math.sin((t - LOGO0) * 1.2), scale: lerp(0.4, 1, ease(clamp((t - LOGO0) / 1.2))), y: lerp(0.55, 1.15, ease(clamp((t - SIG) / 0.9))), sparks: clamp((t - LOGO0 - 0.6) / 0.6) * (1 - 0.4 * clamp((t - SIG) / 0.6)) } : null });
     // cartes de versets : apparition flottante, mots lus en surbrillance
     VCARDS.forEach((cd) => {
@@ -339,7 +387,7 @@ window.startFilm = function (W) {
     // sous-titres
     let k = -1; for (let i = 0; i < SW.length; i++) { if (SW[i].a <= t) k = i; else break; }
     const show = k >= 0 && t <= SW[k].b + 0.35 && t < LOGO0;
-    if (show) { const w = SW[k]; if (k !== lastSub) { subW.textContent = w.m; subWho.textContent = w.who === "A" ? "ANNABELLE" : "NARRATEUR"; subWho.className = w.who === "A" ? "a" : "n"; lastSub = k; }
+    if (show) { const w = SW[k]; if (k !== lastSub) { subW.textContent = w.m; subWho.textContent = w.who === "A" ? "ANNABELLE" : w.who === "E" ? "PASTEUR EMMANUEL" : "NARRATEUR"; subWho.className = w.who === "A" ? "a" : w.who === "E" ? "e" : "n"; lastSub = k; }
       const p = clamp((t - w.a) / 0.13); subW.style.transform = `scale(${(0.85 + 0.15 * (1 + 2.6 * Math.pow(p - 1, 3) + 1.6 * Math.pow(p - 1, 2))).toFixed(3)})`; subs.style.opacity = "1"; }
     else subs.style.opacity = "0";
     // flash-back hôpital (≤ 3 s)

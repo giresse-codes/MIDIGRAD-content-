@@ -51,7 +51,10 @@ def tour(tid, qui, audio, segs, ref, fix):
     rw = " ".join(ref).split(); RN = [norm(x) for x in rw]; TN = [norm(x) for x in tw]
     out = list(tw)                                   # orthographe du texte de référence quand le mot correspond
     for m in difflib.SequenceMatcher(None, TN, RN, autojunk=False).get_matching_blocks():
-        for k in range(m.size): out[m.a + k] = rw[m.b + k]
+        for k in range(m.size):
+            r_ = rw[m.b + k]
+            if len(norm(r_)) >= 4: out[m.a + k] = r_                       # mots courts (a/à, la/l'a) : on garde la transcription
+            else: out[m.a + k] = re.sub(r"[,.;:!?…»]*$", "", tw[m.a + k]) + re.search(r"[,.;:!?…»]*$", r_).group(0)
     T = [None] * len(out)
     for blk in sorted(set(tb)):
         g = [j for j in range(len(out)) if tb[j] == blk]
@@ -62,8 +65,11 @@ def tour(tid, qui, audio, segs, ref, fix):
             "mots": [{"m": x, "t0": s, "t1": e} for x, (s, e) in zip(out, T)]}
 J = json.load(open(os.path.join(ROOT, "timings.json"), encoding="utf-8"))
 N1 = next(t for t in J["tours"] if t["id"] == "N1"); N1["fichier"] = "audio/voixoff-elevenlabs.mp3"
-A = tour("A", "ANNABELLE", "annabelle.mp3", "whisper_annabelle.json", REF["Annabelle"], [])
+# corrections vérifiées à l'écoute (fenêtres plus longues) : coupures de Whisper et mots mal entendus
+A = tour("A", "ANNABELLE", "annabelle.mp3", "whisper_annabelle.json", REF["Annabelle"],
+         [("J'ai jugé ma belle-mère pour...", "J'ai jugé ma belle-mère,"), ("J'ai condamné ma belle-mère pour", "J'ai condamné ma belle-mère,"), ("pour compris contre", "pour qu'on prie contre"),
+          ("Galat,", "Galates,"), ("Bien aimé", "Bien-aimés"), ("bien aimé", "bien-aimés"), ("Moi, pareil à", "Moi, pareille à"), ("crucifiée", "crucifié"), ("Romain chapitre", "Romains, chapitre"), ("J'la voyais", "Je la voyais")])
 E = tour("E", "PASTEUR EMMANUEL", "pasteur-emmanuel.mp3", "whisper_emmanuel.json", REF["Narrateur"][1:] + REF.get("Narrateur (suite)", []),
-         [("Paris-Stalla", "Paris Talla"), ("Paris Stalla", "Paris Talla"), ("Paris-Talla", "Paris Talla")])
+         [("Bien aimé", "Bien-aimés"), ("bien aimé", "bien-aimés"), ("Paris-Stalla", "Paris Talla"), ("Paris Stalla", "Paris Talla"), ("Paris-Talla", "Paris Talla")])
 json.dump({"methode": "Whisper medium int8 (sherpa-onnx, français) par segments VAD ; orthographe du texte de référence quand les mots correspondent ; secondes, relatives à chaque fichier audio",
            "tours": [N1, A, E]}, open(os.path.join(ROOT, "timings.json"), "w"), ensure_ascii=False, indent=1)

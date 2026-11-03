@@ -36,3 +36,4 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
   letter-spacing: .2em; color: #1b2a4a; white-space: nowrap; opacity: 0; box-shadow: 0 8px 22px rgba(0,0,0,.15); }
 #sig { position: absolute; left: 50%; top: 1240px; width: 1000px; text-align: center; font: 800 76px/1.2 "Montserrat"; color: #1b2a4a; opacity: 0; transform: translateX(-50%); }
 #black { position: absolute; inset: 0; background: #000; opacity: 0; }
+#subwho.e { color: #39414d; }
