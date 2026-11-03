@@ -35,7 +35,7 @@ export async function createWorld(canvas, logo, RW = 720, RH = 1280) {
   const A = makeToy({ skin: skinA, topTex: TEX.pagne, dress: mat("#ffffff", { map: TEX.pagne, roughness: 0.75 }), wrap: true, wrapTex: TEX.pagne, puff: true, shortSleeve: true, lip: "#5a2420", shoe: "#c8a23a" });
   const I = makeToy({ skin: "#5e3822", top: "#24262d", bottom: "#24262d", tie: "#3b3f4a", hair: "#140d08" });
   const Y = makeToy({ skin: "#6a4029", top: "#1b2a4a", bottom: "#1b2a4a", tie: "#7a8fb8", glasses: true, beard: "#8d8a86", hair: "#3d3833", brow: "#3a332d" });
-  const Em = makeToy({ skin: "#583520", topTex: TEX.wax("#2f6b4a", "#e8c35a", "#f4efe2"), bottomTex: TEX.wax("#2f6b4a", "#e8c35a", "#f4efe2"), hair: "#120c08", shortSleeve: false });
+  const Em = makeToy({ skin: "#583520", top: "#7b8088", bottom: "#6c7178", tie: "#2f3b57", hair: "#120c08", shortSleeve: false });   // pasteur Emmanuel : costume gris, chemise claire
   const Ma = makeToy({ skin: "#7d5134", top: "#f2f0ea", bottom: "#4a3a2c", tie: "#8a3b2c", hair: "#1a120b" });
   S.add(A.root, I.root, Y.root, Em.root, Ma.root);
   S.traverse(envOn);
