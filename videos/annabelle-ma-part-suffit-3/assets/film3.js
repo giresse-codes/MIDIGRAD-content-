@@ -171,7 +171,7 @@ window.startFilm = function (W) {
       return { pos, tgt: add(h, [0, -0.08, 0]), fov: 24, focus: lerp(fg, dist(pos, h), smooth(0.08, 0.38, u)), ap: 0.01, maxblur: 0.014 }; },
     side(u, o) { const h = H(SPK()), f = fwd(SPK()), s = side(SPK()), sg = o.sg ?? 1; const pos = add(h, mul(s, 3.1 * sg), mul(f, 1.5 + 0.4 * u), [0, -0.12, 0]); return { pos, tgt: add(h, mul(s, 0.3 * sg), [0, -0.05, 0]), fov: 26, focus: dist(pos, h), ap: 0.008 }; },
     wide(u, o) { const x = (o.x ?? 0.3) + (o.dx ?? 0.9) * (u - 0.5); const pos = [x, 2.6 - 0.2 * u, 9.6 - 1.0 * u]; return { pos, tgt: [x * 0.3, 1.55, -2.4], fov: 44, focus: 10, ap: 0.002 }; },
-    wideLow(u, o) { const pos = [1.3 + 0.8 * u, 0.85, 1.9 - 0.3 * u]; return { pos, tgt: [-0.4, 2.35, -2.7], fov: 56, focus: 4.2, ap: 0.003 }; },
+    wideLow(u, o) { const h = H(SPK()); const pos = [1.3 + 0.8 * u, 0.85, 1.9 - 0.3 * u]; return { pos, tgt: [h[0] + 0.25, h[1] + 0.05, h[2]], fov: 42, focus: dist(pos, h), ap: 0.003 }; },
     pastors(u, o) { const h = H(W.Y), f = fwd(W.Y); const pos = add(h, mul(f, 3.3 - 0.55 * u), [-0.6 + 0.4 * u, 0.15, 0]); return { pos, tgt: add(h, [0, -0.18, 0]), fov: 30, focus: dist(pos, h), ap: 0.006 }; },
     pCU(u, o) { const T = W[o.who || "Y"], h = H(T), f = fwd(T), s = side(T); const pos = add(h, mul(f, 2.8 - 0.35 * u), mul(s, (o.sx ?? 0.5)), [0, -0.05, 0]); return { pos, tgt: add(h, [0, -0.08, 0]), fov: 24, focus: dist(pos, h), ap: 0.009, maxblur: 0.012 }; },
     crowd(u, o) { const x0 = o.x ?? -2.2; const pos = [x0 + (o.dx ?? 1.6) * u, 1.85, 0.4]; return { pos, tgt: [x0 + (o.dx ?? 1.6) * u + 0.6, 0.95, 6.5], fov: 40, focus: 4.2, ap: 0.006 }; },
