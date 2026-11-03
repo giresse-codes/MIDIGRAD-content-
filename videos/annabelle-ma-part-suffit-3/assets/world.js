@@ -11,7 +11,7 @@ import { RoomEnvironment } from "./lib/jsm/RoomEnvironment.js";
 import { buildChurch, TEX, mat, canvasTex } from "./church.js";
 import { makeToy, makeCrowd } from "./toys.js";
 
-export async function createWorld(canvas, logo, RW = 540, RH = 960) {
+export async function createWorld(canvas, logo, RW = 720, RH = 1280) {
   const R = new THREE.WebGLRenderer({ canvas, antialias: false, preserveDrawingBuffer: true });
   R.setPixelRatio(1); R.setSize(RW, RH, false);
   R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFShadowMap;

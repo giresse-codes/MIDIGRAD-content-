@@ -20,7 +20,7 @@ html = f'''<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{D}" data-width="1080" data-height="1920">
-      <canvas id="gl" width="540" height="960"></canvas>
+      <canvas id="gl" width="720" height="1280"></canvas>
       <div id="cards"></div>
       <div id="titles"></div>
       <div id="flash"><img src="assets/flash-hopital.jpg" alt="" /><div class="fl">SOUVENIR</div></div>

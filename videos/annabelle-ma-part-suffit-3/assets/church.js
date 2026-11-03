@@ -137,10 +137,11 @@ export function buildChurch(S, logo) {
   }
   // bannière 2026 + logo
   // bannière du thème : grande (8,4 × 1,8 m), centrée au-dessus des deux pupitres, matériau non éclairé (aucun reflet ni ombre)
-  const ban = new THREE.Mesh(new THREE.PlaneGeometry(8.4, 1.8), new THREE.MeshBasicMaterial({ map: TEX.banner, color: "#ececec", toneMapped: false }));
-  ban.position.set(0, 2.88, -5.3); S.add(ban); C.banner = ban;
-  const banF = new THREE.Mesh(new THREE.PlaneGeometry(8.6, 2.0), mat("#2c2c2c", { roughness: 0.9 })); banF.position.set(0, 2.88, -5.32); S.add(banF);
-  const banL = new THREE.SpotLight("#fff2dc", 14, 9, 0.5, 0.8, 1.5); banL.position.set(0, 4.1, -1.5); banL.target.position.set(0, 2.9, -5.3); S.add(banL, banL.target);
+  // bannière du thème : sur le devant de la mezzanine, au fond de la salle, face à l'estrade (9,3 × 2 m), non éclairée (aucun reflet ni ombre)
+  const ban = new THREE.Mesh(new THREE.PlaneGeometry(9.3, 2.0), new THREE.MeshBasicMaterial({ map: TEX.banner, color: "#ececec", toneMapped: false }));
+  ban.position.set(0, 3.45, 12.78); ban.rotation.y = Math.PI; S.add(ban); C.banner = ban;
+  const banF = new THREE.Mesh(new THREE.PlaneGeometry(9.5, 2.2), mat("#2c2c2c", { roughness: 0.9 })); banF.position.set(0, 3.45, 12.8); banF.rotation.y = Math.PI; S.add(banF);
+  const banL = new THREE.SpotLight("#fff2dc", 16, 9, 0.6, 0.8, 1.5); banL.position.set(0, 4.3, 8.0); banL.target.position.set(0, 3.45, 12.8); S.add(banL, banL.target);
 
   const TOP = new THREE.Group(); S.add(TOP); C.top = TOP; const atT = (m, x, y, z) => at(m, x, y, z, 0, TOP);
   // plafond blanc avec spots, faux plafond en caisson (bord rose, dessous bleu peint de nuages et soleils)
