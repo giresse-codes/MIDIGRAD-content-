@@ -11,7 +11,7 @@ import { RoomEnvironment } from "./lib/jsm/RoomEnvironment.js";
 import { buildChurch, TEX, mat, canvasTex } from "./church.js";
 import { makeToy, makeCrowd } from "./toys.js";
 
-export async function createWorld(canvas, logo, RW = 720, RH = 1280) {
+export async function createWorld(canvas, logo, RW = 720, RH = 1280, OPT = {}) {
   const R = new THREE.WebGLRenderer({ canvas, antialias: false, preserveDrawingBuffer: true });
   R.setPixelRatio(1); R.setSize(RW, RH, false);
   R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFShadowMap;
@@ -75,7 +75,7 @@ export async function createWorld(canvas, logo, RW = 720, RH = 1280) {
   const comp = new EffectComposer(R); comp.setPixelRatio(1); comp.setSize(RW, RH);
   const rp = new RenderPass(S, cam); comp.addPass(rp);
   const sao = new GTAOPass(S, cam, RW, RH); sao.updateGtaoMaterial({ radius: 0.35, distanceExponent: 1.5, thickness: 1, scale: 1, samples: 8 });
-  sao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 6, rings: 2, samples: 8 }); sao.blendIntensity = 0.8; comp.addPass(sao); sao.setSize(RW / 2, RH / 2);
+  sao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 6, rings: 2, samples: 8 }); sao.blendIntensity = 0.8; comp.addPass(sao); sao.setSize(RW / 2, RH / 2); sao.enabled = OPT.ao !== false;
   const bokeh = new BokehPass(S, cam, { focus: 3, aperture: 0.004, maxblur: 0.008 }); comp.addPass(bokeh);
   const bloom = new UnrealBloomPass(new THREE.Vector2(RW / 2, RH / 2), 0.24, 0.5, 0.93); comp.addPass(bloom);
   comp.addPass(new OutputPass());
@@ -126,7 +126,7 @@ export async function createWorld(canvas, logo, RW = 720, RH = 1280) {
         const L = st.logo; coin.rotation.y = L.rot; coin.scale.setScalar(L.scale); coin.position.y = L.y;
         lsp.material.opacity = L.sparks; lsp.position.set(0, -0.6, -1);
         R.setRenderTarget(null); R.toneMapping = THREE.ACESFilmicToneMapping; rp.scene = LS; rp.camera = lcam; bokeh.enabled = false; sao.enabled = false; bloom.enabled = false;
-        grade.uniforms.uWarm.value = 0.3; grade.uniforms.uCold.value = 0; grade.uniforms.uBan.value = 0; comp.render(); rp.scene = S; rp.camera = cam; sao.enabled = true; bloom.enabled = true; return;
+        grade.uniforms.uWarm.value = 0.3; grade.uniforms.uCold.value = 0; grade.uniforms.uBan.value = 0; comp.render(); rp.scene = S; rp.camera = cam; sao.enabled = OPT.ao !== false; bloom.enabled = true; return;
       }
       // calque net de la bannière : profondeur de la scène (sans couleur) puis bannière seule ; mélangé après le post-traitement
       C.banner.updateMatrixWorld(); banBox.setFromObject(C.banner); cam.updateMatrixWorld(); pm4.multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse); frus.setFromProjectionMatrix(pm4);

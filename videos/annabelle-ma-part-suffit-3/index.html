@@ -35,7 +35,7 @@
       await document.fonts.load('800 40px "Montserrat"');
       const img = document.getElementById("logoimg"); await img.decode();
       const q = new URLSearchParams(location.search), RW = +q.get("rw") || 720;   // résolution 3D (720 en aperçu, 1080 au rendu final)
-      const W = await createWorld(document.getElementById("gl"), img, RW, Math.round(RW * 16 / 9));
+      const W = await createWorld(document.getElementById("gl"), img, RW, Math.round(RW * 16 / 9), { ao: q.get("ao") !== "0" });
       window.__W = W; window.startFilm(W);
     </script>
   </body>
