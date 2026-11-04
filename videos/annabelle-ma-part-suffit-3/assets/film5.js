@@ -56,17 +56,20 @@ window.startFilm = function (W) {
     // interprète
     i0: I0, iAccueil: P("Nous accueillons", I0), iEm: P("le pasteur Emmanuel", I0),
     // pasteur Emmanuel
-    e0: E0, eHonore: P("j'honore vraiment", E0), eTemoin: P("Le témoignage", E0), eMidi: P("mes frères et sœurs de la MIDIGRAD", E0), eTrois: P("trois points essentiels", E0),
-    eApotre: P("l'apôtre Paris Talla", E0), eP1: P("Premier point", E0), eP2: P("Deuxième point", E0), eVoler: P("Celui-là que tu accuses", E0), eMonte: P("c'est monté", E0),
-    eMonteE: PE("c'est descendu.", E0), eDiff: P("tu n'es pas différent", E0), eCond: P("Il suffit juste", E0), eAmenQ: P("Amen ? Si tu veux", E0), eReponds: P("Si tu veux", E0),
-    ePlaire: P("Moi, je ne suis pas ici", E0), ePlaireE: PE("pour plaire à quelqu'un.", E0), eP3: P("Troisième point", E0), eMort: P("Ah, ça, c'est alors", E0), eMortE: PE("ici à la MIDIGRAD.", E0),
-    eSachez: P("Mais bien-aimés, sachez", E0), eColere: P("que ça te plaise ou non", E0), eColereE: PE("que ça te plaise ou non.", E0), eFond: P("Le fondement même", E0),
-    eMonteP: P("Je ne monte pas ici", E0), eDonner: P("je suis là pour donner", E0), eBenis: P("Restons infiniment bénis", E0), eTermine: P("J'en ai terminé", E0), eAmen: P("Amen, amen.", E0), fin: END,
+    e0: E0, eHum: P("Hum hum, oui.", E0), eHonore: P("j'honore vraiment", E0), eTemoin: P("Le témoignage", E0), eMidi: P("mes frères et sœurs de la MIDIGRAD", E0),
+    eTrois: P("trois points essentiels", E0), eApotre: P("l'apôtre Paris Talla", E0), eP1: P("Premier point", E0), eP2: P("Deuxième point", E0), eVoler: P("Celui-là que tu accuses", E0),
+    eDiff: P("tu n'es pas différent", E0), eCond: P("Il suffit juste", E0), eAmenQ: P("Amen ? Si tu veux", E0), eReponds: P("Si tu veux", E0), eRepondsE: PE("tu ne réponds pas.", E0),
+    ePlaire: P("Moi, je ne suis pas ici", E0), ePlaireE: PE("pour plaire à quelqu'un.", E0), eMiel: P("Oui, eh, parce que", E0), eMielleux: P("mielleux quand je prêche", E0),
+    eRedemande: P("Dieu ne le sera pas", E0), ePaix: P("Donc, hum, la paix est bien", E0), eQuartierE: PE("souvent au quartier.", E0), eP3: P("Troisième point", E0),
+    eMort: P("Ah, ça, c'est alors", E0), eMortE: PE("ici à la MIDIGRAD", E0), eSachez: P("Mais bien-aimés, sachez", E0), eFerme: P("que ça te plaise ou non", E0),
+    eFermeE: PE("que ça te plaise ou non", E0), eFond: P("Le fondement même", E0), eMonteP: P("Je ne monte pas ici", E0), eDonner: P("je suis là pour donner", E0),
+    eBienCa: P("ou bien ce n'est pas ça", E0), eBienCaE: PE("ce n'est pas ça", E0), ePriereE: P("Donc vraiment, ma prière", E0), eLecture: P("N'oublions pas la lecture", E0),
+    eBon: P("Bon, je pense", E0), eBenis: P("Restons infiniment bénis", E0), eTermine: P("J'en ai terminé", E0), eAmen: P("Amen, amen.", E0), fin: END,
   };
   window.__C = C;
   // lumière froide pendant la confession (jeunesse, rancœur, hôpital) ; chaude à partir de « on pardonne… » et à la fin du message
-  const COLD = (t) => Math.max(pulse(t, C.jeunesse - 0.2, C.pasteur - 0.4, 1.2, 1.5) * 0.9, pulse(t, C.maladie, C.fouet + 3, 1.2, 2.0), 0.4 * pulse(t, C.eColere - 0.2, C.eColereE + 0.6, 0.4, 1.2));
-  const WARM = (t) => Math.max(smooth(C.onPardonne - 0.6, C.onPardonne + 2.0, t) * (1 - smooth(E0 + 20, E0 + 26, t)), smooth(C.eBenis - 1.5, C.eBenis + 1.0, t));
+  const COLD = (t) => Math.max(pulse(t, C.jeunesse - 0.2, C.pasteur - 0.4, 1.2, 1.5) * 0.9, pulse(t, C.maladie, C.fouet + 3, 1.2, 2.0));
+  const WARM = (t) => Math.max(smooth(C.onPardonne - 0.6, C.onPardonne + 2.0, t) * (1 - smooth(E0 + 20, E0 + 26, t)), smooth(C.ePriereE - 1.5, C.ePriereE + 2.0, t));
   const VERSE = (t) => Math.max(pulse(t, C.ps0, C.ps1), pulse(t, C.rom0, C.rom1), pulse(t, C.eph0, C.eph1), pulse(t, C.col0, C.col1), pulse(t, C.gal0, C.gal1));
 
   // ── ANNABELLE : expressions ──
@@ -127,21 +130,29 @@ window.startFilm = function (W) {
     agace: { smile: -0.3, bd: 0.6, ang: 0.45, pinch: 0.7, lid: 0.3, lx: -0.5, hz: -0.06, hy: 0.15 },
     rire: { smile: 0.9, lidLo: 0.45, open: 0.3, blush: 0.4, hx: -0.08, hz: 0.06 },
     colere: { smile: -0.75, bd: 1, ang: 1, pinch: 0.6, lid: -0.1, wide: 0.1, red: 0.4, open: 0.12, hx: -0.07 },
-    paix: { smile: 0.5, lid: 0.45, lidLo: 0.2, hx: 0.06 } };
+    paix: { smile: 0.5, lid: 0.45, lidLo: 0.2, hx: 0.06 },
+    sourire: { smile: 0.7, lidLo: 0.3, bi: 0.2, blush: 0.25 }, blague: { smile: 0.8, lidLo: 0.35, ba: 0.6, bi: 0.15, blush: 0.3, hz: 0.1, hy: 0.12, lx: 0.45 },
+    question: { smile: 0.25, ba: 0.95, bo: 0.4, lid: -0.05, wide: 0.15, hz: -0.12, hx: -0.05 } };
   const FE = track({ ...EB, ...EXE.chaud }), exE = (t, k, d = 0.45) => { if (isFinite(t)) FE.key(t, d, { ...EB, ...EXE[k] }); };
-  exE(C.eTemoin, "pose"); exE(C.eMidi, "chaud"); exE(C.eTrois, "pose"); exE(C.eP1 - 0.2, "serieux"); exE(C.eP2 - 0.2, "serieux"); exE(C.eMonte - 0.2, "ironie", 0.3);
-  exE(C.eDiff - 0.2, "ferme", 0.3); exE(C.eAmenQ, "pose"); exE(C.eReponds + 0.4, "agace", 0.3); exE(C.eP3 - 0.2, "serieux"); exE(C.eMort - 0.1, "rire", 0.3);
-  exE(C.eSachez, "serieux"); exE(C.eColere - 0.2, "colere", 0.25); exE(C.eColereE + 0.8, "ferme", 0.6); exE(C.eFond + 2, "serieux"); exE(C.eMonteP, "ferme");
-  exE(C.eDonner, "pose"); exE(C.eBenis - 0.2, "paix", 0.6); exE(C.eTermine, "chaud"); exE(C.eAmen - 0.3, "paix", 0.5); exE(C.eAmen + 1.4, "chaud");
+  // ton : chaleureux, sérieux sur les points, souriant et blagueur (« Si tu veux… », « mielleux… au quartier »), rire (« notre mort ici »),
+  // sérieux et ferme (« que ça te plaise ou non »), interrogateur (« ou bien ce n'est pas ça ? »), chaleureux et apaisé à la fin
+  exE(C.eHum - 0.1, "sourire", 0.3); exE(C.eHonore, "chaud"); exE(C.eTemoin, "pose"); exE(C.eMidi, "chaud"); exE(C.eTrois, "pose"); exE(C.eP1 - 0.2, "serieux"); exE(C.eP2 - 0.2, "serieux");
+  exE(C.eVoler, "serieux"); exE(C.eDiff - 0.2, "ferme", 0.3); exE(C.eCond + 1.0, "pose"); exE(C.eReponds - 0.1, "blague", 0.3); exE(C.eRepondsE + 0.3, "pose");
+  exE(C.ePlaire, "ferme"); exE(C.eMiel - 0.1, "blague", 0.3); exE(C.eRedemande, "sourire"); exE(C.ePaix - 0.1, "blague", 0.3); exE(C.eQuartierE + 0.05, "rire", 0.25);
+  exE(C.eP3 - 0.2, "serieux"); exE(C.eMort - 0.1, "rire", 0.3); exE(C.eSachez, "serieux"); exE(C.eFerme - 0.2, "ferme", 0.3); exE(C.eFermeE + 0.6, "serieux");
+  exE(C.eMonteP, "ferme"); exE(C.eDonner, "pose"); exE(C.eBienCa - 0.15, "question", 0.3); exE(C.eBienCaE + 0.6, "chaud"); exE(C.ePriereE, "chaud");
+  exE(C.eLecture, "chaud"); exE(C.eBon - 0.1, "sourire"); exE(C.eBenis - 0.2, "paix", 0.6); exE(C.eTermine, "chaud"); exE(C.eAmen - 0.3, "paix", 0.5); exE(C.eAmen + 1.4, "chaud");
   const GEm = track({ L: HANDS.L, R: HANDS.R, lean: 0.04 }), gE = (t, v, d = 0.5) => { if (isFinite(t)) GEm.key(t, d, v); };
   const OPEN = { L: [0.95, 0.55, 0.55], R: [0.95, 0.55, 0.55] }, CHEST = { R: [0.75, -0.55, 2.1], L: HANDS.L }, ONE = { R: [1.6, 0.15, 0.6], L: HANDS.L };
   const SLAM = { R: [1.2, 0.05, 0.4], L: [1.2, 0.05, 0.4], lean: 0.12 };     // les deux mains plaquées sur le pupitre
   gE(E0 + 0.2, OPEN); gE(E0 + 2.4, HANDS); gE(C.eHonore, CHEST); gE(C.eHonore + 2.4, HANDS); gE(C.eMidi, OPEN); gE(C.eMidi + 2.6, HANDS);
   gE(C.eP1, ONE); gE(C.eP1 + 2.6, HANDS); gE(C.eP2, { R: [1.6, 0.15, 0.6], L: [0.9, 0.3, 0.6] }); gE(C.eP2 + 2.4, HANDS);
-  gE(C.eMonte - 0.1, { R: [1.9, 0.25, 0.7], L: HANDS.L }, 0.3); gE(C.eMonte + 0.55, { R: [0.7, 0.25, 0.4], L: HANDS.L }, 0.35); gE(C.eMonteE + 0.3, HANDS);
-  gE(C.eDiff - 0.1, ONE, 0.3); gE(C.eDiff + 1.6, HANDS); gE(C.ePlaire, { R: [0.9, 0.55, 0.4], L: [0.9, 0.55, 0.4] }, 0.35); gE(C.ePlaireE + 0.4, HANDS);
+  gE(C.eDiff - 0.1, ONE, 0.3); gE(C.eDiff + 1.6, HANDS); gE(C.eReponds - 0.1, { R: [1.0, 0.7, 0.5], L: HANDS.L, lean: 0.0 }, 0.3); gE(C.eRepondsE + 0.3, HANDS);
+  gE(C.ePlaire, CHEST); gE(C.ePlaireE + 0.3, HANDS); gE(C.eMielleux - 0.1, { R: [0.95, 0.55, 0.55], L: [0.95, 0.55, 0.55] }, 0.35); gE(C.eRedemande + 1.4, HANDS);
+  gE(C.ePaix - 0.1, { R: [1.0, 0.7, 0.5], L: HANDS.L }, 0.35); gE(C.eQuartierE + 0.4, HANDS);
   gE(C.eP3, ONE); gE(C.eP3 + 1.8, HANDS); gE(C.eMort, { R: [0.75, -0.55, 2.1], L: HANDS.L, lean: -0.04 }); gE(C.eMortE + 0.4, HANDS);
-  gE(C.eColere - 0.25, SLAM, 0.2); gE(C.eColereE + 0.9, HANDS, 0.6); gE(C.eDonner, OPEN); gE(C.eDonner + 2.4, HANDS);
+  gE(C.eFerme - 0.15, { R: [1.45, 0.1, 0.5], L: HANDS.L, lean: 0.08 }, 0.3); gE(C.eFermeE + 0.6, HANDS, 0.5);
+  gE(C.eBienCa - 0.1, OPEN, 0.3); gE(C.eBienCaE + 0.8, HANDS); gE(C.eLecture, CHEST); gE(C.eLecture + 2.6, HANDS);
   gE(C.eAmen - 0.3, { R: [2.3, 0.25, 0.4], L: HANDS.L }); gE(C.eAmen + 1.6, HANDS);
   // ── INTERPRÈTE : annonce souriante, bras tendu vers la table des pasteurs ──
   const GI = track({ L: HANDS.L, R: HANDS.R, lean: 0.05 }), gI = (t, v, d = 0.5) => { if (isFinite(t)) GI.key(t, d, v); };
@@ -257,7 +268,7 @@ window.startFilm = function (W) {
       const nf = fi < list.length ? list[fi][0] : 1e9;
       if (nf - cur < 6.2) {
         if (nf - cur >= 2.6) { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1], cyc: 1 }); }
-        shots.push({ t0: nf, type: list[fi][1], o: list[fi][2] }); cur = nf + (list[fi][2].d && list[fi][2].d < 1.2 ? 4.8 : 3.6); fi++;
+        shots.push({ t0: nf, type: list[fi][1], o: list[fi][2] }); cur = nf + (list[fi][2].hold ?? (list[fi][2].d && list[fi][2].d < 1.2 ? 4.8 : 3.6)); fi++;
         while (fi < list.length && list[fi][0] < cur - 1.0) fi++;
         if (fi < list.length && list[fi][0] < cur) cur = list[fi][0];
       } else { const m = MODE(cur), c = CYC[m][cyc++ % CYC[m].length]; shots.push({ t0: cur, type: c[0], o: c[1], cyc: 1 }); cur += 3.3 + rnd() * 1.4; }
@@ -272,13 +283,14 @@ window.startFilm = function (W) {
     { t0: AP[0] + 4.3, type: "stageBack", o: {} }, { t0: I0 - 0.25, type: "iCU", o: { push: 0.3 } }, { t0: C.iAccueil - 0.15, type: "overA", o: {} },
     { t0: C.iEm - 0.6, type: "iArm", o: {} }, { t0: AP[1] + 0.5, type: "pastorsZ", o: {} }, { t0: AP[1] + 1.9, type: "rise", o: {} }, { t0: WA[0] + 1.4, type: "walkA", o: {} },
     { t0: WA[1] - 0.2, type: "walkE", o: {} }, { t0: EARR - 0.9, type: "aMS", o: { sx: 0.5 } });
-  const forcedE = [[C.eHonore - 0.1, "seatA", {}], [C.eTemoin, "aCU", { sx: 0.3 }], [C.eMidi, "crowd", { x: -0.8, dx: 0.8 }], [C.eTrois, "aMS", { sx: -0.45 }], [C.eApotre, "pastors", {}],
-    [C.eP1 - 0.2, "aCU", { d: 2.9, push: 0.35 }], [C.eP2 - 0.2, "aCU", { sx: -0.25, d: 3.0 }], [C.eMonte - 0.3, "side", { sg: 1 }], [C.eDiff - 0.2, "aCU", { d: 2.4, push: 0.4 }],
-    [C.eCond + 0.6, "crowd", { x: 0.4, dx: -1.0 }], [C.eReponds, "aCU", { sx: 0.3, d: 2.6, push: 0.3 }], [C.ePlaireE + 0.1, "crowd", { x: -2.0, dx: 1.3 }],
-    [C.eP3 - 0.2, "aCU", { d: 2.8 }], [C.eMort + 0.2, "pastors", {}], [C.eMortE + 0.1, "crowd", { x: 0.6, dx: -1.2 }],
-    // colère : gros plan, la caméra se rapproche franchement
-    [C.eColere - 0.4, "aCU", { d: 4.0, push: 1.6, fov: 27, arc: 0.03, ty: -0.22, dy: 0.45 }], [C.eColereE + 0.9, "crowd", { x: -1.0, dx: 0.8 }], [C.eFond + 1.5, "aCU", { sx: -0.3, d: 2.8 }],
-    [C.eMonteP, "aMS", { sx: 0.45 }], [C.eDonner, "stageView", {}], [C.eBenis - 0.2, "aCU", { d: 2.7, push: 0.3 }], [C.eTermine, "pastorsZ", {}], [C.eAmen - 0.4, "aCU", { d: 2.6, push: 0.25 }]]
+  const forcedE = [[C.eHum - 0.1, "aCU", { sx: 0.25, d: 2.8 }], [C.eHonore - 0.1, "seatA", {}], [C.eTemoin + 0.6, "aCU", { sx: 0.3 }], [C.eMidi, "crowd", { x: -0.8, dx: 0.8 }],
+    [C.eTrois, "aMS", { sx: -0.45 }], [C.eApotre, "pastors", {}], [C.eP1 - 0.2, "aCU", { d: 2.9, push: 0.35 }], [C.eP2 - 0.2, "aCU", { sx: -0.25, d: 3.0 }],
+    [C.eVoler, "side", { sg: 1 }], [C.eDiff - 0.2, "aCU", { d: 2.4, push: 0.4 }], [C.eCond + 0.6, "crowd", { x: 0.4, dx: -1.0 }], [C.eReponds - 0.2, "aCU", { sx: 0.3, d: 2.6, push: 0.3, hold: 1.6 }],
+    [C.eRepondsE + 0.1, "hero", { k: 1, hold: 2.0 }], [C.ePlaire, "aMS", { sx: 0.45 }], [C.eMielleux - 0.3, "aCU", { d: 2.7, push: 0.35, sx: -0.25 }], [C.ePaix - 0.2, "aCU", { d: 2.5, push: 0.3, hold: 2.2 }],
+    [C.eQuartierE - 0.5, "crowd", { x: -2.0, dx: 1.0, hold: 1.0 }], [C.eP3 - 0.05, "aCU", { d: 2.8 }], [C.eMort + 0.2, "pastors", {}], [C.eMortE + 0.1, "crowd", { x: 0.6, dx: -1.2 }],
+    [C.eFerme - 0.4, "aCU", { d: 3.2, push: 0.8, fov: 25 }], [C.eFond + 0.4, "wideLow", {}], [C.eMonteP, "aMS", { sx: 0.45 }], [C.eBienCa - 0.3, "aCU", { d: 2.6, push: 0.3, sx: 0.2 }],
+    [C.eBienCaE + 0.4, "crowd", { x: -1.0, dx: 0.8 }], [C.ePriereE, "stageView", {}], [C.eLecture, "aCU", { sx: -0.3, d: 2.9 }], [C.eBon, "pastorsZ", {}],
+    [C.eBenis - 0.2, "aCU", { d: 2.7, push: 0.3 }], [C.eTermine, "hero", { k: 0 }], [C.eAmen - 0.4, "aCU", { d: 2.6, push: 0.25 }]]
     .filter((x) => isFinite(x[0])).sort((a, b) => a[0] - b[0]);
   const nEm = shots.length; plan(E0 - 0.35, E1 - 0.3, forcedE, ["aCU", { d: 3.2, push: 0.4 }]);
   for (let i = shots.length - 1; i >= nEm; i--) if (shots[i].t0 > E1 + 0.2) shots.splice(i, 1);
@@ -304,7 +316,7 @@ window.startFilm = function (W) {
 
   // ── PERSONNAGES SECONDAIRES : pasteurs, interprète, fidèles ──
   // rires de la salle (calés sur rires-salle.mp3 après « plaire à quelqu'un » et « notre mort ici à la MIDIGRAD ») + petits sourires du témoignage
-  const laughT = (t) => Math.max(pulse(t, LA[0] + 0.1, LA[0] + 2.4, 0.25, 0.7), pulse(t, LA[1] + 0.1, LA[1] + 2.9, 0.25, 0.8), 0.8 * pulse(t, C.eMort + 0.4, C.eMortE, 0.3, 0.3),
+  const laughT = (t) => Math.max(pulse(t, LA[0] + 0.1, LA[0] + 2.4, 0.25, 0.7), pulse(t, LA[1] + 0.1, LA[1] + 2.9, 0.25, 0.8), 0.8 * pulse(t, C.eMort + 0.4, C.eMortE, 0.3, 0.3), 0.5 * pulse(t, C.eReponds + 0.3, C.eRepondsE + 0.8, 0.3, 0.6),
     0.7 * pulse(t, C.sorciere + 0.6, C.sorciereE + 1.0, 0.4, 1.2), 0.7 * pulse(t, C.charabia + 0.2, C.charabiaE + 0.9, 0.4, 1.0), 0.5 * pulse(t, C.facile + 0.3, C.facile + 2.2, 0.3, 0.8));
   const moved = (t) => Math.max(pulse(t, C.tuais, C.fouet + 3, 1.0, 2), pulse(t, C.onPardonne, C.offense + 3, 1, 2), 0.8 * pulse(t, C.verite, C.recu + 3, 1, 2), pulse(t, C.amen - 1, A1 + 3, 0.6, 2) * 0.6);
   const amenT = (t) => Math.max(pulse(t, C.eAmen, C.eAmen + 2.0, 0.3, 0.8), pulse(t, C.ps1 + 0.1, C.ps1 + 1.6, 0.3, 0.6), pulse(t, C.eph1 + 0.1, C.eph1 + 1.4, 0.3, 0.6), pulse(t, C.col1 + 0.1, C.col1 + 1.4, 0.3, 0.6),
@@ -347,8 +359,8 @@ window.startFilm = function (W) {
     cardsEl.appendChild(el); c.el = el; c.spans = [...el.querySelectorAll(".tx span")]; c.ids = ids;
   });
   const TITLES = [
-    { a: C.eP1, b: C.eP2 - 0.3, html: "1. RECONNAÎTRE DIEU<br>DERRIÈRE CELUI<br>QUI T'OFFENSE" }, { a: C.eP2, b: C.eP3 - 0.3, html: "2. JE NE SUIS PAS<br>DIFFÉRENT DE MON FRÈRE" },
-    { a: C.eP3, b: C.eMort + 0.2, html: "3. SUIVRE LE CŒUR<br>DE L'ÉGLISE" },
+    { a: C.eP1, b: C.eP2 - 0.3, html: "1. RECONNAÎTRE DIEU<br>DERRIÈRE CELUI<br>QUI T'OFFENSE" }, { a: C.eP2, b: C.eAmenQ, html: "2. JE NE SUIS PAS<br>DIFFÉRENT DE MON FRÈRE" },
+    { a: C.eP3, b: C.eMortE, html: "3. SUIVRE LE CŒUR<br>DE L'ÉGLISE" },
   ].filter((x) => isFinite(x.a) && isFinite(x.b));
   const titlesEl = $("#titles"); TITLES.forEach((x) => { const el = document.createElement("div"); el.className = "ttl"; el.innerHTML = x.html; titlesEl.appendChild(el); x.el = el; });
   // sous-titres : un mot à la fois (ponctuation seule rattachée au mot précédent)

@@ -35,16 +35,19 @@ TXT = {
       "au travers de l'entretien et de la parole, que celui qui a reçu le pardon peut pardonner. Et ma prière aujourd'hui, c'est qu'il m'aide, car je sais que "
       "ce n'est pas facile de le voir partout dans ma vie, que ce soit en bien ou en mal pour ma chair. Amen, amen.",
  "I": "Amen ! Amen ! Nos ovations, bien-aimés ! Nous accueillons l'homme que Dieu a prévu pour nous donner le message : le pasteur Emmanuel !",
- "E": "Oui, bien-aimés, c'est aussi comme ça que Dieu peut travailler. Quand la parole rencontre le cœur, rien n'est problème. Oui, ma sœur Annabelle, "
+ "E": "Oui, bien-aimés, c'est aussi comme ça que Dieu peut travailler : quand la parole rencontre le cœur, rien n'est problème. Hum hum, oui. Ma sœur Annabelle, "
       "j'honore vraiment le Christ en toi. Le témoignage, c'est aussi une façon de donner la vie par les situations et l'enseignement qu'on a reçu au travers "
       "de ces situations-là. Donc, mes frères et sœurs de la MIDIGRAD, partageons, c'est très important. Je vais juste revenir sur les trois points essentiels "
       "dont nous a parlé notre père, l'apôtre Paris Talla, pour facilement pratiquer le pardon fraternel. Premier point : toujours reconnaître Dieu derrière "
       "celui ou celle qui nous a offensés. Deuxième point : toujours savoir que je ne suis pas différent de mon frère ou de ma sœur que j'accuse. "
-      "Celui-là que tu accuses de voler, de mentir, c'est monté, c'est descendu. Bien-aimé, tu n'es pas différent. Il suffit juste que les conditions soient "
-      "réunies et tu feras la même chose. Amen ? Si tu veux, tu ne réponds pas. Moi, je ne suis pas ici devant pour plaire à quelqu'un. "
-      "Troisième point : suivre le cœur de l'Église. Ah, ça, c'est alors notre mort ici à la MIDIGRAD. Mais bien-aimés, sachez qu'on vous parle selon la parole, "
-      "que ça te plaise ou non. Le fondement même d'un bon chrétien, c'est de suivre le cœur de l'Église. Je ne monte pas ici pour faire plaisir à qui que ce soit, "
-      "je suis là pour donner la parole comme je l'ai reçue. Restons infiniment bénis. J'en ai terminé. Amen, amen.",
+      "Celui-là que tu accuses de voler, bien-aimés, tu n'es pas différent. Il suffit juste que les conditions soient réunies, et tu feras la même chose. "
+      "Amen ? Si tu veux, tu ne réponds pas. Moi, je ne suis pas ici devant pour plaire à quelqu'un. Oui, eh, parce que si je suis mielleux quand je prêche, "
+      "Dieu ne le sera pas avec moi quand il me redemandera cela. Donc, hum, la paix est bien, comme on dit souvent au quartier. Troisième point : suivre le cœur "
+      "de l'église. Ah, ça, c'est alors notre mort ici à la MIDIGRAD ! Mais bien-aimés, sachez qu'on vous parle selon la parole, que ça te plaise ou non ! "
+      "Le fondement même d'un bon chrétien, c'est de suivre le cœur de l'église. Je ne monte pas ici pour faire plaisir à qui que ce soit, je suis là pour donner "
+      "la parole comme je l'ai reçue, ou bien ce n'est pas ça ? Donc vraiment, ma prière, c'est que nous recevions réellement ces enseignements. N'oublions pas "
+      "la lecture de la parole, bien-aimés, c'est très important. Bon, je pense que j'ai dit tout ce qu'il fallait dire pour aujourd'hui. Restons infiniment bénis. "
+      "J'en ai terminé. Amen, amen.",
 }
 FILES = {"N1": ("narrateur-ouverture.mp3", "w_ouverture.json", "NARRATEUR"), "A": ("annabelle.mp3", "w_annabelle.json", "ANNABELLE"),
          "I": ("narrateur-annonce.mp3", "w_annonce.json", "L'INTERPRÈTE"), "E": ("pasteur-emmanuel.mp3", "w_emmanuel.json", "PASTEUR EMMANUEL")}
@@ -121,7 +124,8 @@ def wend(ph, who):
     for i in range(len(words) - len(q)):
         if words[i][3] == who and all(norm(words[i + j][0]) == q[j] for j in range(len(q))): return words[i + len(q) - 1][2]
     raise SystemExit("phrase introuvable : " + ph)
-L1 = round(wend("pour plaire à quelqu'un.", "E") + 0.05, 3); L2 = round(wend("ici à la MIDIGRAD.", "E") + 0.02, 3)
+# rires : après « comme on dit souvent au quartier » et après « notre mort ici à la MIDIGRAD »
+L1 = round(wend("souvent au quartier.", "E") + 0.05, 3); L2 = round(wend("ici à la MIDIGRAD", "E") + 0.02, 3)
 r1 = fade(at_lufs(ri[int(0.3 * SR):int(3.0 * SR)], -20.0), 0.3); r2 = fade(at_lufs(ri[int(6.0 * SR):int(9.2 * SR)], -20.0), 0.3)
 put(fx, r1, L1); put(fx, r2, L2)
 mix = voice + fx
