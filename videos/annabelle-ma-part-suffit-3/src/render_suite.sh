@@ -22,5 +22,5 @@ for k in n0b n1b n2b; do grep -q "^fini" $D/$k.log || { echo "ÉCHEC $k"; tail -
 for f in c0.mp4 c1.mp4 c2.mp4 c3a.mp4 n0a.mp4 n0b.mkv n1a.mp4 n1b.mkv n2a.mp4 n2b.mkv; do [ -f $D/$f ] && echo "file '$f'" >> $D/list51.txt; done
 OUT="renders/$(date +%Y-%m-%d)_motion_ma-part-suffit-annabelle-partie-3-v5.1_9-16.mp4"
 ffmpeg -v error -y -f concat -safe 0 -i $D/list51.txt -i assets/audio.wav -map 0:v -map 1:a \
-  -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -profile:v high -r 30 \
+  -vf "setpts=N/30/TB" -fps_mode passthrough -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -profile:v high -video_track_timescale 15360 \
   -c:a aac -b:a 192k -ar 48000 -t "$DUR" -movflags +faststart "$OUT" && echo "fini final $OUT"
