@@ -27,19 +27,20 @@ html = f'''<!doctype html>
       <div id="subs"><div id="subwho"></div><div id="subw"></div></div>
       <div id="white"></div>
       <div id="motfin">Pardonne comme Christ<br /><b>t'a pardonné.</b></div>
-      <div id="sig">EUD — Consistoire MIDIGRAD</div>
+      <div id="sig">EUD — Consistoire<br />MIDIGRAD</div>
       <div id="black"></div>
       <div id="tag">MA PART SUFFIT · PARTIE 3</div>
       <img id="logoimg" src="assets/logo-midigrad.png" alt="" style="display:none" />
       <audio id="voix" src="assets/audio.wav" data-start="0" data-duration="{D}" data-track-index="1" data-volume="1"></audio>
     </div>
     <script src="assets/data.js"></script>
-    <script src="assets/film3.js"></script>
+    <script src="assets/film5.js"></script>
     <script type="module">
       import {{ createWorld }} from "./assets/world.js";
       await document.fonts.load('800 40px "Montserrat"');
       const img = document.getElementById("logoimg"); await img.decode();
-      const W = await createWorld(document.getElementById("gl"), img);
+      const q = new URLSearchParams(location.search), RW = +q.get("rw") || 720;   // résolution 3D (720 en aperçu, 1080 au rendu final)
+      const W = await createWorld(document.getElementById("gl"), img, RW, Math.round(RW * 16 / 9));
       window.__W = W; window.startFilm(W);
     </script>
   </body>

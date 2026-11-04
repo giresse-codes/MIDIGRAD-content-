@@ -15,7 +15,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
 .vcard .tx span.k.r { color: #f07814; font-weight: 800; }
 /* titres de la narration */
 #titles { position: absolute; inset: 0; pointer-events: none; }
-.ttl { position: absolute; left: 50%; top: 250px; width: 1000px; text-align: center; font: 800 84px/1.12 "Montserrat"; color: #ffc72c;
+.ttl { position: absolute; left: 50%; top: 250px; width: 1000px; text-align: center; font: 800 74px/1.12 "Montserrat"; color: #ffc72c;
   -webkit-text-stroke: 16px #4a2a10; paint-order: stroke fill; text-shadow: 0 8px 0 rgba(74, 42, 16, .45), 0 18px 30px rgba(0, 0, 0, .25); opacity: 0; transform: translateX(-50%); }
 /* sous-titres : un mot à la fois, centré à 78 % */
 #subs { position: absolute; left: 0; right: 0; top: 1497px; height: 0; text-align: center; pointer-events: none; opacity: 0; }
@@ -34,6 +34,9 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
 #motfin b { color: #c8901f; font-weight: 800; }
 #tag { position: absolute; left: 50%; top: 120px; transform: translateX(-50%); padding: 14px 32px; border-radius: 40px; background: rgba(255,255,255,.92); font: 800 26px "Montserrat";
   letter-spacing: .2em; color: #1b2a4a; white-space: nowrap; opacity: 0; box-shadow: 0 8px 22px rgba(0,0,0,.15); }
-#sig { position: absolute; left: 50%; top: 1240px; width: 1000px; text-align: center; font: 800 76px/1.2 "Montserrat"; color: #1b2a4a; opacity: 0; transform: translateX(-50%); }
+#sig { position: absolute; left: 50%; top: 1210px; width: 900px; padding: 46px 40px 50px; text-align: center; font: 800 72px/1.18 "Montserrat"; color: #1b2a4a; opacity: 0; transform: translateX(-50%);
+  background: #fffdf6; border: 6px solid #1b2a4a; border-radius: 40px; box-shadow: 0 18px 0 rgba(27,42,74,.18), 0 30px 60px rgba(0,0,0,.18); }
+#sig small { display: block; margin-top: 18px; font: 600 34px "Montserrat"; letter-spacing: .18em; color: #c8901f; }
 #black { position: absolute; inset: 0; background: #000; opacity: 0; }
 #subwho.e { color: #39414d; }
+#subwho.i { color: #1e6fd9; }

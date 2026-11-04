@@ -138,9 +138,10 @@ export function buildChurch(S, logo) {
   // bannière 2026 + logo
   // bannière du thème : grande (8,4 × 1,8 m), centrée au-dessus des deux pupitres, matériau non éclairé (aucun reflet ni ombre)
   // bannière du thème : sur le devant de la mezzanine, au fond de la salle, face à l'estrade (9,3 × 2 m), non éclairée (aucun reflet ni ombre)
-  const ban = new THREE.Mesh(new THREE.PlaneGeometry(9.3, 2.0), new THREE.MeshBasicMaterial({ map: TEX.banner, color: "#ececec", toneMapped: false }));
-  ban.position.set(0, 3.45, 12.78); ban.rotation.y = Math.PI; S.add(ban); C.banner = ban;
-  const banF = new THREE.Mesh(new THREE.PlaneGeometry(9.5, 2.2), mat("#2c2c2c", { roughness: 0.9 })); banF.position.set(0, 3.45, 12.8); banF.rotation.y = Math.PI; S.add(banF);
+  // v5 : agrandie (11 × 2,37 m) pour rester lisible depuis l'estrade
+  const ban = new THREE.Mesh(new THREE.PlaneGeometry(11, 2.37), new THREE.MeshBasicMaterial({ map: TEX.banner, color: "#ececec", toneMapped: false }));
+  ban.position.set(0, 3.42, 12.78); ban.rotation.y = Math.PI; S.add(ban); C.banner = ban;
+  const banF = new THREE.Mesh(new THREE.PlaneGeometry(11.24, 2.6), mat("#2c2c2c", { roughness: 0.9 })); banF.position.set(0, 3.42, 12.8); banF.rotation.y = Math.PI; S.add(banF);
   const banL = new THREE.SpotLight("#fff2dc", 16, 9, 0.6, 0.8, 1.5); banL.position.set(0, 4.3, 8.0); banL.target.position.set(0, 3.45, 12.8); S.add(banL, banL.target);
 
   const TOP = new THREE.Group(); S.add(TOP); C.top = TOP; const atT = (m, x, y, z) => at(m, x, y, z, 0, TOP);
@@ -211,6 +212,7 @@ export function buildChurch(S, logo) {
     for (let k = 0; k < p.count; k++) { const a = Math.atan2(p.getZ(k), p.getX(k)), r = 1 + 0.05 * Math.sin(a * 22); p.setX(k, p.getX(k) * r); p.setZ(k, p.getZ(k) * r); }
     sk.computeVertexNormals(); const skirt = new THREE.Mesh(sk, mat("#ffffff", { map: TEX.leaf, roughness: 0.9 })); skirt.position.y = 0.5; skirt.castShadow = skirt.receiveShadow = true; g.add(skirt);
     const top = box(0.95, 0.06, 0.62, mat("#ffffff", { map: TEX.leaf }), 0.02); top.position.y = 1.03; top.rotation.x = -0.12; g.add(top);
+    const lid = new THREE.Mesh(new THREE.CircleGeometry(0.47, 40), mat("#ffffff", { map: TEX.leaf, roughness: 0.9 })); lid.rotation.x = -Math.PI / 2; lid.position.y = 0.99; g.add(lid);   // ferme le haut de la jupe
     const flap = new THREE.Mesh(new THREE.CylinderGeometry(0.47, 0.47, 0.18, 32, 1, true), mat("#ffffff", { map: TEX.leaf, side: THREE.DoubleSide })); flap.position.y = 0.95; g.add(flap);
     const bible = box(0.3, 0.05, 0.22, "#5a2d1c", 0.01); bible.position.set(-0.05, 1.08, 0.05); bible.rotation.x = -0.12; g.add(bible);
     const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(0.36, 1.05, -0.12), new THREE.Vector3(0.38, 1.2, -0.12), new THREE.Vector3(0.36, 1.28, -0.24), new THREE.Vector3(0.3, 1.29, -0.33)]);
@@ -249,8 +251,8 @@ export function buildChurch(S, logo) {
   })();
   const cols = ["#f07a3a", "#f07a3a", "#d93a2e", "#8b9a8a", "#8b9a8a", "#eeeeea", "#f28a46"];
   const seatsList = [];
-  for (let r = 0; r < 8; r++) for (let c = 0; c < 10; c++) {
-    const x = -5.6 + c * 0.82 + (c >= 5 ? 0.9 : 0) + (rnd() - 0.5) * 0.18, z = 2.6 + r * 1.05 + (rnd() - 0.5) * 0.2;
+  for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) {   // 60 places : 56 fidèles + 3 fidèles détaillés + Annabelle
+    const x = -5.6 + c * 0.82 + (c >= 5 ? 0.9 : 0) + (rnd() - 0.5) * 0.18, z = 2.6 + r * 1.2 + (rnd() - 0.5) * 0.2;
     if (x > 4.6 && z < 4.2) continue; seatsList.push([x, z, (rnd() - 0.5) * 0.18]);
   }
   const chairs = new THREE.InstancedMesh(chairG, mat("#ffffff", { roughness: 0.55 }), seatsList.length); chairs.castShadow = chairs.receiveShadow = true;

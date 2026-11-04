@@ -37,7 +37,9 @@ export function drawFace(g, o, p) {
     // sourcils
     const bi = p.bi || 0, bo = p.bo || 0, bd = p.bd || 0;
     const ba = (p.ba || 0) * (s > 0 ? 1 : -0.25), yin = ey - 58 - bi * 20 + bd * 14 - ba * 26, yout = ey - 56 - bo * 14 + bd * 3 - ba * 22;
-    g.strokeStyle = o.brow || "#1d120b"; g.lineWidth = 13; g.beginPath(); g.moveTo(cx + s * 34, yin); g.quadraticCurveTo(cx + s * 72, Math.min(yin, yout) - 12, cx + s * 108, yout); g.stroke();
+    const an = p.ang || 0, yin2 = yin + an * 30, yout2 = yout - an * 10;   // colère : sourcils en V
+    g.strokeStyle = o.brow || "#1d120b"; g.lineWidth = 13 + 4 * an; g.beginPath(); g.moveTo(cx + s * (34 - 6 * an), yin2); g.quadraticCurveTo(cx + s * 72, Math.min(yin2, yout2) - 12 + 10 * an, cx + s * 108, yout2); g.stroke();
+    if (an > 0.05) { g.strokeStyle = `rgba(30,15,8,${0.5 * an})`; g.lineWidth = 4; g.beginPath(); g.moveTo(cx + s * 9, ey - 52 + an * 14); g.lineTo(cx + s * 6, ey - 24 + an * 10); g.stroke(); }
   }
   // bouche
   const my = 352, sm = p.smile || 0, op = Math.max(0, p.open || 0), vw = p.vw || 0, wd = 56 * (1 + 0.28 * (p.wide || 0) - 0.25 * (p.pinch || 0) - 0.22 * op * (1 - vw) + 0.12 * vw);

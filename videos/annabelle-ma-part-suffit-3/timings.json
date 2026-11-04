@@ -1,3203 +1,2915 @@
 {
- "methode": "Whisper medium int8 (sherpa-onnx, français) par segments VAD ; orthographe du texte de référence quand les mots correspondent ; secondes, relatives à chaque fichier audio",
+ "methode": "faster-whisper small int8 (français, horodatage par mot) ; texte corrigé (noms propres, Louis Segond 1910) aligné par difflib ; secondes relatives à chaque fichier audio",
  "tours": [
   {
    "id": "N1",
    "qui": "NARRATEUR",
-   "debut": 0.11,
-   "fin": 6.07,
+   "fichier": "audio/narrateur-ouverture.mp3",
+   "decalage": 2.6,
    "texte": "Quelque temps après, la sœur Annabelle a décidé de partager cette situation avec les chrétiens de la MIDIGRAD.",
    "mots": [
     {
      "m": "Quelque",
-     "t0": 0.11,
-     "t1": 0.48
+     "t0": 0.0,
+     "t1": 0.36
     },
     {
      "m": "temps",
-     "t0": 0.48,
-     "t1": 0.78
+     "t0": 0.36,
+     "t1": 0.52
     },
     {
      "m": "après,",
-     "t0": 0.78,
-     "t1": 1.07
+     "t0": 0.52,
+     "t1": 0.82
     },
     {
      "m": "la",
-     "t0": 1.4,
-     "t1": 1.59
+     "t0": 1.32,
+     "t1": 1.56
     },
     {
      "m": "sœur",
-     "t0": 1.59,
-     "t1": 1.9
+     "t0": 1.56,
+     "t1": 1.86
     },
     {
      "m": "Annabelle",
-     "t0": 1.9,
-     "t1": 2.38
+     "t0": 1.86,
+     "t1": 2.34
     },
     {
      "m": "a",
-     "t0": 2.38,
+     "t0": 2.34,
      "t1": 2.52
     },
     {
      "m": "décidé",
      "t0": 2.52,
-     "t1": 2.87
+     "t1": 2.82
     },
     {
      "m": "de",
-     "t0": 2.87,
-     "t1": 3.06
+     "t0": 2.82,
+     "t1": 3.04
     },
     {
      "m": "partager",
-     "t0": 3.06,
-     "t1": 3.5
+     "t0": 3.04,
+     "t1": 3.36
     },
     {
      "m": "cette",
-     "t0": 3.5,
-     "t1": 3.81
+     "t0": 3.36,
+     "t1": 3.68
     },
     {
      "m": "situation",
-     "t0": 3.81,
-     "t1": 4.29
+     "t0": 3.68,
+     "t1": 4.3
     },
     {
      "m": "avec",
-     "t0": 4.29,
-     "t1": 4.55
+     "t0": 4.3,
+     "t1": 4.66
     },
     {
      "m": "les",
-     "t0": 4.55,
-     "t1": 4.78
+     "t0": 4.66,
+     "t1": 4.86
     },
     {
      "m": "chrétiens",
-     "t0": 4.78,
+     "t0": 4.86,
      "t1": 5.26
     },
     {
      "m": "de",
      "t0": 5.26,
-     "t1": 5.45
+     "t1": 5.36
     },
     {
      "m": "la",
-     "t0": 5.45,
-     "t1": 5.63
+     "t0": 5.36,
+     "t1": 5.48
     },
     {
      "m": "MIDIGRAD.",
-     "t0": 5.63,
-     "t1": 6.07
+     "t0": 5.48,
+     "t1": 6.02
     }
-   ],
-   "fichier": "audio/voixoff-elevenlabs.mp3"
+   ]
   },
   {
    "id": "A",
    "qui": "ANNABELLE",
    "fichier": "audio/annabelle.mp3",
-   "debut": 0.1,
-   "fin": 197.77,
-   "texte": "Bien-aimés, bonjour aujourd'hui j'aimerais rendre grâce à Dieu et partager concernant ma situation. Je suis une femme aimée dans ma belle famille. quelque chose que je n'aurais pas cru, même si on me le disait. Mère d'enfant et heureuse. Dans ma jeunesse, j'ai été, exposée à la débauche sexuelle, et je ne me suis jamais souciée de ce qui pourrait se passer plus tard. J'ai aussi plusieurs fois avorté, Puis j'ai rencontré mon mari et nous nous sommes mariés. mais ensuite est venu le problème Je n'arrivais pas à avoir d'enfant. Ma belle-mère ne me laissait pas me reposer, toujours en train de m'insulter, toujours en train de me maudire, Je n'ai pas regardé à ma vie de débauche mais j'ai porté rancœur à ma belle famille, encore et encore. alors j'ai décidé de venir voir le pasteur Yannick pour qu'on prie contre eux. Mais à ma grande surprise, il m'a demandé de pardonner. Il m'a parlé de la nature de l'homme, Psaume 14 verset 3 Tous sont égarés, tous sont pervertis Il n'en est aucun qui fasse le bien, Pas même un seul. Il m'a dit nous sommes tous corrompus dès la naissance, et ma belle-mère et moi, nous ne sommes pas différentes. Je voyais cela comme une insulte Je disais en mon cœur Moi, pareille à cette sorcière Non, pasteur Il m'a aussi rappelé, Romains, chapitre 2 verset 1. Oh homme, qui que tu sois, Toi qui juge, tu es donc inexcusable Car, en jugeant les autres, tu te condamnes toi-même, puisque toi qui juge, tu fais les mêmes choses. Je n'étais même pas avec lui, à vrai dire. J'étais juste là, dans ma tête pasteur, je suis venue pour qu'on prie contre ma belle famille, pas pour entendre tout ce charabia Je ne l'ai pas écouté. Ensuite est venue ma maladie cardiaque, et c'est à l'hôpital que tout m'est revenu comme un fardeau. J'ai jugé ma belle-mère, pourtant je fais les mêmes bêtises. J'ai condamné ma belle-mère, pourtant je suis pire qu'elle. Honnêtement, Je ne pense pas qu'il y ait quelqu'un qui ait eu à avorter comme moi. Quand elle me disait que je tuais ses petits-fils dans mon ventre, Je la voyais comme une sorcière. Elle avait raison, Je l'ai fait. Dieu a utilisé ma belle-mère tout ce temps pour me rappeler que je ne suis pas différente d'elle, Mais j'avais les regards focalisés sur le fouet, et non sur celui qui me fouettait par sa parole. Le pasteur Yannick m'a dit Si tu avais réellement compris la grâce que Dieu nous a accordé en Jésus Christ, pardonner ta belle-mère n'aurait pas été un problème. Éphésiens, chapitre 4, verset 32. Soyez bons les uns envers les autres, compatissants, vous pardonnant réciproquement, comme Dieu vous a pardonné en Christ. Colossiens, chapitre 3, verset 13. De même que Christ vous a pardonné, pardonnez-vous aussi. qu'est-ce que Jésus aurait fait dans cette situation Il aurait pardonné. Galates, chapitre 2, verset 20 J'ai été crucifié avec Christ Et si je vis, ce n'est plus moi qui vis, c'est Christ qui vit en moi. J'honore encore Christ dans la vie du pasteur Yannick, qui m'a fait comprendre une chose très importante On pardonne parce qu'on a été pardonné. On pardonne parce qu'en réalité, dans l'eau, le visage reflète le visage. Je ne suis pas différente de celui ou celle qui m'offense. Une fois que j'ai appris à regarder à Dieu dans tout ce qui m'arrive, rien n'était plus un problème à mes yeux. Je suis reconnaissante à Dieu une fois de plus pour tout cela, Et ma prière aujourd'hui, c'est qu'il m'aide, car je sais que ce n'est pas facile de le voir partout dans ma vie, Amen, amen.",
+   "decalage": 9.0,
+   "texte": "Bien-aimés, bonjour ! Aujourd'hui, j'aimerais rendre grâce à Dieu et partager concernant ma situation. Je suis une femme aimée dans ma belle-famille, mère d'enfants et heureuse. Dans ma jeunesse, j'ai été exposée à la débauche sexuelle et j'ai plusieurs fois avorté. Puis je me suis mariée, mais je n'arrivais pas à avoir d'enfants. Ma belle-mère ne cessait de m'insulter et de me maudire. Au lieu de regarder à ma vie, j'ai porté rancœur à ma belle-famille. Alors je suis venue voir le pasteur Yannick pour qu'on prie contre eux. Mais à ma grande surprise, il m'a demandé de pardonner. Il m'a parlé de la nature de l'homme. Psaume 14, verset 3 : Tous sont égarés, tous sont pervertis ; il n'en est aucun qui fasse le bien, pas même un seul. Il m'a dit que ma belle-mère et moi, nous ne sommes pas différentes. Je disais en mon cœur : moi, pareille à cette sorcière ? Non, pasteur ! Il m'a aussi rappelé Romains, chapitre 2, verset 1 : Ô homme, qui que tu sois, toi qui juges, tu es donc inexcusable ; car, en jugeant les autres, tu te condamnes toi-même, puisque toi qui juges, tu fais les mêmes choses. Mais dans ma tête, je disais : pasteur, je suis venue pour qu'on prie contre ma belle-famille, pas pour entendre tout ce charabia ! Ensuite est venue ma maladie cardiaque, et c'est à l'hôpital que tout m'est revenu comme un fardeau. J'ai jugé ma belle-mère, pourtant je suis pire qu'elle. Quand elle me disait que je tuais ses petits-fils dans mon ventre, je la voyais comme une sorcière. Elle avait raison, je l'ai fait. Mais j'avais les regards focalisés sur le fouet, et non sur celui qui me fouettait par sa parole. Le pasteur Yannick m'a dit : si tu avais réellement compris la grâce que Dieu nous a accordée en Jésus-Christ, pardonner ta belle-mère n'aurait pas été un problème. Éphésiens, chapitre 4, verset 32 : Soyez bons les uns envers les autres, compatissants, vous pardonnant réciproquement, comme Dieu vous a pardonné en Christ. Colossiens, chapitre 3, verset 13 : De même que Christ vous a pardonné, pardonnez-vous aussi. Qu'est-ce que Jésus aurait fait dans cette situation ? Il aurait pardonné. Galates, chapitre 2, verset 20 : J'ai été crucifié avec Christ ; et si je vis, ce n'est plus moi qui vis, c'est Christ qui vit en moi. J'honore encore Christ dans la vie du pasteur Yannick, qui m'a fait comprendre une chose très importante : on pardonne parce qu'on a été pardonné. On pardonne parce qu'en réalité, dans l'eau, le visage reflète le visage. Je ne suis pas différente de celui ou celle qui m'offense. Une fois que j'ai compris ça, bien-aimés, une fois que j'ai appris à regarder à Dieu dans tout ce qui m'arrive, rien n'était plus un problème à mes yeux. En vérité, je découvre au travers de la situation que je ne suis pas différente de mes frères et sœurs qui peuvent m'offenser, et j'ai découvert réellement, au travers de l'entretien et de la parole, que celui qui a reçu le pardon peut pardonner. Et ma prière aujourd'hui, c'est qu'il m'aide, car je sais que ce n'est pas facile de le voir partout dans ma vie, que ce soit en bien ou en mal pour ma chair. Amen, amen.",
    "mots": [
     {
      "m": "Bien-aimés,",
-     "t0": 0.1,
-     "t1": 0.87
+     "t0": 0.0,
+     "t1": 0.66
     },
     {
-     "m": "bonjour",
-     "t0": 0.87,
-     "t1": 1.51
+     "m": "bonjour !",
+     "t0": 0.92,
+     "t1": 1.92
     },
     {
-     "m": "aujourd'hui",
-     "t0": 1.9,
-     "t1": 2.41
+     "m": "Aujourd'hui,",
+     "t0": 1.92,
+     "t1": 2.48
     },
     {
      "m": "j'aimerais",
-     "t0": 2.41,
-     "t1": 3.05
+     "t0": 2.72,
+     "t1": 3.04
     },
     {
      "m": "rendre",
-     "t0": 3.05,
-     "t1": 3.39
+     "t0": 3.04,
+     "t1": 3.28
     },
     {
      "m": "grâce",
-     "t0": 3.39,
-     "t1": 3.7
+     "t0": 3.28,
+     "t1": 3.6
     },
     {
      "m": "à",
-     "t0": 3.7,
-     "t1": 3.85
+     "t0": 3.6,
+     "t1": 3.76
     },
     {
      "m": "Dieu",
-     "t0": 3.85,
-     "t1": 4.11
+     "t0": 3.76,
+     "t1": 4.0
     },
     {
      "m": "et",
-     "t0": 4.11,
+     "t0": 4.0,
      "t1": 4.3
     },
     {
      "m": "partager",
      "t0": 4.3,
-     "t1": 4.73
+     "t1": 4.66
     },
     {
      "m": "concernant",
-     "t0": 4.73,
+     "t0": 4.66,
      "t1": 5.24
     },
     {
      "m": "ma",
      "t0": 5.24,
-     "t1": 5.43
+     "t1": 5.38
     },
     {
      "m": "situation.",
-     "t0": 5.43,
-     "t1": 5.9
+     "t0": 5.38,
+     "t1": 5.72
     },
     {
      "m": "Je",
-     "t0": 6.43,
-     "t1": 6.58
+     "t0": 6.52,
+     "t1": 6.62
     },
     {
      "m": "suis",
-     "t0": 6.58,
-     "t1": 6.8
+     "t0": 6.62,
+     "t1": 6.76
     },
     {
      "m": "une",
-     "t0": 6.8,
+     "t0": 6.76,
      "t1": 6.98
     },
     {
      "m": "femme",
      "t0": 6.98,
-     "t1": 7.23
+     "t1": 7.18
     },
     {
      "m": "aimée",
-     "t0": 7.23,
-     "t1": 7.48
+     "t0": 7.18,
+     "t1": 7.6
     },
     {
      "m": "dans",
-     "t0": 7.48,
-     "t1": 7.69
+     "t0": 7.6,
+     "t1": 7.74
     },
     {
      "m": "ma",
-     "t0": 7.69,
-     "t1": 7.84
+     "t0": 7.74,
+     "t1": 7.9
     },
     {
-     "m": "belle",
-     "t0": 7.84,
-     "t1": 8.09
+     "m": "belle-famille,",
+     "t0": 7.9,
+     "t1": 8.42
     },
     {
-     "m": "famille.",
-     "t0": 8.09,
-     "t1": 8.41
+     "m": "mère",
+     "t0": 8.8,
+     "t1": 8.96
     },
     {
-     "m": "quelque",
-     "t0": 8.73,
-     "t1": 9.0
-    },
-    {
-     "m": "chose",
-     "t0": 9.0,
-     "t1": 9.22
-    },
-    {
-     "m": "que",
-     "t0": 9.22,
-     "t1": 9.37
-    },
-    {
-     "m": "je",
-     "t0": 9.37,
-     "t1": 9.5
-    },
-    {
-     "m": "n'aurais",
-     "t0": 9.5,
-     "t1": 9.77
-    },
-    {
-     "m": "pas",
-     "t0": 9.77,
-     "t1": 9.93
-    },
-    {
-     "m": "cru,",
-     "t0": 9.93,
-     "t1": 10.09
-    },
-    {
-     "m": "même",
-     "t0": 10.09,
-     "t1": 10.41
-    },
-    {
-     "m": "si",
-     "t0": 10.41,
-     "t1": 10.54
-    },
-    {
-     "m": "on",
-     "t0": 10.54,
-     "t1": 10.67
-    },
-    {
-     "m": "me",
-     "t0": 10.67,
-     "t1": 10.8
-    },
-    {
-     "m": "le",
-     "t0": 10.8,
-     "t1": 10.93
-    },
-    {
-     "m": "disait.",
-     "t0": 10.93,
-     "t1": 11.17
-    },
-    {
-     "m": "Mère",
-     "t0": 11.61,
-     "t1": 11.91
-    },
-    {
-     "m": "d'enfant",
-     "t0": 11.91,
-     "t1": 12.35
+     "m": "d'enfants",
+     "t0": 8.96,
+     "t1": 9.46
     },
     {
      "m": "et",
-     "t0": 12.35,
-     "t1": 12.81
+     "t0": 9.46,
+     "t1": 9.8
     },
     {
      "m": "heureuse.",
-     "t0": 12.81,
-     "t1": 13.29
+     "t0": 9.8,
+     "t1": 10.34
     },
     {
      "m": "Dans",
-     "t0": 13.72,
-     "t1": 13.93
+     "t0": 10.88,
+     "t1": 11.0
     },
     {
      "m": "ma",
-     "t0": 13.93,
-     "t1": 14.08
+     "t0": 11.0,
+     "t1": 11.14
     },
     {
      "m": "jeunesse,",
-     "t0": 14.08,
-     "t1": 14.42
+     "t0": 11.14,
+     "t1": 11.58
     },
     {
      "m": "j'ai",
-     "t0": 14.42,
-     "t1": 14.76
+     "t0": 11.92,
+     "t1": 12.12
     },
     {
-     "m": "été,",
-     "t0": 14.76,
-     "t1": 14.94
+     "m": "été",
+     "t0": 12.12,
+     "t1": 12.32
     },
     {
      "m": "exposée",
-     "t0": 14.94,
-     "t1": 15.26
+     "t0": 12.32,
+     "t1": 12.82
     },
     {
      "m": "à",
-     "t0": 15.26,
-     "t1": 15.37
+     "t0": 12.82,
+     "t1": 12.9
     },
     {
      "m": "la",
-     "t0": 15.37,
-     "t1": 15.52
+     "t0": 12.9,
+     "t1": 13.0
     },
     {
      "m": "débauche",
-     "t0": 15.52,
-     "t1": 15.86
+     "t0": 13.0,
+     "t1": 13.32
     },
     {
-     "m": "sexuelle,",
-     "t0": 15.86,
-     "t1": 16.21
+     "m": "sexuelle",
+     "t0": 13.32,
+     "t1": 13.88
     },
     {
      "m": "et",
-     "t0": 16.21,
-     "t1": 16.35
+     "t0": 13.88,
+     "t1": 14.32
     },
     {
-     "m": "je",
-     "t0": 16.35,
-     "t1": 16.5
-    },
-    {
-     "m": "ne",
-     "t0": 16.5,
-     "t1": 16.88
-    },
-    {
-     "m": "me",
-     "t0": 16.88,
-     "t1": 17.03
-    },
-    {
-     "m": "suis",
-     "t0": 17.03,
-     "t1": 17.24
-    },
-    {
-     "m": "jamais",
-     "t0": 17.24,
-     "t1": 17.52
-    },
-    {
-     "m": "souciée",
-     "t0": 17.52,
-     "t1": 17.83
-    },
-    {
-     "m": "de",
-     "t0": 17.83,
-     "t1": 17.98
-    },
-    {
-     "m": "ce",
-     "t0": 17.98,
-     "t1": 18.12
-    },
-    {
-     "m": "qui",
-     "t0": 18.12,
-     "t1": 18.3
-    },
-    {
-     "m": "pourrait",
-     "t0": 18.3,
-     "t1": 18.65
-    },
-    {
-     "m": "se",
-     "t0": 18.65,
-     "t1": 18.8
-    },
-    {
-     "m": "passer",
-     "t0": 18.8,
-     "t1": 19.07
-    },
-    {
-     "m": "plus",
-     "t0": 19.07,
-     "t1": 19.29
-    },
-    {
-     "m": "tard.",
-     "t0": 19.29,
-     "t1": 19.5
-    },
-    {
-     "m": "J'ai",
-     "t0": 19.97,
-     "t1": 20.18
-    },
-    {
-     "m": "aussi",
-     "t0": 20.18,
-     "t1": 20.46
+     "m": "j'ai",
+     "t0": 14.32,
+     "t1": 14.46
     },
     {
      "m": "plusieurs",
-     "t0": 20.46,
-     "t1": 20.9
+     "t0": 14.46,
+     "t1": 14.74
     },
     {
      "m": "fois",
-     "t0": 20.9,
-     "t1": 21.15
+     "t0": 14.74,
+     "t1": 15.02
     },
     {
-     "m": "avorté,",
-     "t0": 21.15,
-     "t1": 21.47
+     "m": "avorté.",
+     "t0": 15.02,
+     "t1": 15.52
     },
     {
      "m": "Puis",
-     "t0": 21.95,
-     "t1": 22.17
+     "t0": 16.12,
+     "t1": 16.26
     },
     {
-     "m": "j'ai",
-     "t0": 22.17,
-     "t1": 22.36
+     "m": "je",
+     "t0": 16.26,
+     "t1": 16.38
     },
     {
-     "m": "rencontré",
-     "t0": 22.36,
-     "t1": 22.75
+     "m": "me",
+     "t0": 16.38,
+     "t1": 16.5
     },
     {
-     "m": "mon",
-     "t0": 22.75,
-     "t1": 22.94
+     "m": "suis",
+     "t0": 16.5,
+     "t1": 16.64
     },
     {
-     "m": "mari",
-     "t0": 22.94,
-     "t1": 23.16
-    },
-    {
-     "m": "et",
-     "t0": 23.16,
-     "t1": 23.32
-    },
-    {
-     "m": "nous",
-     "t0": 23.32,
-     "t1": 23.54
-    },
-    {
-     "m": "nous",
-     "t0": 23.54,
-     "t1": 23.76
-    },
-    {
-     "m": "sommes",
-     "t0": 23.76,
-     "t1": 24.05
-    },
-    {
-     "m": "mariés.",
-     "t0": 24.05,
-     "t1": 24.34
+     "m": "mariée,",
+     "t0": 16.64,
+     "t1": 17.16
     },
     {
      "m": "mais",
-     "t0": 24.7,
-     "t1": 24.95
+     "t0": 17.44,
+     "t1": 17.54
     },
     {
-     "m": "ensuite",
-     "t0": 24.95,
-     "t1": 25.31
-    },
-    {
-     "m": "est",
-     "t0": 25.31,
-     "t1": 25.51
-    },
-    {
-     "m": "venu",
-     "t0": 25.52,
-     "t1": 25.76
-    },
-    {
-     "m": "le",
-     "t0": 25.76,
-     "t1": 25.93
-    },
-    {
-     "m": "problème",
-     "t0": 25.93,
-     "t1": 26.33
-    },
-    {
-     "m": "Je",
-     "t0": 26.77,
-     "t1": 26.92
+     "m": "je",
+     "t0": 17.54,
+     "t1": 17.66
     },
     {
      "m": "n'arrivais",
-     "t0": 26.92,
-     "t1": 27.3
+     "t0": 17.66,
+     "t1": 17.96
     },
     {
      "m": "pas",
-     "t0": 27.3,
-     "t1": 27.49
+     "t0": 17.96,
+     "t1": 18.2
     },
     {
      "m": "à",
-     "t0": 27.49,
-     "t1": 27.6
+     "t0": 18.2,
+     "t1": 18.28
     },
     {
      "m": "avoir",
-     "t0": 27.6,
-     "t1": 27.85
+     "t0": 18.28,
+     "t1": 18.48
     },
     {
-     "m": "d'enfant.",
-     "t0": 27.85,
-     "t1": 28.17
+     "m": "d'enfants.",
+     "t0": 18.48,
+     "t1": 18.88
     },
     {
      "m": "Ma",
-     "t0": 28.65,
-     "t1": 28.8
+     "t0": 19.42,
+     "t1": 19.58
     },
     {
      "m": "belle-mère",
-     "t0": 28.8,
-     "t1": 29.17
+     "t0": 19.58,
+     "t1": 19.88
     },
     {
      "m": "ne",
-     "t0": 29.17,
-     "t1": 29.31
+     "t0": 19.88,
+     "t1": 20.08
     },
     {
-     "m": "me",
-     "t0": 29.31,
-     "t1": 29.46
-    },
-    {
-     "m": "laissait",
-     "t0": 29.46,
-     "t1": 29.8
-    },
-    {
-     "m": "pas",
-     "t0": 29.8,
-     "t1": 29.98
-    },
-    {
-     "m": "me",
-     "t0": 29.98,
-     "t1": 30.12
-    },
-    {
-     "m": "reposer,",
-     "t0": 30.12,
-     "t1": 30.7
-    },
-    {
-     "m": "toujours",
-     "t0": 30.7,
-     "t1": 31.04
-    },
-    {
-     "m": "en",
-     "t0": 31.04,
-     "t1": 31.19
-    },
-    {
-     "m": "train",
-     "t0": 31.19,
-     "t1": 31.43
+     "m": "cessait",
+     "t0": 20.08,
+     "t1": 20.48
     },
     {
      "m": "de",
-     "t0": 31.43,
-     "t1": 31.58
+     "t0": 20.48,
+     "t1": 20.64
     },
     {
-     "m": "m'insulter,",
-     "t0": 31.58,
-     "t1": 31.95
-    },
-    {
-     "m": "toujours",
-     "t0": 31.95,
-     "t1": 32.47
-    },
-    {
-     "m": "en",
-     "t0": 32.47,
-     "t1": 32.62
-    },
-    {
-     "m": "train",
-     "t0": 32.62,
-     "t1": 32.86
-    },
-    {
-     "m": "de",
-     "t0": 32.86,
-     "t1": 33.01
-    },
-    {
-     "m": "me",
-     "t0": 33.01,
-     "t1": 33.15
-    },
-    {
-     "m": "maudire,",
-     "t0": 33.15,
-     "t1": 33.46
-    },
-    {
-     "m": "Je",
-     "t0": 33.91,
-     "t1": 34.07
-    },
-    {
-     "m": "n'ai",
-     "t0": 34.07,
-     "t1": 34.27
-    },
-    {
-     "m": "pas",
-     "t0": 34.27,
-     "t1": 34.46
-    },
-    {
-     "m": "regardé",
-     "t0": 34.46,
-     "t1": 34.8
-    },
-    {
-     "m": "à",
-     "t0": 34.8,
-     "t1": 34.93
-    },
-    {
-     "m": "ma",
-     "t0": 34.93,
-     "t1": 35.09
-    },
-    {
-     "m": "vie",
-     "t0": 35.09,
-     "t1": 35.28
-    },
-    {
-     "m": "de",
-     "t0": 35.28,
-     "t1": 35.44
-    },
-    {
-     "m": "débauche",
-     "t0": 35.44,
-     "t1": 36.0
-    },
-    {
-     "m": "mais",
-     "t0": 36.0,
-     "t1": 36.23
-    },
-    {
-     "m": "j'ai",
-     "t0": 36.23,
-     "t1": 36.42
-    },
-    {
-     "m": "porté",
-     "t0": 36.42,
-     "t1": 36.69
-    },
-    {
-     "m": "rancœur",
-     "t0": 36.69,
-     "t1": 37.06
-    },
-    {
-     "m": "à",
-     "t0": 37.06,
-     "t1": 37.19
-    },
-    {
-     "m": "ma",
-     "t0": 37.19,
-     "t1": 37.35
-    },
-    {
-     "m": "belle",
-     "t0": 37.35,
-     "t1": 37.62
-    },
-    {
-     "m": "famille,",
-     "t0": 37.62,
-     "t1": 38.13
-    },
-    {
-     "m": "encore",
-     "t0": 38.13,
-     "t1": 38.44
+     "m": "m'insulter",
+     "t0": 20.64,
+     "t1": 21.16
     },
     {
      "m": "et",
-     "t0": 38.44,
-     "t1": 38.6
-    },
-    {
-     "m": "encore.",
-     "t0": 38.6,
-     "t1": 38.9
-    },
-    {
-     "m": "alors",
-     "t0": 39.35,
-     "t1": 39.6
-    },
-    {
-     "m": "j'ai",
-     "t0": 39.6,
-     "t1": 39.78
-    },
-    {
-     "m": "décidé",
-     "t0": 39.78,
-     "t1": 40.06
+     "t0": 21.16,
+     "t1": 21.42
     },
     {
      "m": "de",
-     "t0": 40.06,
-     "t1": 40.21
-    },
-    {
-     "m": "venir",
-     "t0": 40.21,
-     "t1": 40.45
-    },
-    {
-     "m": "voir",
-     "t0": 40.45,
-     "t1": 40.67
-    },
-    {
-     "m": "le",
-     "t0": 40.67,
-     "t1": 40.81
-    },
-    {
-     "m": "pasteur",
-     "t0": 40.81,
-     "t1": 41.13
-    },
-    {
-     "m": "Yannick",
-     "t0": 41.13,
-     "t1": 41.44
-    },
-    {
-     "m": "pour",
-     "t0": 41.44,
-     "t1": 41.65
-    },
-    {
-     "m": "qu'on",
-     "t0": 41.65,
-     "t1": 41.87
-    },
-    {
-     "m": "prie",
-     "t0": 41.87,
-     "t1": 42.08
-    },
-    {
-     "m": "contre",
-     "t0": 42.08,
-     "t1": 42.36
-    },
-    {
-     "m": "eux.",
-     "t0": 42.36,
-     "t1": 42.54
-    },
-    {
-     "m": "Mais",
-     "t0": 42.96,
-     "t1": 43.21
-    },
-    {
-     "m": "à",
-     "t0": 43.21,
-     "t1": 43.35
-    },
-    {
-     "m": "ma",
-     "t0": 43.35,
-     "t1": 43.52
-    },
-    {
-     "m": "grande",
-     "t0": 43.52,
-     "t1": 43.85
-    },
-    {
-     "m": "surprise,",
-     "t0": 43.85,
-     "t1": 44.25
-    },
-    {
-     "m": "il",
-     "t0": 44.25,
-     "t1": 44.65
-    },
-    {
-     "m": "m'a",
-     "t0": 44.65,
-     "t1": 44.83
-    },
-    {
-     "m": "demandé",
-     "t0": 44.83,
-     "t1": 45.19
-    },
-    {
-     "m": "de",
-     "t0": 45.19,
-     "t1": 45.37
-    },
-    {
-     "m": "pardonner.",
-     "t0": 45.37,
-     "t1": 45.81
-    },
-    {
-     "m": "Il",
-     "t0": 46.42,
-     "t1": 46.56
-    },
-    {
-     "m": "m'a",
-     "t0": 46.56,
-     "t1": 46.71
-    },
-    {
-     "m": "parlé",
-     "t0": 46.71,
-     "t1": 46.95
-    },
-    {
-     "m": "de",
-     "t0": 46.95,
-     "t1": 47.09
-    },
-    {
-     "m": "la",
-     "t0": 47.09,
-     "t1": 47.24
-    },
-    {
-     "m": "nature",
-     "t0": 47.24,
-     "t1": 47.51
-    },
-    {
-     "m": "de",
-     "t0": 47.51,
-     "t1": 47.66
-    },
-    {
-     "m": "l'homme,",
-     "t0": 47.66,
-     "t1": 47.93
-    },
-    {
-     "m": "Psaume",
-     "t0": 48.27,
-     "t1": 48.76
-    },
-    {
-     "m": "14",
-     "t0": 48.76,
-     "t1": 49.02
-    },
-    {
-     "m": "verset",
-     "t0": 49.02,
-     "t1": 49.52
-    },
-    {
-     "m": "3",
-     "t0": 49.52,
-     "t1": 49.72
-    },
-    {
-     "m": "Tous",
-     "t0": 50.19,
-     "t1": 50.52
-    },
-    {
-     "m": "sont",
-     "t0": 50.52,
-     "t1": 50.86
-    },
-    {
-     "m": "égarés,",
-     "t0": 50.86,
-     "t1": 51.29
-    },
-    {
-     "m": "tous",
-     "t0": 51.63,
-     "t1": 51.94
-    },
-    {
-     "m": "sont",
-     "t0": 51.94,
-     "t1": 52.24
-    },
-    {
-     "m": "pervertis",
-     "t0": 52.24,
-     "t1": 52.78
-    },
-    {
-     "m": "Il",
-     "t0": 53.16,
-     "t1": 53.32
-    },
-    {
-     "m": "n'en",
-     "t0": 53.32,
-     "t1": 53.5
-    },
-    {
-     "m": "est",
-     "t0": 53.5,
-     "t1": 53.69
-    },
-    {
-     "m": "aucun",
-     "t0": 53.69,
-     "t1": 53.95
-    },
-    {
-     "m": "qui",
-     "t0": 53.95,
-     "t1": 54.14
-    },
-    {
-     "m": "fasse",
-     "t0": 54.14,
-     "t1": 54.4
-    },
-    {
-     "m": "le",
-     "t0": 54.4,
-     "t1": 54.56
-    },
-    {
-     "m": "bien,",
-     "t0": 54.56,
-     "t1": 54.78
-    },
-    {
-     "m": "Pas",
-     "t0": 55.08,
-     "t1": 55.31
-    },
-    {
-     "m": "même",
-     "t0": 55.31,
-     "t1": 55.58
-    },
-    {
-     "m": "un",
-     "t0": 55.58,
-     "t1": 55.76
-    },
-    {
-     "m": "seul.",
-     "t0": 55.76,
-     "t1": 56.03
-    },
-    {
-     "m": "Il",
-     "t0": 56.52,
-     "t1": 56.69
-    },
-    {
-     "m": "m'a",
-     "t0": 56.69,
-     "t1": 56.86
-    },
-    {
-     "m": "dit",
-     "t0": 56.86,
-     "t1": 57.06
-    },
-    {
-     "m": "nous",
-     "t0": 57.4,
-     "t1": 57.62
-    },
-    {
-     "m": "sommes",
-     "t0": 57.62,
-     "t1": 57.91
-    },
-    {
-     "m": "tous",
-     "t0": 57.91,
-     "t1": 58.14
-    },
-    {
-     "m": "corrompus",
-     "t0": 58.14,
-     "t1": 58.53
-    },
-    {
-     "m": "dès",
-     "t0": 58.53,
-     "t1": 58.72
-    },
-    {
-     "m": "la",
-     "t0": 58.72,
-     "t1": 58.87
-    },
-    {
-     "m": "naissance,",
-     "t0": 58.87,
-     "t1": 59.27
-    },
-    {
-     "m": "et",
-     "t0": 59.27,
-     "t1": 59.65
-    },
-    {
-     "m": "ma",
-     "t0": 59.65,
-     "t1": 59.8
-    },
-    {
-     "m": "belle-mère",
-     "t0": 59.8,
-     "t1": 60.2
-    },
-    {
-     "m": "et",
-     "t0": 60.2,
-     "t1": 60.35
-    },
-    {
-     "m": "moi,",
-     "t0": 60.35,
-     "t1": 60.54
-    },
-    {
-     "m": "nous",
-     "t0": 60.54,
-     "t1": 60.76
-    },
-    {
-     "m": "ne",
-     "t0": 60.76,
-     "t1": 60.92
-    },
-    {
-     "m": "sommes",
-     "t0": 60.92,
-     "t1": 61.21
-    },
-    {
-     "m": "pas",
-     "t0": 61.21,
-     "t1": 61.4
-    },
-    {
-     "m": "différentes.",
-     "t0": 61.4,
-     "t1": 61.86
-    },
-    {
-     "m": "Je",
-     "t0": 62.34,
-     "t1": 62.5
-    },
-    {
-     "m": "voyais",
-     "t0": 62.5,
-     "t1": 62.79
-    },
-    {
-     "m": "cela",
-     "t0": 62.79,
-     "t1": 63.02
-    },
-    {
-     "m": "comme",
-     "t0": 63.02,
-     "t1": 63.28
-    },
-    {
-     "m": "une",
-     "t0": 63.28,
-     "t1": 63.47
-    },
-    {
-     "m": "insulte",
-     "t0": 63.47,
-     "t1": 63.8
-    },
-    {
-     "m": "Je",
-     "t0": 64.12,
-     "t1": 64.26
-    },
-    {
-     "m": "disais",
-     "t0": 64.26,
-     "t1": 64.52
-    },
-    {
-     "m": "en",
-     "t0": 64.52,
-     "t1": 64.67
-    },
-    {
-     "m": "mon",
-     "t0": 64.67,
-     "t1": 64.84
-    },
-    {
-     "m": "cœur",
-     "t0": 64.84,
-     "t1": 65.07
-    },
-    {
-     "m": "Moi,",
-     "t0": 65.47,
-     "t1": 65.71
-    },
-    {
-     "m": "pareille",
-     "t0": 65.71,
-     "t1": 66.38
-    },
-    {
-     "m": "à",
-     "t0": 66.38,
-     "t1": 66.53
-    },
-    {
-     "m": "cette",
-     "t0": 66.53,
-     "t1": 66.85
-    },
-    {
-     "m": "sorcière",
-     "t0": 66.85,
-     "t1": 67.31
-    },
-    {
-     "m": "Non,",
-     "t0": 67.66,
-     "t1": 67.98
-    },
-    {
-     "m": "pasteur",
-     "t0": 67.98,
-     "t1": 68.53
-    },
-    {
-     "m": "Il",
-     "t0": 69.02,
-     "t1": 69.21
-    },
-    {
-     "m": "m'a",
-     "t0": 69.21,
-     "t1": 69.4
-    },
-    {
-     "m": "aussi",
-     "t0": 69.4,
-     "t1": 69.72
-    },
-    {
-     "m": "rappelé,",
-     "t0": 69.72,
-     "t1": 70.12
-    },
-    {
-     "m": "Romains,",
-     "t0": 70.12,
-     "t1": 70.52
-    },
-    {
-     "m": "chapitre",
-     "t0": 70.52,
-     "t1": 70.96
-    },
-    {
-     "m": "2",
-     "t0": 70.96,
-     "t1": 71.11
-    },
-    {
-     "m": "verset",
-     "t0": 71.11,
-     "t1": 71.47
-    },
-    {
-     "m": "1.",
-     "t0": 71.47,
-     "t1": 71.62
-    },
-    {
-     "m": "Oh",
-     "t0": 72.24,
-     "t1": 72.4
-    },
-    {
-     "m": "homme,",
-     "t0": 72.4,
-     "t1": 72.66
-    },
-    {
-     "m": "qui",
-     "t0": 72.66,
-     "t1": 73.08
-    },
-    {
-     "m": "que",
-     "t0": 73.08,
-     "t1": 73.27
-    },
-    {
-     "m": "tu",
-     "t0": 73.27,
-     "t1": 73.43
-    },
-    {
-     "m": "sois,",
-     "t0": 73.43,
-     "t1": 73.66
-    },
-    {
-     "m": "Toi",
-     "t0": 73.96,
-     "t1": 74.22
-    },
-    {
-     "m": "qui",
-     "t0": 74.22,
-     "t1": 74.47
-    },
-    {
-     "m": "juge,",
-     "t0": 74.47,
-     "t1": 75.01
-    },
-    {
-     "m": "tu",
-     "t0": 75.01,
-     "t1": 75.22
-    },
-    {
-     "m": "es",
-     "t0": 75.22,
-     "t1": 75.43
-    },
-    {
-     "m": "donc",
-     "t0": 75.43,
-     "t1": 75.73
-    },
-    {
-     "m": "inexcusable",
-     "t0": 75.73,
-     "t1": 76.36
-    },
-    {
-     "m": "Car,",
-     "t0": 76.73,
-     "t1": 76.96
-    },
-    {
-     "m": "en",
-     "t0": 76.96,
-     "t1": 77.14
-    },
-    {
-     "m": "jugeant",
-     "t0": 77.14,
-     "t1": 77.53
-    },
-    {
-     "m": "les",
-     "t0": 77.53,
-     "t1": 77.76
-    },
-    {
-     "m": "autres,",
-     "t0": 77.76,
-     "t1": 78.3
-    },
-    {
-     "m": "tu",
-     "t0": 78.3,
-     "t1": 78.49
-    },
-    {
-     "m": "te",
-     "t0": 78.49,
-     "t1": 78.67
-    },
-    {
-     "m": "condamnes",
-     "t0": 78.67,
-     "t1": 79.15
-    },
-    {
-     "m": "toi-même,",
-     "t0": 79.15,
-     "t1": 79.54
-    },
-    {
-     "m": "puisque",
-     "t0": 79.8,
-     "t1": 80.15
-    },
-    {
-     "m": "toi",
-     "t0": 80.15,
-     "t1": 80.35
-    },
-    {
-     "m": "qui",
-     "t0": 80.35,
-     "t1": 80.56
-    },
-    {
-     "m": "juge,",
-     "t0": 80.56,
-     "t1": 80.8
-    },
-    {
-     "m": "tu",
-     "t0": 80.8,
-     "t1": 81.12
-    },
-    {
-     "m": "fais",
-     "t0": 81.12,
-     "t1": 81.37
-    },
-    {
-     "m": "les",
-     "t0": 81.37,
-     "t1": 81.57
-    },
-    {
-     "m": "mêmes",
-     "t0": 81.57,
-     "t1": 81.85
-    },
-    {
-     "m": "choses.",
-     "t0": 81.85,
-     "t1": 82.16
-    },
-    {
-     "m": "Je",
-     "t0": 83.51,
-     "t1": 83.66
-    },
-    {
-     "m": "n'étais",
-     "t0": 83.66,
-     "t1": 83.94
-    },
-    {
-     "m": "même",
-     "t0": 83.94,
-     "t1": 84.16
-    },
-    {
-     "m": "pas",
-     "t0": 84.16,
-     "t1": 84.34
-    },
-    {
-     "m": "avec",
-     "t0": 84.34,
-     "t1": 84.55
-    },
-    {
-     "m": "lui,",
-     "t0": 84.55,
-     "t1": 84.73
-    },
-    {
-     "m": "à",
-     "t0": 84.73,
-     "t1": 84.85
-    },
-    {
-     "m": "vrai",
-     "t0": 84.85,
-     "t1": 85.06
-    },
-    {
-     "m": "dire.",
-     "t0": 85.06,
-     "t1": 85.28
-    },
-    {
-     "m": "J'étais",
-     "t0": 85.63,
-     "t1": 85.97
-    },
-    {
-     "m": "juste",
-     "t0": 85.97,
-     "t1": 86.27
-    },
-    {
-     "m": "là,",
-     "t0": 86.27,
-     "t1": 86.45
-    },
-    {
-     "m": "dans",
-     "t0": 86.45,
-     "t1": 86.71
-    },
-    {
-     "m": "ma",
-     "t0": 86.71,
-     "t1": 86.89
-    },
-    {
-     "m": "tête",
-     "t0": 86.89,
-     "t1": 87.15
-    },
-    {
-     "m": "pasteur,",
-     "t0": 87.56,
-     "t1": 87.9
-    },
-    {
-     "m": "je",
-     "t0": 87.9,
-     "t1": 88.06
-    },
-    {
-     "m": "suis",
-     "t0": 88.06,
-     "t1": 88.29
-    },
-    {
-     "m": "venue",
-     "t0": 88.29,
-     "t1": 88.56
-    },
-    {
-     "m": "pour",
-     "t0": 88.56,
-     "t1": 88.79
-    },
-    {
-     "m": "qu'on",
-     "t0": 88.79,
-     "t1": 89.02
-    },
-    {
-     "m": "prie",
-     "t0": 89.02,
-     "t1": 89.26
-    },
-    {
-     "m": "contre",
-     "t0": 89.26,
-     "t1": 89.56
-    },
-    {
-     "m": "ma",
-     "t0": 89.56,
-     "t1": 89.72
-    },
-    {
-     "m": "belle",
-     "t0": 89.72,
-     "t1": 89.99
-    },
-    {
-     "m": "famille,",
-     "t0": 89.99,
-     "t1": 90.33
-    },
-    {
-     "m": "pas",
-     "t0": 90.33,
-     "t1": 90.64
-    },
-    {
-     "m": "pour",
-     "t0": 90.64,
-     "t1": 90.88
-    },
-    {
-     "m": "entendre",
-     "t0": 90.88,
-     "t1": 91.25
-    },
-    {
-     "m": "tout",
-     "t0": 91.25,
-     "t1": 91.48
-    },
-    {
-     "m": "ce",
-     "t0": 91.48,
-     "t1": 91.64
-    },
-    {
-     "m": "charabia",
-     "t0": 91.64,
-     "t1": 92.02
-    },
-    {
-     "m": "Je",
-     "t0": 92.47,
-     "t1": 92.6
-    },
-    {
-     "m": "ne",
-     "t0": 92.6,
-     "t1": 92.74
-    },
-    {
-     "m": "l'ai",
-     "t0": 92.74,
-     "t1": 92.9
-    },
-    {
-     "m": "pas",
-     "t0": 92.9,
-     "t1": 93.06
-    },
-    {
-     "m": "écouté.",
-     "t0": 93.06,
-     "t1": 93.31
-    },
-    {
-     "m": "Ensuite",
-     "t0": 93.77,
-     "t1": 94.12
-    },
-    {
-     "m": "est",
-     "t0": 94.12,
-     "t1": 94.32
-    },
-    {
-     "m": "venue",
-     "t0": 94.32,
-     "t1": 94.59
-    },
-    {
-     "m": "ma",
-     "t0": 94.59,
-     "t1": 94.75
-    },
-    {
-     "m": "maladie",
-     "t0": 94.75,
-     "t1": 95.1
-    },
-    {
-     "m": "cardiaque,",
-     "t0": 95.1,
-     "t1": 95.52
-    },
-    {
-     "m": "et",
-     "t0": 95.52,
-     "t1": 95.68
-    },
-    {
-     "m": "c'est",
-     "t0": 95.68,
-     "t1": 96.18
-    },
-    {
-     "m": "à",
-     "t0": 96.18,
-     "t1": 96.31
-    },
-    {
-     "m": "l'hôpital",
-     "t0": 96.31,
-     "t1": 96.69
-    },
-    {
-     "m": "que",
-     "t0": 96.69,
-     "t1": 96.89
-    },
-    {
-     "m": "tout",
-     "t0": 96.89,
-     "t1": 97.13
-    },
-    {
-     "m": "m'est",
-     "t0": 97.13,
-     "t1": 97.37
-    },
-    {
-     "m": "revenu",
-     "t0": 97.37,
-     "t1": 97.68
-    },
-    {
-     "m": "comme",
-     "t0": 97.68,
-     "t1": 97.95
-    },
-    {
-     "m": "un",
-     "t0": 97.95,
-     "t1": 98.11
-    },
-    {
-     "m": "fardeau.",
-     "t0": 98.11,
-     "t1": 98.46
-    },
-    {
-     "m": "J'ai",
-     "t0": 98.88,
-     "t1": 99.12
-    },
-    {
-     "m": "jugé",
-     "t0": 99.12,
-     "t1": 99.4
-    },
-    {
-     "m": "ma",
-     "t0": 99.4,
-     "t1": 99.6
-    },
-    {
-     "m": "belle-mère,",
-     "t0": 99.6,
-     "t1": 100.1
-    },
-    {
-     "m": "pourtant",
-     "t0": 100.47,
-     "t1": 100.8
-    },
-    {
-     "m": "je",
-     "t0": 100.8,
-     "t1": 100.94
-    },
-    {
-     "m": "fais",
-     "t0": 100.94,
-     "t1": 101.15
-    },
-    {
-     "m": "les",
-     "t0": 101.15,
-     "t1": 101.32
-    },
-    {
-     "m": "mêmes",
-     "t0": 101.32,
-     "t1": 101.56
-    },
-    {
-     "m": "bêtises.",
-     "t0": 101.56,
-     "t1": 101.86
-    },
-    {
-     "m": "J'ai",
-     "t0": 102.42,
-     "t1": 102.63
-    },
-    {
-     "m": "condamné",
-     "t0": 102.63,
-     "t1": 103.02
-    },
-    {
-     "m": "ma",
-     "t0": 103.02,
-     "t1": 103.19
-    },
-    {
-     "m": "belle-mère,",
-     "t0": 103.19,
-     "t1": 103.62
-    },
-    {
-     "m": "pourtant",
-     "t0": 104.02,
-     "t1": 104.32
-    },
-    {
-     "m": "je",
-     "t0": 104.32,
-     "t1": 104.46
-    },
-    {
-     "m": "suis",
-     "t0": 104.46,
-     "t1": 104.77
-    },
-    {
-     "m": "pire",
-     "t0": 104.77,
-     "t1": 104.96
-    },
-    {
-     "m": "qu'elle.",
-     "t0": 104.96,
-     "t1": 105.21
-    },
-    {
-     "m": "Honnêtement,",
-     "t0": 105.72,
-     "t1": 106.3
-    },
-    {
-     "m": "Je",
-     "t0": 106.61,
-     "t1": 106.74
-    },
-    {
-     "m": "ne",
-     "t0": 106.74,
-     "t1": 106.87
-    },
-    {
-     "m": "pense",
-     "t0": 106.87,
-     "t1": 107.09
-    },
-    {
-     "m": "pas",
-     "t0": 107.09,
-     "t1": 107.25
-    },
-    {
-     "m": "qu'il",
-     "t0": 107.25,
-     "t1": 107.44
-    },
-    {
-     "m": "y",
-     "t0": 107.44,
-     "t1": 107.54
-    },
-    {
-     "m": "ait",
-     "t0": 107.54,
-     "t1": 107.7
-    },
-    {
-     "m": "quelqu'un",
-     "t0": 107.7,
-     "t1": 108.0
-    },
-    {
-     "m": "qui",
-     "t0": 108.0,
-     "t1": 108.16
-    },
-    {
-     "m": "ait",
-     "t0": 108.16,
-     "t1": 108.32
-    },
-    {
-     "m": "eu",
-     "t0": 108.32,
-     "t1": 108.45
-    },
-    {
-     "m": "à",
-     "t0": 108.45,
-     "t1": 108.56
-    },
-    {
-     "m": "avorter",
-     "t0": 108.56,
-     "t1": 108.83
-    },
-    {
-     "m": "comme",
-     "t0": 108.83,
-     "t1": 109.05
-    },
-    {
-     "m": "moi.",
-     "t0": 109.05,
-     "t1": 109.21
-    },
-    {
-     "m": "Quand",
-     "t0": 109.63,
-     "t1": 109.87
-    },
-    {
-     "m": "elle",
-     "t0": 109.87,
-     "t1": 110.08
+     "t0": 21.42,
+     "t1": 21.54
     },
     {
      "m": "me",
-     "t0": 110.08,
-     "t1": 110.23
+     "t0": 21.54,
+     "t1": 21.64
     },
     {
-     "m": "disait",
-     "t0": 110.23,
-     "t1": 110.51
+     "m": "maudire.",
+     "t0": 21.64,
+     "t1": 22.1
     },
     {
-     "m": "que",
-     "t0": 110.51,
-     "t1": 110.68
+     "m": "Au",
+     "t0": 22.68,
+     "t1": 22.8
     },
     {
-     "m": "je",
-     "t0": 110.68,
-     "t1": 110.83
-    },
-    {
-     "m": "tuais",
-     "t0": 110.83,
-     "t1": 111.07
-    },
-    {
-     "m": "ses",
-     "t0": 111.07,
-     "t1": 111.25
-    },
-    {
-     "m": "petits-fils",
-     "t0": 111.25,
-     "t1": 111.66
-    },
-    {
-     "m": "dans",
-     "t0": 111.66,
-     "t1": 111.87
-    },
-    {
-     "m": "mon",
-     "t0": 111.87,
-     "t1": 112.04
-    },
-    {
-     "m": "ventre,",
-     "t0": 112.04,
-     "t1": 112.32
-    },
-    {
-     "m": "Je",
-     "t0": 112.61,
-     "t1": 112.76
-    },
-    {
-     "m": "la",
-     "t0": 112.76,
-     "t1": 112.91
-    },
-    {
-     "m": "voyais",
-     "t0": 112.91,
-     "t1": 113.19
-    },
-    {
-     "m": "comme",
-     "t0": 113.19,
-     "t1": 113.45
-    },
-    {
-     "m": "une",
-     "t0": 113.45,
-     "t1": 113.63
-    },
-    {
-     "m": "sorcière.",
-     "t0": 113.63,
-     "t1": 113.98
-    },
-    {
-     "m": "Elle",
-     "t0": 114.41,
-     "t1": 114.62
-    },
-    {
-     "m": "avait",
-     "t0": 114.62,
-     "t1": 114.86
-    },
-    {
-     "m": "raison,",
-     "t0": 114.86,
-     "t1": 115.13
-    },
-    {
-     "m": "Je",
-     "t0": 115.54,
-     "t1": 115.67
-    },
-    {
-     "m": "l'ai",
-     "t0": 115.67,
-     "t1": 115.83
-    },
-    {
-     "m": "fait.",
-     "t0": 115.83,
-     "t1": 116.02
-    },
-    {
-     "m": "Dieu",
-     "t0": 116.47,
-     "t1": 116.69
-    },
-    {
-     "m": "a",
-     "t0": 116.69,
-     "t1": 116.81
-    },
-    {
-     "m": "utilisé",
-     "t0": 116.81,
-     "t1": 117.13
-    },
-    {
-     "m": "ma",
-     "t0": 117.13,
-     "t1": 117.28
-    },
-    {
-     "m": "belle-mère",
-     "t0": 117.28,
-     "t1": 117.67
-    },
-    {
-     "m": "tout",
-     "t0": 117.67,
-     "t1": 117.88
-    },
-    {
-     "m": "ce",
-     "t0": 117.88,
-     "t1": 118.17
-    },
-    {
-     "m": "temps",
-     "t0": 118.17,
-     "t1": 118.42
-    },
-    {
-     "m": "pour",
-     "t0": 118.42,
-     "t1": 118.64
-    },
-    {
-     "m": "me",
-     "t0": 118.64,
-     "t1": 118.79
-    },
-    {
-     "m": "rappeler",
-     "t0": 118.79,
-     "t1": 119.14
-    },
-    {
-     "m": "que",
-     "t0": 119.14,
-     "t1": 119.33
-    },
-    {
-     "m": "je",
-     "t0": 119.33,
-     "t1": 119.48
-    },
-    {
-     "m": "ne",
-     "t0": 119.48,
-     "t1": 119.63
-    },
-    {
-     "m": "suis",
-     "t0": 119.63,
-     "t1": 119.97
-    },
-    {
-     "m": "pas",
-     "t0": 119.97,
-     "t1": 120.16
-    },
-    {
-     "m": "différente",
-     "t0": 120.16,
-     "t1": 120.58
-    },
-    {
-     "m": "d'elle,",
-     "t0": 120.58,
-     "t1": 120.83
-    },
-    {
-     "m": "Mais",
-     "t0": 121.24,
-     "t1": 121.47
-    },
-    {
-     "m": "j'avais",
-     "t0": 121.47,
-     "t1": 121.77
-    },
-    {
-     "m": "les",
-     "t0": 121.77,
-     "t1": 121.96
-    },
-    {
-     "m": "regards",
-     "t0": 121.96,
-     "t1": 122.3
-    },
-    {
-     "m": "focalisés",
-     "t0": 122.3,
-     "t1": 122.71
-    },
-    {
-     "m": "sur",
-     "t0": 122.71,
-     "t1": 122.9
-    },
-    {
-     "m": "le",
-     "t0": 122.9,
-     "t1": 123.06
-    },
-    {
-     "m": "fouet,",
-     "t0": 123.06,
-     "t1": 123.55
-    },
-    {
-     "m": "et",
-     "t0": 123.55,
-     "t1": 123.71
-    },
-    {
-     "m": "non",
-     "t0": 123.71,
-     "t1": 123.91
-    },
-    {
-     "m": "sur",
-     "t0": 123.91,
-     "t1": 124.1
-    },
-    {
-     "m": "celui",
-     "t0": 124.1,
-     "t1": 124.37
-    },
-    {
-     "m": "qui",
-     "t0": 124.37,
-     "t1": 124.56
-    },
-    {
-     "m": "me",
-     "t0": 124.56,
-     "t1": 124.72
-    },
-    {
-     "m": "fouettait",
-     "t0": 124.72,
-     "t1": 125.13
-    },
-    {
-     "m": "par",
-     "t0": 125.13,
-     "t1": 125.32
-    },
-    {
-     "m": "sa",
-     "t0": 125.32,
-     "t1": 125.48
-    },
-    {
-     "m": "parole.",
-     "t0": 125.48,
-     "t1": 125.78
-    },
-    {
-     "m": "Le",
-     "t0": 126.19,
-     "t1": 126.38
-    },
-    {
-     "m": "pasteur",
-     "t0": 126.38,
-     "t1": 126.77
-    },
-    {
-     "m": "Yannick",
-     "t0": 126.77,
-     "t1": 127.16
-    },
-    {
-     "m": "m'a",
-     "t0": 127.16,
-     "t1": 127.34
-    },
-    {
-     "m": "dit",
-     "t0": 127.34,
-     "t1": 127.57
-    },
-    {
-     "m": "Si",
-     "t0": 127.97,
-     "t1": 128.14
-    },
-    {
-     "m": "tu",
-     "t0": 128.14,
-     "t1": 128.32
-    },
-    {
-     "m": "avais",
-     "t0": 128.32,
-     "t1": 128.61
-    },
-    {
-     "m": "réellement",
-     "t0": 128.61,
-     "t1": 129.09
-    },
-    {
-     "m": "compris",
-     "t0": 129.09,
-     "t1": 129.46
-    },
-    {
-     "m": "la",
-     "t0": 129.46,
-     "t1": 129.63
-    },
-    {
-     "m": "grâce",
-     "t0": 129.63,
-     "t1": 129.92
-    },
-    {
-     "m": "que",
-     "t0": 129.92,
-     "t1": 130.13
-    },
-    {
-     "m": "Dieu",
-     "t0": 130.13,
-     "t1": 130.38
-    },
-    {
-     "m": "nous",
-     "t0": 130.38,
-     "t1": 130.64
-    },
-    {
-     "m": "a",
-     "t0": 130.64,
-     "t1": 130.77
-    },
-    {
-     "m": "accordé",
-     "t0": 130.77,
-     "t1": 131.14
-    },
-    {
-     "m": "en",
-     "t0": 131.14,
-     "t1": 131.31
-    },
-    {
-     "m": "Jésus",
-     "t0": 131.31,
-     "t1": 131.6
-    },
-    {
-     "m": "Christ,",
-     "t0": 131.6,
-     "t1": 131.93
-    },
-    {
-     "m": "pardonner",
-     "t0": 132.43,
-     "t1": 132.83
-    },
-    {
-     "m": "ta",
-     "t0": 132.83,
-     "t1": 132.98
-    },
-    {
-     "m": "belle-mère",
-     "t0": 132.98,
-     "t1": 133.38
-    },
-    {
-     "m": "n'aurait",
-     "t0": 133.38,
-     "t1": 133.71
-    },
-    {
-     "m": "pas",
-     "t0": 133.71,
-     "t1": 133.9
-    },
-    {
-     "m": "été",
-     "t0": 133.9,
-     "t1": 134.09
-    },
-    {
-     "m": "un",
-     "t0": 134.09,
-     "t1": 134.25
-    },
-    {
-     "m": "problème.",
-     "t0": 134.25,
-     "t1": 134.61
-    },
-    {
-     "m": "Éphésiens,",
-     "t0": 135.17,
-     "t1": 135.92
-    },
-    {
-     "m": "chapitre",
-     "t0": 135.92,
-     "t1": 136.61
-    },
-    {
-     "m": "4,",
-     "t0": 136.61,
-     "t1": 136.84
-    },
-    {
-     "m": "verset",
-     "t0": 136.84,
-     "t1": 137.4
-    },
-    {
-     "m": "32.",
-     "t0": 137.4,
-     "t1": 137.69
-    },
-    {
-     "m": "Soyez",
-     "t0": 138.25,
-     "t1": 138.55
-    },
-    {
-     "m": "bons",
-     "t0": 138.55,
-     "t1": 138.8
-    },
-    {
-     "m": "les",
-     "t0": 138.8,
-     "t1": 139.02
-    },
-    {
-     "m": "uns",
-     "t0": 139.02,
-     "t1": 139.24
-    },
-    {
-     "m": "envers",
-     "t0": 139.24,
-     "t1": 139.58
-    },
-    {
-     "m": "les",
-     "t0": 139.58,
-     "t1": 139.79
-    },
-    {
-     "m": "autres,",
-     "t0": 139.79,
-     "t1": 140.13
-    },
-    {
-     "m": "compatissants,",
-     "t0": 140.46,
-     "t1": 141.18
-    },
-    {
-     "m": "vous",
-     "t0": 141.65,
-     "t1": 141.9
-    },
-    {
-     "m": "pardonnant",
-     "t0": 141.9,
-     "t1": 142.38
-    },
-    {
-     "m": "réciproquement,",
-     "t0": 142.38,
-     "t1": 143.02
-    },
-    {
-     "m": "comme",
-     "t0": 143.36,
-     "t1": 143.65
-    },
-    {
-     "m": "Dieu",
-     "t0": 143.65,
-     "t1": 143.9
-    },
-    {
-     "m": "vous",
-     "t0": 143.9,
-     "t1": 144.15
-    },
-    {
-     "m": "a",
-     "t0": 144.15,
-     "t1": 144.28
-    },
-    {
-     "m": "pardonné",
-     "t0": 144.28,
-     "t1": 144.69
-    },
-    {
-     "m": "en",
-     "t0": 144.69,
-     "t1": 144.86
-    },
-    {
-     "m": "Christ.",
-     "t0": 144.86,
-     "t1": 145.19
-    },
-    {
-     "m": "Colossiens,",
-     "t0": 145.72,
-     "t1": 146.57
-    },
-    {
-     "m": "chapitre",
-     "t0": 146.57,
-     "t1": 147.19
-    },
-    {
-     "m": "3,",
-     "t0": 147.19,
-     "t1": 147.39
-    },
-    {
-     "m": "verset",
-     "t0": 147.39,
-     "t1": 147.89
-    },
-    {
-     "m": "13.",
-     "t0": 147.89,
-     "t1": 148.15
-    },
-    {
-     "m": "De",
-     "t0": 148.69,
-     "t1": 148.87
-    },
-    {
-     "m": "même",
-     "t0": 148.87,
-     "t1": 149.14
-    },
-    {
-     "m": "que",
-     "t0": 149.14,
-     "t1": 149.37
-    },
-    {
-     "m": "Christ",
-     "t0": 149.37,
-     "t1": 149.72
-    },
-    {
-     "m": "vous",
-     "t0": 149.72,
-     "t1": 149.98
-    },
-    {
-     "m": "a",
-     "t0": 149.98,
-     "t1": 150.13
-    },
-    {
-     "m": "pardonné,",
-     "t0": 150.13,
-     "t1": 150.56
-    },
-    {
-     "m": "pardonnez-vous",
-     "t0": 150.94,
-     "t1": 151.59
-    },
-    {
-     "m": "aussi.",
-     "t0": 151.59,
-     "t1": 151.9
-    },
-    {
-     "m": "qu'est-ce",
-     "t0": 152.52,
-     "t1": 152.81
-    },
-    {
-     "m": "que",
-     "t0": 152.81,
-     "t1": 152.98
-    },
-    {
-     "m": "Jésus",
-     "t0": 152.98,
-     "t1": 153.22
-    },
-    {
-     "m": "aurait",
-     "t0": 153.22,
-     "t1": 153.48
-    },
-    {
-     "m": "fait",
-     "t0": 153.48,
-     "t1": 153.68
-    },
-    {
-     "m": "dans",
-     "t0": 153.68,
-     "t1": 153.88
-    },
-    {
-     "m": "cette",
-     "t0": 153.88,
-     "t1": 154.11
-    },
-    {
-     "m": "situation",
-     "t0": 154.11,
-     "t1": 154.47
-    },
-    {
-     "m": "Il",
-     "t0": 155.03,
-     "t1": 155.21
-    },
-    {
-     "m": "aurait",
-     "t0": 155.21,
-     "t1": 155.56
-    },
-    {
-     "m": "pardonné.",
-     "t0": 155.56,
-     "t1": 155.98
-    },
-    {
-     "m": "Galates,",
-     "t0": 156.46,
-     "t1": 157.01
-    },
-    {
-     "m": "chapitre",
-     "t0": 157.01,
-     "t1": 157.63
-    },
-    {
-     "m": "2,",
-     "t0": 157.63,
-     "t1": 157.83
-    },
-    {
-     "m": "verset",
-     "t0": 157.83,
-     "t1": 158.33
-    },
-    {
-     "m": "20",
-     "t0": 158.33,
-     "t1": 158.59
-    },
-    {
-     "m": "J'ai",
-     "t0": 159.1,
-     "t1": 159.37
-    },
-    {
-     "m": "été",
-     "t0": 159.37,
-     "t1": 159.65
-    },
-    {
-     "m": "crucifié",
-     "t0": 159.65,
-     "t1": 160.17
-    },
-    {
-     "m": "avec",
-     "t0": 160.17,
-     "t1": 160.5
-    },
-    {
-     "m": "Christ",
-     "t0": 160.5,
-     "t1": 160.92
-    },
-    {
-     "m": "Et",
-     "t0": 161.28,
-     "t1": 161.43
-    },
-    {
-     "m": "si",
-     "t0": 161.43,
-     "t1": 161.59
-    },
-    {
-     "m": "je",
-     "t0": 161.59,
-     "t1": 161.74
-    },
-    {
-     "m": "vis,",
-     "t0": 161.74,
-     "t1": 161.93
-    },
-    {
-     "m": "ce",
-     "t0": 161.93,
-     "t1": 162.35
-    },
-    {
-     "m": "n'est",
-     "t0": 162.35,
-     "t1": 162.57
-    },
-    {
-     "m": "plus",
-     "t0": 162.57,
-     "t1": 162.79
-    },
-    {
-     "m": "moi",
-     "t0": 162.79,
-     "t1": 162.98
-    },
-    {
-     "m": "qui",
-     "t0": 162.98,
-     "t1": 163.17
-    },
-    {
-     "m": "vis,",
-     "t0": 163.17,
-     "t1": 163.36
-    },
-    {
-     "m": "c'est",
-     "t0": 163.66,
-     "t1": 163.91
-    },
-    {
-     "m": "Christ",
-     "t0": 163.91,
-     "t1": 164.23
-    },
-    {
-     "m": "qui",
-     "t0": 164.23,
-     "t1": 164.45
-    },
-    {
-     "m": "vit",
-     "t0": 164.45,
-     "t1": 164.66
-    },
-    {
-     "m": "en",
-     "t0": 164.66,
-     "t1": 164.83
-    },
-    {
-     "m": "moi.",
-     "t0": 164.83,
-     "t1": 165.04
-    },
-    {
-     "m": "J'honore",
-     "t0": 165.54,
-     "t1": 165.9
-    },
-    {
-     "m": "encore",
-     "t0": 165.9,
-     "t1": 166.22
-    },
-    {
-     "m": "Christ",
-     "t0": 166.22,
-     "t1": 166.54
-    },
-    {
-     "m": "dans",
-     "t0": 166.54,
-     "t1": 166.78
-    },
-    {
-     "m": "la",
-     "t0": 166.78,
-     "t1": 166.95
-    },
-    {
-     "m": "vie",
-     "t0": 166.95,
-     "t1": 167.16
-    },
-    {
-     "m": "du",
-     "t0": 167.16,
-     "t1": 167.33
-    },
-    {
-     "m": "pasteur",
-     "t0": 167.33,
-     "t1": 167.69
-    },
-    {
-     "m": "Yannick,",
-     "t0": 167.69,
-     "t1": 168.05
-    },
-    {
-     "m": "qui",
-     "t0": 168.05,
-     "t1": 168.26
-    },
-    {
-     "m": "m'a",
-     "t0": 168.26,
-     "t1": 168.43
-    },
-    {
-     "m": "fait",
-     "t0": 168.43,
-     "t1": 168.67
-    },
-    {
-     "m": "comprendre",
-     "t0": 168.67,
-     "t1": 169.14
-    },
-    {
-     "m": "une",
-     "t0": 169.14,
-     "t1": 169.35
-    },
-    {
-     "m": "chose",
-     "t0": 169.35,
-     "t1": 169.63
-    },
-    {
-     "m": "très",
-     "t0": 169.63,
-     "t1": 169.88
-    },
-    {
-     "m": "importante",
-     "t0": 169.88,
-     "t1": 170.35
-    },
-    {
-     "m": "On",
-     "t0": 171.0,
-     "t1": 171.17
-    },
-    {
-     "m": "pardonne",
-     "t0": 171.17,
-     "t1": 171.57
-    },
-    {
-     "m": "parce",
-     "t0": 171.57,
-     "t1": 172.04
-    },
-    {
-     "m": "qu'on",
-     "t0": 172.04,
-     "t1": 172.29
-    },
-    {
-     "m": "a",
-     "t0": 172.29,
-     "t1": 172.42
-    },
-    {
-     "m": "été",
-     "t0": 172.42,
-     "t1": 172.63
-    },
-    {
-     "m": "pardonné.",
-     "t0": 172.63,
-     "t1": 173.03
-    },
-    {
-     "m": "On",
-     "t0": 173.53,
-     "t1": 173.73
-    },
-    {
-     "m": "pardonne",
-     "t0": 173.73,
-     "t1": 174.18
-    },
-    {
-     "m": "parce",
-     "t0": 174.18,
-     "t1": 174.51
-    },
-    {
-     "m": "qu'en",
-     "t0": 174.51,
-     "t1": 174.79
-    },
-    {
-     "m": "réalité,",
-     "t0": 174.79,
-     "t1": 175.2
-    },
-    {
-     "m": "dans",
-     "t0": 175.2,
-     "t1": 175.49
-    },
-    {
-     "m": "l'eau,",
-     "t0": 175.49,
-     "t1": 175.77
-    },
-    {
-     "m": "le",
-     "t0": 176.08,
-     "t1": 176.29
-    },
-    {
-     "m": "visage",
-     "t0": 176.29,
-     "t1": 176.68
-    },
-    {
-     "m": "reflète",
-     "t0": 176.68,
-     "t1": 177.12
-    },
-    {
-     "m": "le",
-     "t0": 177.12,
-     "t1": 177.33
-    },
-    {
-     "m": "visage.",
-     "t0": 177.33,
-     "t1": 177.72
-    },
-    {
-     "m": "Je",
-     "t0": 178.21,
-     "t1": 178.38
-    },
-    {
-     "m": "ne",
-     "t0": 178.38,
-     "t1": 178.54
-    },
-    {
-     "m": "suis",
-     "t0": 178.54,
-     "t1": 178.78
-    },
-    {
-     "m": "pas",
-     "t0": 178.78,
-     "t1": 178.98
-    },
-    {
-     "m": "différente",
-     "t0": 178.98,
-     "t1": 179.44
+     "m": "lieu",
+     "t0": 22.8,
+     "t1": 22.92
     },
     {
      "m": "de",
-     "t0": 179.44,
-     "t1": 179.61
-    },
-    {
-     "m": "celui",
-     "t0": 179.61,
-     "t1": 179.88
-    },
-    {
-     "m": "ou",
-     "t0": 179.88,
-     "t1": 180.05
-    },
-    {
-     "m": "celle",
-     "t0": 180.05,
-     "t1": 180.32
-    },
-    {
-     "m": "qui",
-     "t0": 180.32,
-     "t1": 180.52
-    },
-    {
-     "m": "m'offense.",
-     "t0": 180.52,
-     "t1": 180.91
-    },
-    {
-     "m": "Une",
-     "t0": 181.39,
-     "t1": 181.57
-    },
-    {
-     "m": "fois",
-     "t0": 181.57,
-     "t1": 181.79
-    },
-    {
-     "m": "que",
-     "t0": 181.79,
-     "t1": 181.97
-    },
-    {
-     "m": "j'ai",
-     "t0": 181.97,
-     "t1": 182.16
-    },
-    {
-     "m": "appris",
-     "t0": 182.16,
-     "t1": 182.44
-    },
-    {
-     "m": "à",
-     "t0": 182.44,
-     "t1": 182.56
+     "t0": 22.92,
+     "t1": 23.04
     },
     {
      "m": "regarder",
-     "t0": 182.56,
-     "t1": 182.91
+     "t0": 23.04,
+     "t1": 23.32
     },
     {
      "m": "à",
-     "t0": 182.91,
-     "t1": 183.03
-    },
-    {
-     "m": "Dieu",
-     "t0": 183.03,
-     "t1": 183.24
-    },
-    {
-     "m": "dans",
-     "t0": 183.24,
-     "t1": 183.46
-    },
-    {
-     "m": "tout",
-     "t0": 183.46,
-     "t1": 183.68
-    },
-    {
-     "m": "ce",
-     "t0": 183.68,
-     "t1": 183.83
-    },
-    {
-     "m": "qui",
-     "t0": 183.83,
-     "t1": 184.01
-    },
-    {
-     "m": "m'arrive,",
-     "t0": 184.01,
-     "t1": 184.33
-    },
-    {
-     "m": "rien",
-     "t0": 184.71,
-     "t1": 184.93
-    },
-    {
-     "m": "n'était",
-     "t0": 184.93,
-     "t1": 185.22
-    },
-    {
-     "m": "plus",
-     "t0": 185.22,
-     "t1": 185.44
-    },
-    {
-     "m": "un",
-     "t0": 185.44,
-     "t1": 185.59
-    },
-    {
-     "m": "problème",
-     "t0": 185.59,
-     "t1": 185.95
-    },
-    {
-     "m": "à",
-     "t0": 185.95,
-     "t1": 186.07
-    },
-    {
-     "m": "mes",
-     "t0": 186.07,
-     "t1": 186.26
-    },
-    {
-     "m": "yeux.",
-     "t0": 186.26,
-     "t1": 186.48
-    },
-    {
-     "m": "Je",
-     "t0": 186.97,
-     "t1": 187.13
-    },
-    {
-     "m": "suis",
-     "t0": 187.13,
-     "t1": 187.37
-    },
-    {
-     "m": "reconnaissante",
-     "t0": 187.37,
-     "t1": 187.97
-    },
-    {
-     "m": "à",
-     "t0": 187.97,
-     "t1": 188.1
-    },
-    {
-     "m": "Dieu",
-     "t0": 188.1,
-     "t1": 188.33
-    },
-    {
-     "m": "une",
-     "t0": 188.33,
-     "t1": 188.53
-    },
-    {
-     "m": "fois",
-     "t0": 188.53,
-     "t1": 188.77
-    },
-    {
-     "m": "de",
-     "t0": 188.77,
-     "t1": 188.93
-    },
-    {
-     "m": "plus",
-     "t0": 188.93,
-     "t1": 189.17
-    },
-    {
-     "m": "pour",
-     "t0": 189.17,
-     "t1": 189.41
-    },
-    {
-     "m": "tout",
-     "t0": 189.41,
-     "t1": 189.64
-    },
-    {
-     "m": "cela,",
-     "t0": 189.64,
-     "t1": 189.88
-    },
-    {
-     "m": "Et",
-     "t0": 190.33,
-     "t1": 190.49
+     "t0": 23.32,
+     "t1": 23.56
     },
     {
      "m": "ma",
-     "t0": 190.49,
-     "t1": 190.66
-    },
-    {
-     "m": "prière",
-     "t0": 190.66,
-     "t1": 190.97
-    },
-    {
-     "m": "aujourd'hui,",
-     "t0": 190.97,
-     "t1": 191.73
-    },
-    {
-     "m": "c'est",
-     "t0": 191.73,
-     "t1": 191.97
-    },
-    {
-     "m": "qu'il",
-     "t0": 191.97,
-     "t1": 192.2
-    },
-    {
-     "m": "m'aide,",
-     "t0": 192.2,
-     "t1": 192.48
-    },
-    {
-     "m": "car",
-     "t0": 192.48,
-     "t1": 192.91
-    },
-    {
-     "m": "je",
-     "t0": 192.91,
-     "t1": 193.08
-    },
-    {
-     "m": "sais",
-     "t0": 193.08,
-     "t1": 193.31
-    },
-    {
-     "m": "que",
-     "t0": 193.31,
-     "t1": 193.51
-    },
-    {
-     "m": "ce",
-     "t0": 193.51,
-     "t1": 193.68
-    },
-    {
-     "m": "n'est",
-     "t0": 193.68,
-     "t1": 193.92
-    },
-    {
-     "m": "pas",
-     "t0": 193.92,
-     "t1": 194.12
-    },
-    {
-     "m": "facile",
-     "t0": 194.12,
-     "t1": 194.43
-    },
-    {
-     "m": "de",
-     "t0": 194.43,
-     "t1": 194.6
-    },
-    {
-     "m": "le",
-     "t0": 194.6,
-     "t1": 194.76
-    },
-    {
-     "m": "voir",
-     "t0": 194.76,
-     "t1": 195.0
-    },
-    {
-     "m": "partout",
-     "t0": 195.0,
-     "t1": 195.35
-    },
-    {
-     "m": "dans",
-     "t0": 195.35,
-     "t1": 195.58
-    },
-    {
-     "m": "ma",
-     "t0": 195.58,
-     "t1": 195.75
+     "t0": 23.56,
+     "t1": 23.66
     },
     {
      "m": "vie,",
-     "t0": 195.75,
-     "t1": 195.95
+     "t0": 23.66,
+     "t1": 23.96
+    },
+    {
+     "m": "j'ai",
+     "t0": 24.32,
+     "t1": 24.48
+    },
+    {
+     "m": "porté",
+     "t0": 24.48,
+     "t1": 24.8
+    },
+    {
+     "m": "rancœur",
+     "t0": 24.8,
+     "t1": 25.26
+    },
+    {
+     "m": "à",
+     "t0": 25.26,
+     "t1": 25.36
+    },
+    {
+     "m": "ma",
+     "t0": 25.36,
+     "t1": 25.46
+    },
+    {
+     "m": "belle-famille.",
+     "t0": 25.46,
+     "t1": 25.96
+    },
+    {
+     "m": "Alors",
+     "t0": 25.96,
+     "t1": 26.78
+    },
+    {
+     "m": "je",
+     "t0": 26.78,
+     "t1": 27.02
+    },
+    {
+     "m": "suis",
+     "t0": 27.02,
+     "t1": 27.18
+    },
+    {
+     "m": "venue",
+     "t0": 27.18,
+     "t1": 27.36
+    },
+    {
+     "m": "voir",
+     "t0": 27.36,
+     "t1": 27.58
+    },
+    {
+     "m": "le",
+     "t0": 27.58,
+     "t1": 27.72
+    },
+    {
+     "m": "pasteur",
+     "t0": 27.72,
+     "t1": 27.96
+    },
+    {
+     "m": "Yannick",
+     "t0": 27.96,
+     "t1": 28.48
+    },
+    {
+     "m": "pour",
+     "t0": 28.48,
+     "t1": 28.74
+    },
+    {
+     "m": "qu'on",
+     "t0": 28.74,
+     "t1": 28.9
+    },
+    {
+     "m": "prie",
+     "t0": 28.9,
+     "t1": 29.12
+    },
+    {
+     "m": "contre",
+     "t0": 29.12,
+     "t1": 29.38
+    },
+    {
+     "m": "eux.",
+     "t0": 29.38,
+     "t1": 29.56
+    },
+    {
+     "m": "Mais",
+     "t0": 30.04,
+     "t1": 30.2
+    },
+    {
+     "m": "à",
+     "t0": 30.2,
+     "t1": 30.28
+    },
+    {
+     "m": "ma",
+     "t0": 30.28,
+     "t1": 30.36
+    },
+    {
+     "m": "grande",
+     "t0": 30.36,
+     "t1": 30.68
+    },
+    {
+     "m": "surprise,",
+     "t0": 30.68,
+     "t1": 31.2
+    },
+    {
+     "m": "il",
+     "t0": 31.62,
+     "t1": 31.76
+    },
+    {
+     "m": "m'a",
+     "t0": 31.76,
+     "t1": 31.9
+    },
+    {
+     "m": "demandé",
+     "t0": 31.9,
+     "t1": 32.24
+    },
+    {
+     "m": "de",
+     "t0": 32.24,
+     "t1": 32.42
+    },
+    {
+     "m": "pardonner.",
+     "t0": 32.42,
+     "t1": 32.98
+    },
+    {
+     "m": "Il",
+     "t0": 33.5,
+     "t1": 33.6
+    },
+    {
+     "m": "m'a",
+     "t0": 33.6,
+     "t1": 33.74
+    },
+    {
+     "m": "parlé",
+     "t0": 33.74,
+     "t1": 34.0
+    },
+    {
+     "m": "de",
+     "t0": 34.0,
+     "t1": 34.16
+    },
+    {
+     "m": "la",
+     "t0": 34.16,
+     "t1": 34.28
+    },
+    {
+     "m": "nature",
+     "t0": 34.28,
+     "t1": 34.66
+    },
+    {
+     "m": "de",
+     "t0": 34.66,
+     "t1": 34.86
+    },
+    {
+     "m": "l'homme.",
+     "t0": 34.86,
+     "t1": 35.12
+    },
+    {
+     "m": "Psaume",
+     "t0": 35.56,
+     "t1": 36.04
+    },
+    {
+     "m": "14,",
+     "t0": 36.04,
+     "t1": 36.28
+    },
+    {
+     "m": "verset",
+     "t0": 36.58,
+     "t1": 36.82
+    },
+    {
+     "m": "3 :",
+     "t0": 36.82,
+     "t1": 37.04
+    },
+    {
+     "m": "Tous",
+     "t0": 37.58,
+     "t1": 37.7
+    },
+    {
+     "m": "sont",
+     "t0": 37.7,
+     "t1": 38.0
+    },
+    {
+     "m": "égarés,",
+     "t0": 38.0,
+     "t1": 38.5
+    },
+    {
+     "m": "tous",
+     "t0": 38.88,
+     "t1": 39.08
+    },
+    {
+     "m": "sont",
+     "t0": 39.08,
+     "t1": 39.36
+    },
+    {
+     "m": "pervertis ;",
+     "t0": 39.36,
+     "t1": 39.98
+    },
+    {
+     "m": "il",
+     "t0": 40.42,
+     "t1": 40.54
+    },
+    {
+     "m": "n'en",
+     "t0": 40.54,
+     "t1": 40.68
+    },
+    {
+     "m": "est",
+     "t0": 40.68,
+     "t1": 40.82
+    },
+    {
+     "m": "aucun",
+     "t0": 40.82,
+     "t1": 41.1
+    },
+    {
+     "m": "qui",
+     "t0": 41.1,
+     "t1": 41.36
+    },
+    {
+     "m": "fasse",
+     "t0": 41.36,
+     "t1": 41.6
+    },
+    {
+     "m": "le",
+     "t0": 41.6,
+     "t1": 41.76
+    },
+    {
+     "m": "bien,",
+     "t0": 41.76,
+     "t1": 41.98
+    },
+    {
+     "m": "pas",
+     "t0": 42.32,
+     "t1": 42.46
+    },
+    {
+     "m": "même",
+     "t0": 42.46,
+     "t1": 42.68
+    },
+    {
+     "m": "un",
+     "t0": 42.68,
+     "t1": 42.96
+    },
+    {
+     "m": "seul.",
+     "t0": 42.96,
+     "t1": 43.26
+    },
+    {
+     "m": "Il",
+     "t0": 43.82,
+     "t1": 43.96
+    },
+    {
+     "m": "m'a",
+     "t0": 43.96,
+     "t1": 44.14
+    },
+    {
+     "m": "dit",
+     "t0": 44.14,
+     "t1": 44.26
+    },
+    {
+     "m": "que",
+     "t0": 44.26,
+     "t1": 44.4
+    },
+    {
+     "m": "ma",
+     "t0": 44.4,
+     "t1": 44.54
+    },
+    {
+     "m": "belle-mère",
+     "t0": 44.54,
+     "t1": 44.88
+    },
+    {
+     "m": "et",
+     "t0": 44.88,
+     "t1": 45.04
+    },
+    {
+     "m": "moi,",
+     "t0": 45.04,
+     "t1": 45.24
+    },
+    {
+     "m": "nous",
+     "t0": 45.52,
+     "t1": 45.6
+    },
+    {
+     "m": "ne",
+     "t0": 45.6,
+     "t1": 45.72
+    },
+    {
+     "m": "sommes",
+     "t0": 45.72,
+     "t1": 45.84
+    },
+    {
+     "m": "pas",
+     "t0": 45.84,
+     "t1": 46.02
+    },
+    {
+     "m": "différentes.",
+     "t0": 46.02,
+     "t1": 46.42
+    },
+    {
+     "m": "Je",
+     "t0": 47.02,
+     "t1": 47.2
+    },
+    {
+     "m": "disais",
+     "t0": 47.2,
+     "t1": 47.52
+    },
+    {
+     "m": "en",
+     "t0": 47.52,
+     "t1": 47.6
+    },
+    {
+     "m": "mon",
+     "t0": 47.6,
+     "t1": 47.72
+    },
+    {
+     "m": "cœur :",
+     "t0": 47.72,
+     "t1": 47.96
+    },
+    {
+     "m": "moi,",
+     "t0": 48.44,
+     "t1": 48.66
+    },
+    {
+     "m": "pareille",
+     "t0": 48.66,
+     "t1": 49.08
+    },
+    {
+     "m": "à",
+     "t0": 49.08,
+     "t1": 49.24
+    },
+    {
+     "m": "cette",
+     "t0": 49.24,
+     "t1": 49.4
+    },
+    {
+     "m": "sorcière ?",
+     "t0": 49.4,
+     "t1": 49.94
+    },
+    {
+     "m": "Non,",
+     "t0": 50.26,
+     "t1": 50.6
+    },
+    {
+     "m": "pasteur !",
+     "t0": 50.68,
+     "t1": 51.64
+    },
+    {
+     "m": "Il",
+     "t0": 51.64,
+     "t1": 51.84
+    },
+    {
+     "m": "m'a",
+     "t0": 51.84,
+     "t1": 52.0
+    },
+    {
+     "m": "aussi",
+     "t0": 52.0,
+     "t1": 52.2
+    },
+    {
+     "m": "rappelé",
+     "t0": 52.2,
+     "t1": 52.64
+    },
+    {
+     "m": "Romains,",
+     "t0": 52.64,
+     "t1": 53.08
+    },
+    {
+     "m": "chapitre",
+     "t0": 53.08,
+     "t1": 53.58
+    },
+    {
+     "m": "2,",
+     "t0": 53.58,
+     "t1": 53.84
+    },
+    {
+     "m": "verset",
+     "t0": 53.84,
+     "t1": 54.26
+    },
+    {
+     "m": "1 :",
+     "t0": 54.26,
+     "t1": 54.8
+    },
+    {
+     "m": "Ô",
+     "t0": 54.8,
+     "t1": 55.12
+    },
+    {
+     "m": "homme,",
+     "t0": 55.12,
+     "t1": 55.5
+    },
+    {
+     "m": "qui",
+     "t0": 55.82,
+     "t1": 55.96
+    },
+    {
+     "m": "que",
+     "t0": 55.96,
+     "t1": 56.14
+    },
+    {
+     "m": "tu",
+     "t0": 56.14,
+     "t1": 56.28
+    },
+    {
+     "m": "sois,",
+     "t0": 56.28,
+     "t1": 56.64
+    },
+    {
+     "m": "toi",
+     "t0": 56.88,
+     "t1": 57.06
+    },
+    {
+     "m": "qui",
+     "t0": 57.06,
+     "t1": 57.28
+    },
+    {
+     "m": "juges,",
+     "t0": 57.28,
+     "t1": 57.68
+    },
+    {
+     "m": "tu",
+     "t0": 57.92,
+     "t1": 58.04
+    },
+    {
+     "m": "es",
+     "t0": 58.04,
+     "t1": 58.14
+    },
+    {
+     "m": "donc",
+     "t0": 58.14,
+     "t1": 58.32
+    },
+    {
+     "m": "inexcusable ;",
+     "t0": 58.32,
+     "t1": 59.3
+    },
+    {
+     "m": "car,",
+     "t0": 59.54,
+     "t1": 59.86
+    },
+    {
+     "m": "en",
+     "t0": 60.18,
+     "t1": 60.24
+    },
+    {
+     "m": "jugeant",
+     "t0": 60.24,
+     "t1": 60.58
+    },
+    {
+     "m": "les",
+     "t0": 60.58,
+     "t1": 60.7
+    },
+    {
+     "m": "autres,",
+     "t0": 60.7,
+     "t1": 61.0
+    },
+    {
+     "m": "tu",
+     "t0": 61.32,
+     "t1": 61.4
+    },
+    {
+     "m": "te",
+     "t0": 61.4,
+     "t1": 61.56
+    },
+    {
+     "m": "condamnes",
+     "t0": 61.56,
+     "t1": 62.0
+    },
+    {
+     "m": "toi-même,",
+     "t0": 62.0,
+     "t1": 62.48
+    },
+    {
+     "m": "puisque",
+     "t0": 62.78,
+     "t1": 62.98
+    },
+    {
+     "m": "toi",
+     "t0": 62.98,
+     "t1": 63.34
+    },
+    {
+     "m": "qui",
+     "t0": 63.34,
+     "t1": 63.54
+    },
+    {
+     "m": "juges,",
+     "t0": 63.54,
+     "t1": 63.96
+    },
+    {
+     "m": "tu",
+     "t0": 64.2,
+     "t1": 64.3
+    },
+    {
+     "m": "fais",
+     "t0": 64.3,
+     "t1": 64.48
+    },
+    {
+     "m": "les",
+     "t0": 64.48,
+     "t1": 64.62
+    },
+    {
+     "m": "mêmes",
+     "t0": 64.62,
+     "t1": 64.84
+    },
+    {
+     "m": "choses.",
+     "t0": 64.84,
+     "t1": 66.46
+    },
+    {
+     "m": "Mais",
+     "t0": 66.46,
+     "t1": 66.72
+    },
+    {
+     "m": "dans",
+     "t0": 66.72,
+     "t1": 66.98
+    },
+    {
+     "m": "ma",
+     "t0": 66.98,
+     "t1": 67.12
+    },
+    {
+     "m": "tête,",
+     "t0": 67.12,
+     "t1": 67.44
+    },
+    {
+     "m": "je",
+     "t0": 67.66,
+     "t1": 67.74
+    },
+    {
+     "m": "disais :",
+     "t0": 67.74,
+     "t1": 68.56
+    },
+    {
+     "m": "pasteur,",
+     "t0": 68.56,
+     "t1": 69.08
+    },
+    {
+     "m": "je",
+     "t0": 69.22,
+     "t1": 69.32
+    },
+    {
+     "m": "suis",
+     "t0": 69.32,
+     "t1": 69.48
+    },
+    {
+     "m": "venue",
+     "t0": 69.48,
+     "t1": 69.72
+    },
+    {
+     "m": "pour",
+     "t0": 69.72,
+     "t1": 69.92
+    },
+    {
+     "m": "qu'on",
+     "t0": 69.92,
+     "t1": 70.07
+    },
+    {
+     "m": "prie",
+     "t0": 70.07,
+     "t1": 70.22
+    },
+    {
+     "m": "contre",
+     "t0": 70.22,
+     "t1": 70.42
+    },
+    {
+     "m": "ma",
+     "t0": 70.42,
+     "t1": 70.62
+    },
+    {
+     "m": "belle-famille,",
+     "t0": 70.62,
+     "t1": 71.16
+    },
+    {
+     "m": "pas",
+     "t0": 71.46,
+     "t1": 71.58
+    },
+    {
+     "m": "pour",
+     "t0": 71.58,
+     "t1": 71.78
+    },
+    {
+     "m": "entendre",
+     "t0": 71.78,
+     "t1": 72.14
+    },
+    {
+     "m": "tout",
+     "t0": 72.14,
+     "t1": 72.28
+    },
+    {
+     "m": "ce",
+     "t0": 72.28,
+     "t1": 72.44
+    },
+    {
+     "m": "charabia !",
+     "t0": 72.44,
+     "t1": 73.38
+    },
+    {
+     "m": "Ensuite",
+     "t0": 73.38,
+     "t1": 73.78
+    },
+    {
+     "m": "est",
+     "t0": 74.06,
+     "t1": 74.18
+    },
+    {
+     "m": "venue",
+     "t0": 74.18,
+     "t1": 74.4
+    },
+    {
+     "m": "ma",
+     "t0": 74.4,
+     "t1": 74.56
+    },
+    {
+     "m": "maladie",
+     "t0": 74.56,
+     "t1": 74.94
+    },
+    {
+     "m": "cardiaque,",
+     "t0": 74.94,
+     "t1": 75.5
+    },
+    {
+     "m": "et",
+     "t0": 75.78,
+     "t1": 75.88
+    },
+    {
+     "m": "c'est",
+     "t0": 75.88,
+     "t1": 76.0
+    },
+    {
+     "m": "à",
+     "t0": 76.0,
+     "t1": 76.14
+    },
+    {
+     "m": "l'hôpital",
+     "t0": 76.14,
+     "t1": 76.54
+    },
+    {
+     "m": "que",
+     "t0": 76.54,
+     "t1": 76.82
+    },
+    {
+     "m": "tout",
+     "t0": 76.82,
+     "t1": 77.08
+    },
+    {
+     "m": "m'est",
+     "t0": 77.08,
+     "t1": 77.26
+    },
+    {
+     "m": "revenu",
+     "t0": 77.26,
+     "t1": 77.68
+    },
+    {
+     "m": "comme",
+     "t0": 77.68,
+     "t1": 77.92
+    },
+    {
+     "m": "un",
+     "t0": 77.92,
+     "t1": 78.1
+    },
+    {
+     "m": "fardeau.",
+     "t0": 78.1,
+     "t1": 78.46
+    },
+    {
+     "m": "J'ai",
+     "t0": 78.88,
+     "t1": 79.14
+    },
+    {
+     "m": "jugé",
+     "t0": 79.14,
+     "t1": 79.46
+    },
+    {
+     "m": "ma",
+     "t0": 79.46,
+     "t1": 79.6
+    },
+    {
+     "m": "belle-mère,",
+     "t0": 79.6,
+     "t1": 80.08
+    },
+    {
+     "m": "pourtant",
+     "t0": 80.42,
+     "t1": 80.74
+    },
+    {
+     "m": "je",
+     "t0": 80.74,
+     "t1": 81.22
+    },
+    {
+     "m": "suis",
+     "t0": 81.22,
+     "t1": 81.42
+    },
+    {
+     "m": "pire",
+     "t0": 81.42,
+     "t1": 81.78
+    },
+    {
+     "m": "qu'elle.",
+     "t0": 81.78,
+     "t1": 82.06
+    },
+    {
+     "m": "Quand",
+     "t0": 82.06,
+     "t1": 82.7
+    },
+    {
+     "m": "elle",
+     "t0": 82.7,
+     "t1": 82.84
+    },
+    {
+     "m": "me",
+     "t0": 82.84,
+     "t1": 83.0
+    },
+    {
+     "m": "disait",
+     "t0": 83.0,
+     "t1": 83.28
+    },
+    {
+     "m": "que",
+     "t0": 83.28,
+     "t1": 83.42
+    },
+    {
+     "m": "je",
+     "t0": 83.42,
+     "t1": 83.52
+    },
+    {
+     "m": "tuais",
+     "t0": 83.52,
+     "t1": 83.84
+    },
+    {
+     "m": "ses",
+     "t0": 83.84,
+     "t1": 84.034
+    },
+    {
+     "m": "petits-fils",
+     "t0": 84.034,
+     "t1": 84.5
+    },
+    {
+     "m": "dans",
+     "t0": 84.5,
+     "t1": 84.66
+    },
+    {
+     "m": "mon",
+     "t0": 84.66,
+     "t1": 84.8
+    },
+    {
+     "m": "ventre,",
+     "t0": 84.8,
+     "t1": 85.18
+    },
+    {
+     "m": "je",
+     "t0": 85.56,
+     "t1": 85.68
+    },
+    {
+     "m": "la",
+     "t0": 85.68,
+     "t1": 85.8
+    },
+    {
+     "m": "voyais",
+     "t0": 85.8,
+     "t1": 86.08
+    },
+    {
+     "m": "comme",
+     "t0": 86.08,
+     "t1": 86.26
+    },
+    {
+     "m": "une",
+     "t0": 86.26,
+     "t1": 86.42
+    },
+    {
+     "m": "sorcière.",
+     "t0": 86.42,
+     "t1": 87.02
+    },
+    {
+     "m": "Elle",
+     "t0": 87.46,
+     "t1": 87.62
+    },
+    {
+     "m": "avait",
+     "t0": 87.62,
+     "t1": 87.86
+    },
+    {
+     "m": "raison,",
+     "t0": 87.86,
+     "t1": 88.16
+    },
+    {
+     "m": "je",
+     "t0": 88.62,
+     "t1": 88.76
+    },
+    {
+     "m": "l'ai",
+     "t0": 88.76,
+     "t1": 88.933
+    },
+    {
+     "m": "fait.",
+     "t0": 88.933,
+     "t1": 89.14
+    },
+    {
+     "m": "Mais",
+     "t0": 89.56,
+     "t1": 89.7
+    },
+    {
+     "m": "j'avais",
+     "t0": 89.7,
+     "t1": 89.92
+    },
+    {
+     "m": "les",
+     "t0": 89.92,
+     "t1": 90.06
+    },
+    {
+     "m": "regards",
+     "t0": 90.06,
+     "t1": 90.28
+    },
+    {
+     "m": "focalisés",
+     "t0": 90.28,
+     "t1": 90.92
+    },
+    {
+     "m": "sur",
+     "t0": 90.92,
+     "t1": 91.12
+    },
+    {
+     "m": "le",
+     "t0": 91.12,
+     "t1": 91.28
+    },
+    {
+     "m": "fouet,",
+     "t0": 91.28,
+     "t1": 91.64
+    },
+    {
+     "m": "et",
+     "t0": 91.64,
+     "t1": 92.08
+    },
+    {
+     "m": "non",
+     "t0": 92.08,
+     "t1": 92.26
+    },
+    {
+     "m": "sur",
+     "t0": 92.26,
+     "t1": 92.48
+    },
+    {
+     "m": "celui",
+     "t0": 92.48,
+     "t1": 92.72
+    },
+    {
+     "m": "qui",
+     "t0": 92.72,
+     "t1": 92.92
+    },
+    {
+     "m": "me",
+     "t0": 92.92,
+     "t1": 93.06
+    },
+    {
+     "m": "fouettait",
+     "t0": 93.06,
+     "t1": 93.42
+    },
+    {
+     "m": "par",
+     "t0": 93.42,
+     "t1": 93.6
+    },
+    {
+     "m": "sa",
+     "t0": 93.6,
+     "t1": 93.76
+    },
+    {
+     "m": "parole.",
+     "t0": 93.76,
+     "t1": 94.08
+    },
+    {
+     "m": "Le",
+     "t0": 94.54,
+     "t1": 94.68
+    },
+    {
+     "m": "pasteur",
+     "t0": 94.68,
+     "t1": 95.04
+    },
+    {
+     "m": "Yannick",
+     "t0": 95.04,
+     "t1": 95.42
+    },
+    {
+     "m": "m'a",
+     "t0": 95.42,
+     "t1": 95.6
+    },
+    {
+     "m": "dit :",
+     "t0": 95.6,
+     "t1": 96.22
+    },
+    {
+     "m": "si",
+     "t0": 96.22,
+     "t1": 96.34
+    },
+    {
+     "m": "tu",
+     "t0": 96.34,
+     "t1": 96.5
+    },
+    {
+     "m": "avais",
+     "t0": 96.5,
+     "t1": 96.76
+    },
+    {
+     "m": "réellement",
+     "t0": 96.76,
+     "t1": 97.26
+    },
+    {
+     "m": "compris",
+     "t0": 97.26,
+     "t1": 97.6
+    },
+    {
+     "m": "la",
+     "t0": 97.6,
+     "t1": 97.78
+    },
+    {
+     "m": "grâce",
+     "t0": 97.78,
+     "t1": 98.08
+    },
+    {
+     "m": "que",
+     "t0": 98.08,
+     "t1": 98.3
+    },
+    {
+     "m": "Dieu",
+     "t0": 98.3,
+     "t1": 98.48
+    },
+    {
+     "m": "nous",
+     "t0": 98.48,
+     "t1": 98.64
+    },
+    {
+     "m": "a",
+     "t0": 98.64,
+     "t1": 98.82
+    },
+    {
+     "m": "accordée",
+     "t0": 98.82,
+     "t1": 99.2
+    },
+    {
+     "m": "en",
+     "t0": 99.2,
+     "t1": 99.3
+    },
+    {
+     "m": "Jésus-Christ,",
+     "t0": 99.3,
+     "t1": 99.88
+    },
+    {
+     "m": "pardonner",
+     "t0": 100.34,
+     "t1": 100.74
+    },
+    {
+     "m": "ta",
+     "t0": 100.74,
+     "t1": 100.88
+    },
+    {
+     "m": "belle-mère",
+     "t0": 100.88,
+     "t1": 101.32
+    },
+    {
+     "m": "n'aurait",
+     "t0": 101.32,
+     "t1": 101.68
+    },
+    {
+     "m": "pas",
+     "t0": 101.68,
+     "t1": 101.86
+    },
+    {
+     "m": "été",
+     "t0": 101.86,
+     "t1": 102.06
+    },
+    {
+     "m": "un",
+     "t0": 102.06,
+     "t1": 102.18
+    },
+    {
+     "m": "problème.",
+     "t0": 102.18,
+     "t1": 103.04
+    },
+    {
+     "m": "Éphésiens,",
+     "t0": 103.04,
+     "t1": 103.6
+    },
+    {
+     "m": "chapitre",
+     "t0": 103.78,
+     "t1": 104.14
+    },
+    {
+     "m": "4,",
+     "t0": 104.14,
+     "t1": 104.44
+    },
+    {
+     "m": "verset",
+     "t0": 104.7,
+     "t1": 104.94
+    },
+    {
+     "m": "32 :",
+     "t0": 104.94,
+     "t1": 105.34
+    },
+    {
+     "m": "Soyez",
+     "t0": 105.76,
+     "t1": 106.14
+    },
+    {
+     "m": "bons",
+     "t0": 106.14,
+     "t1": 106.4
+    },
+    {
+     "m": "les",
+     "t0": 106.4,
+     "t1": 106.6
+    },
+    {
+     "m": "uns",
+     "t0": 106.6,
+     "t1": 106.8
+    },
+    {
+     "m": "envers",
+     "t0": 106.8,
+     "t1": 107.02
+    },
+    {
+     "m": "les",
+     "t0": 107.02,
+     "t1": 107.2
+    },
+    {
+     "m": "autres,",
+     "t0": 107.2,
+     "t1": 107.54
+    },
+    {
+     "m": "compatissants,",
+     "t0": 107.8,
+     "t1": 108.5
+    },
+    {
+     "m": "vous",
+     "t0": 108.8,
+     "t1": 108.9
+    },
+    {
+     "m": "pardonnant",
+     "t0": 108.9,
+     "t1": 109.42
+    },
+    {
+     "m": "réciproquement,",
+     "t0": 109.42,
+     "t1": 110.22
+    },
+    {
+     "m": "comme",
+     "t0": 110.22,
+     "t1": 110.66
+    },
+    {
+     "m": "Dieu",
+     "t0": 110.66,
+     "t1": 110.94
+    },
+    {
+     "m": "vous",
+     "t0": 110.94,
+     "t1": 111.12
+    },
+    {
+     "m": "a",
+     "t0": 111.12,
+     "t1": 111.26
+    },
+    {
+     "m": "pardonné",
+     "t0": 111.26,
+     "t1": 111.7
+    },
+    {
+     "m": "en",
+     "t0": 111.7,
+     "t1": 111.8
+    },
+    {
+     "m": "Christ.",
+     "t0": 111.8,
+     "t1": 112.12
+    },
+    {
+     "m": "Colossiens,",
+     "t0": 112.74,
+     "t1": 113.18
+    },
+    {
+     "m": "chapitre",
+     "t0": 113.34,
+     "t1": 113.7
+    },
+    {
+     "m": "3,",
+     "t0": 113.7,
+     "t1": 114.04
+    },
+    {
+     "m": "verset",
+     "t0": 114.2,
+     "t1": 114.5
+    },
+    {
+     "m": "13 :",
+     "t0": 114.5,
+     "t1": 114.84
+    },
+    {
+     "m": "De",
+     "t0": 115.3,
+     "t1": 115.4
+    },
+    {
+     "m": "même",
+     "t0": 115.4,
+     "t1": 115.56
+    },
+    {
+     "m": "que",
+     "t0": 115.56,
+     "t1": 115.78
+    },
+    {
+     "m": "Christ",
+     "t0": 115.78,
+     "t1": 116.02
+    },
+    {
+     "m": "vous",
+     "t0": 116.02,
+     "t1": 116.3
+    },
+    {
+     "m": "a",
+     "t0": 116.3,
+     "t1": 116.46
+    },
+    {
+     "m": "pardonné,",
+     "t0": 116.46,
+     "t1": 116.98
+    },
+    {
+     "m": "pardonnez-vous",
+     "t0": 117.3,
+     "t1": 117.94
+    },
+    {
+     "m": "aussi.",
+     "t0": 117.94,
+     "t1": 118.34
+    },
+    {
+     "m": "Qu'est-ce",
+     "t0": 118.82,
+     "t1": 119.06
+    },
+    {
+     "m": "que",
+     "t0": 119.06,
+     "t1": 119.16
+    },
+    {
+     "m": "Jésus",
+     "t0": 119.16,
+     "t1": 119.44
+    },
+    {
+     "m": "aurait",
+     "t0": 119.44,
+     "t1": 119.68
+    },
+    {
+     "m": "fait",
+     "t0": 119.68,
+     "t1": 119.84
+    },
+    {
+     "m": "dans",
+     "t0": 119.84,
+     "t1": 119.98
+    },
+    {
+     "m": "cette",
+     "t0": 119.98,
+     "t1": 120.14
+    },
+    {
+     "m": "situation ?",
+     "t0": 120.14,
+     "t1": 121.14
+    },
+    {
+     "m": "Il",
+     "t0": 121.14,
+     "t1": 121.26
+    },
+    {
+     "m": "aurait",
+     "t0": 121.26,
+     "t1": 121.46
+    },
+    {
+     "m": "pardonné.",
+     "t0": 121.46,
+     "t1": 122.1
+    },
+    {
+     "m": "Galates,",
+     "t0": 122.54,
+     "t1": 122.96
+    },
+    {
+     "m": "chapitre",
+     "t0": 123.14,
+     "t1": 123.52
+    },
+    {
+     "m": "2,",
+     "t0": 123.52,
+     "t1": 123.78
+    },
+    {
+     "m": "verset",
+     "t0": 123.96,
+     "t1": 124.3
+    },
+    {
+     "m": "20 :",
+     "t0": 124.3,
+     "t1": 124.48
+    },
+    {
+     "m": "J'ai",
+     "t0": 124.96,
+     "t1": 125.08
+    },
+    {
+     "m": "été",
+     "t0": 125.08,
+     "t1": 125.26
+    },
+    {
+     "m": "crucifié",
+     "t0": 125.26,
+     "t1": 125.96
+    },
+    {
+     "m": "avec",
+     "t0": 125.96,
+     "t1": 126.16
+    },
+    {
+     "m": "Christ ;",
+     "t0": 126.16,
+     "t1": 126.52
+    },
+    {
+     "m": "et",
+     "t0": 127.0,
+     "t1": 127.04
+    },
+    {
+     "m": "si",
+     "t0": 127.04,
+     "t1": 127.22
+    },
+    {
+     "m": "je",
+     "t0": 127.22,
+     "t1": 127.42
+    },
+    {
+     "m": "vis,",
+     "t0": 127.42,
+     "t1": 127.64
+    },
+    {
+     "m": "ce",
+     "t0": 127.94,
+     "t1": 128.06
+    },
+    {
+     "m": "n'est",
+     "t0": 128.06,
+     "t1": 128.22
+    },
+    {
+     "m": "plus",
+     "t0": 128.22,
+     "t1": 128.38
+    },
+    {
+     "m": "moi",
+     "t0": 128.38,
+     "t1": 128.64
+    },
+    {
+     "m": "qui",
+     "t0": 128.64,
+     "t1": 128.84
+    },
+    {
+     "m": "vis,",
+     "t0": 128.84,
+     "t1": 129.02
+    },
+    {
+     "m": "c'est",
+     "t0": 129.38,
+     "t1": 129.56
+    },
+    {
+     "m": "Christ",
+     "t0": 129.56,
+     "t1": 129.82
+    },
+    {
+     "m": "qui",
+     "t0": 129.82,
+     "t1": 130.2
+    },
+    {
+     "m": "vit",
+     "t0": 130.2,
+     "t1": 130.38
+    },
+    {
+     "m": "en",
+     "t0": 130.38,
+     "t1": 130.5
+    },
+    {
+     "m": "moi.",
+     "t0": 130.5,
+     "t1": 130.74
+    },
+    {
+     "m": "J'honore",
+     "t0": 131.08,
+     "t1": 131.48
+    },
+    {
+     "m": "encore",
+     "t0": 131.48,
+     "t1": 131.92
+    },
+    {
+     "m": "Christ",
+     "t0": 131.92,
+     "t1": 132.38
+    },
+    {
+     "m": "dans",
+     "t0": 132.38,
+     "t1": 132.64
+    },
+    {
+     "m": "la",
+     "t0": 132.64,
+     "t1": 132.76
+    },
+    {
+     "m": "vie",
+     "t0": 132.76,
+     "t1": 132.9
+    },
+    {
+     "m": "du",
+     "t0": 132.9,
+     "t1": 133.06
+    },
+    {
+     "m": "pasteur",
+     "t0": 133.06,
+     "t1": 133.46
+    },
+    {
+     "m": "Yannick,",
+     "t0": 133.46,
+     "t1": 133.86
+    },
+    {
+     "m": "qui",
+     "t0": 133.86,
+     "t1": 134.14
+    },
+    {
+     "m": "m'a",
+     "t0": 134.14,
+     "t1": 134.3
+    },
+    {
+     "m": "fait",
+     "t0": 134.3,
+     "t1": 134.42
+    },
+    {
+     "m": "comprendre",
+     "t0": 134.42,
+     "t1": 134.74
+    },
+    {
+     "m": "une",
+     "t0": 134.74,
+     "t1": 134.96
+    },
+    {
+     "m": "chose",
+     "t0": 134.96,
+     "t1": 135.24
+    },
+    {
+     "m": "très",
+     "t0": 135.24,
+     "t1": 135.54
+    },
+    {
+     "m": "importante :",
+     "t0": 135.54,
+     "t1": 136.1
+    },
+    {
+     "m": "on",
+     "t0": 136.8,
+     "t1": 136.92
+    },
+    {
+     "m": "pardonne",
+     "t0": 136.92,
+     "t1": 137.7
+    },
+    {
+     "m": "parce",
+     "t0": 137.7,
+     "t1": 137.92
+    },
+    {
+     "m": "qu'on",
+     "t0": 137.92,
+     "t1": 138.1
+    },
+    {
+     "m": "a",
+     "t0": 138.1,
+     "t1": 138.22
+    },
+    {
+     "m": "été",
+     "t0": 138.22,
+     "t1": 138.4
+    },
+    {
+     "m": "pardonné.",
+     "t0": 138.4,
+     "t1": 138.98
+    },
+    {
+     "m": "On",
+     "t0": 138.98,
+     "t1": 139.68
+    },
+    {
+     "m": "pardonne",
+     "t0": 139.68,
+     "t1": 140.34
+    },
+    {
+     "m": "parce",
+     "t0": 140.34,
+     "t1": 140.58
+    },
+    {
+     "m": "qu'en",
+     "t0": 140.58,
+     "t1": 140.78
+    },
+    {
+     "m": "réalité,",
+     "t0": 140.78,
+     "t1": 141.18
+    },
+    {
+     "m": "dans",
+     "t0": 141.66,
+     "t1": 141.76
+    },
+    {
+     "m": "l'eau,",
+     "t0": 141.76,
+     "t1": 142.04
+    },
+    {
+     "m": "le",
+     "t0": 142.5,
+     "t1": 142.62
+    },
+    {
+     "m": "visage",
+     "t0": 142.62,
+     "t1": 143.02
+    },
+    {
+     "m": "reflète",
+     "t0": 143.02,
+     "t1": 143.52
+    },
+    {
+     "m": "le",
+     "t0": 143.52,
+     "t1": 143.68
+    },
+    {
+     "m": "visage.",
+     "t0": 143.68,
+     "t1": 144.14
+    },
+    {
+     "m": "Je",
+     "t0": 144.7,
+     "t1": 144.78
+    },
+    {
+     "m": "ne",
+     "t0": 144.78,
+     "t1": 144.92
+    },
+    {
+     "m": "suis",
+     "t0": 144.92,
+     "t1": 145.02
+    },
+    {
+     "m": "pas",
+     "t0": 145.02,
+     "t1": 145.2
+    },
+    {
+     "m": "différente",
+     "t0": 145.2,
+     "t1": 145.74
+    },
+    {
+     "m": "de",
+     "t0": 145.74,
+     "t1": 145.92
+    },
+    {
+     "m": "celui",
+     "t0": 145.92,
+     "t1": 146.22
+    },
+    {
+     "m": "ou",
+     "t0": 146.22,
+     "t1": 146.44
+    },
+    {
+     "m": "celle",
+     "t0": 146.44,
+     "t1": 146.66
+    },
+    {
+     "m": "qui",
+     "t0": 146.66,
+     "t1": 146.86
+    },
+    {
+     "m": "m'offense.",
+     "t0": 146.86,
+     "t1": 147.26
+    },
+    {
+     "m": "Une",
+     "t0": 147.96,
+     "t1": 148.16
+    },
+    {
+     "m": "fois",
+     "t0": 148.16,
+     "t1": 148.34
+    },
+    {
+     "m": "que",
+     "t0": 148.34,
+     "t1": 148.48
+    },
+    {
+     "m": "j'ai",
+     "t0": 148.48,
+     "t1": 148.58
+    },
+    {
+     "m": "compris",
+     "t0": 148.58,
+     "t1": 148.84
+    },
+    {
+     "m": "ça,",
+     "t0": 148.84,
+     "t1": 149.18
+    },
+    {
+     "m": "bien-aimés,",
+     "t0": 149.5,
+     "t1": 149.86
+    },
+    {
+     "m": "une",
+     "t0": 150.28,
+     "t1": 150.4
+    },
+    {
+     "m": "fois",
+     "t0": 150.4,
+     "t1": 150.56
+    },
+    {
+     "m": "que",
+     "t0": 150.56,
+     "t1": 150.7
+    },
+    {
+     "m": "j'ai",
+     "t0": 150.7,
+     "t1": 150.88
+    },
+    {
+     "m": "appris",
+     "t0": 150.88,
+     "t1": 151.28
+    },
+    {
+     "m": "à",
+     "t0": 151.28,
+     "t1": 151.42
+    },
+    {
+     "m": "regarder",
+     "t0": 151.42,
+     "t1": 151.76
+    },
+    {
+     "m": "à",
+     "t0": 151.76,
+     "t1": 152.04
+    },
+    {
+     "m": "Dieu",
+     "t0": 152.04,
+     "t1": 152.24
+    },
+    {
+     "m": "dans",
+     "t0": 152.24,
+     "t1": 152.42
+    },
+    {
+     "m": "tout",
+     "t0": 152.42,
+     "t1": 152.68
+    },
+    {
+     "m": "ce",
+     "t0": 152.68,
+     "t1": 152.8
+    },
+    {
+     "m": "qui",
+     "t0": 152.8,
+     "t1": 152.92
+    },
+    {
+     "m": "m'arrive,",
+     "t0": 152.92,
+     "t1": 153.26
+    },
+    {
+     "m": "rien",
+     "t0": 153.84,
+     "t1": 154.06
+    },
+    {
+     "m": "n'était",
+     "t0": 154.06,
+     "t1": 154.32
+    },
+    {
+     "m": "plus",
+     "t0": 154.32,
+     "t1": 154.58
+    },
+    {
+     "m": "un",
+     "t0": 154.58,
+     "t1": 154.76
+    },
+    {
+     "m": "problème",
+     "t0": 154.76,
+     "t1": 155.12
+    },
+    {
+     "m": "à",
+     "t0": 155.12,
+     "t1": 155.3
+    },
+    {
+     "m": "mes",
+     "t0": 155.3,
+     "t1": 155.4
+    },
+    {
+     "m": "yeux.",
+     "t0": 155.4,
+     "t1": 155.62
+    },
+    {
+     "m": "En",
+     "t0": 156.1,
+     "t1": 156.26
+    },
+    {
+     "m": "vérité,",
+     "t0": 156.26,
+     "t1": 156.76
+    },
+    {
+     "m": "je",
+     "t0": 157.12,
+     "t1": 157.28
+    },
+    {
+     "m": "découvre",
+     "t0": 157.28,
+     "t1": 157.76
+    },
+    {
+     "m": "au",
+     "t0": 157.76,
+     "t1": 157.84
+    },
+    {
+     "m": "travers",
+     "t0": 157.84,
+     "t1": 158.08
+    },
+    {
+     "m": "de",
+     "t0": 158.08,
+     "t1": 158.26
+    },
+    {
+     "m": "la",
+     "t0": 158.26,
+     "t1": 158.38
+    },
+    {
+     "m": "situation",
+     "t0": 158.38,
+     "t1": 158.94
+    },
+    {
+     "m": "que",
+     "t0": 158.94,
+     "t1": 159.22
+    },
+    {
+     "m": "je",
+     "t0": 159.22,
+     "t1": 159.32
+    },
+    {
+     "m": "ne",
+     "t0": 159.32,
+     "t1": 159.44
+    },
+    {
+     "m": "suis",
+     "t0": 159.44,
+     "t1": 159.56
+    },
+    {
+     "m": "pas",
+     "t0": 159.56,
+     "t1": 159.82
+    },
+    {
+     "m": "différente",
+     "t0": 159.82,
+     "t1": 160.34
+    },
+    {
+     "m": "de",
+     "t0": 160.34,
+     "t1": 160.56
+    },
+    {
+     "m": "mes",
+     "t0": 160.56,
+     "t1": 160.66
+    },
+    {
+     "m": "frères",
+     "t0": 160.66,
+     "t1": 160.94
+    },
+    {
+     "m": "et",
+     "t0": 160.94,
+     "t1": 161.14
+    },
+    {
+     "m": "sœurs",
+     "t0": 161.14,
+     "t1": 161.4
+    },
+    {
+     "m": "qui",
+     "t0": 161.4,
+     "t1": 161.54
+    },
+    {
+     "m": "peuvent",
+     "t0": 161.54,
+     "t1": 161.78
+    },
+    {
+     "m": "m'offenser,",
+     "t0": 161.78,
+     "t1": 162.28
+    },
+    {
+     "m": "et",
+     "t0": 162.86,
+     "t1": 162.96
+    },
+    {
+     "m": "j'ai",
+     "t0": 162.96,
+     "t1": 163.1
+    },
+    {
+     "m": "découvert",
+     "t0": 163.1,
+     "t1": 163.44
+    },
+    {
+     "m": "réellement,",
+     "t0": 163.44,
+     "t1": 164.14
+    },
+    {
+     "m": "au",
+     "t0": 164.38,
+     "t1": 164.46
+    },
+    {
+     "m": "travers",
+     "t0": 164.46,
+     "t1": 164.72
+    },
+    {
+     "m": "de",
+     "t0": 164.72,
+     "t1": 164.88
+    },
+    {
+     "m": "l'entretien",
+     "t0": 164.88,
+     "t1": 165.5
+    },
+    {
+     "m": "et",
+     "t0": 165.5,
+     "t1": 165.62
+    },
+    {
+     "m": "de",
+     "t0": 165.62,
+     "t1": 165.72
+    },
+    {
+     "m": "la",
+     "t0": 165.72,
+     "t1": 165.82
+    },
+    {
+     "m": "parole,",
+     "t0": 165.82,
+     "t1": 166.2
+    },
+    {
+     "m": "que",
+     "t0": 166.2,
+     "t1": 166.8
+    },
+    {
+     "m": "celui",
+     "t0": 166.8,
+     "t1": 167.08
+    },
+    {
+     "m": "qui",
+     "t0": 167.08,
+     "t1": 167.34
+    },
+    {
+     "m": "a",
+     "t0": 167.34,
+     "t1": 167.46
+    },
+    {
+     "m": "reçu",
+     "t0": 167.46,
+     "t1": 167.84
+    },
+    {
+     "m": "le",
+     "t0": 167.84,
+     "t1": 167.96
+    },
+    {
+     "m": "pardon",
+     "t0": 167.96,
+     "t1": 168.38
+    },
+    {
+     "m": "peut",
+     "t0": 168.38,
+     "t1": 168.8
+    },
+    {
+     "m": "pardonner.",
+     "t0": 168.8,
+     "t1": 169.38
+    },
+    {
+     "m": "Et",
+     "t0": 169.84,
+     "t1": 170.02
+    },
+    {
+     "m": "ma",
+     "t0": 170.02,
+     "t1": 170.1
+    },
+    {
+     "m": "prière",
+     "t0": 170.1,
+     "t1": 170.5
+    },
+    {
+     "m": "aujourd'hui,",
+     "t0": 170.5,
+     "t1": 171.14
+    },
+    {
+     "m": "c'est",
+     "t0": 171.16,
+     "t1": 171.44
+    },
+    {
+     "m": "qu'il",
+     "t0": 171.44,
+     "t1": 171.62
+    },
+    {
+     "m": "m'aide,",
+     "t0": 171.62,
+     "t1": 171.98
+    },
+    {
+     "m": "car",
+     "t0": 172.26,
+     "t1": 172.38
+    },
+    {
+     "m": "je",
+     "t0": 172.38,
+     "t1": 172.56
+    },
+    {
+     "m": "sais",
+     "t0": 172.56,
+     "t1": 172.78
+    },
+    {
+     "m": "que",
+     "t0": 172.78,
+     "t1": 172.92
+    },
+    {
+     "m": "ce",
+     "t0": 172.92,
+     "t1": 173.04
+    },
+    {
+     "m": "n'est",
+     "t0": 173.04,
+     "t1": 173.14
+    },
+    {
+     "m": "pas",
+     "t0": 173.14,
+     "t1": 173.32
+    },
+    {
+     "m": "facile",
+     "t0": 173.32,
+     "t1": 173.76
+    },
+    {
+     "m": "de",
+     "t0": 173.76,
+     "t1": 174.32
+    },
+    {
+     "m": "le",
+     "t0": 174.32,
+     "t1": 174.42
+    },
+    {
+     "m": "voir",
+     "t0": 174.42,
+     "t1": 174.6
+    },
+    {
+     "m": "partout",
+     "t0": 174.6,
+     "t1": 175.02
+    },
+    {
+     "m": "dans",
+     "t0": 175.02,
+     "t1": 175.2
+    },
+    {
+     "m": "ma",
+     "t0": 175.2,
+     "t1": 175.34
+    },
+    {
+     "m": "vie,",
+     "t0": 175.34,
+     "t1": 175.54
+    },
+    {
+     "m": "que",
+     "t0": 175.78,
+     "t1": 175.88
+    },
+    {
+     "m": "ce",
+     "t0": 175.88,
+     "t1": 176.0
+    },
+    {
+     "m": "soit",
+     "t0": 176.0,
+     "t1": 176.22
+    },
+    {
+     "m": "en",
+     "t0": 176.22,
+     "t1": 176.32
+    },
+    {
+     "m": "bien",
+     "t0": 176.32,
+     "t1": 176.56
+    },
+    {
+     "m": "ou",
+     "t0": 176.56,
+     "t1": 176.96
+    },
+    {
+     "m": "en",
+     "t0": 176.96,
+     "t1": 177.1
+    },
+    {
+     "m": "mal",
+     "t0": 177.1,
+     "t1": 177.34
+    },
+    {
+     "m": "pour",
+     "t0": 177.34,
+     "t1": 177.5
+    },
+    {
+     "m": "ma",
+     "t0": 177.5,
+     "t1": 177.64
+    },
+    {
+     "m": "chair.",
+     "t0": 177.64,
+     "t1": 177.92
     },
     {
      "m": "Amen,",
-     "t0": 196.4,
-     "t1": 197.07
+     "t0": 178.44,
+     "t1": 178.7
     },
     {
      "m": "amen.",
-     "t0": 197.35,
-     "t1": 197.77
+     "t0": 179.36,
+     "t1": 179.56
+    }
+   ]
+  },
+  {
+   "id": "I",
+   "qui": "L'INTERPRÈTE",
+   "fichier": "audio/narrateur-annonce.mp3",
+   "decalage": 194.91,
+   "texte": "Amen ! Amen ! Nos ovations, bien-aimés ! Nous accueillons l'homme que Dieu a prévu pour nous donner le message : le pasteur Emmanuel !",
+   "mots": [
+    {
+     "m": "Amen !",
+     "t0": 0.0,
+     "t1": 0.46
+    },
+    {
+     "m": "Amen !",
+     "t0": 0.82,
+     "t1": 1.1
+    },
+    {
+     "m": "Nos",
+     "t0": 1.82,
+     "t1": 2.0
+    },
+    {
+     "m": "ovations,",
+     "t0": 2.0,
+     "t1": 2.66
+    },
+    {
+     "m": "bien-aimés !",
+     "t0": 2.66,
+     "t1": 3.24
+    },
+    {
+     "m": "Nous",
+     "t0": 3.58,
+     "t1": 3.78
+    },
+    {
+     "m": "accueillons",
+     "t0": 3.78,
+     "t1": 4.22
+    },
+    {
+     "m": "l'homme",
+     "t0": 4.22,
+     "t1": 4.52
+    },
+    {
+     "m": "que",
+     "t0": 4.52,
+     "t1": 4.7
+    },
+    {
+     "m": "Dieu",
+     "t0": 4.7,
+     "t1": 4.98
+    },
+    {
+     "m": "a",
+     "t0": 4.98,
+     "t1": 5.14
+    },
+    {
+     "m": "prévu",
+     "t0": 5.14,
+     "t1": 5.56
+    },
+    {
+     "m": "pour",
+     "t0": 5.56,
+     "t1": 5.74
+    },
+    {
+     "m": "nous",
+     "t0": 5.74,
+     "t1": 5.88
+    },
+    {
+     "m": "donner",
+     "t0": 5.88,
+     "t1": 6.12
+    },
+    {
+     "m": "le",
+     "t0": 6.12,
+     "t1": 6.26
+    },
+    {
+     "m": "message :",
+     "t0": 6.26,
+     "t1": 6.72
+    },
+    {
+     "m": "le",
+     "t0": 7.2,
+     "t1": 7.28
+    },
+    {
+     "m": "pasteur",
+     "t0": 7.28,
+     "t1": 7.94
+    },
+    {
+     "m": "Emmanuel !",
+     "t0": 7.94,
+     "t1": 8.4
     }
    ]
   },
@@ -3205,1599 +2917,1243 @@
    "id": "E",
    "qui": "PASTEUR EMMANUEL",
    "fichier": "audio/pasteur-emmanuel.mp3",
-   "debut": 0.13,
-   "fin": 97.82,
-   "texte": "Oui, bien-aimés, Au travers de cela, au travers du partage, nous pouvons comprendre deux choses très importantes. Première chose Seigneur, cette personne est comme moi, humaine, soumise à la vanité de la chair, commettant les mêmes erreurs encore et encore. Je ne suis pas différent d'elle. En rien. En aucun cas, je ne suis différent d'elle. Je suis pire qu'elle, et je peux faire encore plus qu'elle. Et la deuxième chose, c'est que celui qui a été pardonné peut aussi facilement pardonner. Parce que si tu as été pardonné, si tu crois, du moins si tu l'as reçu dans ton cœur, alors tu comprendras que tu vis en nouveauté de vie en Jésus Christ. Et qu'est-ce que Christ aurait fait à ta place il aurait pardonné. Comme notre père, l'apôtre Paris Talla nous l'a enseigné il y a trois points qui peuvent nous permettre facilement de pratiquer le pardon fraternel. Donc nous avons Premièrement, voir Dieu derrière son frère, derrière la personne qui nous a offensés. 2. comprendre que ton fondement est faux. Rien ne peut sortir de toi, c'est-à-dire de ta chair. Troisièmement, vivre selon le cœur de l'église, marcher selon le cœur du serviteur de Dieu. Car le péché après le salut, je parle ici du péché qui ne mène pas en enfer, c'est de marcher selon son raisonnement, et sa pensée. quand tu vis selon ton propre cœur, tu ne peux pas mener la vie spirituelle. Et si tu ne peux pas mener la vie spirituelle, tu ne pourras pas voir Dieu derrière les offenses et les outrages que va te causer ton frère. Mais tu vas plutôt voir l'offense. et même, tu te diras que tu n'es pas pareil, et que ce que ton frère a fait, tu ne peux pas le faire. Je pense que c'est tout pour l'instant bien-aimés, Que le Seigneur nous aide, je sais que cela n'est pas facile. Amen.",
+   "decalage": 209.81,
+   "texte": "Oui, bien-aimés, c'est aussi comme ça que Dieu peut travailler. Quand la parole rencontre le cœur, rien n'est problème. Oui, ma sœur Annabelle, j'honore vraiment le Christ en toi. Le témoignage, c'est aussi une façon de donner la vie par les situations et l'enseignement qu'on a reçu au travers de ces situations-là. Donc, mes frères et sœurs de la MIDIGRAD, partageons, c'est très important. Je vais juste revenir sur les trois points essentiels dont nous a parlé notre père, l'apôtre Paris Talla, pour facilement pratiquer le pardon fraternel. Premier point : toujours reconnaître Dieu derrière celui ou celle qui nous a offensés. Deuxième point : toujours savoir que je ne suis pas différent de mon frère ou de ma sœur que j'accuse. Celui-là que tu accuses de voler, de mentir, c'est monté, c'est descendu. Bien-aimé, tu n'es pas différent. Il suffit juste que les conditions soient réunies et tu feras la même chose. Amen ? Si tu veux, tu ne réponds pas. Moi, je ne suis pas ici devant pour plaire à quelqu'un. Troisième point : suivre le cœur de l'Église. Ah, ça, c'est alors notre mort ici à la MIDIGRAD. Mais bien-aimés, sachez qu'on vous parle selon la parole, que ça te plaise ou non. Le fondement même d'un bon chrétien, c'est de suivre le cœur de l'Église. Je ne monte pas ici pour faire plaisir à qui que ce soit, je suis là pour donner la parole comme je l'ai reçue. Restons infiniment bénis. J'en ai terminé. Amen, amen.",
    "mots": [
     {
      "m": "Oui,",
-     "t0": 0.13,
-     "t1": 0.5
+     "t0": 0.0,
+     "t1": 0.24
     },
     {
      "m": "bien-aimés,",
-     "t0": 0.5,
-     "t1": 1.27
-    },
-    {
-     "m": "Au",
-     "t0": 1.73,
-     "t1": 1.91
-    },
-    {
-     "m": "travers",
-     "t0": 1.91,
-     "t1": 2.28
-    },
-    {
-     "m": "de",
-     "t0": 2.28,
-     "t1": 2.46
-    },
-    {
-     "m": "cela,",
-     "t0": 2.46,
-     "t1": 3.03
-    },
-    {
-     "m": "au",
-     "t0": 3.03,
-     "t1": 3.2
-    },
-    {
-     "m": "travers",
-     "t0": 3.2,
-     "t1": 3.58
-    },
-    {
-     "m": "du",
-     "t0": 3.58,
-     "t1": 3.76
-    },
-    {
-     "m": "partage,",
-     "t0": 3.76,
-     "t1": 4.13
-    },
-    {
-     "m": "nous",
-     "t0": 4.58,
-     "t1": 4.81
-    },
-    {
-     "m": "pouvons",
-     "t0": 4.81,
-     "t1": 5.15
-    },
-    {
-     "m": "comprendre",
-     "t0": 5.15,
-     "t1": 5.6
-    },
-    {
-     "m": "deux",
-     "t0": 5.6,
-     "t1": 5.84
-    },
-    {
-     "m": "choses",
-     "t0": 5.84,
-     "t1": 6.14
-    },
-    {
-     "m": "très",
-     "t0": 6.14,
-     "t1": 6.38
-    },
-    {
-     "m": "importantes.",
-     "t0": 6.38,
-     "t1": 6.86
-    },
-    {
-     "m": "Première",
-     "t0": 7.33,
-     "t1": 7.72
-    },
-    {
-     "m": "chose",
-     "t0": 7.72,
-     "t1": 8.0
-    },
-    {
-     "m": "Seigneur,",
-     "t0": 8.53,
-     "t1": 8.91
-    },
-    {
-     "m": "cette",
-     "t0": 8.91,
-     "t1": 9.44
-    },
-    {
-     "m": "personne",
-     "t0": 9.44,
-     "t1": 9.82
-    },
-    {
-     "m": "est",
-     "t0": 9.82,
-     "t1": 10.02
-    },
-    {
-     "m": "comme",
-     "t0": 10.02,
-     "t1": 10.28
-    },
-    {
-     "m": "moi,",
-     "t0": 10.28,
-     "t1": 10.48
-    },
-    {
-     "m": "humaine,",
-     "t0": 10.85,
-     "t1": 11.34
-    },
-    {
-     "m": "soumise",
-     "t0": 11.54,
-     "t1": 12.0
-    },
-    {
-     "m": "à",
-     "t0": 12.0,
-     "t1": 12.17
-    },
-    {
-     "m": "la",
-     "t0": 12.17,
-     "t1": 12.39
-    },
-    {
-     "m": "vanité",
-     "t0": 12.39,
-     "t1": 12.8
-    },
-    {
-     "m": "de",
-     "t0": 12.8,
-     "t1": 13.02
-    },
-    {
-     "m": "la",
-     "t0": 13.02,
-     "t1": 13.24
-    },
-    {
-     "m": "chair,",
-     "t0": 13.24,
-     "t1": 13.6
-    },
-    {
-     "m": "commettant",
-     "t0": 13.6,
-     "t1": 14.21
-    },
-    {
-     "m": "les",
-     "t0": 14.21,
-     "t1": 14.47
-    },
-    {
-     "m": "mêmes",
-     "t0": 14.47,
-     "t1": 14.84
-    },
-    {
-     "m": "erreurs",
-     "t0": 14.84,
-     "t1": 15.3
-    },
-    {
-     "m": "encore",
-     "t0": 15.3,
-     "t1": 15.71
-    },
-    {
-     "m": "et",
-     "t0": 15.71,
-     "t1": 15.93
-    },
-    {
-     "m": "encore.",
-     "t0": 15.93,
-     "t1": 16.34
-    },
-    {
-     "m": "Je",
-     "t0": 16.84,
-     "t1": 16.99
-    },
-    {
-     "m": "ne",
-     "t0": 16.99,
-     "t1": 17.14
-    },
-    {
-     "m": "suis",
-     "t0": 17.14,
-     "t1": 17.36
-    },
-    {
-     "m": "pas",
-     "t0": 17.36,
-     "t1": 17.54
-    },
-    {
-     "m": "différent",
-     "t0": 17.54,
-     "t1": 17.92
-    },
-    {
-     "m": "d'elle.",
-     "t0": 17.92,
-     "t1": 18.17
-    },
-    {
-     "m": "En",
-     "t0": 18.57,
-     "t1": 18.76
-    },
-    {
-     "m": "rien.",
-     "t0": 18.76,
-     "t1": 19.03
-    },
-    {
-     "m": "En",
-     "t0": 19.46,
-     "t1": 19.62
-    },
-    {
-     "m": "aucun",
-     "t0": 19.62,
-     "t1": 19.9
-    },
-    {
-     "m": "cas,",
-     "t0": 19.9,
-     "t1": 20.1
-    },
-    {
-     "m": "je",
-     "t0": 20.1,
-     "t1": 20.26
-    },
-    {
-     "m": "ne",
-     "t0": 20.26,
-     "t1": 20.42
-    },
-    {
-     "m": "suis",
-     "t0": 20.42,
-     "t1": 20.66
-    },
-    {
-     "m": "différent",
-     "t0": 20.66,
-     "t1": 21.08
-    },
-    {
-     "m": "d'elle.",
-     "t0": 21.08,
-     "t1": 21.35
-    },
-    {
-     "m": "Je",
-     "t0": 21.79,
-     "t1": 21.94
-    },
-    {
-     "m": "suis",
-     "t0": 21.94,
-     "t1": 22.31
-    },
-    {
-     "m": "pire",
-     "t0": 22.31,
-     "t1": 22.52
-    },
-    {
-     "m": "qu'elle,",
-     "t0": 22.52,
-     "t1": 22.79
-    },
-    {
-     "m": "et",
-     "t0": 23.19,
-     "t1": 23.34
-    },
-    {
-     "m": "je",
-     "t0": 23.34,
-     "t1": 23.48
-    },
-    {
-     "m": "peux",
-     "t0": 23.48,
-     "t1": 23.7
-    },
-    {
-     "m": "faire",
-     "t0": 23.7,
-     "t1": 23.94
-    },
-    {
-     "m": "encore",
-     "t0": 23.94,
-     "t1": 24.22
-    },
-    {
-     "m": "plus",
-     "t0": 24.22,
-     "t1": 24.43
-    },
-    {
-     "m": "qu'elle.",
-     "t0": 24.43,
-     "t1": 24.71
-    },
-    {
-     "m": "Et",
-     "t0": 25.26,
-     "t1": 25.43
-    },
-    {
-     "m": "la",
-     "t0": 25.43,
-     "t1": 25.61
-    },
-    {
-     "m": "deuxième",
-     "t0": 25.61,
-     "t1": 26.02
-    },
-    {
-     "m": "chose,",
-     "t0": 26.02,
-     "t1": 26.49
+     "t0": 0.24,
+     "t1": 1.02
     },
     {
      "m": "c'est",
-     "t0": 26.49,
-     "t1": 26.74
-    },
-    {
-     "m": "que",
-     "t0": 26.74,
-     "t1": 26.95
-    },
-    {
-     "m": "celui",
-     "t0": 26.95,
-     "t1": 27.24
-    },
-    {
-     "m": "qui",
-     "t0": 27.24,
-     "t1": 27.45
-    },
-    {
-     "m": "a",
-     "t0": 27.45,
-     "t1": 27.59
-    },
-    {
-     "m": "été",
-     "t0": 27.59,
-     "t1": 27.8
-    },
-    {
-     "m": "pardonné",
-     "t0": 27.8,
-     "t1": 28.5
-    },
-    {
-     "m": "peut",
-     "t0": 28.5,
-     "t1": 28.75
+     "t0": 1.5,
+     "t1": 1.6
     },
     {
      "m": "aussi",
-     "t0": 28.75,
-     "t1": 29.04
+     "t0": 1.6,
+     "t1": 1.8
     },
     {
-     "m": "facilement",
-     "t0": 29.04,
-     "t1": 29.52
+     "m": "comme",
+     "t0": 1.8,
+     "t1": 2.06
     },
     {
-     "m": "pardonner.",
-     "t0": 29.52,
-     "t1": 29.97
-    },
-    {
-     "m": "Parce",
-     "t0": 30.43,
-     "t1": 30.69
+     "m": "ça",
+     "t0": 2.06,
+     "t1": 2.3
     },
     {
      "m": "que",
-     "t0": 30.69,
-     "t1": 30.88
-    },
-    {
-     "m": "si",
-     "t0": 30.88,
-     "t1": 31.04
-    },
-    {
-     "m": "tu",
-     "t0": 31.04,
-     "t1": 31.2
-    },
-    {
-     "m": "as",
-     "t0": 31.2,
-     "t1": 31.36
-    },
-    {
-     "m": "été",
-     "t0": 31.36,
-     "t1": 31.55
-    },
-    {
-     "m": "pardonné,",
-     "t0": 31.55,
-     "t1": 32.14
-    },
-    {
-     "m": "si",
-     "t0": 32.14,
-     "t1": 32.3
-    },
-    {
-     "m": "tu",
-     "t0": 32.3,
-     "t1": 32.46
-    },
-    {
-     "m": "crois,",
-     "t0": 32.46,
-     "t1": 32.72
-    },
-    {
-     "m": "du",
-     "t0": 32.99,
-     "t1": 33.15
-    },
-    {
-     "m": "moins",
-     "t0": 33.15,
-     "t1": 33.43
-    },
-    {
-     "m": "si",
-     "t0": 33.43,
-     "t1": 33.59
-    },
-    {
-     "m": "tu",
-     "t0": 33.59,
-     "t1": 33.76
-    },
-    {
-     "m": "l'as",
-     "t0": 33.76,
-     "t1": 33.96
-    },
-    {
-     "m": "reçu",
-     "t0": 33.96,
-     "t1": 34.2
-    },
-    {
-     "m": "dans",
-     "t0": 34.2,
-     "t1": 34.43
-    },
-    {
-     "m": "ton",
-     "t0": 34.43,
-     "t1": 34.64
-    },
-    {
-     "m": "cœur,",
-     "t0": 34.64,
-     "t1": 34.91
-    },
-    {
-     "m": "alors",
-     "t0": 35.28,
-     "t1": 35.56
-    },
-    {
-     "m": "tu",
-     "t0": 35.56,
-     "t1": 35.73
-    },
-    {
-     "m": "comprendras",
-     "t0": 35.73,
-     "t1": 36.24
-    },
-    {
-     "m": "que",
-     "t0": 36.24,
-     "t1": 36.44
-    },
-    {
-     "m": "tu",
-     "t0": 36.44,
-     "t1": 36.61
-    },
-    {
-     "m": "vis",
-     "t0": 36.61,
-     "t1": 36.82
-    },
-    {
-     "m": "en",
-     "t0": 36.82,
-     "t1": 36.99
-    },
-    {
-     "m": "nouveauté",
-     "t0": 36.99,
-     "t1": 37.42
-    },
-    {
-     "m": "de",
-     "t0": 37.42,
-     "t1": 37.59
-    },
-    {
-     "m": "vie",
-     "t0": 37.59,
-     "t1": 37.79
-    },
-    {
-     "m": "en",
-     "t0": 37.79,
-     "t1": 37.96
-    },
-    {
-     "m": "Jésus",
-     "t0": 37.96,
-     "t1": 38.24
-    },
-    {
-     "m": "Christ.",
-     "t0": 38.24,
-     "t1": 38.56
-    },
-    {
-     "m": "Et",
-     "t0": 38.96,
-     "t1": 39.1
-    },
-    {
-     "m": "qu'est-ce",
-     "t0": 39.1,
-     "t1": 39.4
-    },
-    {
-     "m": "que",
-     "t0": 39.4,
-     "t1": 39.57
-    },
-    {
-     "m": "Christ",
-     "t0": 39.57,
-     "t1": 39.83
-    },
-    {
-     "m": "aurait",
-     "t0": 39.83,
-     "t1": 40.1
-    },
-    {
-     "m": "fait",
-     "t0": 40.1,
-     "t1": 40.3
-    },
-    {
-     "m": "à",
-     "t0": 40.3,
-     "t1": 40.41
-    },
-    {
-     "m": "ta",
-     "t0": 40.41,
-     "t1": 40.55
-    },
-    {
-     "m": "place",
-     "t0": 40.55,
-     "t1": 40.78
-    },
-    {
-     "m": "il",
-     "t0": 41.22,
-     "t1": 41.38
-    },
-    {
-     "m": "aurait",
-     "t0": 41.38,
-     "t1": 41.7
-    },
-    {
-     "m": "pardonné.",
-     "t0": 41.7,
-     "t1": 42.08
-    },
-    {
-     "m": "Comme",
-     "t0": 42.54,
-     "t1": 42.83
-    },
-    {
-     "m": "notre",
-     "t0": 42.83,
-     "t1": 43.13
-    },
-    {
-     "m": "père,",
-     "t0": 43.13,
-     "t1": 43.38
-    },
-    {
-     "m": "l'apôtre",
-     "t0": 43.38,
-     "t1": 43.75
-    },
-    {
-     "m": "Paris",
-     "t0": 43.75,
-     "t1": 44.05
-    },
-    {
-     "m": "Talla",
-     "t0": 44.05,
-     "t1": 44.34
-    },
-    {
-     "m": "nous",
-     "t0": 44.34,
-     "t1": 44.59
-    },
-    {
-     "m": "l'a",
-     "t0": 44.59,
-     "t1": 44.77
-    },
-    {
-     "m": "enseigné",
-     "t0": 44.77,
-     "t1": 45.18
-    },
-    {
-     "m": "il",
-     "t0": 45.5,
-     "t1": 45.66
-    },
-    {
-     "m": "y",
-     "t0": 45.66,
-     "t1": 45.78
-    },
-    {
-     "m": "a",
-     "t0": 45.78,
-     "t1": 45.9
-    },
-    {
-     "m": "trois",
-     "t0": 45.9,
-     "t1": 46.17
-    },
-    {
-     "m": "points",
-     "t0": 46.17,
-     "t1": 46.46
-    },
-    {
-     "m": "qui",
-     "t0": 46.46,
-     "t1": 46.66
-    },
-    {
-     "m": "peuvent",
-     "t0": 46.66,
-     "t1": 46.99
-    },
-    {
-     "m": "nous",
-     "t0": 46.99,
-     "t1": 47.22
-    },
-    {
-     "m": "permettre",
-     "t0": 47.22,
-     "t1": 47.62
-    },
-    {
-     "m": "facilement",
-     "t0": 47.62,
-     "t1": 48.06
-    },
-    {
-     "m": "de",
-     "t0": 48.06,
-     "t1": 48.22
-    },
-    {
-     "m": "pratiquer",
-     "t0": 48.22,
-     "t1": 48.62
-    },
-    {
-     "m": "le",
-     "t0": 48.62,
-     "t1": 48.78
-    },
-    {
-     "m": "pardon",
-     "t0": 48.78,
-     "t1": 49.08
-    },
-    {
-     "m": "fraternel.",
-     "t0": 49.08,
-     "t1": 49.48
-    },
-    {
-     "m": "Donc",
-     "t0": 49.88,
-     "t1": 50.14
-    },
-    {
-     "m": "nous",
-     "t0": 50.14,
-     "t1": 50.39
-    },
-    {
-     "m": "avons",
-     "t0": 50.39,
-     "t1": 50.87
-    },
-    {
-     "m": "Premièrement,",
-     "t0": 50.87,
-     "t1": 51.44
-    },
-    {
-     "m": "voir",
-     "t0": 51.44,
-     "t1": 51.9
+     "t0": 2.3,
+     "t1": 2.48
     },
     {
      "m": "Dieu",
-     "t0": 51.9,
-     "t1": 52.16
-    },
-    {
-     "m": "derrière",
-     "t0": 52.16,
-     "t1": 52.57
-    },
-    {
-     "m": "son",
-     "t0": 52.57,
-     "t1": 52.79
-    },
-    {
-     "m": "frère,",
-     "t0": 52.79,
-     "t1": 53.08
-    },
-    {
-     "m": "derrière",
-     "t0": 53.08,
-     "t1": 53.76
-    },
-    {
-     "m": "la",
-     "t0": 53.76,
-     "t1": 53.93
-    },
-    {
-     "m": "personne",
-     "t0": 53.93,
-     "t1": 54.35
-    },
-    {
-     "m": "qui",
-     "t0": 54.35,
-     "t1": 54.56
-    },
-    {
-     "m": "nous",
-     "t0": 54.56,
-     "t1": 54.82
-    },
-    {
-     "m": "a",
-     "t0": 54.82,
-     "t1": 54.96
-    },
-    {
-     "m": "offensés.",
-     "t0": 54.96,
-     "t1": 55.37
-    },
-    {
-     "m": "2.",
-     "t0": 55.74,
-     "t1": 55.91
-    },
-    {
-     "m": "comprendre",
-     "t0": 55.91,
-     "t1": 56.78
-    },
-    {
-     "m": "que",
-     "t0": 56.78,
-     "t1": 57.05
-    },
-    {
-     "m": "ton",
-     "t0": 57.05,
-     "t1": 57.33
-    },
-    {
-     "m": "fondement",
-     "t0": 57.33,
-     "t1": 57.9
-    },
-    {
-     "m": "est",
-     "t0": 57.9,
-     "t1": 58.17
-    },
-    {
-     "m": "faux.",
-     "t0": 58.17,
-     "t1": 58.49
-    },
-    {
-     "m": "Rien",
-     "t0": 58.8,
-     "t1": 59.05
-    },
-    {
-     "m": "ne",
-     "t0": 59.05,
-     "t1": 59.22
+     "t0": 2.48,
+     "t1": 2.64
     },
     {
      "m": "peut",
-     "t0": 59.22,
-     "t1": 59.48
+     "t0": 2.64,
+     "t1": 2.78
     },
     {
-     "m": "sortir",
-     "t0": 59.48,
-     "t1": 59.8
+     "m": "travailler.",
+     "t0": 2.78,
+     "t1": 3.22
     },
     {
-     "m": "de",
-     "t0": 59.8,
-     "t1": 59.98
+     "m": "Quand",
+     "t0": 3.72,
+     "t1": 3.82
     },
     {
-     "m": "toi,",
-     "t0": 59.98,
-     "t1": 60.19
+     "m": "la",
+     "t0": 3.82,
+     "t1": 3.96
     },
     {
-     "m": "c'est-à-dire",
-     "t0": 60.19,
-     "t1": 60.8
+     "m": "parole",
+     "t0": 3.96,
+     "t1": 4.26
     },
     {
-     "m": "de",
-     "t0": 60.8,
-     "t1": 60.98
-    },
-    {
-     "m": "ta",
-     "t0": 60.98,
-     "t1": 61.15
-    },
-    {
-     "m": "chair.",
-     "t0": 61.15,
-     "t1": 61.44
-    },
-    {
-     "m": "Troisièmement,",
-     "t0": 61.83,
-     "t1": 62.45
-    },
-    {
-     "m": "vivre",
-     "t0": 62.45,
-     "t1": 62.96
-    },
-    {
-     "m": "selon",
-     "t0": 62.96,
-     "t1": 63.27
+     "m": "rencontre",
+     "t0": 4.26,
+     "t1": 4.78
     },
     {
      "m": "le",
-     "t0": 63.27,
-     "t1": 63.45
-    },
-    {
-     "m": "cœur",
-     "t0": 63.45,
-     "t1": 63.75
-    },
-    {
-     "m": "de",
-     "t0": 63.75,
-     "t1": 63.93
-    },
-    {
-     "m": "l'église,",
-     "t0": 63.93,
-     "t1": 64.31
-    },
-    {
-     "m": "marcher",
-     "t0": 64.31,
-     "t1": 64.81
-    },
-    {
-     "m": "selon",
-     "t0": 64.81,
-     "t1": 65.11
-    },
-    {
-     "m": "le",
-     "t0": 65.11,
-     "t1": 65.29
-    },
-    {
-     "m": "cœur",
-     "t0": 65.29,
-     "t1": 65.6
-    },
-    {
-     "m": "du",
-     "t0": 65.6,
-     "t1": 65.78
-    },
-    {
-     "m": "serviteur",
-     "t0": 65.78,
-     "t1": 66.24
-    },
-    {
-     "m": "de",
-     "t0": 66.24,
-     "t1": 66.42
-    },
-    {
-     "m": "Dieu.",
-     "t0": 66.42,
-     "t1": 66.68
-    },
-    {
-     "m": "Car",
-     "t0": 66.68,
-     "t1": 66.9
-    },
-    {
-     "m": "le",
-     "t0": 66.9,
-     "t1": 67.39
-    },
-    {
-     "m": "péché",
-     "t0": 67.39,
-     "t1": 67.69
-    },
-    {
-     "m": "après",
-     "t0": 67.69,
-     "t1": 68.0
-    },
-    {
-     "m": "le",
-     "t0": 68.0,
-     "t1": 68.18
-    },
-    {
-     "m": "salut,",
-     "t0": 68.18,
-     "t1": 68.48
-    },
-    {
-     "m": "je",
-     "t0": 68.48,
-     "t1": 68.66
-    },
-    {
-     "m": "parle",
-     "t0": 68.66,
-     "t1": 69.12
-    },
-    {
-     "m": "ici",
-     "t0": 69.12,
-     "t1": 69.34
-    },
-    {
-     "m": "du",
-     "t0": 69.34,
-     "t1": 69.52
-    },
-    {
-     "m": "péché",
-     "t0": 69.52,
-     "t1": 69.82
-    },
-    {
-     "m": "qui",
-     "t0": 69.82,
-     "t1": 70.04
-    },
-    {
-     "m": "ne",
-     "t0": 70.04,
-     "t1": 70.23
-    },
-    {
-     "m": "mène",
-     "t0": 70.23,
-     "t1": 70.49
-    },
-    {
-     "m": "pas",
-     "t0": 70.49,
-     "t1": 70.71
-    },
-    {
-     "m": "en",
-     "t0": 70.71,
-     "t1": 70.89
-    },
-    {
-     "m": "enfer,",
-     "t0": 70.89,
-     "t1": 71.19
-    },
-    {
-     "m": "c'est",
-     "t0": 71.48,
-     "t1": 71.73
-    },
-    {
-     "m": "de",
-     "t0": 71.73,
-     "t1": 71.91
-    },
-    {
-     "m": "marcher",
-     "t0": 71.91,
-     "t1": 72.28
-    },
-    {
-     "m": "selon",
-     "t0": 72.28,
-     "t1": 72.57
-    },
-    {
-     "m": "son",
-     "t0": 72.57,
-     "t1": 72.79
-    },
-    {
-     "m": "raisonnement,",
-     "t0": 72.79,
-     "t1": 73.36
-    },
-    {
-     "m": "et",
-     "t0": 73.36,
-     "t1": 73.53
-    },
-    {
-     "m": "sa",
-     "t0": 73.53,
-     "t1": 73.71
-    },
-    {
-     "m": "pensée.",
-     "t0": 73.71,
-     "t1": 74.04
-    },
-    {
-     "m": "quand",
-     "t0": 74.46,
-     "t1": 74.7
-    },
-    {
-     "m": "tu",
-     "t0": 74.7,
-     "t1": 74.85
-    },
-    {
-     "m": "vis",
-     "t0": 74.85,
-     "t1": 75.03
-    },
-    {
-     "m": "selon",
-     "t0": 75.03,
-     "t1": 75.27
-    },
-    {
-     "m": "ton",
-     "t0": 75.27,
-     "t1": 75.45
-    },
-    {
-     "m": "propre",
-     "t0": 75.45,
-     "t1": 75.72
+     "t0": 4.78,
+     "t1": 4.94
     },
     {
      "m": "cœur,",
-     "t0": 75.72,
-     "t1": 75.97
+     "t0": 4.94,
+     "t1": 5.2
     },
     {
-     "m": "tu",
-     "t0": 75.97,
-     "t1": 76.29
-    },
-    {
-     "m": "ne",
-     "t0": 76.29,
-     "t1": 76.44
-    },
-    {
-     "m": "peux",
-     "t0": 76.44,
-     "t1": 76.65
-    },
-    {
-     "m": "pas",
-     "t0": 76.65,
-     "t1": 76.83
-    },
-    {
-     "m": "mener",
-     "t0": 76.83,
-     "t1": 77.07
-    },
-    {
-     "m": "la",
-     "t0": 77.07,
-     "t1": 77.22
-    },
-    {
-     "m": "vie",
-     "t0": 77.22,
-     "t1": 77.4
-    },
-    {
-     "m": "spirituelle.",
-     "t0": 77.4,
-     "t1": 77.83
-    },
-    {
-     "m": "Et",
-     "t0": 77.83,
-     "t1": 78.26
-    },
-    {
-     "m": "si",
-     "t0": 78.26,
-     "t1": 78.4
-    },
-    {
-     "m": "tu",
-     "t0": 78.4,
-     "t1": 78.55
-    },
-    {
-     "m": "ne",
-     "t0": 78.55,
-     "t1": 78.7
-    },
-    {
-     "m": "peux",
-     "t0": 78.7,
-     "t1": 78.91
-    },
-    {
-     "m": "pas",
-     "t0": 78.91,
-     "t1": 79.09
-    },
-    {
-     "m": "mener",
-     "t0": 79.09,
-     "t1": 79.33
-    },
-    {
-     "m": "la",
-     "t0": 79.33,
-     "t1": 79.47
-    },
-    {
-     "m": "vie",
-     "t0": 79.47,
-     "t1": 79.65
-    },
-    {
-     "m": "spirituelle,",
-     "t0": 79.65,
-     "t1": 80.29
-    },
-    {
-     "m": "tu",
-     "t0": 80.29,
-     "t1": 80.44
-    },
-    {
-     "m": "ne",
-     "t0": 80.44,
-     "t1": 80.58
-    },
-    {
-     "m": "pourras",
-     "t0": 80.58,
-     "t1": 80.89
-    },
-    {
-     "m": "pas",
-     "t0": 80.89,
-     "t1": 81.07
-    },
-    {
-     "m": "voir",
-     "t0": 81.07,
-     "t1": 81.28
-    },
-    {
-     "m": "Dieu",
-     "t0": 81.28,
-     "t1": 81.49
-    },
-    {
-     "m": "derrière",
-     "t0": 81.49,
-     "t1": 81.83
-    },
-    {
-     "m": "les",
-     "t0": 81.83,
-     "t1": 82.01
-    },
-    {
-     "m": "offenses",
-     "t0": 82.01,
-     "t1": 82.35
-    },
-    {
-     "m": "et",
-     "t0": 82.35,
-     "t1": 82.49
-    },
-    {
-     "m": "les",
-     "t0": 82.49,
-     "t1": 82.67
-    },
-    {
-     "m": "outrages",
-     "t0": 82.67,
-     "t1": 83.01
-    },
-    {
-     "m": "que",
-     "t0": 83.01,
-     "t1": 83.19
-    },
-    {
-     "m": "va",
-     "t0": 83.19,
-     "t1": 83.34
-    },
-    {
-     "m": "te",
-     "t0": 83.34,
-     "t1": 83.48
-    },
-    {
-     "m": "causer",
-     "t0": 83.48,
-     "t1": 83.76
-    },
-    {
-     "m": "ton",
-     "t0": 83.76,
-     "t1": 83.94
-    },
-    {
-     "m": "frère.",
-     "t0": 83.94,
-     "t1": 84.18
-    },
-    {
-     "m": "Mais",
-     "t0": 84.58,
-     "t1": 84.79
-    },
-    {
-     "m": "tu",
-     "t0": 84.79,
-     "t1": 84.94
-    },
-    {
-     "m": "vas",
-     "t0": 84.94,
-     "t1": 85.12
-    },
-    {
-     "m": "plutôt",
-     "t0": 85.12,
-     "t1": 85.39
-    },
-    {
-     "m": "voir",
-     "t0": 85.39,
-     "t1": 85.6
-    },
-    {
-     "m": "l'offense.",
-     "t0": 85.6,
-     "t1": 85.94
-    },
-    {
-     "m": "et",
-     "t0": 85.94,
-     "t1": 86.31
-    },
-    {
-     "m": "même,",
-     "t0": 86.31,
-     "t1": 86.52
-    },
-    {
-     "m": "tu",
-     "t0": 86.52,
-     "t1": 86.67
-    },
-    {
-     "m": "te",
-     "t0": 86.67,
-     "t1": 86.81
-    },
-    {
-     "m": "diras",
-     "t0": 86.81,
-     "t1": 87.06
-    },
-    {
-     "m": "que",
-     "t0": 87.06,
-     "t1": 87.23
-    },
-    {
-     "m": "tu",
-     "t0": 87.23,
-     "t1": 87.38
-    },
-    {
-     "m": "n'es",
-     "t0": 87.38,
-     "t1": 87.56
-    },
-    {
-     "m": "pas",
-     "t0": 87.56,
-     "t1": 87.74
-    },
-    {
-     "m": "pareil,",
-     "t0": 87.74,
-     "t1": 88.01
-    },
-    {
-     "m": "et",
-     "t0": 88.01,
-     "t1": 88.16
-    },
-    {
-     "m": "que",
-     "t0": 88.16,
-     "t1": 88.34
-    },
-    {
-     "m": "ce",
-     "t0": 88.34,
-     "t1": 88.7
-    },
-    {
-     "m": "que",
-     "t0": 88.7,
-     "t1": 88.88
-    },
-    {
-     "m": "ton",
-     "t0": 88.88,
-     "t1": 89.06
-    },
-    {
-     "m": "frère",
-     "t0": 89.06,
-     "t1": 89.3
-    },
-    {
-     "m": "a",
-     "t0": 89.3,
-     "t1": 89.42
-    },
-    {
-     "m": "fait,",
-     "t0": 89.42,
-     "t1": 89.63
-    },
-    {
-     "m": "tu",
-     "t0": 89.63,
-     "t1": 89.77
-    },
-    {
-     "m": "ne",
-     "t0": 89.77,
-     "t1": 90.1
-    },
-    {
-     "m": "peux",
-     "t0": 90.1,
-     "t1": 90.31
-    },
-    {
-     "m": "pas",
-     "t0": 90.31,
-     "t1": 90.49
-    },
-    {
-     "m": "le",
-     "t0": 90.49,
-     "t1": 90.64
-    },
-    {
-     "m": "faire.",
-     "t0": 90.64,
-     "t1": 90.88
-    },
-    {
-     "m": "Je",
-     "t0": 91.39,
-     "t1": 91.55
-    },
-    {
-     "m": "pense",
-     "t0": 91.55,
-     "t1": 91.81
-    },
-    {
-     "m": "que",
-     "t0": 91.81,
-     "t1": 92.0
-    },
-    {
-     "m": "c'est",
-     "t0": 92.0,
-     "t1": 92.23
-    },
-    {
-     "m": "tout",
-     "t0": 92.23,
-     "t1": 92.45
-    },
-    {
-     "m": "pour",
-     "t0": 92.45,
-     "t1": 92.68
-    },
-    {
-     "m": "l'instant",
-     "t0": 92.68,
-     "t1": 93.05
-    },
-    {
-     "m": "bien-aimés,",
-     "t0": 93.05,
-     "t1": 93.59
-    },
-    {
-     "m": "Que",
-     "t0": 94.07,
-     "t1": 94.26
-    },
-    {
-     "m": "le",
-     "t0": 94.26,
-     "t1": 94.41
-    },
-    {
-     "m": "Seigneur",
-     "t0": 94.41,
-     "t1": 94.76
-    },
-    {
-     "m": "nous",
-     "t0": 94.76,
-     "t1": 94.99
-    },
-    {
-     "m": "aide,",
-     "t0": 94.99,
-     "t1": 95.34
-    },
-    {
-     "m": "je",
-     "t0": 95.34,
-     "t1": 95.49
-    },
-    {
-     "m": "sais",
-     "t0": 95.49,
-     "t1": 95.71
-    },
-    {
-     "m": "que",
-     "t0": 95.71,
-     "t1": 95.89
-    },
-    {
-     "m": "cela",
-     "t0": 95.89,
-     "t1": 96.12
+     "m": "rien",
+     "t0": 5.76,
+     "t1": 6.0
     },
     {
      "m": "n'est",
-     "t0": 96.12,
-     "t1": 96.34
+     "t0": 6.0,
+     "t1": 6.18
+    },
+    {
+     "m": "problème.",
+     "t0": 6.18,
+     "t1": 6.48
+    },
+    {
+     "m": "Oui,",
+     "t0": 7.08,
+     "t1": 7.52
+    },
+    {
+     "m": "ma",
+     "t0": 8.1,
+     "t1": 8.24
+    },
+    {
+     "m": "sœur",
+     "t0": 8.24,
+     "t1": 8.36
+    },
+    {
+     "m": "Annabelle,",
+     "t0": 8.36,
+     "t1": 8.8
+    },
+    {
+     "m": "j'honore",
+     "t0": 9.08,
+     "t1": 9.36
+    },
+    {
+     "m": "vraiment",
+     "t0": 9.36,
+     "t1": 9.84
+    },
+    {
+     "m": "le",
+     "t0": 9.84,
+     "t1": 10.0
+    },
+    {
+     "m": "Christ",
+     "t0": 10.0,
+     "t1": 10.18
+    },
+    {
+     "m": "en",
+     "t0": 10.18,
+     "t1": 10.4
+    },
+    {
+     "m": "toi.",
+     "t0": 10.4,
+     "t1": 10.58
+    },
+    {
+     "m": "Le",
+     "t0": 10.98,
+     "t1": 11.1
+    },
+    {
+     "m": "témoignage,",
+     "t0": 11.1,
+     "t1": 11.68
+    },
+    {
+     "m": "c'est",
+     "t0": 11.78,
+     "t1": 12.0
+    },
+    {
+     "m": "aussi",
+     "t0": 12.0,
+     "t1": 12.22
+    },
+    {
+     "m": "une",
+     "t0": 12.22,
+     "t1": 12.34
+    },
+    {
+     "m": "façon",
+     "t0": 12.34,
+     "t1": 12.56
+    },
+    {
+     "m": "de",
+     "t0": 12.56,
+     "t1": 12.8
+    },
+    {
+     "m": "donner",
+     "t0": 12.8,
+     "t1": 13.08
+    },
+    {
+     "m": "la",
+     "t0": 13.08,
+     "t1": 13.3
+    },
+    {
+     "m": "vie",
+     "t0": 13.3,
+     "t1": 13.48
+    },
+    {
+     "m": "par",
+     "t0": 13.48,
+     "t1": 13.68
+    },
+    {
+     "m": "les",
+     "t0": 13.68,
+     "t1": 13.8
+    },
+    {
+     "m": "situations",
+     "t0": 13.8,
+     "t1": 14.26
+    },
+    {
+     "m": "et",
+     "t0": 14.26,
+     "t1": 14.6
+    },
+    {
+     "m": "l'enseignement",
+     "t0": 14.6,
+     "t1": 15.22
+    },
+    {
+     "m": "qu'on",
+     "t0": 15.22,
+     "t1": 15.42
+    },
+    {
+     "m": "a",
+     "t0": 15.42,
+     "t1": 15.56
+    },
+    {
+     "m": "reçu",
+     "t0": 15.56,
+     "t1": 15.86
+    },
+    {
+     "m": "au",
+     "t0": 15.86,
+     "t1": 16.08
+    },
+    {
+     "m": "travers",
+     "t0": 16.08,
+     "t1": 16.42
+    },
+    {
+     "m": "de",
+     "t0": 16.42,
+     "t1": 16.62
+    },
+    {
+     "m": "ces",
+     "t0": 16.62,
+     "t1": 16.76
+    },
+    {
+     "m": "situations-là.",
+     "t0": 16.76,
+     "t1": 17.46
+    },
+    {
+     "m": "Donc,",
+     "t0": 18.38,
+     "t1": 18.68
+    },
+    {
+     "m": "mes",
+     "t0": 19.06,
+     "t1": 19.06
+    },
+    {
+     "m": "frères",
+     "t0": 19.06,
+     "t1": 19.32
+    },
+    {
+     "m": "et",
+     "t0": 19.32,
+     "t1": 19.5
+    },
+    {
+     "m": "sœurs",
+     "t0": 19.5,
+     "t1": 19.66
+    },
+    {
+     "m": "de",
+     "t0": 19.66,
+     "t1": 19.78
+    },
+    {
+     "m": "la",
+     "t0": 19.78,
+     "t1": 19.88
+    },
+    {
+     "m": "MIDIGRAD,",
+     "t0": 19.88,
+     "t1": 20.38
+    },
+    {
+     "m": "partageons,",
+     "t0": 20.86,
+     "t1": 21.3
+    },
+    {
+     "m": "c'est",
+     "t0": 21.5,
+     "t1": 21.66
+    },
+    {
+     "m": "très",
+     "t0": 21.66,
+     "t1": 21.96
+    },
+    {
+     "m": "important.",
+     "t0": 21.96,
+     "t1": 22.46
+    },
+    {
+     "m": "Je",
+     "t0": 22.78,
+     "t1": 22.92
+    },
+    {
+     "m": "vais",
+     "t0": 22.92,
+     "t1": 23.02
+    },
+    {
+     "m": "juste",
+     "t0": 23.02,
+     "t1": 23.22
+    },
+    {
+     "m": "revenir",
+     "t0": 23.22,
+     "t1": 23.52
+    },
+    {
+     "m": "sur",
+     "t0": 23.52,
+     "t1": 23.84
+    },
+    {
+     "m": "les",
+     "t0": 23.84,
+     "t1": 23.96
+    },
+    {
+     "m": "trois",
+     "t0": 23.96,
+     "t1": 24.18
+    },
+    {
+     "m": "points",
+     "t0": 24.18,
+     "t1": 24.42
+    },
+    {
+     "m": "essentiels",
+     "t0": 24.42,
+     "t1": 25.06
+    },
+    {
+     "m": "dont",
+     "t0": 25.06,
+     "t1": 25.26
+    },
+    {
+     "m": "nous",
+     "t0": 25.26,
+     "t1": 25.42
+    },
+    {
+     "m": "a",
+     "t0": 25.42,
+     "t1": 25.56
+    },
+    {
+     "m": "parlé",
+     "t0": 25.56,
+     "t1": 25.76
+    },
+    {
+     "m": "notre",
+     "t0": 25.76,
+     "t1": 25.94
+    },
+    {
+     "m": "père,",
+     "t0": 25.94,
+     "t1": 26.34
+    },
+    {
+     "m": "l'apôtre",
+     "t0": 26.56,
+     "t1": 26.912
+    },
+    {
+     "m": "Paris",
+     "t0": 26.912,
+     "t1": 27.186
+    },
+    {
+     "m": "Talla,",
+     "t0": 27.186,
+     "t1": 27.46
+    },
+    {
+     "m": "pour",
+     "t0": 27.88,
+     "t1": 27.98
+    },
+    {
+     "m": "facilement",
+     "t0": 27.98,
+     "t1": 28.54
+    },
+    {
+     "m": "pratiquer",
+     "t0": 28.54,
+     "t1": 28.94
+    },
+    {
+     "m": "le",
+     "t0": 28.94,
+     "t1": 29.12
+    },
+    {
+     "m": "pardon",
+     "t0": 29.12,
+     "t1": 29.38
+    },
+    {
+     "m": "fraternel.",
+     "t0": 29.38,
+     "t1": 29.94
+    },
+    {
+     "m": "Premier",
+     "t0": 30.24,
+     "t1": 30.465
+    },
+    {
+     "m": "point :",
+     "t0": 30.465,
+     "t1": 30.64
+    },
+    {
+     "m": "toujours",
+     "t0": 31.34,
+     "t1": 31.78
+    },
+    {
+     "m": "reconnaître",
+     "t0": 31.78,
+     "t1": 32.22
+    },
+    {
+     "m": "Dieu",
+     "t0": 32.22,
+     "t1": 32.58
+    },
+    {
+     "m": "derrière",
+     "t0": 32.58,
+     "t1": 32.86
+    },
+    {
+     "m": "celui",
+     "t0": 32.86,
+     "t1": 33.34
+    },
+    {
+     "m": "ou",
+     "t0": 33.34,
+     "t1": 33.68
+    },
+    {
+     "m": "celle",
+     "t0": 33.68,
+     "t1": 33.94
+    },
+    {
+     "m": "qui",
+     "t0": 33.94,
+     "t1": 34.16
+    },
+    {
+     "m": "nous",
+     "t0": 34.16,
+     "t1": 34.3
+    },
+    {
+     "m": "a",
+     "t0": 34.3,
+     "t1": 34.46
+    },
+    {
+     "m": "offensés.",
+     "t0": 34.46,
+     "t1": 34.94
+    },
+    {
+     "m": "Deuxième",
+     "t0": 35.22,
+     "t1": 35.467
+    },
+    {
+     "m": "point :",
+     "t0": 35.467,
+     "t1": 35.64
+    },
+    {
+     "m": "toujours",
+     "t0": 36.16,
+     "t1": 36.58
+    },
+    {
+     "m": "savoir",
+     "t0": 36.58,
+     "t1": 36.9
+    },
+    {
+     "m": "que",
+     "t0": 36.9,
+     "t1": 37.24
+    },
+    {
+     "m": "je",
+     "t0": 37.24,
+     "t1": 37.34
+    },
+    {
+     "m": "ne",
+     "t0": 37.34,
+     "t1": 37.46
+    },
+    {
+     "m": "suis",
+     "t0": 37.46,
+     "t1": 37.58
     },
     {
      "m": "pas",
-     "t0": 96.34,
-     "t1": 96.52
+     "t0": 37.58,
+     "t1": 37.82
     },
     {
-     "m": "facile.",
-     "t0": 96.52,
-     "t1": 96.81
+     "m": "différent",
+     "t0": 37.82,
+     "t1": 38.2
     },
     {
-     "m": "Amen.",
-     "t0": 97.26,
-     "t1": 97.82
+     "m": "de",
+     "t0": 38.2,
+     "t1": 38.38
+    },
+    {
+     "m": "mon",
+     "t0": 38.38,
+     "t1": 38.5
+    },
+    {
+     "m": "frère",
+     "t0": 38.5,
+     "t1": 38.9
+    },
+    {
+     "m": "ou",
+     "t0": 38.9,
+     "t1": 39.06
+    },
+    {
+     "m": "de",
+     "t0": 39.06,
+     "t1": 39.16
+    },
+    {
+     "m": "ma",
+     "t0": 39.16,
+     "t1": 39.28
+    },
+    {
+     "m": "sœur",
+     "t0": 39.28,
+     "t1": 39.58
+    },
+    {
+     "m": "que",
+     "t0": 39.58,
+     "t1": 39.7
+    },
+    {
+     "m": "j'accuse.",
+     "t0": 39.7,
+     "t1": 40.16
+    },
+    {
+     "m": "Celui-là",
+     "t0": 40.46,
+     "t1": 40.86
+    },
+    {
+     "m": "que",
+     "t0": 40.86,
+     "t1": 41.02
+    },
+    {
+     "m": "tu",
+     "t0": 41.02,
+     "t1": 41.12
+    },
+    {
+     "m": "accuses",
+     "t0": 41.12,
+     "t1": 41.48
+    },
+    {
+     "m": "de",
+     "t0": 41.48,
+     "t1": 41.58
+    },
+    {
+     "m": "voler,",
+     "t0": 41.58,
+     "t1": 42.04
+    },
+    {
+     "m": "de",
+     "t0": 42.22,
+     "t1": 42.26
+    },
+    {
+     "m": "mentir,",
+     "t0": 42.26,
+     "t1": 42.74
+    },
+    {
+     "m": "c'est",
+     "t0": 43.02,
+     "t1": 43.58
+    },
+    {
+     "m": "monté,",
+     "t0": 43.58,
+     "t1": 44.02
+    },
+    {
+     "m": "c'est",
+     "t0": 44.22,
+     "t1": 44.34
+    },
+    {
+     "m": "descendu.",
+     "t0": 44.34,
+     "t1": 44.98
+    },
+    {
+     "m": "Bien-aimé,",
+     "t0": 45.26,
+     "t1": 45.78
+    },
+    {
+     "m": "tu",
+     "t0": 46.06,
+     "t1": 46.14
+    },
+    {
+     "m": "n'es",
+     "t0": 46.14,
+     "t1": 46.42
+    },
+    {
+     "m": "pas",
+     "t0": 46.42,
+     "t1": 46.56
+    },
+    {
+     "m": "différent.",
+     "t0": 46.56,
+     "t1": 47.04
+    },
+    {
+     "m": "Il",
+     "t0": 47.4,
+     "t1": 47.5
+    },
+    {
+     "m": "suffit",
+     "t0": 47.5,
+     "t1": 47.8
+    },
+    {
+     "m": "juste",
+     "t0": 47.8,
+     "t1": 48.1
+    },
+    {
+     "m": "que",
+     "t0": 48.1,
+     "t1": 48.3
+    },
+    {
+     "m": "les",
+     "t0": 48.3,
+     "t1": 48.4
+    },
+    {
+     "m": "conditions",
+     "t0": 48.4,
+     "t1": 48.78
+    },
+    {
+     "m": "soient",
+     "t0": 48.78,
+     "t1": 49.04
+    },
+    {
+     "m": "réunies",
+     "t0": 49.04,
+     "t1": 49.48
+    },
+    {
+     "m": "et",
+     "t0": 49.48,
+     "t1": 49.82
+    },
+    {
+     "m": "tu",
+     "t0": 49.82,
+     "t1": 49.94
+    },
+    {
+     "m": "feras",
+     "t0": 49.94,
+     "t1": 50.12
+    },
+    {
+     "m": "la",
+     "t0": 50.12,
+     "t1": 50.24
+    },
+    {
+     "m": "même",
+     "t0": 50.24,
+     "t1": 50.5
+    },
+    {
+     "m": "chose.",
+     "t0": 50.5,
+     "t1": 50.84
+    },
+    {
+     "m": "Amen ?",
+     "t0": 51.18,
+     "t1": 51.36
+    },
+    {
+     "m": "Si",
+     "t0": 51.86,
+     "t1": 51.98
+    },
+    {
+     "m": "tu",
+     "t0": 51.98,
+     "t1": 52.12
+    },
+    {
+     "m": "veux,",
+     "t0": 52.12,
+     "t1": 52.32
+    },
+    {
+     "m": "tu",
+     "t0": 52.54,
+     "t1": 52.58
+    },
+    {
+     "m": "ne",
+     "t0": 52.58,
+     "t1": 52.7
+    },
+    {
+     "m": "réponds",
+     "t0": 52.7,
+     "t1": 52.92
+    },
+    {
+     "m": "pas.",
+     "t0": 52.92,
+     "t1": 53.12
+    },
+    {
+     "m": "Moi,",
+     "t0": 53.42,
+     "t1": 53.56
+    },
+    {
+     "m": "je",
+     "t0": 53.62,
+     "t1": 53.66
+    },
+    {
+     "m": "ne",
+     "t0": 53.66,
+     "t1": 53.74
+    },
+    {
+     "m": "suis",
+     "t0": 53.74,
+     "t1": 53.74
+    },
+    {
+     "m": "pas",
+     "t0": 53.74,
+     "t1": 53.9
+    },
+    {
+     "m": "ici",
+     "t0": 53.9,
+     "t1": 54.06
+    },
+    {
+     "m": "devant",
+     "t0": 54.06,
+     "t1": 54.34
+    },
+    {
+     "m": "pour",
+     "t0": 54.34,
+     "t1": 54.54
+    },
+    {
+     "m": "plaire",
+     "t0": 54.54,
+     "t1": 54.74
+    },
+    {
+     "m": "à",
+     "t0": 54.74,
+     "t1": 54.86
+    },
+    {
+     "m": "quelqu'un.",
+     "t0": 54.86,
+     "t1": 55.28
+    },
+    {
+     "m": "Troisième",
+     "t0": 55.52,
+     "t1": 55.679
+    },
+    {
+     "m": "point :",
+     "t0": 55.679,
+     "t1": 55.78
+    },
+    {
+     "m": "suivre",
+     "t0": 56.62,
+     "t1": 57.06
+    },
+    {
+     "m": "le",
+     "t0": 57.06,
+     "t1": 57.22
+    },
+    {
+     "m": "cœur",
+     "t0": 57.22,
+     "t1": 57.52
+    },
+    {
+     "m": "de",
+     "t0": 57.52,
+     "t1": 57.7
+    },
+    {
+     "m": "l'Église.",
+     "t0": 57.7,
+     "t1": 58.22
+    },
+    {
+     "m": "Ah,",
+     "t0": 58.22,
+     "t1": 58.74
+    },
+    {
+     "m": "ça,",
+     "t0": 59.5,
+     "t1": 59.7
+    },
+    {
+     "m": "c'est",
+     "t0": 59.7,
+     "t1": 59.92
+    },
+    {
+     "m": "alors",
+     "t0": 59.92,
+     "t1": 60.18
+    },
+    {
+     "m": "notre",
+     "t0": 60.18,
+     "t1": 60.38
+    },
+    {
+     "m": "mort",
+     "t0": 60.38,
+     "t1": 60.86
+    },
+    {
+     "m": "ici",
+     "t0": 60.86,
+     "t1": 61.18
+    },
+    {
+     "m": "à",
+     "t0": 61.18,
+     "t1": 61.32
+    },
+    {
+     "m": "la",
+     "t0": 61.32,
+     "t1": 61.503
+    },
+    {
+     "m": "MIDIGRAD.",
+     "t0": 61.503,
+     "t1": 61.96
+    },
+    {
+     "m": "Mais",
+     "t0": 62.28,
+     "t1": 62.42
+    },
+    {
+     "m": "bien-aimés,",
+     "t0": 62.42,
+     "t1": 62.88
+    },
+    {
+     "m": "sachez",
+     "t0": 63.18,
+     "t1": 63.44
+    },
+    {
+     "m": "qu'on",
+     "t0": 63.44,
+     "t1": 63.6
+    },
+    {
+     "m": "vous",
+     "t0": 63.6,
+     "t1": 63.72
+    },
+    {
+     "m": "parle",
+     "t0": 63.72,
+     "t1": 64.0
+    },
+    {
+     "m": "selon",
+     "t0": 64.0,
+     "t1": 64.36
+    },
+    {
+     "m": "la",
+     "t0": 64.36,
+     "t1": 64.58
+    },
+    {
+     "m": "parole,",
+     "t0": 64.58,
+     "t1": 64.88
+    },
+    {
+     "m": "que",
+     "t0": 65.14,
+     "t1": 65.22
+    },
+    {
+     "m": "ça",
+     "t0": 65.22,
+     "t1": 65.38
+    },
+    {
+     "m": "te",
+     "t0": 65.38,
+     "t1": 65.48
+    },
+    {
+     "m": "plaise",
+     "t0": 65.48,
+     "t1": 65.88
+    },
+    {
+     "m": "ou",
+     "t0": 65.88,
+     "t1": 66.12
+    },
+    {
+     "m": "non.",
+     "t0": 66.12,
+     "t1": 66.32
+    },
+    {
+     "m": "Le",
+     "t0": 66.68,
+     "t1": 66.78
+    },
+    {
+     "m": "fondement",
+     "t0": 66.78,
+     "t1": 67.28
+    },
+    {
+     "m": "même",
+     "t0": 67.28,
+     "t1": 67.56
+    },
+    {
+     "m": "d'un",
+     "t0": 67.56,
+     "t1": 67.84
+    },
+    {
+     "m": "bon",
+     "t0": 67.84,
+     "t1": 68.04
+    },
+    {
+     "m": "chrétien,",
+     "t0": 68.04,
+     "t1": 68.54
+    },
+    {
+     "m": "c'est",
+     "t0": 68.62,
+     "t1": 68.9
+    },
+    {
+     "m": "de",
+     "t0": 68.9,
+     "t1": 69.0
+    },
+    {
+     "m": "suivre",
+     "t0": 69.0,
+     "t1": 69.32
+    },
+    {
+     "m": "le",
+     "t0": 69.32,
+     "t1": 69.62
+    },
+    {
+     "m": "cœur",
+     "t0": 69.62,
+     "t1": 69.92
+    },
+    {
+     "m": "de",
+     "t0": 69.92,
+     "t1": 70.06
+    },
+    {
+     "m": "l'Église.",
+     "t0": 70.06,
+     "t1": 70.56
+    },
+    {
+     "m": "Je",
+     "t0": 70.84,
+     "t1": 70.96
+    },
+    {
+     "m": "ne",
+     "t0": 70.96,
+     "t1": 71.06
+    },
+    {
+     "m": "monte",
+     "t0": 71.06,
+     "t1": 71.2
+    },
+    {
+     "m": "pas",
+     "t0": 71.2,
+     "t1": 71.42
+    },
+    {
+     "m": "ici",
+     "t0": 71.42,
+     "t1": 71.66
+    },
+    {
+     "m": "pour",
+     "t0": 71.66,
+     "t1": 71.82
+    },
+    {
+     "m": "faire",
+     "t0": 71.82,
+     "t1": 71.98
+    },
+    {
+     "m": "plaisir",
+     "t0": 71.98,
+     "t1": 72.28
+    },
+    {
+     "m": "à",
+     "t0": 72.28,
+     "t1": 72.48
+    },
+    {
+     "m": "qui",
+     "t0": 72.48,
+     "t1": 72.66
+    },
+    {
+     "m": "que",
+     "t0": 72.66,
+     "t1": 72.74
+    },
+    {
+     "m": "ce",
+     "t0": 72.74,
+     "t1": 72.86
+    },
+    {
+     "m": "soit,",
+     "t0": 72.86,
+     "t1": 73.14
+    },
+    {
+     "m": "je",
+     "t0": 73.46,
+     "t1": 73.56
+    },
+    {
+     "m": "suis",
+     "t0": 73.56,
+     "t1": 73.7
+    },
+    {
+     "m": "là",
+     "t0": 73.7,
+     "t1": 73.86
+    },
+    {
+     "m": "pour",
+     "t0": 73.86,
+     "t1": 74.04
+    },
+    {
+     "m": "donner",
+     "t0": 74.04,
+     "t1": 74.32
+    },
+    {
+     "m": "la",
+     "t0": 74.32,
+     "t1": 74.5
+    },
+    {
+     "m": "parole",
+     "t0": 74.5,
+     "t1": 74.86
+    },
+    {
+     "m": "comme",
+     "t0": 74.86,
+     "t1": 75.18
+    },
+    {
+     "m": "je",
+     "t0": 75.18,
+     "t1": 75.34
+    },
+    {
+     "m": "l'ai",
+     "t0": 75.34,
+     "t1": 75.48
+    },
+    {
+     "m": "reçue.",
+     "t0": 75.48,
+     "t1": 75.84
+    },
+    {
+     "m": "Restons",
+     "t0": 76.22,
+     "t1": 76.62
+    },
+    {
+     "m": "infiniment",
+     "t0": 76.62,
+     "t1": 77.42
+    },
+    {
+     "m": "bénis.",
+     "t0": 77.42,
+     "t1": 77.86
+    },
+    {
+     "m": "J'en",
+     "t0": 78.16,
+     "t1": 78.34
+    },
+    {
+     "m": "ai",
+     "t0": 78.34,
+     "t1": 78.46
+    },
+    {
+     "m": "terminé.",
+     "t0": 78.46,
+     "t1": 78.94
+    },
+    {
+     "m": "Amen,",
+     "t0": 79.28,
+     "t1": 79.56
+    },
+    {
+     "m": "amen.",
+     "t0": 80.04,
+     "t1": 80.24
     }
    ]
   }
