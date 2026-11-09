@@ -1,0 +1,5 @@
+renders/
+node_modules/
+.hyperframes/
+src/__pycache__/
+audio/voix.wav

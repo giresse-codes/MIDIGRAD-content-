@@ -1,0 +1,43 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Nunito", sans-serif; background: #8fd0f5; }
+#gl { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.pill { position: absolute; left: 50%; top: 84px; transform: translateX(-50%); padding: 14px 34px; border-radius: 50px; background: #fff; border: 5px solid #1D1A1F; font: 900 30px "Nunito"; letter-spacing: .04em; color: #1D1A1F; white-space: nowrap; }
+/* sous-titres : 2 lignes max, blanc, gros contour noir, mot-clé jaune, mot prononcé qui rebondit */
+#subs { position: absolute; left: 50px; right: 50px; top: 330px; text-align: center; font: 900 74px/1.12 "Nunito"; text-transform: uppercase; color: #fff; -webkit-text-stroke: 16px #1D1A1F; paint-order: stroke fill; letter-spacing: .01em; }
+#subs.bas { top: auto; bottom: 150px; }
+#subs span { display: inline-block; margin: 0 9px; transform-origin: 50% 80%; }
+#subs span.k { color: #FFD23F; }
+/* titres */
+.ttl { position: absolute; left: 50%; top: 560px; width: 1000px; text-align: center; font: 900 96px/1.08 "Nunito"; color: #FFD23F; -webkit-text-stroke: 20px #1D1A1F; paint-order: stroke fill; transform: translateX(-50%); opacity: 0; text-shadow: 0 10px 0 rgba(29,26,31,.35); }
+.ttl.w { color: #fff; }
+.tag { position: absolute; left: 50%; top: 600px; transform: translateX(-50%); padding: 18px 46px; border-radius: 60px; background: #fff; border: 7px solid #1D1A1F; font: 900 64px "Nunito"; color: #1D1A1F; white-space: nowrap; opacity: 0; }
+/* cartes de versets en parchemin */
+.card { position: absolute; left: 70px; width: 940px; top: 1160px; padding: 34px 44px 40px; border-radius: 26px; border: 7px solid #1D1A1F; opacity: 0;
+  background: radial-gradient(ellipse at 30% 20%, #fbf0d4 0%, #f2deb0 60%, #e3c68d 100%); box-shadow: 0 16px 0 rgba(29,26,31,.25); }
+.card .ref { display: inline-block; margin-bottom: 14px; padding: 6px 22px; border-radius: 40px; background: #1D1A1F; color: #FFD23F; font: 900 40px "Nunito"; letter-spacing: .03em; }
+.card .tx { font: 800 44px/1.3 "Nunito"; color: #3b2a14; }
+.card .tx .k { color: #b8860b; font-weight: 900; }
+.card.big { top: 640px; } .card.big .tx { font-size: 60px; } .card.big .ref { font-size: 54px; }
+/* médaillon de Wilfried : double bord noir et jaune, étiquette jaune */
+#medal { position: absolute; left: 41px; top: 1452px; width: 340px; height: 340px; border-radius: 50%; border: 9px solid #1D1A1F; box-shadow: 0 0 0 10px #FFD23F, 0 0 0 18px #1D1A1F; opacity: 0; }
+#medal .lab { position: absolute; left: 50%; bottom: -46px; transform: translateX(-50%); padding: 6px 26px; border-radius: 40px; background: #FFD23F; border: 6px solid #1D1A1F; font: 900 32px "Nunito"; color: #1D1A1F; letter-spacing: .05em; }
+/* bulle de pensée, point d'interrogation */
+#bubble { position: absolute; left: 520px; top: 760px; width: 420px; height: 300px; opacity: 0; }
+#bubble .b { position: absolute; left: 0; top: 0; width: 420px; height: 280px; border-radius: 50%; background: #fff; border: 8px solid #1D1A1F; }
+#bubble .d1, #bubble .d2 { position: absolute; border-radius: 50%; background: #fff; border: 6px solid #1D1A1F; }
+#bubble .d1 { width: 56px; height: 56px; left: 40px; top: 280px; } #bubble .d2 { width: 32px; height: 32px; left: 10px; top: 350px; }
+#bubble .fr { position: absolute; left: 130px; top: 50px; width: 170px; height: 170px; }
+#qmark { position: absolute; left: 640px; top: 820px; font: 900 220px "Nunito"; color: #FFD23F; -webkit-text-stroke: 16px #1D1A1F; paint-order: stroke fill; opacity: 0; }
+#rewind { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+#rewind .ic { position: absolute; left: 70px; top: 230px; font: 900 80px "Nunito"; color: #fff; -webkit-text-stroke: 12px #1D1A1F; paint-order: stroke fill; }
+#rewind .ln { position: absolute; left: -100px; height: 10px; border-radius: 10px; background: rgba(255,255,255,.75); }
+/* fin */
+#endw { position: absolute; inset: 0; background: #f3ead8; opacity: 0; }
+.endt { position: absolute; left: 50%; transform: translateX(-50%); text-align: center; white-space: nowrap; opacity: 0; }
+#sig { top: 1290px; font: 900 72px "Nunito"; color: #1b2a4a; }
+#suite { top: 1420px; padding: 16px 40px; border-radius: 50px; background: #FFD23F; border: 7px solid #1D1A1F; font: 900 58px "Nunito"; color: #1D1A1F; }
+#black { position: absolute; inset: 0; background: #000; opacity: 0; }
+#serie { position: absolute; left: 50%; top: 250px; transform: translateX(-50%); text-align: center; opacity: 0; }
+#serie .t { font: 900 150px/1 "Nunito"; color: #FFD23F; -webkit-text-stroke: 26px #1D1A1F; paint-order: stroke fill; white-space: nowrap; text-shadow: 0 12px 0 rgba(29,26,31,.35); }
+#serie .s { display: inline-block; margin-top: 18px; padding: 10px 30px; border-radius: 40px; background: #fff; border: 6px solid #1D1A1F; font: 900 36px "Nunito"; color: #1D1A1F; }
