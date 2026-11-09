@@ -23,7 +23,7 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
   // personnages
   setSeed(31);
   const W = makeWilfried(); S.add(W.root);
-  const tunic = tm("#fbf5e4", { emissive: "#fff2c8", emissiveIntensity: 0.5 });
+  const tunic = tm("#fbf5e4", { emissive: "#fff2c8", emissiveIntensity: 0.25 });
   const figTex = canvasTex(256, 256, (g, w, h) => { g.fillStyle = "#4f9a3a"; g.fillRect(0, 0, w, h); for (let i = 0; i < 40; i++) { g.save(); g.translate((i * 53) % w, (i * 97) % h); g.rotate(i); g.fillStyle = i % 2 ? "#6cc04a" : "#3f8a2e"; g.beginPath(); g.ellipse(0, 0, 26, 12, 0, 0, 7); g.fill(); g.strokeStyle = INK; g.lineWidth = 3; g.stroke(); g.restore(); } }, [2, 2]);
   const fig = tm("#ffffff", { map: figTex });
   const skinTex = canvasTex(256, 256, (g, w, h) => { g.fillStyle = "#a5714a"; g.fillRect(0, 0, w, h); for (let i = 0; i < 260; i++) { g.strokeStyle = i % 2 ? "#8b5a37" : "#bf8a5e"; g.lineWidth = 3; g.beginPath(); const x = (i * 37) % w, y = (i * 61) % h; g.moveTo(x, y); g.lineTo(x + 6, y + 14); g.stroke(); } }, [2, 2]);
@@ -62,7 +62,7 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
 
   // médaillon : Wilfried en buste devant un petit décor de rue (rendu dans une texture)
   const MS = new THREE.Scene(); MS.background = new THREE.Color("#8fd0f5");
-  MS.add(new THREE.HemisphereLight("#ffffff", "#c9b38a", 1.7)); const ml = new THREE.DirectionalLight("#fff3dc", 1.6); ml.position.set(2, 3, 4); MS.add(ml);
+  MS.add(new THREE.HemisphereLight("#ffffff", "#e8d8b8", 2.2)); const ml = new THREE.DirectionalLight("#fff3dc", 2.4); ml.position.set(0.6, 2.2, 4); MS.add(ml);
   const back = new THREE.Mesh(new THREE.PlaneGeometry(6, 6), new THREE.MeshBasicMaterial({ map: canvasTex(512, 512, (g, w, h) => {
     const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, "#5EB8F2"); gr.addColorStop(1, "#E3F5FB"); g.fillStyle = gr; g.fillRect(0, 0, w, h);
     [["#F4D58D", 20, 140], ["#EF8E6A", 150, 90], ["#F7F1E3", 280, 60], ["#9BC7A5", 400, 120]].forEach(([c, x, y]) => { g.fillStyle = c; g.fillRect(x, y, 120, h - y); g.strokeStyle = INK; g.lineWidth = 6; g.strokeRect(x, y, 120, h - y);
@@ -70,13 +70,13 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
     g.fillStyle = "#4caf50"; g.beginPath(); g.ellipse(70, 120, 70, 20, -0.4, 0, 7); g.fill(); }) }));
   back.position.set(0, 1.4, -2.5); MS.add(back);
   const WM = makeWilfried(); MS.add(WM.root);
-  const mcam = new THREE.PerspectiveCamera(30, 1, 0.1, 50); mcam.position.set(0, 1.62, 2.6); mcam.lookAt(0, 1.5, 0);
-  const medRT = new THREE.WebGLRenderTarget(360, 360, { samples: 4 }); medRT.texture.colorSpace = THREE.SRGBColorSpace;
+  const mcam = new THREE.PerspectiveCamera(30, 1, 0.1, 50); mcam.position.set(0, 1.62, 2.25); mcam.lookAt(0, 1.52, 0);
+  const medRT = new THREE.WebGLRenderTarget(360, 360); medRT.texture.colorSpace = THREE.SRGBColorSpace;
 
   // post-traitement
   const comp = new EffectComposer(R); comp.setPixelRatio(1); comp.setSize(RW, RH);
   comp.addPass(new RenderPass(S, cam));
-  const bloom = new UnrealBloomPass(new THREE.Vector2(RW / 2, RH / 2), 0.45, 0.6, 0.86); comp.addPass(bloom);
+  const bloom = new UnrealBloomPass(new THREE.Vector2(RW / 2, RH / 2), 0.3, 0.5, 0.9); comp.addPass(bloom);
   comp.addPass(new OutputPass());
   const grade = new ShaderPass({
     uniforms: { tDiffuse: { value: null }, tMed: { value: medRT.texture }, uMed: { value: 0 }, uMedC: { value: new THREE.Vector2(0.195, 0.155) }, uMedR: { value: 0.15 }, uAsp: { value: RH / RW },
@@ -102,7 +102,7 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
         c = mix(c, uFadeCol, uFade);
         gl_FragColor = vec4(c,1.);
       }` });
-  comp.addPass(grade);
+  comp.addPass(grade); grade.uniforms.tMed.value = medRT.texture;
 
   // logo final (scène claire)
   const LS = new THREE.Scene(); LS.background = new THREE.Color("#f3ead8"); LS.add(new THREE.HemisphereLight("#ffffff", "#e8dcc4", 1.3)); const ld = new THREE.DirectionalLight("#fff", 1.5); ld.position.set(2, 3, 5); LS.add(ld);
@@ -136,7 +136,7 @@ export async function createWorld(canvas, logo, RW = 540, RH = 960) {
         eyes.forEach((e) => (e.lid.position.y = 0.03 - 0.03 * (s.ruse ?? 0.6))); tongue.visible = Math.sin(t * 9) > 0.3 && (s.talk || 0) > 0; tongue.scale.x = 0.6 + 0.4 * Math.abs(Math.sin(t * 18)); }
       // Dieu
       godG.visible = !!st.god;
-      if (st.god) { const g = st.god; godG.position.set(o.x + g.pos[0], g.pos[1], o.z + g.pos[2]); const pul = 1 + 0.06 * Math.sin(t * 2.2); godSpr.scale.setScalar((g.size || 4) * pul); godSpr.material.opacity = g.a ?? 1; rays.rotation.z = t * 0.15; rays.scale.setScalar((g.size || 4) / 4); rays.children.forEach((r) => (r.material.opacity = 0.22 * (g.a ?? 1))); godL.intensity = 25 * (g.a ?? 1); }
+      if (st.god) { const g = st.god; godG.position.set(o.x + g.pos[0], g.pos[1], o.z + g.pos[2]); const pul = 1 + 0.06 * Math.sin(t * 2.2); godSpr.scale.setScalar((g.size || 4) * pul); godSpr.material.opacity = g.a ?? 1; rays.rotation.z = t * 0.15; rays.scale.setScalar((g.size || 4) / 4); rays.children.forEach((r) => (r.material.opacity = 0.22 * (g.a ?? 1))); godL.intensity = 8 * (g.a ?? 1); }
       lamb.visible = !!st.lamb; if (st.lamb) { lamb.position.set(o.x + st.lamb.pos[0], 0, o.z + st.lamb.pos[2]); lamb.rotation.y = st.lamb.ry || 0; lamb.traverse((m) => { if (m.isMesh) { m.material.opacity = st.lamb.a; m.material.transparent = true; } }); }
       hoe.visible = !!st.hoe; if (st.hoe) { hoe.position.set(o.x + st.hoe.pos[0], st.hoe.pos[1], o.z + st.hoe.pos[2]); hoe.rotation.set(0, 0, st.hoe.rz || 0); }
       // particules

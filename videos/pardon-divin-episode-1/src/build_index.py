@@ -1,0 +1,55 @@
+# Génère index.html (durée lue dans assets/data.js).
+import json, os
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+F = json.loads(open(os.path.join(ROOT, "assets", "data.js")).read().split("=", 1)[1].rstrip().rstrip(";")); D = F["dur"]
+RES = os.environ.get("RES", "540x960").split("x")
+fruit = '<svg viewBox="0 0 170 170" class="fr"><path d="M85 40 C40 30 20 80 35 120 C50 160 80 160 85 150 C90 160 120 160 135 120 C150 80 130 30 85 40Z" fill="#e8202a" stroke="#1D1A1F" stroke-width="9"/><path d="M85 42 C85 25 92 15 104 8" fill="none" stroke="#6b3f22" stroke-width="8" stroke-linecap="round"/><path d="M92 28 C110 10 135 14 140 22 C125 34 105 36 92 28Z" fill="#4caf50" stroke="#1D1A1F" stroke-width="6"/><ellipse cx="62" cy="80" rx="12" ry="20" fill="#fff" opacity=".8"/></svg>'
+lines = "".join(f'<div class="ln" style="top:{180 + i * 170}px;width:{300 + (i * 137) % 400}px"></div>' for i in range(10))
+html = f'''<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Le pardon divin — Épisode 1 : Au commencement (MIDIGRAD, 9:16)</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <script type="importmap">{{ "imports": {{ "three": "./assets/lib/three.module.min.js" }} }}</script>
+    <style>
+      @font-face {{ font-family: "Nunito"; font-weight: 900; src: url("assets/fonts/nunito-latin-900-normal.woff2") format("woff2"); }}
+      @font-face {{ font-family: "Nunito"; font-weight: 900; src: url("assets/fonts/nunito-latin-ext-900-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+0152-0153, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }}
+      @font-face {{ font-family: "Nunito"; font-weight: 800; src: url("assets/fonts/nunito-latin-900-normal.woff2") format("woff2"); }}
+    </style>
+    <link rel="stylesheet" href="assets/film.css" />
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{D}" data-width="1080" data-height="1920">
+      <canvas id="gl" width="{RES[0]}" height="{RES[1]}"></canvas>
+      <div id="rewind"><div class="ic">◀◀</div>{lines}</div>
+      <div id="titles"></div>
+      <div id="bubble"><div class="d2"></div><div class="d1"></div><div class="b"></div>{fruit}</div>
+      <div id="qmark">?</div>
+      <div id="cards"></div>
+      <div id="medal"><div class="lab">WILFRIED</div></div>
+      <div id="serie"><div class="t">LE PARDON DIVIN</div><div class="s">UNE SÉRIE MIDIGRAD</div></div>
+      <div id="subs"></div>
+      <div id="pill" class="pill">ÉPISODE 1 · AU COMMENCEMENT</div>
+      <div id="endw"></div>
+      <div id="sig" class="endt">EUD — Consistoire MIDIGRAD</div>
+      <div id="suite" class="endt">À SUIVRE : ÉPISODE 2</div>
+      <div id="black"></div>
+      <img id="logoimg" src="assets/logo-midigrad.png" alt="" style="display:none" />
+      <audio id="voix" src="assets/audio.wav" data-start="0" data-duration="{D}" data-track-index="1" data-volume="1"></audio>
+    </div>
+    <script src="assets/data.js"></script>
+    <script src="assets/film.js"></script>
+    <script type="module">
+      import {{ createWorld }} from "./assets/world.js";
+      await document.fonts.load('900 40px "Nunito"');
+      const img = document.getElementById("logoimg"); await img.decode();
+      const W = await createWorld(document.getElementById("gl"), img, {RES[0]}, {RES[1]});
+      window.__W = W; window.startFilm(W);
+    </script>
+  </body>
+</html>
+'''
+open(os.path.join(ROOT, "index.html"), "w").write(html)
+print("index.html :", D, "s,", "x".join(RES))

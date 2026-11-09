@@ -5,7 +5,7 @@
 import * as THREE from "three";
 import { makeChar, mesh, tm, outline } from "../assets/toon.js";
 export function makeWilfried() {
-  const W = makeChar({ skin: "#6a4127", hair: "crepu", top: "#ffffff", bottom: "#1f2d4d", shoes: "#151217", buttons: true, sleeve: "long", blush: 0.15 });
+  const W = makeChar({ skin: "#7b4a2b", hair: "crepu", top: "#ffffff", bottom: "#1f2d4d", shoes: "#151217", buttons: true, sleeve: "long", blush: 0.15 });
   const bible = new THREE.Group(); mesh(new THREE.BoxGeometry(0.2, 0.27, 0.07), tm("#6b3f22"), { parent: bible }); mesh(new THREE.BoxGeometry(0.19, 0.25, 0.072), tm("#e3b23c"), { pos: [0.006, 0, 0], parent: bible, noOl: true });
   mesh(new THREE.BoxGeometry(0.205, 0.275, 0.05), tm("#6b3f22"), { pos: [-0.004, 0, 0], parent: bible });
   outline(bible, 0.012); bible.position.set(0, -0.32, 0.06); bible.rotation.set(0.2, 0, 0.1); W.arms[0].E.add(bible); W.bible = bible;

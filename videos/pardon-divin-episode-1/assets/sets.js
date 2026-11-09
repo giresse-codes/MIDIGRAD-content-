@@ -131,7 +131,7 @@ function eden() {
   for (let i = 0; i < 14; i++) { const b = bush(0.8 + rnd() * 0.7); b.position.set((rnd() - 0.5) * 40, 0, -2 - rnd() * 22); G.add(b); }
   G.add(flowers(420, [-25, 25, -30, 10]));
   // les deux arbres au centre
-  const life = tree({ size: 1.55, h: 3.2, leaf: "#ffd84a", leaf2: "#ffbf2a", leafMat: { emissive: "#ffcc33", emissiveIntensity: 0.45 }, fruit: "#fff3b0", fruitMat: { emissive: "#ffe680", emissiveIntensity: 0.8 }, nFruit: 12, trunk: "#b07a3c", thick: 1.3 });
+  const life = tree({ size: 1.55, h: 3.2, leaf: "#ffd84a", leaf2: "#ffbf2a", leafMat: { emissive: "#ffcc33", emissiveIntensity: 0.18 }, fruit: "#fff3b0", fruitMat: { emissive: "#ffe680", emissiveIntensity: 0.8 }, nFruit: 12, trunk: "#b07a3c", thick: 1.3 });
   life.position.set(-3.2, 0, -12); G.add(life);
   const know = tree({ size: 1.6, h: 3.3, fruit: "#e8202a", fruitMat: { emissive: "#ff2a2a", emissiveIntensity: 0.25 }, nFruit: 16, thick: 1.35 }); know.position.set(3.4, 0, -12); G.add(know);
   const halo = new THREE.Mesh(new THREE.SphereGeometry(3.6, 24, 16), new THREE.MeshBasicMaterial({ color: "#ffe9a0", transparent: true, opacity: 0.18, depthWrite: false, blending: THREE.AdditiveBlending })); halo.position.set(-3.2, 4.4, -12); halo.userData.noOl = true; G.add(halo);
@@ -145,7 +145,7 @@ function eden() {
   G.userData = { ...G.userData, life, know, halo, L, Sh, E, birds, flies, clouds, riv, fallM, mist, deco, hide, cam: { pos: [0, 3, 8], tgt: [0, 2, -10] } };
   G.userData.update = (t, k) => {
     riv.material.uniforms.t.value = t; fallM.uniforms.t.value = t; mist.forEach((m, i) => { const s = 0.8 + 0.3 * Math.sin(t * 2 + i); m.scale.setScalar(s); });
-    halo.material.opacity = 0.14 + 0.05 * Math.sin(t * 1.4); halo.visible = (k.cold ?? 0) < 0.8;
+    halo.material.opacity = 0.07 + 0.03 * Math.sin(t * 1.4); hide.visible = !!k.hide; halo.visible = (k.cold ?? 0) < 0.8;
     know.userData.fruits.forEach((f, i) => f.scale.setScalar(1 + 0.06 * Math.sin(t * 2 + i) + (i === 0 ? (k.fruitBig || 0) * 1.4 : 0)));
     birds.forEach((b, i) => { const a = t * 0.35 + i * 1.3; b.position.set(Math.cos(a) * (10 + i), 6 + i * 0.5, -12 + Math.sin(a) * 6); b.rotation.y = -a; b.userData.w.forEach((w, j) => (w.rotation.x = (j ? 1 : -1) * Math.sin(t * 14 + i) * 0.7)); b.visible = (k.cold ?? 0) < 0.5; });
     flies.forEach((f, i) => { f.position.set(Math.sin(t * 0.5 + i * 2) * (3 + i % 4) - 1, 1 + 0.6 * Math.sin(t * 1.3 + i) + (i % 3) * 0.4, -6 - (i % 5) * 2 + Math.cos(t * 0.4 + i) * 2); f.userData.w.forEach((w, j) => (w.rotation.x = (j ? 1 : -1) * (0.3 + 0.9 * Math.abs(Math.sin(t * 12 + i))))); f.visible = (k.cold ?? 0) < 0.5; });
@@ -165,7 +165,7 @@ function thorns() {
   // porte du jardin (arche de verdure) + chérubins + épée flamboyante
   const gate = new THREE.Group(); gate.position.set(0, 0, -16); G.add(gate);
   for (const s of [-1, 1]) { mesh(cyl(0.5, 0.6, 5, 12), tm("#7d5a3a"), { pos: [s * 2.6, 2.5, 0], parent: gate }); for (let i = 0; i < 5; i++) mesh(sph(1.0, 14), tm(i % 2 ? "#4ea83b" : "#5fbf55"), { pos: [s * (2.6 - i * 0.55), 5 + Math.sin(i) * 0.4, 0], parent: gate }); }
-  const behind = mesh(new THREE.PlaneGeometry(4.4, 4.6), tm("#9be37a", { emissive: "#c9ff9a", emissiveIntensity: 0.6 }), { pos: [0, 2.3, -0.3], parent: gate, noOl: true });
+  const behind = mesh(new THREE.PlaneGeometry(4.4, 4.6), tm("#9be37a", { emissive: "#c9ff9a", emissiveIntensity: 0.15 }), { pos: [0, 2.3, -0.3], parent: gate, noOl: true });
   outline(gate, 0.03);
   const cher = []; for (const s of [-1, 1]) { const c = new THREE.Group(); c.position.set(s * 3.9, 0, 0.6);
     const bodyM = tm("#fff6d8", { emissive: "#ffe9a8", emissiveIntensity: 0.9 });
