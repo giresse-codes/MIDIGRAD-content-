@@ -302,7 +302,7 @@ window.startFilm = function (W) {
     const qo = pulse(t, C.reellement, C.ruse + 1.5, 0.3, 0.5); qmark.style.opacity = qo.toFixed(3); qmark.style.transform = `translateY(${(-20 * Math.sin(t * 2.2)).toFixed(1)}px) rotate(${(8 * Math.sin(t * 1.5)).toFixed(1)}deg)`;
     rewind.style.opacity = rw.toFixed(3); if (rw > 0) [...rewind.querySelectorAll(".ln")].forEach((l, i) => (l.style.transform = `translateX(${(((t * 2400 + i * 397) % 1500) - 200).toFixed(0)}px)`));
     // fin : logo, signature, à suivre
-    const lo = smooth(LOGO0 - 0.4, LOGO0, t); endw.style.opacity = lo.toFixed(3);
+    const lo = pulse(t, LOGO0 - 0.05, LOGO0 + 0.1, 0.4, 0.5); endw.style.opacity = lo.toFixed(3);
     if (t >= LOGO0) W.render(t, { set: "douala", cam: c, logo: { rot: lerp(-2.4, 0, ease(clamp((t - LOGO0) / 1.4))) + 0.12 * Math.sin((t - LOGO0) * 1.3), scale: lerp(0.4, 1, ease(clamp((t - LOGO0) / 1.1))), y: lerp(0.2, 1.0, ease(clamp((t - SIG) / 0.8))) } });
     sig.style.opacity = clamp((t - SIG - 0.2) / 0.5).toFixed(3); suite.style.opacity = clamp((t - SIG - 0.9) / 0.5).toFixed(3); suite.style.transform = `translateX(-50%) scale(${(0.85 + 0.15 * ease(clamp((t - SIG - 0.9) / 0.4))).toFixed(3)})`;
     blk.style.opacity = clamp((t - (DUR - 0.5)) / 0.5).toFixed(3);
