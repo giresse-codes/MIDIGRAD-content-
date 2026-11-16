@@ -17,7 +17,7 @@ Remplace les styles `style-pardon-dessin-anime` et `style-pardon-3d` (jugés tro
 « Illustration de dessin animé semi-réaliste, style bande dessinée numérique moderne : contours noirs fins et nets, couleurs naturelles et lumineuses, ombrage doux, proportions humaines réalistes, visages détaillés et expressifs, décor riche et détaillé, lumière naturelle. Format vertical 9:16. Aucun texte, aucun logo, aucun filigrane. »
 
 ## Personnages (fiches à générer une fois, sur fond blanc : face, trois-quarts, profil)
-- **WILFRIED (narrateur)** : jeune homme camerounais d'environ 25 ans, peau brun foncé, cheveux courts crépus noirs, visage souriant et bienveillant, chemise blanche à manches longues, pantalon noir, chaussures noires, petite Bible marron à tranche dorée.
+- **L'APÔTRE PARIS TALLA (narrateur)** : dessiné à partir d'une vraie photo de lui fournie par l'équipe (fiche `fiche-paris-talla.png`), dans le même style illustré, avec sa Bible. Sa représentation et le texte qu'il dit doivent être validés par lui avant publication.
 - **ADAM** : homme africain d'environ 30 ans, peau brune, barbe courte noire, cheveux courts crépus, musclé mais simple. Avant la chute : tunique simple en lin clair. Après : ceinture et tunique de feuilles de figuier. Fin : vêtement de peau.
 - **ÈVE** : femme africaine d'environ 25 ans, peau brune, longues tresses noires, visage doux. Avant la chute : longue tunique claire en lin. Après : tunique de feuilles de figuier. Fin : vêtement de peau.
 - **LE SERPENT** : serpent vert brillant aux écailles détaillées, yeux jaunes rusés, sourire en coin, impressionnant mais pas effrayant pour un enfant.
@@ -25,14 +25,13 @@ Remplace les styles `style-pardon-dessin-anime` et `style-pardon-3d` (jugés tro
 
 ## Mise en page de la vidéo
 - 1080×1920, 30 fps. Images agrandies proprement (Lanczos) si besoin, sans déformation.
-- Wilfried en entier au début et à la fin ; pendant l'histoire, en buste dans un médaillon rond en bas à gauche (environ 340 px, double bord noir et doré, étiquette « WILFRIED »), bouche animée sur la voix.
-- Sous-titres : 2 lignes max, en haut sous l'étiquette d'épisode (ou en bas quand Wilfried est en entier), majuscules, police grasse arrondie, blanc avec contour noir, mot-clé en jaune, petit rebond.
+- L'apôtre Paris Talla en entier au début et à la fin ; pendant l'histoire, en buste dans un médaillon rond en bas à gauche (environ 340 px, double bord noir et doré, étiquette « APÔTRE PARIS TALLA »), bouche animée sur la voix.
+- Sous-titres : 2 lignes max, en haut sous l'étiquette d'épisode (ou en bas quand le narrateur est en entier), majuscules, police grasse arrondie, blanc avec contour noir, mot-clé en jaune, petit rebond.
 - Cartes de versets : parchemin, référence en haut, Louis Segond 1910 mot pour mot.
 
 ## Règles
 - Adam et Ève toujours habillés, aucune nudité. Pas de sang ni de violence montrés.
 - La croix : émotion par la lumière et les visages des témoins. Jésus : par défaut de dos ou dans la lumière (à confirmer).
-- L'apôtre Paris Talla n'apparaît pas.
 
 ## Sons (bruitage) — obligatoire dans chaque épisode
 - Chaque scène a son ambiance (vent, oiseaux, eau, ville, feu…) et ses bruits ponctuels (animaux, pas, croquement, sifflement du serpent, whoosh des transitions, déroulement du parchemin des versets).
