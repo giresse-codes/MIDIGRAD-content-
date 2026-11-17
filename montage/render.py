@@ -635,8 +635,10 @@ def build_audio(work, voice_path, events, ouestu, total, out, missing):
     return out
 
 def mux(video, audio, out, a_start=0.0, dur=None, fade_out=None):
-    af = []
-    if fade_out: af = ["-af", f"afade=out:st={fade_out[0]:.3f}:d={fade_out[1]:.3f}"]
+    # l'encodage AAC fait remonter les pics : limiteur + passe-bas 16 kHz pour rester sous -1 dBTP
+    chain = "volume=0.7dB,alimiter=limit=0.72:level=false,lowpass=f=16000"
+    if fade_out: chain += f",afade=out:st={fade_out[0]:.3f}:d={fade_out[1]:.3f}"
+    af = ["-af", chain]
     cmd = ["ffmpeg", "-v", "error", "-y", "-i", video, "-ss", f"{a_start:.3f}", "-i", audio]
     cmd += ["-map", "0:v", "-map", "1:a", "-c:v", "copy", *af, "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
             "-shortest", "-movflags", "+faststart", out]
