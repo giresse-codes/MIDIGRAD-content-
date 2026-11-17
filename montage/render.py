@@ -375,6 +375,14 @@ def chunks(v, maxc=40):
         if re.search(r"[.!?…:;]»?$", txt) or (re.search(r",$", txt) and len(" ".join(x[0] for x in cur)) > maxc * 0.55):
             flush()
     flush()
+    # un guillemet fermant isolé en début de bloc rejoint le bloc précédent ; un guillemet ouvrant isolé en fin rejoint le suivant
+    for i in range(1, len(out)):
+        while out[i] and out[i][0][0] in ("»", "».", "»,") and out[i - 1]:
+            w = out[i].pop(0); out[i - 1][-1] = [out[i - 1][-1][0] + " " + w[0], out[i - 1][-1][1], w[2]]
+    for i in range(len(out) - 1):
+        while out[i] and out[i][-1][0] == "«":
+            out[i + 1].insert(0, out[i].pop())
+    out = [c for c in out if c]
     res = []
     for i, c in enumerate(out):
         s = c[0][1]; e = c[-1][2] + 0.25
