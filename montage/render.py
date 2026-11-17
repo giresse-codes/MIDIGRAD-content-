@@ -63,6 +63,21 @@ class Voice:
         for i, (w, _, _) in enumerate(self.words):
             for t in norm(w): self.tok.append((t, i))
 
+    def merge_pieces(self):
+        """Whisper découpe « c'est » en « c » + « 'est » et « bien-aimés » en « bien » + « -aimés » : on recolle."""
+        out = []
+        for w in self.words:
+            if out and (w[0].startswith("'") or w[0].startswith("-") or w[0] in (",", ".", "?", "!", ":", ";")):
+                out[-1] = [out[-1][0] + w[0], out[-1][1], w[2]]
+            elif out and out[-1][0].endswith("'"):
+                out[-1] = [out[-1][0] + w[0], out[-1][1], w[2]]
+            else:
+                out.append(list(w))
+        self.words = out
+        self.tok = []
+        for i, (w, _, _) in enumerate(self.words):
+            for t in norm(w): self.tok.append((t, i))
+
     def find(self, phrase, after=0.0, last=False):
         p = norm(phrase); toks = [t for t, _ in self.tok]; hits = []
         for k in range(len(toks) - len(p) + 1):
@@ -367,9 +382,20 @@ def chunks(v, maxc=40):
     out = []; cur = []
     def flush():
         if cur: out.append(cur[:]); cur.clear()
-    for w in v.words:
+    W = v.words
+    def tail_len(i):
+        """longueur des mots restants jusqu'à la fin de phrase (si courte)."""
+        j = i; L = []
+        while j < len(W) and len(L) < 3:
+            L.append(W[j][0])
+            if re.search(r"[.!?…:;]»?$", W[j][0]): return len(" ".join(L))
+            j += 1
+        return 999
+    for i, w in enumerate(W):
         txt = w[0]
-        if cur and len(" ".join(x[0] for x in cur + [w])) > maxc: flush()
+        if cur and len(" ".join(x[0] for x in cur + [w])) > maxc:
+            cur_len = len(" ".join(x[0] for x in cur))
+            if not (tail_len(i) <= 16 and cur_len + 1 + tail_len(i) <= maxc + 16): flush()
         if cur and w[1] - cur[-1][2] > 0.7: flush()
         cur.append(w)
         if re.search(r"[.!?…:;]»?$", txt) or (re.search(r",$", txt) and len(" ".join(x[0] for x in cur)) > maxc * 0.55):
@@ -411,6 +437,12 @@ def fmt_words(words, yellow="&H0000E1FF&"):
         if any(t in KEYWORDS for t in norm(w)): out.append("{\\c" + yellow + "}" + esc(W) + "{\\c&HFFFFFF&}")
         else: out.append(esc(W))
     return " ".join(out)
+
+_FC = {}
+def _fnt(size):
+    from PIL import ImageFont
+    if size not in _FC: _FC[size] = ImageFont.truetype(os.path.join(FONTS, "Fredoka-Bold.ttf"), size)
+    return _FC[size]
 
 def write_ass(path, fmt, subs, titles, cards, hide_ranges, med_range):
     vert = fmt == "tiktok"
@@ -460,6 +492,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             if e - s < 0.35: continue
         lines = split2(words)
         txt = "\\N".join(fmt_words(l) for l in lines)
+        # réduit la taille si une ligne dépasse la largeur disponible (pas de 3e ligne)
+        maxw = 980 if vert else 1300
+        wmax = max(_fnt(sub_fs).getlength(" ".join(l).upper()) for l in lines) + 10
+        if wmax > maxw: txt = "{\\fs%d}" % int(sub_fs * maxw / wmax) + txt
         pos = "{\\pos(540,430)}" if vert else "{\\an2\\pos(960,1040)}"
         add("Sub", s, e, pos + bounce + txt)
     tp = (540, 1350) if vert else (960, 150)
@@ -595,7 +631,7 @@ def build_audio(work, voice_path, events, ouestu, total, out, missing):
     j = json.loads(r.stderr[r.stderr.rindex("{"):r.stderr.rindex("}") + 1])
     ln = (f"loudnorm=I=-14:TP=-1:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:"
           f"measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true")
-    run(["ffmpeg", "-v", "error", "-y", "-i", pre, "-af", ln + ",alimiter=limit=0.87:level=false", "-ar", "48000", out])
+    run(["ffmpeg", "-v", "error", "-y", "-i", pre, "-af", ln + ",alimiter=limit=0.79:level=false", "-ar", "48000", out])
     return out
 
 def mux(video, audio, out, a_start=0.0, dur=None, fade_out=None):
@@ -616,11 +652,12 @@ def main():
     work = args.work; os.makedirs(work, exist_ok=True)
     corr = json.load(open(os.path.join(ROOT, "montage", "corrections.json")))
     v = Voice(os.path.join(work, "transcript.json"))
+    v.apply_fixes(corr["remplacements"])
+    v.merge_pieces()
     for w in v.words:
         for k, val in corr["mots"].items():
             if w[0].strip(".,;:!?»«…").lower() == k.lower():
                 w[0] = w[0].replace(w[0].strip(".,;:!?»«…"), val)
-    v.apply_fixes(corr["remplacements"])
     P, cards, titles, a = build_plan(v)
     story_end = v.end + 1.2
     total_main = HOOK + story_end
