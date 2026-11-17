@@ -11,6 +11,7 @@ VIDÉO « Le pardon divin » — ÉPISODE 1 : AU COMMENCEMENT. Version finale. L
 - Installe ce qui manque : Node.js 22+, FFmpeg, Python 3 + faster-whisper, HyperFrames ou Remotion, GSAP. Utilise la carte graphique pour le rendu et l'encodage (NVENC, QSV ou AMF si disponible, sinon libx264).
 
 1. INVENTAIRE
+IMPORTANT : le narrateur est l'APÔTRE PARIS TALLA, plus Wilfried (un jeune homme en chemise blanche). Les clips 01, 02 et 23 du dépôt montrent encore Wilfried : remplace-les par les clips de l'apôtre que je t'envoie (clips/01.mp4 salut dans la rue, clips/02.mp4 buste pour le médaillon, clips/23.mp4 main sur le cœur au coucher du soleil). Si tu n'as pas reçu ces 3 clips, ARRÊTE-TOI et demande-les-moi avant tout rendu. N'utilise jamais une image de Wilfried.
 Tableau plan par plan : fichier, durée, résolution (attendu 1280×720, environ 10 s), présence d'un son d'origine. Signale tout fichier manquant ou illisible, puis continue.
 
 2. VOIX ET SOUS-TITRES
