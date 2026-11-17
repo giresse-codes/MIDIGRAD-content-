@@ -407,7 +407,7 @@ def fmt_words(words, yellow="&H0000E1FF&"):
 def write_ass(path, fmt, subs, titles, cards, hide_ranges, med_range):
     vert = fmt == "tiktok"
     W, H = (1080, 1920) if vert else (1920, 1080)
-    sub_fs = 64 if vert else 58
+    sub_fs = 72 if vert else 60
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -418,7 +418,7 @@ ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Sub,Fredoka Bold,{sub_fs},&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,1,0,1,{5 if vert else 4.5},{2 if vert else 2},5,40,40,40,1
-Style: Label,Fredoka Bold,{40 if vert else 30},&H0037AFD4,&H0037AFD4,&H00000000,&HC8000000,0,0,0,0,100,100,3,0,3,10,0,5,20,20,20,1
+Style: Label,Fredoka Bold,{46 if vert else 30},&H0037AFD4,&H0037AFD4,&H00000000,&HC8000000,0,0,0,0,100,100,3,0,3,10,0,5,20,20,20,1
 Style: Titre,Fredoka Bold,{92 if vert else 100},&H0000E5FF,&H0000E5FF,&H00000000,&H96000000,0,0,0,0,100,100,2,0,1,{9 if vert else 9},4,5,30,30,30,1
 Style: Hook,Fredoka Bold,{74 if vert else 84},&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,7,4,5,40,40,40,1
 Style: HookTitre,Cinzel Bold,{120 if vert else 150},&H0055D6FF,&H0055D6FF,&H00000000,&H96000000,0,0,0,0,100,100,4,0,1,8,5,5,40,40,40,1
@@ -517,7 +517,7 @@ def compose(work, fmt, program, assets, cards, ass, med_range, total_main, windo
                       f"setpts=PTS+{s:.3f}/TB[k{k}]")
             fl.append(f"[{cur}][k{k}]overlay=0:0:eof_action=pass[o{k}]"); cur = f"o{k}"; k += 1
     fontsdir = FONTS
-    fl.append(f"[{cur}]ass='{ass}':fontsdir='{fontsdir}',setpts=PTS-STARTPTS,format=yuv420p[main]")
+    fl.append(f"[{cur}]ass='{ass}':fontsdir='{fontsdir}',trim=start={t0:.3f}:end={t1:.3f},setpts=PTS-STARTPTS,format=yuv420p[main]")
     last = "main"
     if extra_end:   # cartes de fin (épisode complet) ou carte « épisode complet » (extraits)
         n0 = k
@@ -587,7 +587,7 @@ def build_audio(work, voice_path, events, ouestu, total, out, missing):
     j = json.loads(r.stderr[r.stderr.rindex("{"):r.stderr.rindex("}") + 1])
     ln = (f"loudnorm=I=-14:TP=-1:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:"
           f"measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true")
-    run(["ffmpeg", "-v", "error", "-y", "-i", pre, "-af", ln + ",alimiter=limit=0.89:level=false", "-ar", "48000", out])
+    run(["ffmpeg", "-v", "error", "-y", "-i", pre, "-af", ln + ",alimiter=limit=0.87:level=false", "-ar", "48000", out])
     return out
 
 def mux(video, audio, out, a_start=0.0, dur=None, fade_out=None):
