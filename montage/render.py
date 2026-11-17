@@ -47,6 +47,22 @@ class Voice:
             for t in norm(w): self.tok.append((t, i))
         self.end = self.words[-1][2]
 
+    def apply_fixes(self, fixes):
+        for f in fixes:
+            de = f["de"].split(); vers = f["vers"].split()
+            strip = lambda x: x.strip()
+            ok = False
+            for i in range(len(self.words) - len(de) + 1):
+                if abs(self.words[i][1] - f["t"]) < 3 and [strip(w[0]) for w in self.words[i:i + len(de)]] == de:
+                    s0 = self.words[i][1]; e0 = max(w[2] for w in self.words[i:i + len(de)])
+                    n = max(1, len(vers)); step = (e0 - s0) / n
+                    self.words[i:i + len(de)] = [[w, s0 + k * step, s0 + (k + 1) * step] for k, w in enumerate(vers)]
+                    ok = True; break
+            if not ok: print("correction non appliquée :", f["de"])
+        self.tok = []
+        for i, (w, _, _) in enumerate(self.words):
+            for t in norm(w): self.tok.append((t, i))
+
     def find(self, phrase, after=0.0, last=False):
         p = norm(phrase); toks = [t for t, _ in self.tok]; hits = []
         for k in range(len(toks) - len(p) + 1):
@@ -80,7 +96,7 @@ def build_plan(v):
 
     a = {}
     a["remontons"] = T("remontons")
-    a["gen11"] = T("genese chapitre un verset un")
+    a["gen11"] = T("genese chapitre 1 verset 1")
     a["parole"] = T("et par sa parole", a["gen11"])
     a["special"] = T("puis dieu a fait quelque chose", a["parole"])
     a["devint"] = T("devint un etre vivant", a["special"])
@@ -269,7 +285,7 @@ def render_shot(work, s, dur):
     vf += [f"fps={FPS}"]
     rest = max(0.0, dur - play)
     if rest > 0.01:
-        vf += [f"tpad=stop_mode=clone:stop_duration={rest + 0.2:.3f}", zoom_hold(play, rest)]
+        vf += [f"tpad=stop_mode=clone:stop_duration={rest + 0.2:.3f}", zoom_hold(play, rest, 1 + min(0.18, 0.06 + 0.008 * rest))]
     else:
         vf += ["scale=1920:1080:flags=lanczos"]
     vf += [GRADES[s["grade"]], f"trim=duration={dur:.4f}", "setsar=1"]
@@ -596,6 +612,7 @@ def main():
         for k, val in corr["mots"].items():
             if w[0].strip(".,;:!?»«…").lower() == k.lower():
                 w[0] = w[0].replace(w[0].strip(".,;:!?»«…"), val)
+    v.apply_fixes(corr["remplacements"])
     P, cards, titles, a = build_plan(v)
     story_end = v.end + 1.2
     total_main = HOOK + story_end

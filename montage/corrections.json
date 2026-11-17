@@ -1,1 +1,57 @@
-{"mots": {}}
+{
+ "_note": "Corrections de la transcription. 'mots' : orthographe des noms propres et mots bibliques. 'remplacements' : erreurs de reconnaissance vérifiées en réécoutant le passage (t = seconde de la voix).",
+ "mots": {
+  "l'éternel": "l'Éternel",
+  "éternel": "Éternel",
+  "Bien-aimé,": "Bien-aimés,",
+  "l'Orient.": "l'orient.",
+  "eût": "eut"
+ },
+ "remplacements": [
+  {
+   "t": 8.0,
+   "de": "Le Pardon Divin.",
+   "vers": "« Le pardon divin »."
+  },
+  {
+   "t": 54.0,
+   "de": "verset 1.",
+   "vers": "verset 7."
+  },
+  {
+   "t": 203.0,
+   "de": "bien fait du fruit,",
+   "vers": "des bienfaits du fruit :"
+  },
+  {
+   "t": 232.1,
+   "de": "Le fruit, le fruit défendu, est le fruit de la vie. Le fruit défendu, est le fruit de la vie. Pour la",
+   "vers": "Pour la"
+  },
+  {
+   "t": 292.3,
+   "de": "et la malheur, la mort.",
+   "vers": "et la mort."
+  },
+  {
+   "t": 321.8,
+   "de": "Genèse chapitre 3.",
+   "vers": "Genèse, chapitre 3, verset 21 :"
+  },
+  {
+   "t": 347.5,
+   "de": "Pour leur couvrir,",
+   "vers": "Pour les couvrir,"
+  },
+  {
+   "t": 350.0,
+   "de": "Le premier s 'enversait",
+   "vers": "Le premier sang versé,"
+  },
+  {
+   "t": 382.0,
+   "de": "Partez avec moi.",
+   "vers": ""
+  }
+ ]
+}
