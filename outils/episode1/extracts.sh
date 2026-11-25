@@ -12,10 +12,6 @@ while read a b name; do
   d=$(python3 -c "print($b-$a)")
   ffmpeg -nostdin -v error -y -ss $a -t $d -i episode1-tiktok.mp4 -af "afade=t=in:d=0.3,afade=t=out:st=$(python3 -c "print($d-0.6)"):d=0.6" -c:v libx264 -crf 18 -preset medium -pix_fmt yuv420p -c:a aac -b:a 192k -ar 48000 x_body.mp4
   printf "file 'x_open.mp4'\nfile 'x_body.mp4'\nfile 'endcard.mp4'\n" > x_list.txt
-  ffmpeg -nostdin -v error -y -f concat -safe 0 -i x_list.txt -c:v libx264 -crf 18 -preset medium -pix_fmt yuv420p -r 30 -c:a aac -b:a 192k -ar 48000 -af "loudnorm=I=-14:TP=-1.5:LRA=11" -movflags +faststart extrait$n-$name.mp4
+  ffmpeg -nostdin -v error -y -f concat -safe 0 -i x_list.txt -c:v libx264 -crf 18 -preset medium -pix_fmt yuv420p -r 30 -c:a aac -b:a 192k -ar 48000 -af "loudnorm=I=-13.2:TP=-1.0:LRA=11,alimiter=limit=0.74:level=false:attack=1:release=60" -movflags +faststart extrait$n-$name.mp4
   n=$((n+1))
-done <<LIST
-144.0 195.6 serpent-et-fruit
-250.9 294.0 ou-es-tu-accusation
-323.5 370.3 sacrifice-habits-de-peau
-LIST
+done < xl.txt

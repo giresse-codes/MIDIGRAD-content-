@@ -115,7 +115,7 @@ fo = int(3 * SR); bed[int((DUR - 3) * SR):int(DUR * SR)] *= np.linspace(1, 0, in
 bed[int(DUR * SR):] = 0
 bed[:int(DUR * SR)].astype(np.float32).tofile("bed.f32")
 subprocess.check_call(["ffmpeg", "-v", "error", "-y", "-i", "voice_edit.wav", "-af",
-    f"aresample=48000,equalizer=f=3200:t=h:w=1.0:g=1.5:enable='lt(t,{intro_end:.3f})'", "-f", "f32le", "-ac", "1", "-ar", "48000", "voice_eq.f32"])
+    f"aresample=48000,anull", "-f", "f32le", "-ac", "1", "-ar", "48000", "voice_eq.f32"])
 vm = np.fromfile("voice_eq.f32", np.float32)
 print("voix (s):", len(vm) / SR)
 # écho léger sur « Où es-tu ? »

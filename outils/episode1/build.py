@@ -4,7 +4,7 @@ random.seed(7)
 FPS = 30
 words = json.load(open("words.json"))
 vad = json.load(open("vad_edit.json"))
-VDUR = 383.284
+VDUR = 351.93
 
 OUV, ACC, INTRO01 = 5.0, 5.0, 1.5
 V0 = OUV + ACC + INTRO01          # la voix commence ici dans la vidéo
@@ -183,7 +183,7 @@ for i, p in enumerate(pieces):
     t1 = pieces[i + 1]["t0"] if i + 1 < len(pieces) else FIN0
     p["t1"] = t1
     L = t1 - p["t0"]
-    if p["clip"] in ("APOSTLE", "REWIND") or L <= 4.2:
+    if p["clip"] in ("APOSTLE", "REWIND") or L <= 4.0:
         final.append(p); continue
     n = math.ceil(L / 3.5)
     for k in range(n):

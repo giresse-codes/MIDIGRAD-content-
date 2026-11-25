@@ -10,7 +10,7 @@ Chaque point doit être réellement appliqué et vérifié : ne rien cocher sans
 
 0. RÉCEPTION DES FICHIERS
 - Les clips, sons et voix off arrivent en plusieurs messages (20 fichiers max par message). Ne rien commencer avant « TOUT EST ENVOYÉ ». Après chaque message : répondre seulement par la liste des fichiers reçus.
-- Clips (.mp4, ou .png pour un plan refusé par Veo) → clips/ ; sons → sons/ (noms de la section 8) ; voix off de l'apôtre Paris Talla → audio/ep1.mp3.
+- Clips (.mp4, ou .png pour un plan refusé par Veo) → clips/ ; sons → sons/ (noms de la section 8) ; voix off de l'apôtre Paris Talla → audio/voix-apotre-v2.wav (seule voix de narration ; l'ancienne voix ep1.mp3, ratée, est supprimée).
 - Les clips Gemini/Veo arrivent sous des noms génériques : les identifier à l'image, proposer la correspondance, puis renommer (01.mp4, 02-parle-a.mp4…).
 - Fichier > 95 Mo : recompresser (H.264 CRF 20, même résolution). Commit puis : git -c push.negotiate=true push
 - Aucun fichier de l'ancien narrateur Wilfried n'est utilisé ni gardé dans le dépôt.
@@ -34,7 +34,8 @@ Décisions de la v3 (fenêtres utilisées) : 06 rejeté (visage européen) → 0
 
 3. TRANSCRIPTION ET FEUILLE DE MONTAGE (la montrer, puis attendre l'OK)
 - Transcrire la voix au mot près (faster-whisper large-v3, français, horodatage par mot). Aligner sur texte-voixoff.txt : sous-titres = ce qui est dit, orthographe et ponctuation du texte (guillemets, ?, !, : gardés). Versets = Louis Segond 1910 mot pour mot.
-- Vérifier que la voix ne contient ni répétition ni coupure. (v3 : la phrase « Alors, installez-vous bien. Remontons… au tout commencement » était dite deux fois ; la première occurrence, de 21,0 à 26,3 s, est retirée avec des fondus de 15 ms dans les silences. Rien d'autre n'est modifié.)
+- Vérifier que la voix ne contient ni répétition ni coupure, et signaler tout mot manquant, ajouté ou mal prononcé. (voix-apotre-v2 : aucun mot manquant ni ajouté ; à vérifier à l'oreille : « Talla » et « sang versé ». Elle est utilisée telle quelle, sans coupe.)
+- Changement de voix : garder la même feuille de montage et recaler chaque plan, titre, carte et bruitage sur son mot dans la nouvelle voix (±3 images) ; fournir la feuille ancien/nouvel horodatage (rendu/episode1/feuille-recalage-v2.md).
 - Tableau : temps / phrase / plan / effet / son. Chaque réaction, geste ou changement de plan tombe SUR le mot (±3 images), jamais après.
 Ordre des plans :
 OUV — logo-midigrad.png révélé en lumière dorée (son logo-reveal), puis « EUD — CONSISTOIRE MIDIGRAD » et « présente » (5 s).
@@ -74,7 +75,7 @@ c) H.264 CRF 18, yuv420p, 30 fps, AAC 192 kb/s, +faststart.
 Voir la section 2 (fenêtres utilisées) ; toute nouvelle erreur trouvée en revue finale est corrigée avant livraison.
 
 8. SON
-- Une seule voix, la même du début à la fin. Vérifier que l'introduction n'est ni plus grave ni différente du reste (volume, timbre, hauteur). v3 : même volume (-18,5 dB contre -18,4 dB en moyenne) ; hauteur médiane de l'intro 130 Hz, donc pas plus grave (97 à 118 Hz pour le reste) ; timbre un peu plus sourd (centroïde 1 377 Hz contre 1 520 à 1 660 Hz) → plateau aigu +1,5 dB à 3,2 kHz sur les 25,3 premières secondes, hauteur inchangée.
+- Une seule voix, la même du début à la fin. Vérifier que l'introduction n'est ni plus grave ni différente du reste (volume, timbre, hauteur). voix-apotre-v2 : hauteur 105 à 110 Hz partout, timbre de l'intro dans la moyenne (1 538 Hz contre 1 491 à 1 619 Hz), volume de l'intro environ 1 dB plus bas (écart naturel) → aucune égalisation, voix non modifiée.
 - Effet sur la voix seulement sur « Où es-tu ? » (écho léger : +280 ms et +560 ms).
 - Bruitages (sons/) : logo-reveal (ouverture et fermeture) · ambiance-ville (01, 23) · magie-lumiere (03, lumière de Dieu, 09a, 12, 22e) · vagues, vent-doux (création) · lion, elephant (très bas et brefs, ce sont des sons agressifs) · souffle (06b) · oiseaux-foret + cascade (Éden) · pas-herbe (07b, 09) · serpent (11b, 18c) · croquer (13, 14) · rembobinage · tonnerre, vent-fort, pluie, feuilles (15 à 16) · silence presque total avant « Où es-tu ? » · travail-terre (19) · feu, feu-epee, ailes (20, 20b) · foule (21) · agneau (22b) · coeur (22c, 22d, très doux) · parchemin (cartes) · whoosh (transitions lumineuses) · musique = soft piano, en boucle.
 - Niveaux : ambiances -32 à -28 LUFS, bruits ponctuels -27 à -20, musique -26, toujours sous la voix ; baisse automatique (sidechaincompress) de tous les sons et de la musique sous la voix. Final -14 LUFS, crête -1 dBTP max.
