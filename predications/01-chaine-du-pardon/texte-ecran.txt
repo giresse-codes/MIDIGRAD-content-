@@ -24,7 +24,7 @@ haut :: POUR NOUS AMENER / À LA REPENTANCE.@repentance
 haut :: SOUVIENS-TOI@joseph DE o:JOSEPH.
 haut :: SES PROPRES r:FRÈRES@freres / L'AVAIENT r:VENDU.@vendu
 haut :: ET POURTANT,@pourtant / IL LEUR DIT, / DANS o:GENÈSE,@genese / CHAPITRE 50, VERSET 20 :
-verset=GENÈSE 50:20 :: « VOUS@verset2 AVIEZ MÉDITÉ / DE ME FAIRE DU MAL : / DIEU@dieubien L'A CHANGÉ / EN BIEN. »@bien
+verset=GENÈSE 50:20 :: « VOUS@verset2 AVIEZ MÉDITÉ / DE ME FAIRE DU MAL : / DIEU@dieubien L'A CHANGÉ / EN BIEN… »@bien
 haut :: DONC@donc PARDONNER, / C'EST AUSSI o:REGARDER / RÉELLEMENT À o:DIEU.
 haut :: ET DIEU NOUS RAPPELLE / QU'EN RÉALITÉ,
 haut :: NOUS NE SOMMES PAS / DIFFÉRENTS@differents DE LA / PERSONNE QUI NOUS / A OFFENSÉS.

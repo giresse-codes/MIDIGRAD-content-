@@ -49,12 +49,12 @@ export const Scene: React.FC<{children?: React.ReactNode; overlay?: React.ReactN
       {overlay}
       {/* vignette forte */}
       <AbsoluteFill
-        style={{background: 'radial-gradient(ellipse 78% 68% at 50% 50%, transparent 45%, rgba(0,0,0,0.55) 80%, rgba(0,0,0,0.85) 100%)'}}
+        style={{background: 'radial-gradient(ellipse 78% 68% at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0.92) 100%)'}}
       />
       {/* grain léger */}
-      <svg width={W} height={H} style={{position: 'absolute', inset: 0, opacity: 0.07, mixBlendMode: 'screen'}}>
+      <svg width={W} height={H} style={{position: 'absolute', inset: 0, opacity: 0.22, mixBlendMode: 'overlay'}}>
         <filter id="grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed={frame % 12} />
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed={7} />
           <feColorMatrix type="saturate" values="0" />
         </filter>
         <rect width={W} height={H} filter="url(#grain)" />
