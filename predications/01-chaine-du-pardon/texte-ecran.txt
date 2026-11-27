@@ -1,0 +1,35 @@
+# Texte affiché à l'écran (version VOIX ENREGISTRÉE). Une ligne = un bloc de texte.
+# Format : zone :: texte     (zone = haut | verset=REFERENCE | citation)
+# « / » = retour à la ligne ; r: rouge, o: or, v: vert, b: bleu (préfixe d'un mot) ; @nom = ancre de synchro
+haut :: TU@debut CROIS r:PUNIR / CELUI QUI T'A r:BLESSÉ.
+haut :: EN RÉALITÉ… / C'EST@serre TOI QUI PORTES / LA r:CHAÎNE.
+haut :: CHAQUE@scene2 FOIS QUE / TU Y REPENSES, / LA r:BLESSURE SE r:ROUVRE.@rouvre
+haut :: CHAQUE FOIS QUE / TU LE CROISES, / TON r:CŒUR@coeur SE SERRE.@serrecoeur
+haut :: LUI,@lui / IL DORT@dort PEUT-ÊTRE / TRANQUILLE.
+haut :: ET TOI, / TU PORTES ENCORE / LE r:POIDS@poids DE CE / QU'IL T'A FAIT.
+haut :: ÉCOUTE@ecoute CE QUE DIT / LA o:PAROLE,@parole / DANS o:COLOSSIENS, / CHAPITRE 3, VERSET 13.
+verset=COLOSSIENS 3:13 :: « SUPPORTEZ-VOUS@verset1 / LES UNS LES AUTRES, / ET, SI L'UN A SUJET / DE SE PLAINDRE / DE L'AUTRE,
+verset=COLOSSIENS 3:13 :: PARDONNEZ-VOUS / RÉCIPROQUEMENT. / DE MÊME QUE CHRIST / VOUS A PARDONNÉ, / PARDONNEZ-VOUS AUSSI. »@finverset1
+haut :: REMARQUE@remarque BIEN : / DIEU NE DIT PAS QUE / TU N'AS PAS DE RAISON / DE TE PLAINDRE.
+haut :: IL DIT :@ildit
+citation>regarde :: « SI@citation L'UN A SUJET / DE SE PLAINDRE »
+haut :: TA r:DOULEUR / EST RÉELLE.
+haut :: MAIS REGARDE@regarde CE QUE / o:CHRIST@christ A FAIT / POUR TOI.
+haut :: TU NE MÉRITAIS PAS / SON PARDON,
+haut :: ET POURTANT, / IL T'A v:PARDONNÉ.@pardonne
+haut :: DIEU@scene5 NOUS DEMANDE, / EN TOUTE SITUATION, / DE o:REGARDER@regarder À LUI,
+haut :: ET NON@etnon À CELUI / QUI NOUS A OFFENSÉS.
+haut :: DIEU@luimeme LUI-MÊME UTILISE / LA PERSONNE QUI / NOUS A OFFENSÉS
+haut :: POUR NOUS AMENER / À LA REPENTANCE.@repentance
+haut :: SOUVIENS-TOI@joseph DE o:JOSEPH.
+haut :: SES PROPRES r:FRÈRES@freres / L'AVAIENT r:VENDU.@vendu
+haut :: ET POURTANT,@pourtant / IL LEUR DIT, / DANS o:GENÈSE,@genese / CHAPITRE 50, VERSET 20 :
+verset=GENÈSE 50:20 :: « VOUS@verset2 AVIEZ MÉDITÉ / DE ME FAIRE DU MAL : / DIEU@dieubien L'A CHANGÉ / EN BIEN. »@bien
+haut :: DONC@donc PARDONNER, / C'EST AUSSI o:REGARDER / RÉELLEMENT À o:DIEU.
+haut :: ET DIEU NOUS RAPPELLE / QU'EN RÉALITÉ,
+haut :: NOUS NE SOMMES PAS / DIFFÉRENTS@differents DE LA / PERSONNE QUI NOUS / A OFFENSÉS.
+haut :: PARDONNER,@scene8 / CE N'EST PAS / LIBÉRER L'AUTRE.
+haut :: C'EST@liberer TE v:LIBÉRER / TOI-MÊME.@toimeme
+haut :: ET@scene9 SI CE MESSAGE / T'A TOUCHÉ,
+haut :: PARTAGE-LE@partage À QUELQU'UN / QUI EN A BESOIN.
+haut :: NOUS@benis SOMMES / INFINIMENT BÉNIS / EN o:JÉSUS-CHRIST.@fin
